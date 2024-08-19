@@ -21,6 +21,7 @@ export function App() {
             </Routes>
           </main>
           {/* <AppFooter /> */}
+          <h1>hi its idan</h1>
         </section>
       </Router>
     </Provider>
