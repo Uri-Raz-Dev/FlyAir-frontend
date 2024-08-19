@@ -2,8 +2,8 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { AppHeader } from './cmps/AppHeader.jsx'
 import '../src/assets/main.scss'
-import { Home } from './pages/Home.jsx'
 import { store } from './store/store.js'
+import { StayIndex } from './pages/StayIndex.jsx'
 
 
 export function App() {
@@ -17,7 +17,7 @@ export function App() {
           {/* <AppNavAside /> */}
           <main className="app-layout">
             <Routes>
-              <Route element={<Home />} path='/'></Route>
+              <Route element={<StayIndex />} path='/'></Route>
             </Routes>
           </main>
           {/* <AppFooter /> */}
