@@ -21,8 +21,8 @@ export function App() {
             </Routes>
           </main>
           {/* <AppFooter /> */}
-          <h1>hi its idan</h1>
-          <h1>hi its omer</h1>
+          <h2>hi its uri</h2>
+
         </section>
       </Router>
     </Provider>
