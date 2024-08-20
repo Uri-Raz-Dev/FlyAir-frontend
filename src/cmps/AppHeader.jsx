@@ -20,14 +20,11 @@ export function AppHeader() {
 	}
 
 	return (
-		<header className="app-header full">
-			<nav className='flex'>
-				<Link to={"/"} >FlyAir</Link>
-				<StayFilter />
-				<Link to={"/"}>switch to host </Link>  {/* //new user will show "airbnb your home" */}
-				<button className='lang'>lang-list</button>
-				<button className='user-app-header'>user</button>
-			</nav>
-		</header>
+		<div className="app-header full">
+			<Link to={"/"} >FlyAir</Link>
+			<Link to={"/"}>switch to host </Link>  {/* //new user will show "airbnb your home" */}
+			<button className='lang'>lang-list</button>
+			<button className='user-app-header'>user</button>
+		</div>
 	)
 }
