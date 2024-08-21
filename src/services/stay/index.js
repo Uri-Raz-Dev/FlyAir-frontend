@@ -7,18 +7,15 @@ import { stayService as remote } from './stay.service.remote'
 
 function getEmptyStay() {
     return {
-        vendor: makeId(),
-        speed: getRandomIntInclusive(80, 240),
-        msgs: [],
+        name:'',
+        price: getRandomIntInclusive(80, 240),
+        type:''
     }
 }
 
 function getDefaultFilter() {
     return {
-        txt: '',
-        minSpeed: '',
-        sortField: '',
-        sortDir: '',
+       price:0
     }
 }
 

@@ -30,7 +30,7 @@ export function StayIndex() {
 
     async function onAddStay() {
         const stay = stayService.getEmptyStay()
-        stay.vendor = prompt('Vendor?')
+        stay.type = prompt('Type?')
         try {
             const savedStay = await addStay(stay)
             showSuccessMsg(`Stay added (id: ${savedStay._id})`)
@@ -40,13 +40,13 @@ export function StayIndex() {
     }
 
     async function onUpdateStay(stay) {
-        const speed = +prompt('New speed?', stay.speed)
-        if (speed === 0 || speed === stay.speed) return
+        const price = +prompt('New price?', stay.price)
+        if (price === 0 || price === stay.price) return
 
-        const stayToSave = { ...stay, speed }
+        const stayToSave = { ...stay, price }
         try {
             const savedStay = await updateStay(stayToSave)
-            showSuccessMsg(`Stay updated, new speed: ${savedStay.speed}`)
+            showSuccessMsg(`Stay updated, new price: ${savedStay.price}`)
         } catch (err) {
             showErrorMsg('Cannot update stay')
         }
@@ -54,11 +54,12 @@ export function StayIndex() {
 
     return (
         <main className="stay-index">
-            <header>
+            {/* <header>
                 <nav className="flex space-between">
-                    <AppHeader />
+                <AppHeader />
                 </nav>
-            </header>
+                </header> */}
+                <h2>stays list</h2>
             {/* <StayFilter filterBy={filterBy} setFilterBy={setFilterBy} /> */}
             <StayList
                 stays={stays}
