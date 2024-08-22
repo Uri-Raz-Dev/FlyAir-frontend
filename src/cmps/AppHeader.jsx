@@ -1,30 +1,56 @@
-import { Link, NavLink } from 'react-router-dom'
-import { useNavigate } from 'react-router'
-import { useSelector } from 'react-redux'
-import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
-import { logout } from '../store/actions/user.actions'
-import { StayFilter } from './StayFilter.jsx'
-
+import { Link, NavLink } from "react-router-dom"
+import { useNavigate } from "react-router"
+import { useSelector } from "react-redux"
+import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service"
+import { logout } from "../store/actions/user.actions"
+import { StayFilter } from "./StayFilter.jsx"
+import { SvgIcon } from "./Svgicon.jsx"
+import { useState } from "react"
 export function AppHeader() {
 	const user = useSelector(storeState => storeState.userModule.user)
 	const navigate = useNavigate()
+	const [filterBy, setFilterBy] = useState(stayService.getDefaultFilter())
+	// const stays = useSelector(storeState => storeState.stayModule.stays)
 
 	async function onLogout() {
+
 		try {
 			await logout()
-			navigate('/')
+			navigate("/")
 			showSuccessMsg(`Bye now`)
 		} catch (err) {
-			showErrorMsg('Cannot logout')
+			showErrorMsg("Cannot logout")
 		}
 	}
 
 	return (
-		<div className="app-header full">
-			<Link to={"/"} >FlyAir</Link>
-			<Link to={"/"}>switch to host </Link>  {/* //new user will show "airbnb your home" */}
-			<button className='lang'>lang-list</button>
-			<button className='user-app-header'>user</button>
-		</div>
+		<header className="app-header full">
+			<Link to={"/"} className="logo">
+
+				<SvgIcon iconName={"logosymbol"}></SvgIcon>
+				<p>FlyAir</p>
+
+			</Link>
+
+			<StayFilter filterBy={filterBy} setFilterBy={setFilterBy} />
+
+			<nav className="profile">
+				<Link className="host-link" to={"/"}>
+					<div>Switch to hosting</div>
+				</Link>  {/* //new user will show "airbnb your home" */}
+				<Link className="language-link" to={"/"}>
+					<SvgIcon iconName={"language"}></SvgIcon>
+				</Link>
+
+				<Link to={"/login"}>
+					<button className="user-menu">
+						<SvgIcon iconName={"usermenu"}></SvgIcon>
+						<div>user</div>
+					</button>
+				</Link>
+			</nav>
+
+
+		</header>
 	)
 }

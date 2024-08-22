@@ -1,61 +1,68 @@
 .app-header {
     display: flex;
-    min-height: 3.5rem;
+    align-items: center;
+    background-color: $white;
+    border-bottom: .0714rem $bnb-gray solid;
+    justify-content: space-between;
+    padding-inline: 5.7143em;
+    line-height: 1.4286rem;
+    font-size: .875rem;
 
-    background-color: $clr4;
-    padding: rem(10px) 1rem;
-    
-    nav {
+    >* {
+        align-items: start;
+    }
+
+    .profile {
         display: flex;
-        width: 100%;
         align-items: center;
-        gap: 1em;
-        
-        font-size: .8em;
+    }
 
-        .active {
-            color: $clr1;
+    .logo {
+        display: flex;
+        align-items: start;
+        color: $bnb-red;
+
+        &:hover {
+            text-decoration: none;
         }
 
-        .logo {
-            font-size: 1.4em;
-            font-weight: bold;
-            margin-inline-end: 2em;
+        p {
+            font-size: 1.4286rem;
+            font-weight: 700;
+            margin-block-start: 1.4286rem
         }
 
-        .login-link {
-            margin-inline-start: auto;
-        }
 
-        button {
-            margin-inline-end: 0;
+        .logosymbol {
+            margin-block-start: 1.0714rem;
         }
     }
 
-    .user-info {
+    .user-menu {
         display: flex;
-        align-items: center;
-        margin-inline-start: auto;
+        column-gap: 1rem;
+    }
 
-        color: $clr1;
+    .language-link {
+        border-radius: 1.5714rem;
+        padding: .75rem;
 
-        .score {
-            padding: 8px;
-            background-color: $clr2;
-            border-radius: 50%;
-            margin: 10px;
-
-            color: $clr6;
+        &:hover {
+            background-color: $bnb-gray2;
         }
+    }
 
-        img {
-            width: 32px;
-            aspect-ratio: 1;
-            border-radius: 50%;
+    .host-link {
+        border-radius: 1.5714rem;
+        padding: .8571em;
+
+        &:hover {
+            background-color: $bnb-gray2;
+            text-decoration: none;
         }
-        
-        .btn-link {
-            color: $clr2;
-        }
+    }
+
+    .profile {
+        // column-gap: .8571rem;
     }
 }

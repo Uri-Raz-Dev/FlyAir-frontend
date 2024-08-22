@@ -1,26 +1,40 @@
-.app-footer{
+.app-footer {
     display: flex;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
     align-items: center;
     justify-content: space-between;
+    background-color: $white;
+    padding-inline: 5em;
+    border-top: .0625rem $bnb-gray solid;
+    line-height: 1.4286rem;
+    font-size: .875rem;
 
-    min-height: 3.5rem;
+    .footer-help {
+        display: flex;
+        align-items: center;
 
-    padding: rem(10px) 1rem;
-    background-color: $clr4;
-
-    p {
-        margin: 0;
-    }
-    
-    span {
-        font-size: .8em;
-        
-        &.local-services {
-            color: $clr1;
+        span:not(:first-of-type) {
+            height: 1.125rem;
+            width: 1.0625rem;
+            margin-bottom: .6875rem;
+            margin-left: .75rem;
         }
-        
-        &.remote-services {
-            color: $clr5;
+    }
+
+
+
+    .footer-support {
+        display: flex;
+        align-items: center;
+
+        > :not(:nth-child(1), :nth-child(2)) {
+            margin-inline-start: 1.5rem;
+        }
+
+        :nth-child(2) {
+            margin-inline-start: .5rem;
         }
     }
 }
