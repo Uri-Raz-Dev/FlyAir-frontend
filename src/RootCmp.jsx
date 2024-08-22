@@ -17,14 +17,16 @@ import { UserMsg } from './cmps/UserMsg.jsx'
 import { LoginSignup } from './pages/LoginSignup.jsx'
 import { Login } from './pages/Login.jsx'
 import { Signup } from './pages/Signup.jsx'
+import { NavBar } from './cmps/NavBar.jsx'
 
 export function RootCmp() {
     return (
         <div className="main-container">
+            <NavBar/>
             <AppHeader />
             <UserMsg />
 
-            <main>
+            
                 <Routes>
                     {/* <Route path="" element={<HomePage />} /> */}
                     {/* <Route path="about" element={<AboutUs />}>
@@ -42,7 +44,7 @@ export function RootCmp() {
                         <Route path="signup" element={<Signup />} />
                     </Route>
                 </Routes>
-            </main>
+
             <AppFooter />
         </div>
     )

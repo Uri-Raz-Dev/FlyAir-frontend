@@ -1,18 +1,32 @@
-.stay-index {
-    header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+// .stay-index {
+//     header {
+//         display: flex;
+//         align-items: center;
+//         justify-content: space-between;
 
-        padding-block: .3em;
+//         padding-block: .3em;
+//     }
+
+//     h2 {
+//         margin: 0;
+//         font-size: 1.3em;
+//     }
+
+//     button {
+//         margin-inline-end: 0;
+//     }
+// }
+
+.stays-page {
+    .header {
+        background-color: $light-color;
     }
 
-    h2 {
-        margin: 0;
-        font-size: 1.3em;
-    }
-
-    button {
-        margin-inline-end: 0;
+    .main {
+        .main__grid {
+            .card {
+                margin-bottom: $spacing-large;
+            }
+        }
     }
 }

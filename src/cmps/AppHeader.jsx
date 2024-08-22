@@ -6,7 +6,7 @@ import { logout } from '../store/actions/user.actions'
 import { StayFilter } from './StayFilter.jsx'
 import { useState } from "react"
 import { RxHamburgerMenu } from "react-icons/rx";
-import { NavBar } from './NavBar.jsx'
+import { NavBar } from './NavBarUser.jsx'
 
 export function AppHeader() {
 	const user = useSelector(storeState => storeState.userModule.user)
@@ -29,16 +29,25 @@ export function AppHeader() {
 	}
 
 	return (
-		<div className= "app-header full" >
-			<Link to={"stay/"} >FlyAir</Link>
-			<Link to={"stay/"} >switch to host  </Link>  {/* //new user will show "airbnb your home" */}
-			<button className='lang' >lang-list </button>
-			{/* <button className='user-app-header'>user</button> */}
-			<div>
-				<RxHamburgerMenu onClick={ toggleNav } />
-				{isNavOpen && <NavBar />}
-			</div>
+		// <div className= "app-header full" >
+		// 	<Link to={"stay/"} >FlyAir</Link>
+		// 	<Link to={"stay/"} >switch to host  </Link>  {/* //new user will show "airbnb your home" */}
+		// 	<button className='lang' >lang-list </button>
+		// 	{/* <button className='user-app-header'>user</button> */}
+		// 	<div>
+		// 		<RxHamburgerMenu onClick={ toggleNav } />
+		// 		{isNavOpen && <NavBar />}
+		// 	</div>
 
-		</div>
+		// </div>
+
+		<header className="header">
+			<div className="container">
+				<h1 className="header__title">Explore Stays</h1>
+				<div className="header__search">
+					<input type="text" placeholder="Search for stays" />
+				</div>
+			</div>
+		</header>
 	)
 }

@@ -1,0 +1,28 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: $spacing-large;
+    background-color: $light-color;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+
+    .navbar__logo {
+        font-size: $font-size-large;
+        color: $primary-color;
+    }
+
+    .navbar__links {
+        display: flex;
+        gap: $spacing-large;
+
+        a {
+            font-size: $font-size-base;
+            color: $dark-color;
+            text-decoration: none;
+
+            &:hover {
+                color: $primary-color;
+            }
+        }
+    }
+}
