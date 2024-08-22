@@ -51,7 +51,7 @@ import { Signup } from './pages/Signup.jsx'
 
 const routes = [
     {
-        path: '/',
+        path: '/stay',
         component: StayIndex,
     },
     {

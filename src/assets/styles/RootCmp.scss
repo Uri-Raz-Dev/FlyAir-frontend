@@ -11,7 +11,7 @@
 //         margin-bottom: $spacing-large;
 //     }
 
-    // .main__grid {
+    .main__grid {
         // @include respond-to(tablet) {
         //     display: grid;
         //     grid-template-columns: repeat(2, 1fr);
@@ -21,8 +21,8 @@
         // @include respond-to(desktop) {
         //     grid-template-columns: repeat(3, 1fr);
         // }
-//         display: grid;
-//         grid-template-columns: repeat(3, 1fr);
-//         gap: $spacing-large;
-//     }
-// }
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: $spacing-large;
+    }
+
