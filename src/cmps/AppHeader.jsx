@@ -4,7 +4,9 @@ import { useSelector } from 'react-redux'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { logout } from '../store/actions/user.actions'
 import { StayFilter } from './StayFilter.jsx'
+import { useState } from "react"
 import { RxHamburgerMenu } from "react-icons/rx";
+import { NavBar } from './NavBar.jsx'
 
 export function AppHeader() {
 	const user = useSelector(storeState => storeState.userModule.user)
