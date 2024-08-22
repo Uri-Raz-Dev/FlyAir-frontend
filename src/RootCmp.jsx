@@ -117,14 +117,14 @@ const renderRoutes = (routes) => routes.map((route) => (
 export function RootCmp() {
     return (
         <div className="main-container">
-            <NavBar/>
+            {/* <NavBar/> */}
             <AppHeader />
             <UserMsg />
             <main>
                 <Routes>
                     {renderRoutes(routes)}
                 </Routes>
-
+                </main>
             <AppFooter />
         </div>
     )
