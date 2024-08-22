@@ -1,13 +1,12 @@
-import { Link, NavLink } from 'react-router-dom'
-import { useNavigate } from 'react-router'
-import { useSelector } from 'react-redux'
-import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
-import { logout } from '../store/actions/user.actions'
-import { StayFilter } from './StayFilter.jsx'
+import { Link, NavLink } from "react-router-dom"
+import { useNavigate } from "react-router"
+import { useSelector } from "react-redux"
+import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service"
+import { logout } from "../store/actions/user.actions"
+import { StayFilter } from "./StayFilter.jsx"
+import { SvgIcon } from "./Svgicon.jsx"
 import { useState } from "react"
-import { RxHamburgerMenu } from "react-icons/rx";
-import { NavBar } from './NavBarUser.jsx'
-
+// import { NavBar } from './NavBarUser.jsx'
 export function AppHeader() {
 	const user = useSelector(storeState => storeState.userModule.user)
 
@@ -18,36 +17,48 @@ export function AppHeader() {
 	}
 
 	const navigate = useNavigate()
+	const [filterBy, setFilterBy] = useState(stayService.getDefaultFilter())
+	// const stays = useSelector(storeState => storeState.stayModule.stays)
+
 	async function onLogout() {
+
 		try {
 			await logout()
-			navigate('/')
+			navigate("/")
 			showSuccessMsg(`Bye now`)
 		} catch (err) {
-			showErrorMsg('Cannot logout')
+			showErrorMsg("Cannot logout")
 		}
 	}
 
 	return (
-		// <div className= "app-header full" >
-		// 	<Link to={"stay/"} >FlyAir</Link>
-		// 	<Link to={"stay/"} >switch to host  </Link>  {/* //new user will show "airbnb your home" */}
-		// 	<button className='lang' >lang-list </button>
-		// 	{/* <button className='user-app-header'>user</button> */}
-		// 	<div>
-		// 		<RxHamburgerMenu onClick={ toggleNav } />
-		// 		{isNavOpen && <NavBar />}
-		// 	</div>
+		<header className="app-header full">
+			<Link to={"/"} className="logo">
 
-		// </div>
+				<SvgIcon iconName={"logosymbol"}></SvgIcon>
+				<p>FlyAir</p>
 
-		<header className="header">
-			<div className="container">
-				<h1 className="header__title">Explore Stays</h1>
-				<div className="header__search">
-					<input type="text" placeholder="Search for stays" />
-				</div>
-			</div>
+			</Link>
+
+			<StayFilter filterBy={filterBy} setFilterBy={setFilterBy} />
+
+			<nav className="profile">
+				<Link className="host-link" to={"/"}>
+					<div>Switch to hosting</div>
+				</Link>  {/* //new user will show "airbnb your home" */}
+				<Link className="language-link" to={"/"}>
+					<SvgIcon iconName={"language"}></SvgIcon>
+				</Link>
+
+				<Link to={"/login"}>
+					<button className="user-menu">
+						<SvgIcon iconName={"usermenu"}></SvgIcon>
+						<div>user</div>
+					</button>
+				</Link>
+			</nav>
+
+
 		</header>
 	)
 }

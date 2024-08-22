@@ -8,8 +8,9 @@ import { stayService } from '../services/stay/'
 import { userService } from '../services/user'
 
 import { StayList } from '../cmps/StayList'
-// import { StayFilter } from '../cmps/StayFilter'
+import { StayFilter } from '../cmps/StayFilter'
 import { AppHeader } from '../cmps/AppHeader'
+
 export function StayIndex() {
 
     const [filterBy, setFilterBy] = useState(stayService.getDefaultFilter())

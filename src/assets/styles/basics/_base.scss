@@ -5,16 +5,28 @@
     box-sizing: border-box;
 }
 
+
+
 body {
-    font-family: $font-family-primary;
-    background-color: $background-color;
-    color: $dark-color;
-    line-height: 1.5;
+
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-size: 1rem;
 }
-h1, h2, h3, h4, h5, h6 {
-    font-family: $font-family-primary;
-    color: $dark-color;
-    margin-bottom: $spacing-large;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0 0 0.6em;
+}
+
+img {
+    display: block;
+    max-width: 100%;
 }
 
 p {
@@ -24,6 +36,8 @@ p {
 a {
     color: $primary-color;
     text-decoration: none;
+    color: inherit;
+}
 
     &:hover {
         text-decoration: underline;
@@ -78,6 +92,12 @@ a {
 //     padding: 0;
 // }
 
+
+
+i {
+    width: min-content;
+    height: min-content;
+}
 // input {
 //     max-width: 100%;
 // }

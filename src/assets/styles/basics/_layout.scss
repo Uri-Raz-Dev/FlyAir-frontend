@@ -1,6 +1,9 @@
-// .main-container {
-//     display: grid;
-//     grid-template-columns: 5rem 1fr 5rem;
+.main-container {
+    min-height: 100dvh;
+    display: grid;
+    grid-template-columns: minmax(1.4286rem, 5.7143rem) 1fr minmax(1.4286rem, 5.7143rem);
+}
+
 
 //     >* {
 //         grid-column: 2;
@@ -11,10 +14,10 @@
 //     }
 // }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 $spacing-large;
+// .container {
+//     max-width: 1200px;
+//     margin: 0 auto;
+//     padding: 0 $spacing-large;
 
     // @include respond-to(tablet) {
     //     max-width: 100%;
