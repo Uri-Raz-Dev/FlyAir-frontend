@@ -42,11 +42,15 @@ $white: #ffffff;
 $bnb-red: #ff385c;
 $bnb-gray: #EDEDED;
 $bnb-gray2: #F7F7F7;
-// Breakpoints
-$mobile-breakpoint: 460px;
-$narrow-breakpoint: 720px;
-$normal-breakpoint: 960px;
 
-// gap distance: 
+// Breakpoints
+$small-breakpoint: 550px; //2 stays per row
+$narrow-breakpoint: 950px; //3 stays per row
+$normal-breakpoint: 1128px;  //4 stays per row
+$desktop-breakpoint: 1460px;  //5 stays per row
+
+// grid data : 
 $breakpoint-grid_row-gap: 40px;
 $breakpoint-grid_column-gap: 24px;
+$breakpoint-grid_columns:1
+

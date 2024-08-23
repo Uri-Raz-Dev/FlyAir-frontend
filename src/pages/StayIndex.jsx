@@ -54,30 +54,16 @@ export function StayIndex() {
     }
 
     return (
-        // <main className="stay-index">
-        //     {/* <header>
-        //         <nav className="flex space-between">
-        //         <AppHeader />
-        //         </nav>
-        //         </header> */}
-        //         <h2>stays list</h2>
-        //     {/* <StayFilter filterBy={filterBy} setFilterBy={setFilterBy} /> */}
-        //     <StayList
-        //         stays={stays}
-        //         onRemoveStay={onRemoveStay}
-        //         onUpdateStay={onUpdateStay} />
-        // </main>
+     
 
-                <main className="main stays-page">
-                <div className="container">
-                    <h2 className="main__title">Available Stays</h2>
+                <div className=" stays-page">
+                    <h2 className="main-title">Available Stays</h2>
                    
                        <StayList
                 stays={stays}
                 onRemoveStay={onRemoveStay}
                 onUpdateStay={onUpdateStay} />
                     
-                </div>
-            </main>
+            </div>
     )
 }

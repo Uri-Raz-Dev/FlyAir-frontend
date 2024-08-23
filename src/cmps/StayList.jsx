@@ -13,7 +13,7 @@ export function StayList({ stays, onRemoveStay, onUpdateStay }) {
     // }
     return(
 
-        <div className="main__grid">
+        <div className="main-grid">
             {stays.map((stay) => (
                 <div className="card" key={stay._id}>
                     <StayPreview stay={stay} />           

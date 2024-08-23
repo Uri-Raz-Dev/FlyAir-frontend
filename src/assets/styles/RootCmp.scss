@@ -1,28 +1,10 @@
-.main-container main {
-    min-height: calc(100vh - 7rem);
-    overflow: hidden; // Quick fix for JSONs in <pre>
+.main-container {
+
+    main{
+        min-height: calc(100vh - 1rem);
+        overflow: hidden; // Quick fix for JSONs in <pre>
+
+    }
 }
 
-// .main {
-//     padding: $spacing-large 0;
-
-//     .main__title {
-//         font-size: $font-size-large;
-//         margin-bottom: $spacing-large;
-//     }
-
-    .main__grid {
-        // @include respond-to(tablet) {
-        //     display: grid;
-        //     grid-template-columns: repeat(2, 1fr);
-        //     gap: $spacing-large;
-        // }
-
-        // @include respond-to(desktop) {
-        //     grid-template-columns: repeat(3, 1fr);
-        // }
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: $spacing-large;
-    }
 
