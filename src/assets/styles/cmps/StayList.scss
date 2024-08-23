@@ -1,22 +1,8 @@
-.stay-list {
+.main-grid {
+
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: .5em;
-
-    li {
-        display: grid;
-        grid-template-columns: max-content auto;
-        padding: .5em;
-        background-color: $clr2;
-
-        color: $clr6;
-
-        .actions {
-            justify-self: end;
-
-            button {
-                padding: .3em .5em;
-            }
-        }
-    }
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-auto-rows: minmax(min-content, max-content);
+    grid-auto-flow: row dense;
+    gap: $breakpoint-grid_row-gap  $breakpoint-grid_column-gap
 }
