@@ -5,107 +5,121 @@ import { userService } from '../user'
 
 const STORAGE_KEY = 'stay'
 
-const stays=[
+const stays = [
     {
-      "_id": 's101',
-      "name": "Elegant Parisian Apartment",
-      "type": "Apartment",
-      "imgurls": [
-        "https://example.com/images/paris1.jpg",
-        "https://example.com/images/paris2.jpg"
-      ],
-      "price": 150,
-      "capacity": 4,
-      "location": {
-        "city": "Paris",
-        "country": "France",
-        "countryCode": "FR",
-        "address": "15 Rue de Rivoli",
-        "lat": 48.8556,
-        "lang": 2.3522
-      }
+        "_id": 's101',
+        "name": "Elegant Parisian Apartment",
+        "type": "Apartment",
+        "imgurls": [
+            "https://a0.muscache.com/im/pictures/miso/Hosting-3…297244e-8f5c-44d6-a85b-0423d0d55f3e.jpeg?im_w=720",
+            "https://a0.muscache.com/im/pictures/miso/Hosting-3…b51d91f-0e10-42b4-b90d-abf01d58cb9a.jpeg?im_w=720",
+            "https://a0.muscache.com/im/pictures/a3e9e1a1-ebed-4d2e-a00a-4b1a81015d2d.jpg?im_w=720",
+            "https://a0.muscache.com/im/pictures/miso/Hosting-3…6d5ec7a-9049-473a-8e58-421c74fa5c62.jpeg?im_w=720",
+            "https://a0.muscache.com/im/pictures/3b683927-42d5-4883-990d-26904f1e6532.jpg?im_w=720"
+        ],
+        "price": 150,
+        "capacity": 4,
+        "location": {
+            "city": "Paris",
+            "country": "France",
+            "countryCode": "FR",
+            "address": "15 Rue de Rivoli",
+            "lat": 48.8556,
+            "lang": 2.3522
+        }
     },
     {
-      "_id":'s102',
-      "name": "Cozy NYC Studio",
-      "type": "Studio",
-      "imgurls": [
-        "https://example.com/images/nyc1.jpg",
-        "https://example.com/images/nyc2.jpg"
-      ],
-      "price": 200,
-      "capacity": 2,
-      "location": {
-        "city": "New York",
-        "country": "United States",
-        "countryCode": "US",
-        "address": "350 5th Ave",
-        "lat": 40.7484,
-        "lang": -73.9857
-      }
+        "_id": 's102',
+        "name": "Cozy NYC Studio",
+        "type": "Tiny homes",
+        "imgurls": [
+            "https://a0.muscache.com/im/pictures/86655972/f708e3db_original.jpg?im_w=720",
+            "https://a0.muscache.com/im/pictures/86657319/66d37ba2_original.jpg?im_w=720",
+            "https://a0.muscache.com/im/pictures/86655544/5cb703c2_original.jpg?im_w=720",
+            "https://a0.muscache.com/im/pictures/86653287/721e627a_original.jpg?im_w=720",
+            "https://a0.muscache.com/im/pictures/86656684/9c21bbde_original.jpg?im_w=720"
+        ],
+        "price": 200,
+        "capacity": 2,
+        "location": {
+            "city": "New York",
+            "country": "United States",
+            "countryCode": "US",
+            "address": "350 5th Ave",
+            "lat": 40.7484,
+            "lang": -73.9857
+        }
     },
     {
-      "_id":'s103',
-      "name": "Modern Tokyo Loft",
-      "type": "Loft",
-      "imgurls": [
-        "https://www.parisdiscoveryguide.com/image-files/x800-musee-cite-architecture-view-of-tour-eiffel.jpg.pagespeed.ic.AzAm_tZrny.jpg",
-        "https://example.com/images/tokyo1.jpg",
-        "https://example.com/images/tokyo2.jpg"
-      ],
-      "price": 250,
-      "capacity": 6,
-      "location": {
-        "city": "Tokyo",
-        "country": "Japan",
-        "countryCode": "JP",
-        "address": "1-1, Marunouchi",
-        "lat": 35.6824,
-        "lang": 139.7591
-      }
+        "_id": 's103',
+        "name": "Modern Tokyo Loft",
+        "type": "Loft",
+        "imgurls": [
+            "https://a0.muscache.com/im/pictures/f5632441-f554-4686-961a-6fbe6fc50930.jpg?im_w=720",
+            "https://a0.muscache.com/im/pictures/94488dde-14a8-4493-b703-b312fdcc697a.jpg?im_w=720",
+            "https://a0.muscache.com/im/pictures/f248ffe6-6efe-4bc6-aebc-80d49f8ef652.jpg?im_w=720",
+            "https://a0.muscache.com/im/pictures/750e0a8e-5e1e-4770-bef7-c1a676cb1718.jpg?im_w=720",
+            "https://a0.muscache.com/im/pictures/hosting/Hostin…f7f22bf-e15d-47c6-88fe-d25e80cfb331.jpeg?im_w=720"
+        ],
+        "price": 250,
+        "capacity": 6,
+        "location": {
+            "city": "Tokyo",
+            "country": "Japan",
+            "countryCode": "JP",
+            "address": "1-1, Marunouchi",
+            "lat": 35.6824,
+            "lang": 139.7591
+        }
     },
     {
-      "_id":'s104',
-      "name": "Luxury Sydney Penthouse",
-      "type": "Penthouse",
-      "imgurls": [
-        "https://example.com/images/sydney1.jpg",
-        "https://example.com/images/sydney2.jpg"
-      ],
-      "price": 500,
-      "capacity": 8,
-      "location": {
-        "city": "Sydney",
-        "country": "Australia",
-        "countryCode": "AU",
-        "address": "1 Macquarie St",
-        "lat": -33.8587,
-        "lang": 151.2140
-      }
+        "_id": 's104',
+        "name": "Luxury Sydney Penthouse",
+        "type": "Penthouse",
+        "imgurls": [
+            "https://a0.muscache.com/im/pictures/hosting/Hostin…11feca9-3a4f-4713-b754-ba2e267116ce.jpeg?im_w=720",
+            "https://a0.muscache.com/im/pictures/hosting/Hostin…7a76002-9d99-4e09-8af5-5bba34278f1f.jpeg?im_w=720",
+            "https://a0.muscache.com/im/pictures/hosting/Hostin…8241d52-3ae6-49ef-a96e-21d68274c3d1.jpeg?im_w=720",
+            "https://a0.muscache.com/im/pictures/hosting/Hostin…07f4f7a-ae94-4182-b5ba-80581322bad8.jpeg?im_w=720",
+            "https://a0.muscache.com/im/pictures/hosting/Hostin…61f0b98-e4d7-4361-b020-a3ffc804f678.jpeg?im_w=720"
+        ],
+        "price": 500,
+        "capacity": 8,
+        "location": {
+            "city": "Sydney",
+            "country": "Australia",
+            "countryCode": "AU",
+            "address": "1 Macquarie St",
+            "lat": -33.8587,
+            "lang": 151.2140
+        }
     },
     {
-      "_id":'s105',
-      "name": "Charming Cape Town Cottage",
-      "type": "Cottage",
-      "imgurls": [
-        "https://example.com/images/cape_town1.jpg",
-        "https://example.com/images/cape_town2.jpg"
-      ],
-      "price": 120,
-      "capacity": 3,
-      "location": {
-        "city": "Cape Town",
-        "country": "South Africa",
-        "countryCode": "ZA",
-        "address": "Dock Road, V&A Waterfront",
-        "lat": -33.9088,
-        "lang": 18.4173
-      }
+        "_id": 's105',
+        "name": "Charming Cape Town Cottage",
+        "type": " pool",
+        "imgurls": [
+            "https://a0.muscache.com/im/pictures/prohost-api/Ho…dde3a41-7037-461d-a982-2d0dc164d7f2.jpeg?im_w=720",
+            "https://a0.muscache.com/im/pictures/prohost-api/Ho…6e6aacf-baf1-431d-a0a8-b7f5ca1c75d4.jpeg?im_w=720",
+            "https://a0.muscache.com/im/pictures/prohost-api/Ho…91df1a9-e5e3-4421-b678-d63b8d1adc5c.jpeg?im_w=720",
+            "https://a0.muscache.com/im/pictures/prohost-api/Ho…98edfc8-c40b-4c33-8be2-7ee83f922a02.jpeg?im_w=720",
+            "https://a0.muscache.com/im/pictures/prohost-api/Ho…d551298-3fd4-44e6-ac73-37e93fa6bf25.jpeg?im_w=720"
+        ],
+        "price": 120,
+        "capacity": 3,
+        "location": {
+            "city": "Cape Town",
+            "country": "South Africa",
+            "countryCode": "ZA",
+            "address": "Dock Road, V&A Waterfront",
+            "lat": -33.9088,
+            "lang": 18.4173
+        }
     }
-  ]
+]
 localStorage.setItem('stay', JSON.stringify(stays));
 
-    
+
 
 export const stayService = {
     query,
@@ -117,7 +131,7 @@ export const stayService = {
 window.cs = stayService
 
 
-async function query(   { filterBy = { price: 0 }}) {
+async function query({ filterBy = { price: 0 } }) {
     var stays = await storageService.query(STORAGE_KEY)
     // const { txt, minSpeed, maxPrice, sortField, sortDir } = filterBy
 
