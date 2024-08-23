@@ -8,10 +8,9 @@
 
 
 body {
-
-    font-family: "Montserrat", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
+    font-family: "Airbnb Cereal VF", sans-serif;
+    // font-optical-sizing: auto;
+    // font-style: normal;
     font-size: 1rem;
 }
 
@@ -53,7 +52,7 @@ a {
 //     line-height: 1.6;
 //     color: $clr2;
 // }
-    
+
 // body {
 //     max-width: 1024px;
 //     margin: 0 auto;
@@ -66,14 +65,12 @@ a {
 //     margin: 0 0 0.6em;
 // }
 
-// img {
-//     // display: block;
-//     // max-width: 100%;
-//     max-width: 100%;
-//     height: auto;
-//     display: block;
-//     margin: 0 auto;
-// }
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
 
 // p {
 //     margin: 0 0 1em;
@@ -87,10 +84,10 @@ a {
 //     text-decoration: underline;
 // }
 
-// ul {
-//     list-style: none;
-//     padding: 0;
-// }
+ul {
+    list-style: none;
+    padding: 0;
+}
 
 
 
@@ -98,6 +95,7 @@ i {
     width: min-content;
     height: min-content;
 }
+
 // input {
 //     max-width: 100%;
 // }
