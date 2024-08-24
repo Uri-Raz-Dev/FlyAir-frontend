@@ -25,7 +25,7 @@ const stays = [
         "host": {
             "_id": 'u102',
             "fullname": 'Samantha Lee',
-            "imgUrl": 'https://a0.muscache.com/im/pictures/3cdb0c3d-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small',
+            "imgUrl": 'https://res.cloudinary.com/dooscjcpt/image/upload/v1724504652/Flyair/Samantha%20Lee.jpg',
         },
         "location": {
             "city": "Paris",
@@ -55,7 +55,7 @@ const stays = [
         "host": {
             "_id": 'u103',
             "fullname": 'Emily Watson',
-            "imgUrl": 'https://a0.muscache.com/im/pictures/874fb1bc-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small',
+            "imgUrl": 'https://res.cloudinary.com/dooscjcpt/image/upload/v1724504661/Flyair/Emily%20Watson.jpg',
         },
         "location": {
             "city": "New York",
@@ -86,7 +86,7 @@ const stays = [
         "host": {
             "_id": 'u104',
             "fullname": 'Carlos Diaz',
-            "imgUrl": 'https://a0.muscache.com/im/pictures/65b8d621-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small',
+            "imgUrl": 'https://res.cloudinary.com/dooscjcpt/image/upload/v1724504648/Flyair/Carlos%20Diaz.jpg',
         },
         "location": {
             "city": "Tokyo",
@@ -116,7 +116,7 @@ const stays = [
         "host": {
             "_id": 'u105',
             "fullname": 'James Rogers',
-            'imgUrl': 'https://a0.muscache.com/im/pictures/12efdc4a-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small',
+            'imgUrl': 'https://res.cloudinary.com/dooscjcpt/image/upload/v1724504658/Flyair/James%20Rogers.jpg',
         },
         "location": {
             "city": "Sydney",
@@ -146,7 +146,7 @@ const stays = [
         "host": {
             "_id": 'u106',
             "fullname": 'Avery Bennett',
-            "imgUrl": 'https://a0.muscache.com/im/pictures/4de4ab9d-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small',
+            "imgUrl": 'https://res.cloudinary.com/dooscjcpt/image/upload/v1724504920/Flyair/Avery%20Bennett.jpg ',
         },
         "location": {
             "city": "Cape Town",
