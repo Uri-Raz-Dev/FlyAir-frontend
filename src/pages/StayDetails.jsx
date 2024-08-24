@@ -12,10 +12,11 @@ export function StayDetails() {
 
   const { stayId } = useParams()
   const stay = useSelector(storeState => storeState.stayModule.stay)
-  const { _id, name, type, imgurls, price, capacity } = stay || {}
-  const { city, country, countryCode, address, lat, lag } = stay?.location || {}
   console.log(stay);
 
+  const { _id, name, summary, type, imgurls, price, capacity, amenities, labels } = stay || {}
+  const { city, country, countryCode, address, lat, lag } = stay?.location || {}
+  const { fullname, imgUrl } = stay?.host || {}
 
   useEffect(() => {
     loadStay(stayId)
@@ -68,19 +69,31 @@ export function StayDetails() {
 
       <section className='stay-info'>
         <header className="info-header">
-          <h2></h2>
+          <h2>{summary}</h2>
           <ul>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
+            <li>{capacity} guests</li>
+            <li><span> · </span>{Math.floor(capacity / 2)} bedroom </li>
+            <li><span> · </span>{Math.floor(capacity / 2)} bed <span> · </span></li>
+            <li>{Math.floor(capacity / 2)} bath</li>
           </ul>
           <div className="review-info">
-            <Link to="review"></Link>
-
+            <div className="review-rating">
+              <span><SvgIcon iconName={"reviewstar"}></SvgIcon>4.78</span>
+            </div>
+            <span> · </span>
+            <Link to="review">1,025 reviews</Link>
           </div>
         </header>
+
+        <section className='about-host'>
+          <span>Hosted by {fullname}</span>
+
+        </section>
       </section>
     </section>
+
+
   )
+
+
 }

@@ -1,4 +1,6 @@
 .stay-details {
+    color: $bnb-black;
+    font-weight: 400;
 
     .details-header {
         display: flex;
@@ -90,5 +92,56 @@
         }
     }
 
+}
 
+.stay-info {
+    display: grid;
+    grid-template-columns: 0.65fr 0.35fr;
+
+    h2 {
+        font-size: 22px;
+        padding-block-end: 4px;
+        margin: 0;
+    }
+
+    .info-header {
+        padding-block: 32px;
+
+        ul {
+            display: flex;
+
+            >* {
+                display: flex;
+                justify-self: center;
+                margin-inline-end: 1px;
+            }
+
+        }
+
+        .review-info {
+            font-family: 'Airbnb Cereal VF-B',
+                sans-serif;
+            display: flex;
+            margin-block-start: 8px;
+
+            span:first-of-type {
+                :first-child {
+                    margin-block-start: 1px;
+                    margin-inline-end: 1px;
+                }
+            }
+
+            span {
+                display: flex;
+            }
+
+            >* {
+                margin-inline-end: 4px;
+            }
+
+            >:last-child {
+                text-decoration: underline;
+            }
+        }
+    }
 }
