@@ -19,6 +19,9 @@
     @include for-desktop-layout{
         grid-template-columns: repeat(5, minmax(0, 1fr)); 
     }
+    @include for-full-screen-layout{
+        grid-template-columns: repeat(6, minmax(0, 1fr)); 
+    }
 
           
 }

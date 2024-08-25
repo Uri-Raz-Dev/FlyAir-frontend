@@ -24,6 +24,11 @@
         @content;
     }
 }
+@mixin for-full-screen-layout {
+    @media screen and (min-width: ($full-screen-breakpoint )) {
+        @content;
+    }
+}
 
 /* Media  Mixins */
 @mixin aspect-ratio($width, $height) {

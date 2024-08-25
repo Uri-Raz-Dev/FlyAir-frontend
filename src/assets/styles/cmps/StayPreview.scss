@@ -1,39 +1,68 @@
-
 .card {
-    background-color: $light-color;
-    border: 1px solid $gray-color;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: $spacing-large;
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex-grow: 1;
+    flex-shrink: 0;
 
-    &__image {
+    border-radius: 12px; // Rounded corners for the entire card
+  overflow: hidden;    // Ensures children elements do not overflow the card
+//   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); // Subtle shadow for depth
+  background-color: #fff;
+
+
+
+    &-carousel {
+        top: 0;
+        left: 0;
+
+        margin-bottom: $margin-bottom-img;
+
         width: 100%;
-        height: 200px;
-        object-fit: cover;
+        height: 100%;
+        
+        // for img size by the div parents
+        // background-position: 50% 50%;
+        // background-repeat: no-repeat;
+        cursor: pointer;
     }
-    &__content {
-        padding: $spacing-large;
 
-        h3 {
-            font-size: $font-size-large;
-            margin-bottom: $spacing-small;
-        }
-
-        p {
-            font-size: $font-size-base;
-        }
+    .carousel-container {
+        height: 100%;
+        width: 100%;
     }
+    
+       
+    .card-image {
+        width: 100%;
+        height: 100%; // Each slide should fill the carousel container
+        
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            border-radius: 12px 12px 0 0;
+            // font-weight: 400;
+        }
+    
+    }
+
+    &-content {
+        display: grid;
+
+        grid-template-rows: var(--card-content-grid_template-rows, unset);
+        grid-template-columns: var(--card-content-grid_template-columns, minmax(0, 1fr) max-content);
+
+        column-gap: 8px;
+        row-gap: 2px;
+
+        line-height: 1.1875rem;
+        font-size: 0.9375rem;
+
+
+    }
+
+   
+
+
 }
-
-// .stay-preview {
-//     a {
-//         color: $clr4;
-//         padding: 0;
-//     }
-
-//     p {
-//         margin-block: 0 0.2rem;
-//         font-size: .85em;
-//     }
-// }

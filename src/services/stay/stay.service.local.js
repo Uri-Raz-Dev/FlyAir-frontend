@@ -115,6 +115,28 @@ const stays = [
             "lat": -33.9088,
             "lang": 18.4173
         }
+    },
+    {
+        "_id": 's106',
+        "name": "house of momy",
+        "type": " house",
+        "imgurls": [
+            "https://a0.muscache.com/im/pictures/prohost-api/Ho…dde3a41-7037-461d-a982-2d0dc164d7f2.jpeg?im_w=720",
+            "https://a0.muscache.com/im/pictures/prohost-api/Ho…6e6aacf-baf1-431d-a0a8-b7f5ca1c75d4.jpeg?im_w=720",
+            "https://a0.muscache.com/im/pictures/prohost-api/Ho…91df1a9-e5e3-4421-b678-d63b8d1adc5c.jpeg?im_w=720",
+            "https://a0.muscache.com/im/pictures/prohost-api/Ho…98edfc8-c40b-4c33-8be2-7ee83f922a02.jpeg?im_w=720",
+            "https://a0.muscache.com/im/pictures/prohost-api/Ho…d551298-3fd4-44e6-ac73-37e93fa6bf25.jpeg?im_w=720"
+        ],
+        "price": 160,
+        "capacity": 2,
+        "location": {
+            "city": "Cape Town",
+            "country": "South Africa",
+            "countryCode": "ZA",
+            "address": "Dock Road, V&A Waterfront",
+            "lat": -33.9088,
+            "lang": 18.4173
+        }
     }
 ]
 localStorage.setItem('stay', JSON.stringify(stays));
