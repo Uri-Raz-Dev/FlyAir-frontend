@@ -20,6 +20,7 @@ const stays = [
         ],
         "price": 150,
         "capacity": 4,
+        "description": 'Step into the charm of Paris with this stylish apartment located in the heart of the city. Perfect for a romantic getaway, this modern urban retreat offers easy access to the vibrant nightlife. Enjoy amenities like air conditioning, a fully equipped kitchen, and an elevator. Hosted by Samantha Lee, this stay is a blend of elegance and convenience, making it an ideal choice for your next city escape.',
         "amenities": ['Air conditioning', 'Wifi', 'Kitchen', 'Washer', 'Dryer', 'Elevator'],
         "labels": ['Cityscape', 'Modern', 'Urban Retreat', 'Nightlife'],
         "host": {
@@ -50,6 +51,8 @@ const stays = [
         ],
         "price": 200,
         "capacity": 2,
+        "description": 'Nestled on the bustling 5th Avenue, this charming studio offers a warm and intimate atmosphere. Ideal for couples or solo travelers, it features a private entrance, a cozy fireplace, and a backyard for some outdoor relaxation. Hosted by Emily Watson, this pet-friendly retreat provides the perfect balance of city excitement and homey comfort.',
+
         "amenities": ['Fireplace', 'Wifi', 'Kitchen', 'Free parking', 'Private entrance', 'Backyard'],
         "labels": ['Countryside', 'Romantic Getaway', 'Pet-Friendly', 'Cozy'],
         "host": {
@@ -81,6 +84,8 @@ const stays = [
         ],
         "price": 250,
         "capacity": 6,
+        "description": 'Experience luxury in Tokyo with this stunning beachfront loft. Perfect for families or groups, this spacious stay offers breathtaking sunset views, access to a private beach, and an outdoor BBQ grill for memorable evenings. With a pool and sun loungers, it\'s a tropical escape hosted by Carlos Diaz, combining modern design with natural beauty.',
+
         "amenities": ['Pool', 'Wifi', 'Beach access', 'BBQ grill', 'Outdoor dining area', 'Sun loungers'],
         "labels": ['Beachfront', 'Luxury', 'Sunset Views', 'Tropical Escape'],
         "host": {
@@ -111,6 +116,8 @@ const stays = [
         ],
         "price": 500,
         "capacity": 8,
+        "description": 'This expansive penthouse in Sydney is a paradise for adventurers and winter enthusiasts. Located in a secluded area with panoramic mountain views, it offers ski-in/ski-out access, a hot tub, and a cozy fireplace. Hosted by James Rogers, this luxurious stay promises an unforgettable winter wonderland experience with all the comforts of home.',
+
         "amenities": ['Hot tub', 'Wifi', 'Fireplace', 'Mountain view', 'Ski-in/Ski-out', 'Balcony'],
         "labels": ['Mountain Views', 'Adventure', 'Winter Wonderland', 'Secluded'],
         "host": {
@@ -141,6 +148,8 @@ const stays = [
         ],
         "price": 120,
         "capacity": 3,
+        "description": ' Immerse yourself in the artistic and historic vibe of Cape Town with this lovely cottage. Featuring vintage decor, exposed brick, and high ceilings, this centrally located stay is perfect for those who appreciate character and style. Hosted by Avery Bennett, it\'s a unique city center retreat that blends old- world charm with modern amenities.',
+
         "amenities": ['Wifi', 'Kitchen', 'Washer', 'Vintage decor', 'Exposed brick', 'High ceilings'],
         "labels": ['Historic', 'Loft', 'Artistic', 'City Center'],
         "host": {

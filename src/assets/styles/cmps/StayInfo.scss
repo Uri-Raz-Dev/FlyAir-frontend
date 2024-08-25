@@ -1,4 +1,5 @@
 .stay-info {
+    position: relative;
     display: grid;
     grid-template-columns: minmax(200px, 653.33px) 1fr;
 
@@ -79,7 +80,6 @@
             span:first-of-type {
                 font-weight: 500;
                 font-family: 'Airbnb Cereal VF-B', sans-serif;
-                margin-block-end: 4px;
             }
 
             span:last-of-type {
@@ -91,9 +91,20 @@
 
     .about-host-summary {
         grid-column: 1;
+        padding-block: 32px;
+        border-block-end: 1px $bnb-gray3 solid;
 
         >* {
             border-block: 0;
+            margin-inline-start: 6px;
+
+            >:first-child {
+                margin-block-end: 10px;
+            }
+
+            >:nth-child(2) {
+                margin-inline-start: 8px;
+            }
         }
     }
 }

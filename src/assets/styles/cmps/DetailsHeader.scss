@@ -36,18 +36,26 @@
 
 .details-image-grid {
     display: grid;
-    grid-template-columns: 1fr repeat(4, 0.25fr);
+    grid-template-columns: minmax(200px, 560px) repeat(4, 0.25fr);
+    grid-template-rows: 244.89px 236.89px;
     gap: rem(8px);
     overflow-x: clip;
     overflow-y: clip;
+
+
+    >li {
+        img {
+            height: 100%;
+            object-fit: fill;
+        }
+    }
 
     >li:first-child {
         grid-column: 1/2;
         grid-row: 1/3;
 
         img {
-            height: 100%;
-            object-fit: fill;
+
             border-radius: 10px 0 0 10px;
         }
 
@@ -74,5 +82,6 @@
             border-radius: 0 0 10px 0;
         }
     }
+
 
 }

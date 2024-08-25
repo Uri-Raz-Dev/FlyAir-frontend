@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import { SvgIcon } from "./Svgicon"
+import { StayReserve } from "./StayReserve"
 
 export function StayInfo({ stay }) {
     const { _id, name, summary, type, imgurls, price, capacity, amenities, labels } = stay || {}
@@ -24,6 +25,7 @@ export function StayInfo({ stay }) {
                     <Link to="review">1,025 reviews</Link>
                 </div>
             </header>
+            <StayReserve stay={stay} />
 
             <section className='about-host'>
                 <div className="host-img">
@@ -40,8 +42,8 @@ export function StayInfo({ stay }) {
                         <SvgIcon iconName={"superhost"}></SvgIcon>
                     </div>
                     <div>
-                        <span>Hosted by {fullname}</span>
-                        <span>SuperHost · 10 years of hosting</span>
+                        <span>{fullname} is a Superhost</span>
+                        <span>Superhosts are experienced, highly rated Hosts.</span>
                     </div>
                 </div>
                 <div className='about-host'>
@@ -49,8 +51,8 @@ export function StayInfo({ stay }) {
                         <SvgIcon iconName={"greatlocation"}></SvgIcon>
                     </div>
                     <div>
-                        <span>Hosted by {fullname}</span>
-                        <span>SuperHost · 10 years of hosting</span>
+                        <span>Great location</span>
+                        <span>95% of recent guests gave the location a 5-star rating.</span>
                     </div>
                 </div>
                 <div className='about-host'>
@@ -58,12 +60,11 @@ export function StayInfo({ stay }) {
                         <SvgIcon iconName={"cancelstay"}></SvgIcon>
                     </div>
                     <div>
-                        <span>Hosted by {fullname}</span>
-                        <span>SuperHost · 10 years of hosting</span>
+                        <span>Free cancellation before Nov 3</span>
+                        <span>Get a full refund if you change your mind.</span>
                     </div>
                 </div>
             </section>
-
         </section>
     )
 }
