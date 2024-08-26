@@ -205,11 +205,12 @@ const stays = [
             { "id": makeId(), "by": "Chloe Adams", "txt": "The rooftop terrace was perfect for relaxing and enjoying the views." },
             { "id": makeId(), "by": "Daniel Evans", "txt": "We loved the penthouse. The gourmet kitchen was a nice touch." }
         ]
-        }
+    }
     ,
     {
         "_id": 's106',
         "name": "house of momy",
+        "summary": "Lovely houst in Momy,South Africa",
         "type": " house",
         "imgurls": [
             "https://a0.muscache.com/im/pictures/prohost-api/Ho…dde3a41-7037-461d-a982-2d0dc164d7f2.jpeg?im_w=720",
@@ -220,6 +221,14 @@ const stays = [
         ],
         "price": 160,
         "capacity": 2,
+        "description": ' Immerse yourself in the artistic and historic vibe of Cape Town with this lovely cottage. Featuring vintage decor, exposed brick, and high ceilings, this centrally located stay is perfect for those who appreciate character and style. Hosted by Avery Bennett, it\'s a unique city center retreat that blends old- world charm with modern amenities.',
+        "amenities": ['Wifi', 'Kitchen', 'Washer', 'Vintage decor', 'Exposed brick', 'High ceilings'],
+        "labels": ['Historic', 'Loft', 'Artistic', 'City Center'],
+        "host": {
+            "_id": 'u107',
+            "fullname": 'Suzy Bennett',
+            "imgUrl": 'https://res.cloudinary.com/dooscjcpt/image/upload/v1724504920/Flyair/Avery%20Bennett.jpg ',
+        },
         "location": {
             "city": "Cape Town",
             "country": "South Africa",
@@ -227,7 +236,15 @@ const stays = [
             "address": "Dock Road, V&A Waterfront",
             "lat": -33.9088,
             "lang": 18.4173
-        }
+        },
+        "reviews": [
+            { "id": makeId(), "by": "Yasmin Ali", "txt": "The penthouse was beyond our expectations. The views were incredible!" },
+            { "id": makeId(), "by": "Zane Ford", "txt": "We had an amazing stay. The infinity pool was a highlight." },
+            { "id": makeId(), "by": "Amelia Brown", "txt": "Fatima was a great host. The penthouse was luxurious and spacious." },
+            { "id": makeId(), "by": "Benjamin Clark", "txt": "A bit pricey, but worth every penny for the luxury experience." },
+            { "id": makeId(), "by": "Chloe Adams", "txt": "The rooftop terrace was perfect for relaxing and enjoying the views." },
+            { "id": makeId(), "by": "Daniel Evans", "txt": "We loved the penthouse. The gourmet kitchen was a nice touch." }
+        ]
     }
 ]
 localStorage.setItem('stay', JSON.stringify(stays));
