@@ -8,11 +8,7 @@ export function ReviewList({ stay }) {
 
     const { reviews, host } = stay
 
-    const star = <span>
-        {Array(5).fill().map((_, idx) => (
-            <SvgIcon key={idx} iconName={"reviewstar"} />
-        ))}
-    </span>
+
 
     function shouldShowActionBtns(review) {
         const user = userService.getLoggedinUser()
@@ -121,25 +117,30 @@ export function ReviewList({ stay }) {
 
                                     <div className='review-header'>
                                         <img src={host.imgUrl} alt="" />
-                                        <div>
+                                        <div className='by-review'>
                                             <div>{review.by}</div>
                                             <span>Tel Aviv-Yafo, Israel</span>
                                         </div>
+                                    </div >
+                                    <div className="star-rating">
+                                        <SvgIcon iconName={"reviewstar"}></SvgIcon>
+                                        <SvgIcon iconName={"reviewstar"}></SvgIcon>
+                                        <SvgIcon iconName={"reviewstar"}></SvgIcon>
+                                        <SvgIcon iconName={"reviewstar"}></SvgIcon>
+                                        <SvgIcon iconName={"reviewstar"}></SvgIcon>
+
+                                        <span> · </span>
+
+                                        <span>August 2023</span>
+
+                                        <span> · </span>
+
+                                        <span>Tel Aviv-Yafo, Israel</span>
                                     </div>
 
-                                    <span>{star}</span>
-
-                                    <span> · </span>
-
-                                    <span></span>
-
-                                    <span> · </span>
-
-                                    <span></span>
 
                                 </div>
                                 <div>{review.txt}</div>
-                                <div>{review.by}</div>
                             </li>
                         )
                     })}

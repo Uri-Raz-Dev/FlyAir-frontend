@@ -1,4 +1,6 @@
 .reviews-wrapper {
+    padding-block-end: 40px;
+    margin-block-end: 40px;
 
     .review-info {
         font-family: 'Airbnb Cereal VF-B',
@@ -49,7 +51,15 @@
                     font-weight: 600;
                     // padding-block-end: 8px;
                 }
+
+                :first-child {
+                    font-family: 'Airbnb Cereal VF-L';
+                    font-weight: 600;
+                    font-size: 14px;
+                }
             }
+
+
 
             li:first-of-type {
                 ul {
@@ -121,10 +131,15 @@
         .review-list {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            column-gap: 95px;
+            // column-gap: 32px;
 
             li {
-                padding-block: 8px;
+                // padding-block: 8px;
+                margin-block-end: 10px;
+                height: 226px;
+                width: 473px;
+                text-wrap: wrap;
+                text-overflow: ellipsis;
 
                 img {
                     width: 40px;
@@ -141,12 +156,51 @@
                     display: flex;
                     align-items: center;
                     column-gap: 14px;
+                    padding-block-end: 12px;
+
+                    .by-review {
+                        :first-child {
+                            font-weight: 600;
+                        }
+                    }
+
                 }
 
-                .review-preview {
-                    span:first-of-type {
-                        width: 9px;
+
+
+                .star-rating {
+                    display: flex;
+                    align-items: center;
+                    padding-block-end: 4px;
+
+                    >* {
+                        padding-inline: 3px;
+                        font-size: 14px;
+                    }
+
+                    :first-child {
+                        display: flex;
                         height: 9px;
+                        width: 9px;
+                    }
+
+                    i {
+                        padding: 0;
+                    }
+
+                    span:nth-of-type(2) {
+                        font-weight: 600;
+                    }
+
+                    span:nth-of-type(3),
+                    span:nth-of-type(4) {
+                        font-weight: 400;
+                    }
+
+                    span:nth-of-type(1),
+                    span:nth-of-type(3),
+                    span:nth-of-type(4) {
+                        color: $bnb-gray4;
                     }
                 }
             }
