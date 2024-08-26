@@ -13,8 +13,19 @@
 //         sans-serif;
 //     src: url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 // }
+
 @font-face {
-    font-family: "Montserrat",
+    font-family: "Airbnb Cereal VF",
         sans-serif;
     src: url('https://a0.muscache.com/airbnb/static/airbnb-dls-web/build/fonts/cereal-variable/AirbnbCerealVF_W_Wght.2d9d32865ef1262644c455b3ead871e9.woff2');
+}
+
+// @font-face {
+//     font-family: 'Airbnb Cereal VF';
+//     src: url('/fonts/AirbnbCereal_W_Lt.otf') format('opentype');
+// }
+
+@font-face {
+    font-family: 'Airbnb Cereal VF-B';
+    src: url('/fonts/AirbnbCereal.otf') format('opentype');
 }

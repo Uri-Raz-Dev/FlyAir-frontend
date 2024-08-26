@@ -18,9 +18,9 @@
 @import "pages/AboutUs";
 @import "pages/HomePage";
 @import "pages/StayIndex";
+@import "pages/StayDetails";
 @import "pages/ReviewIndex";
 @import "pages/UserDetails";
-@import "pages/TaskDetails";
 @import "pages/LoginSignup";
 
 // Components
@@ -36,6 +36,9 @@
 @import "cmps/ReviewList";
 @import "cmps/ReviewPreview";
 @import "cmps/StayList";
+@import "cmps/StayInfo";
+@import "cmps/StayReserve";
+@import "cmps/DetailsHeader";
 @import "cmps/StayPreview";
 @import "cmps/NavBarFilter";
 @import "cmps/CarouselImages.scss";

@@ -5,12 +5,24 @@ import { Link } from 'react-router-dom'
 
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
 import { loadStay, addStayMsg } from '../store/actions/stay.actions'
+import { SvgIcon } from '../cmps/Svgicon'
+import { DetailsHeader } from '../cmps/DetailsHeader'
+import { StayInfo } from '../cmps/StayInfo'
+import { ReviewList } from '../cmps/ReviewList'
 
 
 export function StayDetails() {
 
   const { stayId } = useParams()
   const stay = useSelector(storeState => storeState.stayModule.stay)
+  console.log(stay);
+
+  const { _id, name, summary, type, imgurls, price, capacity, amenities, labels, description, reviews } = stay || {}
+  const { city, country, countryCode, address, lat, lag } = stay?.location || {}
+  const { fullname, imgUrl } = stay?.host || {}
+
+
+
 
   useEffect(() => {
     loadStay(stayId)
@@ -26,18 +38,20 @@ export function StayDetails() {
 
   }
 
+  function handleImageUpload(url) {
+    setUploadedImageUrl(url);
+    console.log('Image uploaded successfully:', url);
+  }
+
   return (
     <section className="stay-details">
-      <Link to="/stay">Back to list</Link>
-      <h1>Stay Details</h1>
-      {stay && <div>
-        <h3>{stay.vendor}</h3>
-        <h4>${stay.price}</h4>
-        <pre> {JSON.stringify(stay, null, 2)} </pre>
-      </div>
-      }
-      <button onClick={() => { onAddStayMsg(stay._id) }}>Add stay msg</button>
-
+      <DetailsHeader stay={stay}></DetailsHeader>
+      <StayInfo stay={stay}></StayInfo>
+      {reviews && <ReviewList stay={stay} />}
     </section>
+
+
   )
+
+
 }

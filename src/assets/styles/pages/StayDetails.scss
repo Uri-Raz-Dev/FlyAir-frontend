@@ -1,0 +1,17 @@
+.stay-details {
+    color: $bnb-black;
+    font-weight: 400;
+
+    h1 {
+        font-family: 'Airbnb Cereal VF-B', sans-serif;
+        color: $bnb-black;
+        flex-grow: 1;
+        font-size: rem(26px);
+        font-weight: 500;
+        line-height: rem(30px);
+        line-break: strict;
+        padding: 0;
+        margin: 0;
+    }
+
+}

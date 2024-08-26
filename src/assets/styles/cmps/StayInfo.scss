@@ -1,0 +1,174 @@
+.stay-info {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(200px, 653.33px) 1fr;
+
+    h2 {
+        font-size: 22px;
+        padding-block-end: 4px;
+        margin: 0;
+    }
+
+    .info-header {
+        padding-block: 32px;
+
+        ul {
+            display: flex;
+
+            >* {
+                display: flex;
+                justify-self: center;
+                margin-inline-end: 1px;
+            }
+
+        }
+
+        .review-info {
+            font-family: 'Airbnb Cereal VF-B',
+                sans-serif;
+            display: flex;
+            margin-block-start: 8px;
+
+            span:first-of-type {
+                :first-child {
+                    margin-block-start: 1px;
+                    margin-inline-end: 1px;
+                    width: 16px;
+                    height: 16px;
+                }
+            }
+
+            span {
+                display: flex;
+            }
+
+            >* {
+                margin-inline-end: 4px;
+            }
+
+            >:last-child {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .about-host {
+        display: flex;
+        align-items: center;
+        grid-column: 1;
+        padding-block: 24px;
+        border-block: 1px $bnb-gray3 solid;
+
+        .host-img {
+            width: fit-content;
+            height: fit-content;
+            margin-inline-end: 24px;
+        }
+
+        img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        >:nth-child(2) {
+            display: flex;
+            flex-direction: column;
+
+            span:first-of-type {
+                font-weight: 500;
+                font-family: 'Airbnb Cereal VF-B', sans-serif;
+            }
+
+            span:last-of-type {
+                font-size: 14px;
+                color: $bnb-gray4;
+            }
+        }
+    }
+
+    .about-host-summary {
+        grid-column: 1;
+        padding-block: 9px;
+        border-block-end: 1px $bnb-gray3 solid;
+
+        >* {
+            border-block: 0;
+            margin-inline-start: 6px;
+
+            >:first-child {
+                margin-block-end: 10px;
+            }
+
+            >:nth-child(2) {
+                margin-inline-start: 8px;
+            }
+        }
+
+        .about-host {
+            >:nth-child(2) {
+                >span:first-of-type {
+                    margin-block-end: 4px;
+                }
+            }
+        }
+    }
+
+    .stay-description {
+        padding-block-start: 32px;
+        padding-block-end: 48px;
+        border-block-end: 1px $bnb-gray3 solid;
+
+        >p {
+            text-wrap: wrap;
+            word-break: break-word;
+            text-overflow: ellipsis;
+            line-break: strict;
+            white-space-collapse: preserve;
+            font-weight: 400;
+            margin-block-end: 16px;
+        }
+
+
+        .show-more {
+            display: flex;
+            align-items: center;
+
+            span:first-of-type {
+                margin-inline-end: 7px;
+                font-weight: 600;
+                text-decoration: underline;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .stay-amenities {
+        grid-column: 1;
+        padding-block: 48px;
+        border-block-end: 1px $bnb-gray3 solid;
+
+        h2 {
+            padding-block-end: 24px;
+        }
+
+        .amenities-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            li {
+                display: flex;
+                padding-block-end: 16px;
+                align-items: center;
+
+                >:first-child {
+                    margin-inline-end: 16px;
+                }
+            }
+        }
+    }
+}
