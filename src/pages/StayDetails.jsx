@@ -8,6 +8,7 @@ import { loadStay, addStayMsg } from '../store/actions/stay.actions'
 import { SvgIcon } from '../cmps/Svgicon'
 import { DetailsHeader } from '../cmps/DetailsHeader'
 import { StayInfo } from '../cmps/StayInfo'
+import { ReviewList } from '../cmps/ReviewList'
 
 
 export function StayDetails() {
@@ -16,7 +17,7 @@ export function StayDetails() {
   const stay = useSelector(storeState => storeState.stayModule.stay)
   console.log(stay);
 
-  const { _id, name, summary, type, imgurls, price, capacity, amenities, labels } = stay || {}
+  const { _id, name, summary, type, imgurls, price, capacity, amenities, labels, description, reviews } = stay || {}
   const { city, country, countryCode, address, lat, lag } = stay?.location || {}
   const { fullname, imgUrl } = stay?.host || {}
 
@@ -46,6 +47,7 @@ export function StayDetails() {
     <section className="stay-details">
       <DetailsHeader stay={stay}></DetailsHeader>
       <StayInfo stay={stay}></StayInfo>
+      {reviews && <ReviewList stay={stay} />}
     </section>
 
 

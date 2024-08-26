@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom"
 import { SvgIcon } from "./Svgicon"
 import { StayReserve } from "./StayReserve"
+import { ReviewList } from "./ReviewList"
 
 export function StayInfo({ stay }) {
-    const { _id, name, summary, type, imgurls, price, capacity, amenities, labels } = stay || {}
+    const { _id, name, summary, type, imgurls, price, capacity, amenities, labels, description, reviews } = stay || {}
     const { city, country, countryCode, address, lat, lag } = stay?.location || {}
     const { fullname, imgUrl } = stay?.host || {}
 
@@ -65,6 +66,28 @@ export function StayInfo({ stay }) {
                     </div>
                 </div>
             </section>
+            <div className="stay-description">
+                {description && <p>{description.slice(0, description.length / 1.2)}...</p>}
+                <div className="show-more">
+
+                    <span>Show more </span>
+                    <span><SvgIcon iconName={"rightarrow"}></SvgIcon></span>
+                </div>
+            </div>
+
+            <div className="stay-amenities">
+                <h2>What this place offers</h2>
+                <ul className="amenities-list">
+                    {stay && amenities.map((amenitie, idx) => {
+                        return (
+                            <li key={idx}>
+                                <span><SvgIcon iconName={amenitie.toLowerCase().split(' ').join('')}></SvgIcon></span>
+                                <span>{amenitie}</span>
+                            </li>
+                        )
+                    })}
+                </ul>
+            </div>
         </section>
     )
 }

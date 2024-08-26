@@ -35,7 +35,15 @@ const stays = [
             "address": "15 Rue de Rivoli",
             "lat": 48.8556,
             "lang": 2.3522
-        }
+        },
+        "reviews": [
+            { "id": makeId(), "by": "Alice Johnson", "txt": "Absolutely loved this apartment! The location was perfect for exploring Paris." },
+            { "id": makeId(), "by": "Bob Smith", "txt": "Great place to stay, very modern and comfortable. Samantha was a wonderful host." },
+            { "id": makeId(), "by": "Catherine Lee", "txt": "The apartment was clean and well-equipped. Highly recommended!" },
+            { "id": makeId(), "by": "David Brown", "txt": "A bit pricey, but the experience was worth it. Would stay again." },
+            { "id": makeId(), "by": "Emma Davis", "txt": "Perfect for a romantic getaway. The view from the apartment was stunning." },
+            { "id": makeId(), "by": "Frank Green", "txt": "Enjoyed our stay! The location was central and close to many attractions." }
+        ],
     },
     {
         "_id": 's102',
@@ -67,7 +75,15 @@ const stays = [
             "address": "350 5th Ave",
             "lat": 40.7484,
             "lang": -73.9857
-        }
+        },
+        "reviews": [
+            { "id": makeId(), "by": "Grace Hill", "txt": "The studio was perfect for our weekend in NYC. Loved the cozy atmosphere!" },
+            { "id": makeId(), "by": "Henry Adams", "txt": "Great location, right on 5th Avenue. The backyard was a nice touch." },
+            { "id": makeId(), "by": "Isabella Taylor", "txt": "Emily was a fantastic host. The studio was clean and well-maintained." },
+            { "id": makeId(), "by": "Jack White", "txt": "We enjoyed our stay. The private entrance made it feel very exclusive." },
+            { "id": makeId(), "by": "Kathy Martinez", "txt": "A bit small, but cozy and comfortable. Perfect for a short stay." },
+            { "id": makeId(), "by": "Leo Clark", "txt": "The fireplace was a highlight! Made the studio feel so warm and inviting." }
+        ]
     },
     {
         "_id": 's103',
@@ -100,7 +116,15 @@ const stays = [
             "address": "1-1, Marunouchi",
             "lat": 35.6824,
             "lang": 139.7591
-        }
+        },
+        "reviews": [
+            { "id": makeId(), "by": "Mia Kim", "txt": "The loft was beautiful! Loved the sunset views from the balcony." },
+            { "id": makeId(), "by": "Nathan Lee", "txt": "A perfect place for our family vacation. The pool and beach access were great." },
+            { "id": makeId(), "by": "Olivia Johnson", "txt": "Carlos was an excellent host. The loft was clean and well-equipped." },
+            { "id": makeId(), "by": "Paul Anderson", "txt": "The private beach made our stay special. Highly recommended!" },
+            { "id": makeId(), "by": "Quincy Brown", "txt": "A bit expensive, but the luxury and location were worth it." },
+            { "id": makeId(), "by": "Rachel Evans", "txt": "We had a wonderful time. The outdoor BBQ grill was a nice touch." }
+        ]
     },
     {
         "_id": 's104',
@@ -132,7 +156,15 @@ const stays = [
             "address": "1 Macquarie St",
             "lat": -33.8587,
             "lang": 151.2140
-        }
+        },
+        "reviews": [
+            { "id": makeId(), "by": "Sophia Martinez", "txt": "The villa was amazing! The gardens and pool were perfect for our group." },
+            { "id": makeId(), "by": "Thomas Wilson", "txt": "We had a wonderful time. The game room was a hit with the kids." },
+            { "id": makeId(), "by": "Ursula Lewis", "txt": "James was a great host. The villa was clean and well-maintained." },
+            { "id": makeId(), "by": "Victor Turner", "txt": "A beautiful rustic escape. The BBQ area was perfect for family dinners." },
+            { "id": makeId(), "by": "Wendy Scott", "txt": "The location was perfect for exploring Tuscany. Highly recommended!" },
+            { "id": makeId(), "by": "Xander Harris", "txt": "A bit expensive, but the villa and surroundings were worth it." }
+        ]
     },
     {
         "_id": 's105',
@@ -164,7 +196,15 @@ const stays = [
             "address": "Dock Road, V&A Waterfront",
             "lat": -33.9088,
             "lang": 18.4173
-        }
+        },
+        "reviews": [
+            { "id": makeId(), "by": "Yasmin Ali", "txt": "The penthouse was beyond our expectations. The views were incredible!" },
+            { "id": makeId(), "by": "Zane Ford", "txt": "We had an amazing stay. The infinity pool was a highlight." },
+            { "id": makeId(), "by": "Amelia Brown", "txt": "Fatima was a great host. The penthouse was luxurious and spacious." },
+            { "id": makeId(), "by": "Benjamin Clark", "txt": "A bit pricey, but worth every penny for the luxury experience." },
+            { "id": makeId(), "by": "Chloe Adams", "txt": "The rooftop terrace was perfect for relaxing and enjoying the views." },
+            { "id": makeId(), "by": "Daniel Evans", "txt": "We loved the penthouse. The gourmet kitchen was a nice touch." }
+        ]
     }
 ]
 localStorage.setItem('stay', JSON.stringify(stays));

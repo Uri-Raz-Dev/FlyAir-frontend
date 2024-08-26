@@ -1,17 +1,155 @@
-.review-list li {
-    grid-template-columns: 1fr 2.5em;
-    align-items: start;
+.reviews-wrapper {
 
-    > * {
-        grid-row: 1;
-    }
-    
-    .actions {
-        grid-column: 2;
+    .review-info {
+        font-family: 'Airbnb Cereal VF-B',
+            sans-serif;
+        display: flex;
+        margin-block-start: 8px;
+        font-size: 26px;
+        padding-block-start: 46px;
+        padding-block-end: 40px;
 
-        button {
-            margin: 0;
+        span:first-of-type {
+            :first-child {
+                margin-block-start: 3px;
+                margin-inline-end: 8px;
+                height: 20px;
+                width: 20px;
+            }
+        }
+
+        span {
+            display: flex;
+        }
+
+        >* {
+            margin-inline-end: 4px;
+        }
+
+        >:last-child {
+            text-decoration: none;
         }
     }
-    
+
+    .reviews-ratings {
+        padding-block-end: 40px;
+        margin-block-end: 40px;
+        border-block-end: 1px $bnb-gray3 solid;
+
+        .reviews-ratings-list {
+            display: flex;
+            padding-block-end: 4px;
+            // justify-content: space-between;
+
+            li {
+                width: 158px;
+
+                span {
+                    font-size: 14px;
+                    font-weight: 600;
+                    // padding-block-end: 8px;
+                }
+            }
+
+            li:first-of-type {
+                ul {
+                    padding-inline-end: 32px;
+                    padding-block-start: 8px;
+
+                    li {
+                        display: flex;
+                        align-items: center;
+                        // height: min-content;
+
+                        span {
+                            font-size: 12px;
+                            font-weight: 400;
+                            padding-block-start: 2px;
+                            padding-inline-end: 8px;
+                        }
+
+                        >div {
+                            width: 124px;
+                            background-color: $bnb-gray3;
+                            border-radius: 10px;
+                            height: 4px;
+                        }
+
+
+                    }
+
+                    li:first-of-type {
+                        div {
+                            .fill-bar {
+                                border-radius: 10px;
+                                width: 90%;
+                                height: 100%;
+                                background-color: $bnb-black;
+                            }
+                        }
+                    }
+
+                    li:nth-of-type(2) {
+                        div {
+                            .fill-bar {
+                                border-radius: 10px;
+                                width: 10%;
+                                height: 100%;
+                                background-color: $bnb-black;
+                            }
+                        }
+                    }
+                }
+            }
+
+            >:not(li:first-of-type) {
+                padding-inline: 24px;
+                border-inline-start: 1px $bnb-gray3 solid;
+
+                >div:nth-child(2) {
+                    font-size: 18px;
+                    font-weight: bold;
+                    margin-block-end: 26px;
+                }
+            }
+        }
+
+    }
+
+    .review-list-wrapper {
+
+        .review-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 95px;
+
+            li {
+                padding-block: 8px;
+
+                img {
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    margin: 0;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+
+                .review-header {
+                    display: flex;
+                    align-items: center;
+                    column-gap: 14px;
+                }
+
+                .review-preview {
+                    span:first-of-type {
+                        width: 9px;
+                        height: 9px;
+                    }
+                }
+            }
+        }
+    }
 }
