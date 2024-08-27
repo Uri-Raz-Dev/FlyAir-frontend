@@ -7,15 +7,17 @@ import { stayService as remote } from './stay.service.remote'
 
 function getEmptyStay() {
     return {
-        name:'',
+        name: '',
         price: getRandomIntInclusive(80, 240),
-        type:''
+        type: ''
     }
 }
 
 function getDefaultFilter() {
     return {
-       price:0
+        price: 0,
+        sortDir: 1,
+        txt: ''
     }
 }
 

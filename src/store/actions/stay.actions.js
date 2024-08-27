@@ -1,14 +1,16 @@
-import { stayService } from '../../services/stay'
+import { stayService } from '../../services/stay/stay.service.local.js'
 
 import { store } from '../store'
 import { ADD_STAY, REMOVE_STAY, SET_STAYS, SET_STAY, UPDATE_STAY, ADD_STAY_MSG } from '../reducers/stay.reducer'
 
 export async function loadStays(filterBy) {
-    console.log('give the stays ');
+    console.log('give the stays :filterBy', filterBy);
     
     try {
         const stays = await stayService.query(filterBy)
+        console.log('staysaaaaaaaaaaaaaaaaa:', stays)
         store.dispatch(getCmdSetStays(stays))
+        console.log('staysbbbbbbbbbbbbbbbb:', stays)
     } catch (err) {
         console.log('Cannot load stays', err)
         throw err

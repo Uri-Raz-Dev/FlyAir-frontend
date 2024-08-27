@@ -53,17 +53,24 @@ export function StayIndex() {
         }
     }
 
-    return (
-     
+    function onSetFilter(filterBy) {
+        setFilterBy(filterBy)
+        // console.log('filterBy:', filterBy)
+    }
 
-                <div className=" stays-page">
-                    <h2 className="main-title">Available Stays</h2>
-                   
-                       <StayList
-                stays={stays}
-                onRemoveStay={onRemoveStay}
-                onUpdateStay={onUpdateStay} />
-                    
+    return (
+        <>
+            <AppHeader filterBy={filterBy} onSetFilter={onSetFilter} />
+
+            <div className=" stays-page">
+                <h2 className="main-title">Available Stays</h2>
+
+                <StayList
+                    stays={stays}
+                    onRemoveStay={onRemoveStay}
+                    onUpdateStay={onUpdateStay} />
+
             </div>
+        </>
     )
 }

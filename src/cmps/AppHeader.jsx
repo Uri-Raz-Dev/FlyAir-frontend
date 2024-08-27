@@ -7,7 +7,7 @@ import { StayFilter } from "./StayFilter.jsx"
 import { SvgIcon } from "./Svgicon.jsx"
 import { useState } from "react"
 // import { NavBar } from './NavBarUser.jsx'
-export function AppHeader() {
+export function AppHeader({filterBy, onSetFilter}) {
 	const user = useSelector(storeState => storeState.userModule.user)
 
 	const [isNavOpen, setIsNavOpen] = useState(false);
@@ -17,7 +17,7 @@ export function AppHeader() {
 	}
 
 	const navigate = useNavigate()
-	const [filterBy, setFilterBy] = useState(stayService.getDefaultFilter())
+	// const [filterBy, setFilterBy] = useState(filterBy)
 	// const stays = useSelector(storeState => storeState.stayModule.stays)
 
 	async function onLogout() {
@@ -40,7 +40,7 @@ export function AppHeader() {
 
 			</Link>
 
-			<StayFilter filterBy={filterBy} setFilterBy={setFilterBy} />
+			<StayFilter filterBy={filterBy} onSetFilter={onSetFilter} />
 
 			<nav className="profile">
 				<Link className="host-link" to={"/"}>

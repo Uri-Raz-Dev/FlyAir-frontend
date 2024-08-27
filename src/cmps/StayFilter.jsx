@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
 
-export function StayFilter({ filterBy, setFilterBy }) {
+export function StayFilter({ filterBy, onSetFilter }) {
     const [filterToEdit, setFilterToEdit] = useState(structuredClone(filterBy))
 
     useEffect(() => {
-        setFilterBy(filterToEdit)
+        onSetFilter(filterToEdit)
     }, [filterToEdit])
 
     function handleChange(ev) {
@@ -23,7 +23,7 @@ export function StayFilter({ filterBy, setFilterBy }) {
                 break
         }
         setFilterToEdit({ ...filterToEdit, [field]: value })
-        console.log('filterToEdit:', filterToEdit)
+        // console.log('filterToEdit:', filterToEdit)
     }
 
     function clearFilter() {
