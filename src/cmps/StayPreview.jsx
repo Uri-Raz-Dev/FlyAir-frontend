@@ -11,7 +11,7 @@ export function StayPreview({ stay }) {
             </div>
 
             <div className="card-content">
-                <h3>{stay.loc.country}, {stay.loc.city}</h3>
+                <h3>{stay.location.country}, {stay.location.city}</h3>
                 {/* <h3>{stay.name}</h3> */}
                 <p>21 miles to Castel National Park</p>
                 <p>{stay.price}₪ night</p>
