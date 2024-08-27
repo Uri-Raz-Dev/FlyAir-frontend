@@ -12,11 +12,11 @@ const stays = [
         "summary": "Fantastic Parisian apartment",
         "type": "Apartment",
         "imgurls": [
-            "https://a0.muscache.com/im/pictures/miso/Hosting-3…297244e-8f5c-44d6-a85b-0423d0d55f3e.jpeg?im_w=720",
-            "https://a0.muscache.com/im/pictures/miso/Hosting-3…b51d91f-0e10-42b4-b90d-abf01d58cb9a.jpeg?im_w=720",
-            "https://a0.muscache.com/im/pictures/a3e9e1a1-ebed-4d2e-a00a-4b1a81015d2d.jpg?im_w=720",
-            "https://a0.muscache.com/im/pictures/miso/Hosting-3…6d5ec7a-9049-473a-8e58-421c74fa5c62.jpeg?im_w=720",
-            "https://a0.muscache.com/im/pictures/3b683927-42d5-4883-990d-26904f1e6532.jpg?im_w=720"
+            "https://a0.muscache.com/im/pictures/miso/Hosting-777231477173885889/original/538633f2-6b5e-40b7-b162-ddaab99b0db3.jpeg?im_w=1200",
+            "https://a0.muscache.com/im/pictures/miso/Hosting-777231477173885889/original/8c76f2a3-3a07-491c-ad60-dca49f4807ae.jpeg?im_w=720",
+            "https://a0.muscache.com/im/pictures/miso/Hosting-777231477173885889/original/9cb240be-57a8-4a51-ab30-873ef3537806.jpeg?im_w=720",
+            "https://a0.muscache.com/im/pictures/miso/Hosting-777231477173885889/original/cfc9f5ca-8f58-412a-912e-4676e2590942.jpeg?im_w=720",
+            "https://a0.muscache.com/im/pictures/miso/Hosting-777231477173885889/original/97f28666-72be-4f40-910c-a22d331a72f4.jpeg?im_w=720"
         ],
         "price": 150,
         "capacity": 4,
@@ -85,6 +85,7 @@ const stays = [
             { "id": makeId(), "by": "Leo Clark", "txt": "The fireplace was a highlight! Made the studio feel so warm and inviting." }
         ]
     },
+
     {
         "_id": 's103',
         "name": "Modern Tokyo Loft",
@@ -92,11 +93,11 @@ const stays = [
 
         "type": "Loft",
         "imgurls": [
-            "https://a0.muscache.com/im/pictures/f5632441-f554-4686-961a-6fbe6fc50930.jpg?im_w=720",
-            "https://a0.muscache.com/im/pictures/94488dde-14a8-4493-b703-b312fdcc697a.jpg?im_w=720",
-            "https://a0.muscache.com/im/pictures/f248ffe6-6efe-4bc6-aebc-80d49f8ef652.jpg?im_w=720",
-            "https://a0.muscache.com/im/pictures/750e0a8e-5e1e-4770-bef7-c1a676cb1718.jpg?im_w=720",
-            "https://a0.muscache.com/im/pictures/hosting/Hostin…f7f22bf-e15d-47c6-88fe-d25e80cfb331.jpeg?im_w=720"
+            "https://a0.muscache.com/im/pictures/9ccfb248-370e-49c8-833b-72a649908d5a.jpg?im_w=1200",
+            "https://a0.muscache.com/im/pictures/65ad24f5-3c4f-4340-8e75-1c84278361f1.jpg?im_w=720",
+            "https://a0.muscache.com/im/pictures/039384b0-75de-4c34-aae2-6fd5c76a2b50.jpg?im_w=720",
+            "https://a0.muscache.com/im/pictures/c8e4ccb3-b13a-42a0-a1e3-8d48199b81a8.jpg?im_w=720",
+            "https://a0.muscache.com/im/pictures/efb8673c-b5e6-4502-9e60-b46a2ae0ce44.jpg?im_w=720"
         ],
         "price": 250,
         "capacity": 6,
@@ -132,11 +133,11 @@ const stays = [
         "summary": "Penthouse in Sydney,Australia",
         "type": "Penthouse",
         "imgurls": [
-            "https://a0.muscache.com/im/pictures/hosting/Hostin…11feca9-3a4f-4713-b754-ba2e267116ce.jpeg?im_w=720",
-            "https://a0.muscache.com/im/pictures/hosting/Hostin…7a76002-9d99-4e09-8af5-5bba34278f1f.jpeg?im_w=720",
-            "https://a0.muscache.com/im/pictures/hosting/Hostin…8241d52-3ae6-49ef-a96e-21d68274c3d1.jpeg?im_w=720",
-            "https://a0.muscache.com/im/pictures/hosting/Hostin…07f4f7a-ae94-4182-b5ba-80581322bad8.jpeg?im_w=720",
-            "https://a0.muscache.com/im/pictures/hosting/Hostin…61f0b98-e4d7-4361-b020-a3ffc804f678.jpeg?im_w=720"
+            "https://a0.muscache.com/im/pictures/ebfed8d1-2760-4d39-a440-e2fac4c96dd5.jpg?im_w=1200",
+            "https://a0.muscache.com/im/pictures/f5f7248f-0cba-486e-88d0-4d26b98ff532.jpg?im_w=720",
+            "https://a0.muscache.com/im/pictures/4327e289-2786-4699-9250-510b13966a5b.jpg?im_w=720",
+            "https://a0.muscache.com/im/pictures/76fc03c9-c908-4c58-bf02-7fbc0c6c4321.jpg?im_w=720",
+            "https://a0.muscache.com/im/pictures/dd9db4f9-2607-456e-9ad9-71a222c75ff5.jpg?im_w=720"
         ],
         "price": 500,
         "capacity": 8,
@@ -172,11 +173,11 @@ const stays = [
         "summary": "Lovely cottage in Cape Town,South Africa",
         "type": " pool",
         "imgurls": [
-            "https://a0.muscache.com/im/pictures/prohost-api/Ho…dde3a41-7037-461d-a982-2d0dc164d7f2.jpeg?im_w=720",
-            "https://a0.muscache.com/im/pictures/prohost-api/Ho…6e6aacf-baf1-431d-a0a8-b7f5ca1c75d4.jpeg?im_w=720",
-            "https://a0.muscache.com/im/pictures/prohost-api/Ho…91df1a9-e5e3-4421-b678-d63b8d1adc5c.jpeg?im_w=720",
-            "https://a0.muscache.com/im/pictures/prohost-api/Ho…98edfc8-c40b-4c33-8be2-7ee83f922a02.jpeg?im_w=720",
-            "https://a0.muscache.com/im/pictures/prohost-api/Ho…d551298-3fd4-44e6-ac73-37e93fa6bf25.jpeg?im_w=720"
+            "https://a0.muscache.com/im/pictures/624e42ab-960e-476b-8e44-c36e61d101e9.jpg?im_w=1200",
+            "https://a0.muscache.com/im/pictures/c60aee12-835d-4c37-b369-ff750deff1f7.jpg?im_w=720",
+            "https://a0.muscache.com/im/pictures/9e8d819c-e26f-441f-8420-567138e2041d.jpg?im_w=720",
+            "https://a0.muscache.com/im/pictures/11610818-590b-4c29-a48d-fc8813b83f18.jpg?im_w=720",
+            "https://a0.muscache.com/im/pictures/9f7d53ca-94d3-4e26-881d-a2e0c7537f13.jpg?im_w=720"
         ],
         "price": 120,
         "capacity": 3,
@@ -213,11 +214,11 @@ const stays = [
         "summary": "Lovely houst in Momy,South Africa",
         "type": " house",
         "imgurls": [
-            "https://a0.muscache.com/im/pictures/prohost-api/Ho…dde3a41-7037-461d-a982-2d0dc164d7f2.jpeg?im_w=720",
-            "https://a0.muscache.com/im/pictures/prohost-api/Ho…6e6aacf-baf1-431d-a0a8-b7f5ca1c75d4.jpeg?im_w=720",
-            "https://a0.muscache.com/im/pictures/prohost-api/Ho…91df1a9-e5e3-4421-b678-d63b8d1adc5c.jpeg?im_w=720",
-            "https://a0.muscache.com/im/pictures/prohost-api/Ho…98edfc8-c40b-4c33-8be2-7ee83f922a02.jpeg?im_w=720",
-            "https://a0.muscache.com/im/pictures/prohost-api/Ho…d551298-3fd4-44e6-ac73-37e93fa6bf25.jpeg?im_w=720"
+            "https://a0.muscache.com/im/pictures/1e934a37-d009-48a3-8721-5eaf2f3d6fc0.jpg?im_w=1200",
+            "https://a0.muscache.com/im/pictures/f462dbf1-c1d4-45b5-91fd-8527c123718a.jpg?im_w=720",
+            "https://a0.muscache.com/im/pictures/f3c2bdbe-56c2-44f8-94f0-806e29eed4d7.jpg?im_w=720",
+            "https://a0.muscache.com/im/pictures/78269067-4b27-4431-93d1-497b71c199e8.jpg?im_w=720",
+            "https://a0.muscache.com/im/pictures/c39325ee-45d9-4522-9ef3-03774ddaed85.jpg?im_w=720"
         ],
         "price": 160,
         "capacity": 2,
