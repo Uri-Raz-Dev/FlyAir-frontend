@@ -11,20 +11,20 @@ export function StayList({ stays, onRemoveStay, onUpdateStay }) {
     //     if (user.isAdmin) return true
     //     return stay.owner?._id === user._id
     // }
-    return(
+    return (
 
         <div className="main-grid">
             {stays.map((stay) => (
                 <div className="card" key={stay._id}>
-                    
-                    <StayPreview stay={stay} />           
-                                
+
+                    <StayPreview stay={stay} />
+
                 </div>
-                 ))}
-    </div>
+            ))}
+        </div>
     )
 
-    
+
     //  <section>
     // //     <ul className="list">
     // //         {stays.map(stay =>
