@@ -1,20 +1,31 @@
 .app-header {
-    display: flex;
-    align-items: center;
-    background-color: $white;
-    border-bottom: .0714rem $bnb-gray solid;
-    justify-content: space-between;
-    padding-inline: 5.7143em;
-    line-height: 1.4286rem;
-    font-size: .875rem;
+    // display: flex;
+    // align-items: center;
+    // background-color: $white;
+    // border-bottom: .0714rem $bnb-gray solid;
+    // justify-content: space-between;
+    // padding-inline: 5.7143em;
+    // line-height: 1.4286rem;
+    // font-size: .875rem;
 
-    &.details {
-        padding-inline: 273px;
-    }
+    
+    position: relative;
+display: flex;
+align-items: center;
+justify-content: space-between;
+height: 100%;
+width: 100%;
+padding-left: 5rem;
+padding-right: 5rem;
+line-height: 1.25rem;
+min-width: 80em;
 
-    >* {
-        align-items: start;
-    }
+&.details {
+    padding-inline: 273px;
+}
+    // >* {
+    //     align-items: start;
+    // }
 
     .profile {
         display: flex;

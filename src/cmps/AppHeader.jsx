@@ -35,7 +35,7 @@ export function AppHeader() {
 
 	return (
 		<header className={isLocation ? "app-header details full" : "app-header full"}>
-			<Link to={"/"} className="logo">
+			<Link to={"stay/"} className="logo">
 
 				<SvgIcon iconName={"logosymbol"}></SvgIcon>
 				<p>FlyAir</p>

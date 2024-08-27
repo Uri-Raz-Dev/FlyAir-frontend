@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react'
+import { SvgIcon } from './Svgicon.jsx'
+import { svgService } from '../services/svg.service'
 
 export function StayFilter({ filterBy, setFilterBy }) {
     const [filterToEdit, setFilterToEdit] = useState(structuredClone(filterBy))
@@ -33,85 +35,98 @@ export function StayFilter({ filterBy, setFilterBy }) {
         setFilterToEdit({ ...filterToEdit, sortField: '', sortDir: '' })
     }
 
-    return <section className="stay-filter">
-        <h3>Filter:</h3>
-        <input
-            type="text"
-            name="txt"
-            value={filterToEdit.txt}
-            placeholder="Free text"
-            onChange={handleChange}
-            required
-        />
-        <input
-            type="number"
-            min="0"
-            name="minSpeed"
-            value={filterToEdit.minSpeed}
-            placeholder="min. speed"
-            onChange={handleChange}
-            required
-        />
-        <button
-            className="btn-clear"
-            onClick={clearFilter}>Clear</button>
-        <h3>Sort:</h3>
-        <div className="sort-field">
-            <label>
-                <span>Speed</span>
-                <input
-                    type="radio"
-                    name="sortField"
-                    value="speed"
-                    checked={filterToEdit.sortField === 'speed'}
-                    onChange={handleChange}
-                />
-            </label>
-            <label>
-                <span>Vendor</span>
-                <input
-                    type="radio"
-                    name="sortField"
-                    value="vendor"
-                    checked={filterToEdit.sortField === 'vendor'}
-                    onChange={handleChange}
-                />
-            </label>
-            <label>
-                <span>Owner</span>
-                <input
-                    type="radio"
-                    name="sortField"
-                    value="owner"
-                    checked={filterToEdit.sortField === 'owner'}
-                    onChange={handleChange}
-                />
-            </label>
+    return (
+        <div className="search-bar">
+            <div className="search-field">
+                <input type="text" placeholder="Where are you going?" />
+            </div>
+            <div className="search-button">
+                <button type="submit"><SvgIcon  iconName={"search"}/></button>
+            </div>
         </div>
-        <div className="sort-dir">
-            <label>
-                <span>Asce</span>
-                <input
-                    type="radio"
-                    name="sortDir"
-                    value="1"
-                    checked={filterToEdit.sortDir === 1}
-                    onChange={handleChange}
-                />
-            </label>
-            <label>
-                <span>Desc</span>
-                <input
-                    type="radio"
-                    name="sortDir"
-                    value="-1"
-                    onChange={handleChange}
-                    checked={filterToEdit.sortDir === -1}
-                />
-            </label>
-        </div>
-        <button
-            className="btn-clear"
-            onClick={clearSort}>Clear</button>
-    </section>
+
+    )
+
+
+    // <section className="stay-filter">
+    //     <h3>Filter:</h3>
+    //     <input
+    //         type="text"
+    //         name="txt"
+    //         value={filterToEdit.txt}
+    //         placeholder="Free text"
+    //         onChange={handleChange}
+    //         required
+    //     />
+    //     <input
+    //         type="number"
+    //         min="0"
+    //         name="minSpeed"
+    //         value={filterToEdit.minSpeed}
+    //         placeholder="min. speed"
+    //         onChange={handleChange}
+    //         required
+    //     />
+    //     <button
+    //         className="btn-clear"
+    //         onClick={clearFilter}>Clear</button>
+    //     <h3>Sort:</h3>
+    //     <div className="sort-field">
+    //         <label>
+    //             <span>Speed</span>
+    //             <input
+    //                 type="radio"
+    //                 name="sortField"
+    //                 value="speed"
+    //                 checked={filterToEdit.sortField === 'speed'}
+    //                 onChange={handleChange}
+    //             />
+    //         </label>
+    //         <label>
+    //             <span>Vendor</span>
+    //             <input
+    //                 type="radio"
+    //                 name="sortField"
+    //                 value="vendor"
+    //                 checked={filterToEdit.sortField === 'vendor'}
+    //                 onChange={handleChange}
+    //             />
+    //         </label>
+    //         <label>
+    //             <span>Owner</span>
+    //             <input
+    //                 type="radio"
+    //                 name="sortField"
+    //                 value="owner"
+    //                 checked={filterToEdit.sortField === 'owner'}
+    //                 onChange={handleChange}
+    //             />
+    //         </label>
+    //     </div>
+    //     <div className="sort-dir">
+    //         <label>
+    //             <span>Asce</span>
+    //             <input
+    //                 type="radio"
+    //                 name="sortDir"
+    //                 value="1"
+    //                 checked={filterToEdit.sortDir === 1}
+    //                 onChange={handleChange}
+    //             />
+    //         </label>
+    //         <label>
+    //             <span>Desc</span>
+    //             <input
+    //                 type="radio"
+    //                 name="sortDir"
+    //                 value="-1"
+    //                 onChange={handleChange}
+    //                 checked={filterToEdit.sortDir === -1}
+    //             />
+    //         </label>
+    //     </div>
+    //     <button
+    //         className="btn-clear"
+    //         onClick={clearSort}>Clear</button>
+    // </section>
 }
