@@ -23,6 +23,7 @@ export function StayFilter({ filterBy, setFilterBy }) {
                 break
         }
         setFilterToEdit({ ...filterToEdit, [field]: value })
+        console.log('filterToEdit:', filterToEdit)
     }
 
     function clearFilter() {
@@ -34,84 +35,101 @@ export function StayFilter({ filterBy, setFilterBy }) {
     }
 
     return <section className="stay-filter">
-        <h3>Filter:</h3>
-        <input
-            type="text"
-            name="txt"
-            value={filterToEdit.txt}
-            placeholder="Free text"
-            onChange={handleChange}
-            required
-        />
-        <input
-            type="number"
-            min="0"
-            name="minSpeed"
-            value={filterToEdit.minSpeed}
-            placeholder="min. speed"
-            onChange={handleChange}
-            required
-        />
-        <button
-            className="btn-clear"
-            onClick={clearFilter}>Clear</button>
-        <h3>Sort:</h3>
-        <div className="sort-field">
-            <label>
-                <span>Speed</span>
-                <input
-                    type="radio"
-                    name="sortField"
-                    value="speed"
-                    checked={filterToEdit.sortField === 'speed'}
-                    onChange={handleChange}
-                />
-            </label>
-            <label>
-                <span>Vendor</span>
-                <input
-                    type="radio"
-                    name="sortField"
-                    value="vendor"
-                    checked={filterToEdit.sortField === 'vendor'}
-                    onChange={handleChange}
-                />
-            </label>
-            <label>
-                <span>Owner</span>
-                <input
-                    type="radio"
-                    name="sortField"
-                    value="owner"
-                    checked={filterToEdit.sortField === 'owner'}
-                    onChange={handleChange}
-                />
-            </label>
+
+        <div className="search-item destination-filter">
+            <label>Where</label>
+            <input
+                type="text"
+                name="txt"
+                value={filterToEdit.txt}
+                placeholder="Search destinations"
+                onChange={handleChange}
+            />
         </div>
-        <div className="sort-dir">
-            <label>
-                <span>Asce</span>
-                <input
-                    type="radio"
-                    name="sortDir"
-                    value="1"
-                    checked={filterToEdit.sortDir === 1}
-                    onChange={handleChange}
-                />
-            </label>
-            <label>
-                <span>Desc</span>
-                <input
-                    type="radio"
-                    name="sortDir"
-                    value="-1"
-                    onChange={handleChange}
-                    checked={filterToEdit.sortDir === -1}
-                />
-            </label>
-        </div>
-        <button
-            className="btn-clear"
-            onClick={clearSort}>Clear</button>
+      
+        <button className="search-button">Search</button>
+
     </section>
+
+    // return <section className="stay-filter">
+    //     <h3>Filter:</h3>
+    //     <input
+    //         type="text"
+    //         name="txt"
+    //         value={filterToEdit.txt}
+    //         placeholder="Free text"
+    //         onChange={handleChange}
+    //         required
+    //     />
+    //     <input
+    //         type="number"
+    //         min="0"
+    //         name="minSpeed"
+    //         value={filterToEdit.minSpeed}
+    //         placeholder="min. speed"
+    //         onChange={handleChange}
+    //         required
+    //     />
+    //     <button
+    //         className="btn-clear"
+    //         onClick={clearFilter}>Clear</button>
+    //     <h3>Sort:</h3>
+    //     <div className="sort-field">
+    //         <label>
+    //             <span>Speed</span>
+    //             <input
+    //                 type="radio"
+    //                 name="sortField"
+    //                 value="speed"
+    //                 checked={filterToEdit.sortField === 'speed'}
+    //                 onChange={handleChange}
+    //             />
+    //         </label>
+    //         <label>
+    //             <span>Vendor</span>
+    //             <input
+    //                 type="radio"
+    //                 name="sortField"
+    //                 value="vendor"
+    //                 checked={filterToEdit.sortField === 'vendor'}
+    //                 onChange={handleChange}
+    //             />
+    //         </label>
+    //         <label>
+    //             <span>Owner</span>
+    //             <input
+    //                 type="radio"
+    //                 name="sortField"
+    //                 value="owner"
+    //                 checked={filterToEdit.sortField === 'owner'}
+    //                 onChange={handleChange}
+    //             />
+    //         </label>
+    //     </div>
+    //     <div className="sort-dir">
+    //         <label>
+    //             <span>Asce</span>
+    //             <input
+    //                 type="radio"
+    //                 name="sortDir"
+    //                 value="1"
+    //                 checked={filterToEdit.sortDir === 1}
+    //                 onChange={handleChange}
+    //             />
+    //         </label>
+    //         <label>
+    //             <span>Desc</span>
+    //             <input
+    //                 type="radio"
+    //                 name="sortDir"
+    //                 value="-1"
+    //                 onChange={handleChange}
+    //                 checked={filterToEdit.sortDir === -1}
+    //             />
+    //         </label>
+    //     </div>
+    //     <button
+    //         className="btn-clear"
+    //         onClick={clearSort}>Clear</button>
+    // </section>
 }

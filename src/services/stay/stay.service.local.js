@@ -205,7 +205,7 @@ const stays = [
             { "id": makeId(), "by": "Chloe Adams", "txt": "The rooftop terrace was perfect for relaxing and enjoying the views." },
             { "id": makeId(), "by": "Daniel Evans", "txt": "We loved the penthouse. The gourmet kitchen was a nice touch." }
         ]
-        }
+    }
     ,
     {
         "_id": 's106',
@@ -244,14 +244,16 @@ export const stayService = {
 window.cs = stayService
 
 
-async function query({ filterBy = { price: 0 } }) {
+async function query({ filterBy = { txt: '' } }) {
     var stays = await storageService.query(STORAGE_KEY)
-    // const { txt, minSpeed, maxPrice, sortField, sortDir } = filterBy
+    const { txt } = filterBy
 
-    // if (txt) {
-    //     const regex = new RegExp(filterBy.txt, 'i')
-    //     stays = stays.filter(stay => regex.test(stay.vendor) || regex.test(stay.description))
-    // }
+    if (txt) {
+        const regex = new RegExp(filterBy.txt, 'i')
+        stays = stays.filter(stay => regex.test(stay.name) || regex.test(stay.description) || regex.test(stay.summary) || regex.test(stay.location.city) || regex.test(stay.location.country))
+    }
+
+    // const { txt, minSpeed, maxPrice, sortField, sortDir } = filterBy
     // if (minSpeed) {
     //     stays = stays.filter(stay => stay.speed >= minSpeed)
     // }
