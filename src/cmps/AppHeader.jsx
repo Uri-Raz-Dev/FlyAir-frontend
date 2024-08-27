@@ -32,8 +32,8 @@ export function AppHeader() {
 	}
 
 	return (
-		<header className="app-header full">
-			<Link to={"/"} className="logo">
+		<header className="app-header">
+			<Link to={"/stay"} className="logo">
 
 				<SvgIcon iconName={"logosymbol"}></SvgIcon>
 				<p>FlyAir</p>

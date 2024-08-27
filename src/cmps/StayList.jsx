@@ -16,6 +16,7 @@ export function StayList({ stays, onRemoveStay, onUpdateStay }) {
         <div className="main-grid">
             {stays.map((stay) => (
                 <div className="card" key={stay._id}>
+                    
                     <StayPreview stay={stay} />           
                                 
                 </div>
