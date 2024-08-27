@@ -26,12 +26,12 @@ export function StayReserve({ stay }) {
 
                     <div className="check-in">
                         <label htmlFor="check-in">CHECK-IN</label>
-                        <input type="date" name="check-in" id="check-in" />
+                        <input type="date" name="check-in" id="check-in" value={'2024-08-27'} />
                     </div>
 
                     <div className="checkout">
                         <label htmlFor="checkout">CHECKOUT</label>
-                        <input type="date" name="checkout" id="checkout" />
+                        <input type="date" name="checkout" id="checkout" value={'2024-09-01'} />
                     </div>
 
                     <div className="guests">

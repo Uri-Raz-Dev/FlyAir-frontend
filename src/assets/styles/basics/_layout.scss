@@ -3,6 +3,9 @@
     display: grid;
     grid-template-columns: minmax(1.4286rem, 5.7143rem) 1fr minmax(1.4286rem, 5.7143rem);
 
+    &.details {
+        grid-template-columns: minmax(1.4286rem, 273px) 1fr minmax(1.4286rem, 273px);
+    }
 
 
     >* {
@@ -19,10 +22,10 @@
 //     margin: 0 auto;
 //     padding: 0 $spacing-large;
 
-    // @include respond-to(tablet) {
-    //     max-width: 100%;
-    //     padding: 0 $spacing-unit;
-    // }
+// @include respond-to(tablet) {
+//     max-width: 100%;
+//     padding: 0 $spacing-unit;
+// }
 // }
 
 // .row {

@@ -1,14 +1,14 @@
 .details-header {
     display: flex;
     font-size: rem(14px);
-    margin-block: rem(22px);
+    margin-block: em(22px);
     line-height: rem(18px);
 
     .add-to-favorites {
         font-weight: 500;
         display: flex;
-        margin-block-start: rem(5px);
-        column-gap: rem(13px);
+        margin-block-start: em(5px);
+        column-gap: em(13px);
 
 
         .icon-wrapper {
@@ -36,9 +36,9 @@
 
 .details-image-grid {
     display: grid;
-    grid-template-columns: minmax(200px, 560px) repeat(4, 0.25fr);
-    grid-template-rows: 244.89px 236.89px;
-    gap: rem(8px);
+    grid-template-columns: minmax(rem(200px), rem(560px)) repeat(4, 0.25fr);
+    grid-template-rows: rem(244.89px) rem(236.89px);
+    gap: em(8px);
     overflow-x: clip;
     overflow-y: clip;
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Routes, Route } from 'react-router'
+import { Routes, Route, useParams, useLocation } from 'react-router'
 
 import { HomePage } from './pages/HomePage'
 import { AboutUs, AboutTeam, AboutVision } from './pages/AboutUs'
@@ -114,9 +114,14 @@ const renderRoutes = (routes) => routes.map((route) => (
     </Route>
 ))
 
+
+
 export function RootCmp() {
+    const location = useLocation()
+    const { stayId } = useParams()
+    const isStayDetailsPage = location.pathname.startsWith(`/stay/s`)
     return (
-        <div className="main-container">
+        <div className={isStayDetailsPage ? "main-container details" : "main-container"}>
             {/* <NavBar/> */}
             {/* <AppHeader /> */}
             <UserMsg />
@@ -124,7 +129,7 @@ export function RootCmp() {
                 <Routes>
                     {renderRoutes(routes)}
                 </Routes>
-                </main>
+            </main>
             <AppFooter />
         </div>
     )

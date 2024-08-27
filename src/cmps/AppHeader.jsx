@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom"
-import { useNavigate } from "react-router"
+import { useLocation, useNavigate } from "react-router"
 import { useSelector } from "react-redux"
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service"
 import { logout } from "../store/actions/user.actions"
@@ -17,7 +17,9 @@ export function AppHeader({filterBy, onSetFilter}) {
 	}
 
 	const navigate = useNavigate()
-	// const [filterBy, setFilterBy] = useState(filterBy)
+	const location = useLocation()
+	const isLocation = location.pathname.startsWith(`/stay/s`)
+	const [filterBy, setFilterBy] = useState(stayService.getDefaultFilter())
 	// const stays = useSelector(storeState => storeState.stayModule.stays)
 
 	async function onLogout() {
@@ -32,8 +34,8 @@ export function AppHeader({filterBy, onSetFilter}) {
 	}
 
 	return (
-		<header className="app-header full">
-			<Link to={"/"} className="logo">
+		<header className={isLocation ? "app-header details full" : "app-header full"}>
+			<Link to={"stay/"} className="logo">
 
 				<SvgIcon iconName={"logosymbol"}></SvgIcon>
 				<p>FlyAir</p>
