@@ -1,16 +1,16 @@
 .stay-info {
-    position: relative;
+    // position: relative;
     display: grid;
-    grid-template-columns: minmax(200px, 653.33px) 1fr;
+    grid-template-columns: minmax(rem(200px), rem(653.33px)) 1fr;
 
     h2 {
-        font-size: 22px;
+        font-size: rem(22px);
         padding-block-end: 4px;
         margin: 0;
     }
 
     .info-header {
-        padding-block: 32px;
+        padding-block: em(32px);
 
         ul {
             display: flex;
@@ -18,7 +18,7 @@
             >* {
                 display: flex;
                 justify-self: center;
-                margin-inline-end: 1px;
+                margin-inline-end: em(1px);
             }
 
         }
@@ -27,14 +27,14 @@
             font-family: 'Airbnb Cereal VF-B',
                 sans-serif;
             display: flex;
-            margin-block-start: 8px;
+            margin-block-start: em(8px);
 
             span:first-of-type {
                 :first-child {
-                    margin-block-start: 1px;
-                    margin-inline-end: 1px;
-                    width: 16px;
-                    height: 16px;
+                    margin-block-start: em(1px);
+                    margin-inline-end: em(1px);
+                    width: rem(16px);
+                    height: rem(16px);
                 }
             }
 
@@ -43,7 +43,7 @@
             }
 
             >* {
-                margin-inline-end: 4px;
+                margin-inline-end: em(4px);
             }
 
             >:last-child {
@@ -56,18 +56,18 @@
         display: flex;
         align-items: center;
         grid-column: 1;
-        padding-block: 24px;
+        padding-block: em(24px);
         border-block: 1px $bnb-gray3 solid;
 
         .host-img {
             width: fit-content;
             height: fit-content;
-            margin-inline-end: 24px;
+            margin-inline-end: em(24px);
         }
 
         img {
-            width: 40px;
-            height: 40px;
+            width: rem(40px);
+            height: rem(40px);
             border-radius: 50%;
 
             &:hover {
@@ -85,7 +85,7 @@
             }
 
             span:last-of-type {
-                font-size: 14px;
+                font-size: rem(14px);
                 color: $bnb-gray4;
             }
         }
@@ -93,34 +93,34 @@
 
     .about-host-summary {
         grid-column: 1;
-        padding-block: 9px;
+        padding-block: em(9px);
         border-block-end: 1px $bnb-gray3 solid;
 
         >* {
             border-block: 0;
-            margin-inline-start: 6px;
+            margin-inline-start: em(6px);
 
             >:first-child {
-                margin-block-end: 10px;
+                margin-block-end: em(10px);
             }
 
             >:nth-child(2) {
-                margin-inline-start: 8px;
+                margin-inline-start: em(8px);
             }
         }
 
         .about-host {
             >:nth-child(2) {
                 >span:first-of-type {
-                    margin-block-end: 4px;
+                    margin-block-end: em(4px);
                 }
             }
         }
     }
 
     .stay-description {
-        padding-block-start: 32px;
-        padding-block-end: 48px;
+        padding-block-start: em(32px);
+        padding-block-end: em(48px);
         border-block-end: 1px $bnb-gray3 solid;
 
         >p {
@@ -130,7 +130,7 @@
             line-break: strict;
             white-space-collapse: preserve;
             font-weight: 400;
-            margin-block-end: 16px;
+            margin-block-end: em(16px);
         }
 
 
@@ -139,7 +139,7 @@
             align-items: center;
 
             span:first-of-type {
-                margin-inline-end: 7px;
+                margin-inline-end: em(7px);
                 font-weight: 600;
                 text-decoration: underline;
                 cursor: pointer;
@@ -149,11 +149,11 @@
 
     .stay-amenities {
         grid-column: 1;
-        padding-block: 48px;
-        border-block-end: 1px $bnb-gray3 solid;
+        padding-block: em(48px);
+        // border-block-end: 1px $bnb-gray3 solid;  
 
         h2 {
-            padding-block-end: 24px;
+            padding-block-end: em(24px);
         }
 
         .amenities-list {
@@ -162,11 +162,11 @@
 
             li {
                 display: flex;
-                padding-block-end: 16px;
+                padding-block-end: em(16px);
                 align-items: center;
 
                 >:first-child {
-                    margin-inline-end: 16px;
+                    margin-inline-end: em(16px);
                 }
             }
         }

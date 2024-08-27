@@ -26,7 +26,10 @@ export function StayInfo({ stay }) {
                     <Link to="review">1,025 reviews</Link>
                 </div>
             </header>
-            <StayReserve stay={stay} />
+            <div className="reserve-wrapper">
+
+                <StayReserve stay={stay} />
+            </div>
 
             <section className='about-host'>
                 <div className="host-img">

@@ -51,3 +51,16 @@ export function loadFromStorage(key) {
     const data = localStorage.getItem(key)
     return (data) ? JSON.parse(data) : undefined
 }
+
+// document.querySelector('.reserve-button').addEventListener('mousemove', function (e) {
+//     const rect = this.getBoundingClientRect();
+//     const x = e.clientX - rect.left; // X coordinate relative to the button
+//     const y = e.clientY - rect.top;  // Y coordinate relative to the button
+
+//     // Calculate the background position to center the specific color
+//     const xPercent = (x / rect.width) * 100;
+//     const yPercent = (y / rect.height) * 100;
+
+//     // Update background position to center the rgb(255, 56, 92) color
+//     this.style.backgroundPosition = `${xPercent}% ${yPercent}%`;
+// });

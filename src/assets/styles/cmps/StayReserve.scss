@@ -1,214 +1,269 @@
-.stay-reserve {
-    display: grid;
-    align-self: start;
-    justify-self: end;
-    grid-template-columns: 24px 1fr 24px;
-    // grid-template-rows: min-content min-content min-content min-content;
-    margin-block-start: 32px;
-    row-gap: 0;
+.reserve-wrapper {
+    position: relative;
+    // background-color: pink;
     grid-column: 2;
-    grid-row: 1/4;
-    padding-block: 24px;
-    // margin-block-start: 32px;
-    width: 372px;
-    height: 459px;
-    border: 1px $bnb-gray3 solid;
-    font-weight: 400;
-    border-radius: 12px;
-    box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px 0px;
+    grid-row: 1/6;
+    padding-inline-start: em(93px);
+    // height: 100%;
 
-    >* {
-        grid-column: 2;
-    }
-
-    .reserve-price {
-        height: min-content;
-        grid-row: 1;
-        margin-block-end: 24px;
-
-        >span:first-child {
-            font-family: 'Airbnb Cereal VF-B',
-                sans-serif;
-            font-size: 22px;
-            font-weight: 500;
-            padding-inline-end: 3px;
-        }
-    }
-
-    .reserve-form-wrapper {
-
-        font-size: 14px;
-        padding-block-end: 10px;
-        height: min-content;
-
-        label {
-            // font-family: 'Airbnb Cereal VF-B',
-            //     sans-serif;
-            font-size: 10px;
-            font-weight: 600;
-        }
-
-        form {
-            display: grid;
-            grid-template-columns: 160.67px 160.67px;
-            grid-template-areas:
-                'check-in checkout'
-                'guests guests'
-                'reserve-btn reserve-btn'
-            ;
-
-            input[type="date"]::-webkit-inner-spin-button,
-            input[type="date"]::-webkit-calendar-picker-indicator {
-                display: none;
-                -webkit-appearance: none;
-            }
-
-            .check-in {
-                grid-area: check-in;
-
-
-            }
-
-            .checkout {
-                grid-area: checkout;
-
-                >input {
-                    border: 1px $bnb-gray5 solid;
-                    border-inline-start: none;
-                }
-
-
-            }
-
-            .check-in,
-            .checkout {
-                >input {
-
-                    padding-inline-start: 12px;
-                    padding-inline-end: 12px;
-                    padding-block-start: 26px;
-                    padding-block-end: 10px;
-                }
-            }
-
-            .check-in,
-            .checkout,
-            .guests {
-                position: relative;
-
-                >label {
-                    position: absolute;
-                    top: 12px;
-                    left: 12px;
-                    cursor: pointer;
-                }
-
-                input {
-                    width: 100%;
-                    height: 100%;
-                    text-align: start;
-                    font-stretch: 100%;
-                    font-size: 100%;
-                    text-overflow: ellipsis;
-                    cursor: pointer;
-                }
-            }
-
-            .guests {
-                grid-area: guests;
-                // text-align: start;
-
-
-                >input {
-                    padding-inline-start: 12px;
-                    padding-inline-end: 36px;
-                    padding-block-start: 26px;
-                    padding-block-end: 13px;
-                    border: 1px $bnb-gray5 solid;
-                    border-block-start: none;
-
-
-                }
-            }
-        }
-
-    }
-
-    .reserve-button {
-        position: relative;
-        padding-inline-start: 24px;
-        padding-inline-end: 24px;
-        padding-block-start: 14px;
-        padding-block-end: 14px;
-        margin-block-start: 4px;
-        height: 48px;
-        background-image:
-            radial-gradient(circle, rgb(255, 56, 92) 0%, rgb(230, 30, 77) 27.5%,
-                rgb(227, 28, 95) 40%, rgb(215, 4, 102) 57.5%, rgb(189, 30, 89) 75%,
-                rgb(189, 30, 89) 100%);
-        border-radius: 10px;
-        text-align: center;
-        transition-duration: 1.25s;
-        transition-property: opacity;
-        transition-timing-function: ease;
-
-        text-decoration: none;
-
-
-        span {
-            // background: $bnb-red;
-            font-family: 'Airbnb Cereal VF-B', sans-serif;
-            text-align: center;
-            color: white;
-            cursor: pointer;
-
-        }
-
-    }
-
-    .charge {
-        text-align: center;
-        font-size: 14px;
-        height: 26px;
-        padding-block-start: 15px;
-        // margin-block-start: 16px;
-    }
-
-    .reserve-info {
-        display: flex;
-        flex-direction: column;
-
-
+    .stay-reserve {
+        position: sticky;
+        display: grid;
+        top: em(32px);
+        right: 0px;
+        margin-block-start: em(32px);
+        grid-template-columns: rem(24px) 1fr rem(24px);
+        // grid-template-rows: min-content min-content min-content min-content;
+        row-gap: 0;
+        // grid-column: 2;
+        // grid-row: 1/4;
+        padding-block: em(24px);
+        width: rem(372px);
+        height: rem(459px);
+        border: 1px $bnb-gray3 solid;
+        font-weight: 400;
+        border-radius: 12px;
+        box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px 0px;
 
         >* {
-            display: flex;
-            justify-content: space-between;
+            grid-column: 2;
+        }
 
-            >span:first-of-type {
-                text-decoration: underline;
+        .reserve-price {
+            height: min-content;
+            grid-row: 1;
+            margin-block-end: em(24px);
+
+            >span:first-child {
+                font-family: 'Airbnb Cereal VF-B',
+                    sans-serif;
+                font-size: rem(22px);
+                font-weight: 500;
+                padding-inline-end: em(3px);
+            }
+        }
+
+        .reserve-form-wrapper {
+
+            font-size: rem(14px);
+            padding-block-end: em(10px);
+            height: min-content;
+
+            label {
+                // font-family: 'Airbnb Cereal VF-B',
+                //     sans-serif;
+                font-size: rem(10px);
+                font-weight: 600;
             }
 
 
+
+            form {
+                display: grid;
+                grid-template-columns: rem(160.67px) rem(160.67px);
+                grid-template-areas:
+                    'check-in checkout'
+                    'guests guests'
+                    'reserve-btn reserve-btn'
+                ;
+
+                input[type="date"]::-webkit-inner-spin-button,
+                input[type="date"]::-webkit-calendar-picker-indicator {
+                    display: none;
+                    -webkit-appearance: none;
+                }
+
+
+
+
+                .check-in {
+                    grid-area: check-in;
+
+                    >input {
+                        border-top-left-radius: 5px;
+                        border: 1px $bnb-gray5 solid;
+                        border-bottom: none;
+                    }
+                }
+
+
+
+
+
+
+                .checkout {
+                    grid-area: checkout;
+
+                    >input {
+                        border: 1px $bnb-gray5 solid;
+                        border-inline-start: none;
+                        border-top-right-radius: 5px;
+                        border-bottom: none;
+                        border-left: none;
+                    }
+
+
+                }
+
+                .check-in,
+                .checkout {
+                    >input {
+
+                        padding-inline-start: em(12px);
+                        padding-inline-end: em(12px);
+                        padding-block-start: em(26px);
+                        padding-block-end: em(10px);
+                    }
+                }
+
+                .check-in,
+                .checkout,
+                .guests {
+                    position: relative;
+
+                    >label {
+                        position: absolute;
+                        top: em(12px);
+                        left: em(12px);
+                        cursor: pointer;
+                    }
+
+                    input {
+                        width: 100%;
+                        height: 100%;
+                        text-align: start;
+                        font-stretch: 100%;
+                        font-size: 100%;
+                        text-overflow: ellipsis;
+                        cursor: pointer;
+                    }
+                }
+
+                .guests {
+                    grid-area: guests;
+                    // text-align: start;
+
+
+                    >input {
+                        padding-inline-start: em(12px);
+                        padding-inline-end: em(36px);
+                        padding-block-start: em(26px);
+                        padding-block-end: em(13px);
+                        border: 1px $bnb-gray5 solid;
+                        border-bottom-left-radius: 10px;
+                        border-bottom-right-radius: 10px;
+                        // border: none;
+                    }
+
+
+                }
+            }
+
         }
 
-        >:nth-child(1) {
-            padding-block-start: 24px;
+        .reserve-button {
+            position: relative;
+            padding-inline-start: em(24px);
+            padding-inline-end: em(24px);
+            padding-block-start: em(14px);
+            padding-block-end: em(14px);
+            margin-block-start: em(4px);
+            height: rem(48px);
+            background-image:
+                radial-gradient(circle, rgb(255, 56, 92) 0%, rgb(230, 30, 77) 27.5%,
+                    rgb(227, 28, 95) 40%, rgb(215, 4, 102) 57.5%, rgb(189, 30, 89) 75%,
+                    rgb(189, 30, 89) 100%);
+            border-radius: 10px;
+            text-align: center;
+            // transition-property: opacity;
+            transition-timing-function: ease;
+            background-size: 200%;
+            transition: background-position 0.1s ease;
+            /* Increase the size so that the gradient can move */
+            // transition-timing-function: ease;
+            // transition-delay: 0;
+            text-decoration: none;
+            // transition: opacity 1.25s ease, background-position 1.25s ease;
+            // animation: slideBackground 12.5s ease-in-out infinite;
+
+            // @keyframes slideBackground {
+            //     0% {
+            //         background-position: 0% 50%;
+            //     }
+
+            //     50% {
+            //         background-position: 100% 50%;
+            //     }
+
+            //     100% {
+            //         background-position: 0% 50%;
+            //     }
+            // }
+
+            // &:hover {
+            //     background-size: 300%;
+            //     /* Zoom in the background image on hover */
+            //     background-position: 50% 50%;
+            //     /* Center the background */
+            //     // transform: scale(1.05);
+            //     /* Slightly scale the button for a zoom effect */
+            // }
+
+            span {
+                // background: $bnb-red;
+                font-family: 'Airbnb Cereal VF-B', sans-serif;
+                text-align: center;
+                color: white;
+                cursor: pointer;
+
+            }
+
         }
 
-        >:nth-child(2) {
-            padding-block-start: 16px;
+        .charge {
+            text-align: center;
+            font-size: rem(14px);
+            height: rem(26px);
+            padding-block-start: em(15px);
+            // margin-block-start: 16px;
         }
-    }
 
-    .reserve-total-price {
-        display: flex;
-        font-family: $bnb-font-bold;
-        border-block-start: 1px $bnb-gray5 solid;
-        padding-block-start: 25px;
-        margin-block-start: 22px;
+        .reserve-info {
+            display: flex;
+            flex-direction: column;
 
-        >:first-child {
-            flex-grow: 1;
+
+
+            >* {
+                display: flex;
+                justify-content: space-between;
+
+                >span:first-of-type {
+                    text-decoration: underline;
+                }
+
+
+            }
+
+            >:nth-child(1) {
+                padding-block-start: em(24px);
+            }
+
+            >:nth-child(2) {
+                padding-block-start: em(16px);
+            }
+        }
+
+        .reserve-total-price {
+            display: flex;
+            font-family: $bnb-font-bold;
+            border-block-start: 1px $bnb-gray5 solid;
+            padding-block-start: em(25px);
+            margin-block-start: em(22px);
+
+            >:first-child {
+                flex-grow: 1;
+            }
         }
     }
 }
