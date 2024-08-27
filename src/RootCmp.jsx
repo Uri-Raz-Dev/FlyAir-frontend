@@ -1,5 +1,5 @@
 import React from 'react'
-import { Routes, Route, useParams, useLocation } from 'react-router'
+import { Routes, Route, Navigate, useParams, useLocation } from 'react-router'
 
 import { HomePage } from './pages/HomePage'
 import { AboutUs, AboutTeam, AboutVision } from './pages/AboutUs'
@@ -127,7 +127,8 @@ export function RootCmp() {
             <UserMsg />
             <main>
                 <Routes>
-                    {renderRoutes(routes)}
+                    <Route path="/" element={<Navigate to="/stay" />} /> 
+                    {renderRoutes(routes)} 
                 </Routes>
             </main>
             <AppFooter />
