@@ -19,7 +19,7 @@ export function AppHeader({filterBy, onSetFilter}) {
 	const navigate = useNavigate()
 	const location = useLocation()
 	const isLocation = location.pathname.startsWith(`/stay/s`)
-	const [filterBy, setFilterBy] = useState(stayService.getDefaultFilter())
+	// const [filterBy, setFilterBy] = useState(stayService.getDefaultFilter())
 	// const stays = useSelector(storeState => storeState.stayModule.stays)
 
 	async function onLogout() {
