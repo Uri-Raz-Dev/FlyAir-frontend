@@ -17,6 +17,7 @@ import { UserMsg } from './cmps/UserMsg.jsx'
 import { LoginSignup } from './pages/LoginSignup.jsx'
 import { Login } from './pages/Login.jsx'
 import { Signup } from './pages/Signup.jsx'
+import { HostingPage } from './pages/HostingPage.jsx'
 
 // export function RootCmp() {
 //     return (
@@ -53,6 +54,10 @@ const routes = [
     {
         path: '/stay',
         component: StayIndex,
+    },
+    {
+        path: '/hosting',
+        component: HostingPage,
     },
     {
         path: 'about',

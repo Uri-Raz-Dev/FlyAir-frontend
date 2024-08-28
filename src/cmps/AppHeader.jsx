@@ -45,7 +45,7 @@ export function AppHeader({filterBy, onSetFilter}) {
 			<StayFilter filterBy={filterBy} onSetFilter={onSetFilter} />
 
 			<nav className="profile">
-				<Link className="host-link" to={"/"}>
+				<Link className="host-link" to={"/hosting"}>
 					<div>Switch to hosting</div>
 				</Link>  {/* //new user will show "airbnb your home" */}
 				<Link className="language-link" to={"/"}>

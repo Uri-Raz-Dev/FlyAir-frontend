@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
 import { SvgIcon } from './Svgicon.jsx'
 import { svgService } from '../services/svg.service'
+import { Link } from 'react-router-dom'
 
 export function StayFilter({ filterBy, onSetFilter }) {
-    const [filterToEdit, setFilterToEdit] = useState(structuredClone(filterBy))
+    const [filterToEdit, setFilterToEdit] = useState({...filterBy})
 
     useEffect(() => {
         onSetFilter(filterToEdit)
@@ -40,17 +41,19 @@ export function StayFilter({ filterBy, onSetFilter }) {
         <div className="search-bar">
             <div className="search-field">
             {/* <label>Where</label> */}
+            
             <input
                 type="text"
                 name="txt"
-                value={filterToEdit.txt}
+                value={filterToEdit.txt || ''}
                 placeholder="Search destinations"
                 onChange={handleChange}
             />
             </div>
             <div className="search-button">
-                <button type="submit"><SvgIcon  iconName={"search"}/></button>
+                <Link to={`/stay`}><button type="submit"><SvgIcon  iconName={"search"}/></button></Link>
             </div>
+
         </div>
 
     )
