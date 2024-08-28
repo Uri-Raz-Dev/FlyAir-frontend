@@ -18,6 +18,7 @@ import { LoginSignup } from './pages/LoginSignup.jsx'
 import { Login } from './pages/Login.jsx'
 import { Signup } from './pages/Signup.jsx'
 import { HostingPage } from './pages/HostingPage.jsx'
+import { HostingList } from './cmps/HostingList.jsx'
 
 // export function RootCmp() {
 //     return (
@@ -58,6 +59,7 @@ const routes = [
     {
         path: '/hosting',
         component: HostingPage,
+       
     },
     {
         path: 'about',
@@ -132,8 +134,8 @@ export function RootCmp() {
             <UserMsg />
             <main>
                 <Routes>
-                    <Route path="/" element={<Navigate to="/stay" />} /> 
-                    {renderRoutes(routes)} 
+                    <Route path="/" element={<Navigate to="/stay" />} />
+                    {renderRoutes(routes)}
                 </Routes>
             </main>
             <AppFooter />
