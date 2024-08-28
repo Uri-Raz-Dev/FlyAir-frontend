@@ -36,7 +36,7 @@
 
 .details-image-grid {
     display: grid;
-    grid-template-columns: minmax(rem(200px), rem(560px)) repeat(4, 0.25fr);
+    grid-template-columns: 32.5vw repeat(4, 8vw);
     grid-template-rows: rem(244.89px) rem(236.89px);
     gap: em(8px);
     overflow-x: clip;
@@ -46,7 +46,7 @@
     >li {
         img {
             height: 100%;
-            object-fit: fill;
+            object-fit: cover;
         }
     }
 

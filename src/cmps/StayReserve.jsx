@@ -13,6 +13,8 @@ export function StayReserve({ stay }) {
     let nightsPrice = price * nights
     let serviceFee = price * 0.8
     let totalPrice = nightsPrice + serviceFee
+
+
     return (
         <aside className="stay-reserve">
 
@@ -21,17 +23,26 @@ export function StayReserve({ stay }) {
                 <span>night</span>
             </div>
 
+
+            <div className="calendar-container">
+                <nav className="nav-months">
+                    <div>chevron-left</div>
+                    <div>next</div>
+                </nav>
+
+
+            </div>
             <div className="reserve-form-wrapper">
                 <form >
 
                     <div className="check-in">
                         <label htmlFor="check-in">CHECK-IN</label>
-                        <input type="date" name="check-in" id="check-in" value={'2024-08-27'} />
+                        <input type="text" name="check-in" id="check-in" />
                     </div>
 
                     <div className="checkout">
                         <label htmlFor="checkout">CHECKOUT</label>
-                        <input type="date" name="checkout" id="checkout" value={'2024-09-01'} />
+                        <input type="text" name="checkout" id="checkout" />
                     </div>
 
                     <div className="guests">
