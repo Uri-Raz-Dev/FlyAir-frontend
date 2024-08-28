@@ -1,0 +1,29 @@
+.calendar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.css-12mkn7b-MuiButtonBase-root-MuiIconButton-root-MuiPickersCalendarHeader-switchViewButton {
+
+    display: none !important;
+}
+
+
+.calendar-left {
+    padding-inline: 13px;
+
+    .css-1nkg345-MuiButtonBase-root-MuiIconButton-root-MuiPickersArrowSwitcher-button {
+        display: none;
+    }
+}
+
+.calendar-right {
+    padding-inline: 13px;
+
+    .css-kg9q0s-MuiButtonBase-root-MuiIconButton-root-MuiPickersArrowSwitcher-button {
+        display: none;
+    }
+}

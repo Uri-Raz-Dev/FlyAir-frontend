@@ -3,6 +3,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import { Link } from 'react-router-dom';
+import { Calendar } from './Calendar';
 
 export function StayReserve({ stay }) {
     const { _id, name, summary, type, imgurls, price, capacity, amenities, labels } = stay || {}
@@ -24,14 +25,8 @@ export function StayReserve({ stay }) {
             </div>
 
 
-            <div className="calendar-container">
-                <nav className="nav-months">
-                    <div>chevron-left</div>
-                    <div>next</div>
-                </nav>
+            <Calendar />
 
-
-            </div>
             <div className="reserve-form-wrapper">
                 <form >
 
