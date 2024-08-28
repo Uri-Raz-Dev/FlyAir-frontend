@@ -7,7 +7,7 @@ import { StayFilter } from "./StayFilter.jsx"
 import { SvgIcon } from "./Svgicon.jsx"
 import { useState } from "react"
 // import { NavBar } from './NavBarUser.jsx'
-export function AppHeader() {
+export function AppHeader({filterBy, onSetFilter}) {
 	const user = useSelector(storeState => storeState.userModule.user)
 
 	const [isNavOpen, setIsNavOpen] = useState(false);
@@ -19,7 +19,7 @@ export function AppHeader() {
 	const navigate = useNavigate()
 	const location = useLocation()
 	const isLocation = location.pathname.startsWith(`/stay/s`)
-	const [filterBy, setFilterBy] = useState(stayService.getDefaultFilter())
+	// const [filterBy, setFilterBy] = useState(stayService.getDefaultFilter())
 	// const stays = useSelector(storeState => storeState.stayModule.stays)
 
 	async function onLogout() {
@@ -42,10 +42,10 @@ export function AppHeader() {
 
 			</Link>
 
-			<StayFilter filterBy={filterBy} setFilterBy={setFilterBy} />
+			<StayFilter filterBy={filterBy} onSetFilter={onSetFilter} />
 
 			<nav className="profile">
-				<Link className="host-link" to={"/"}>
+				<Link className="host-link" to={"/hosting"}>
 					<div>Switch to hosting</div>
 				</Link>  {/* //new user will show "airbnb your home" */}
 				<Link className="language-link" to={"/"}>

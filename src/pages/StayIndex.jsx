@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
-import { loadStays, addStay, updateStay, removeStay, addStayMsg } from '../store/actions/stay.actions'
+import { loadStays, addStay, updateStay, removeStay, addStayMsg, setFilterBy } from '../store/actions/stay.actions'
 
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
 import { stayService } from '../services/stay/'
@@ -13,7 +13,8 @@ import { AppHeader } from '../cmps/AppHeader'
 
 export function StayIndex() {
 
-    const [filterBy, setFilterBy] = useState(stayService.getDefaultFilter())
+    // const [filterBy, setFilterBy] = useState(stayService.getDefaultFilter())
+    const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
     const stays = useSelector(storeState => storeState.stayModule.stays)
 
     useEffect(() => {
@@ -53,17 +54,24 @@ export function StayIndex() {
         }
     }
 
-    return (
-     
+    function onSetFilter(filterBy) {
+        setFilterBy(filterBy)
+        // console.log('filterBy:', filterBy)
+    }
 
-                <div className=" stays-page">
-                    <h2 className="main-title">Available Stays</h2>
-                   
-                       <StayList
-                stays={stays}
-                onRemoveStay={onRemoveStay}
-                onUpdateStay={onUpdateStay} />
-                    
+    return (
+        <>
+            <AppHeader filterBy={filterBy} onSetFilter={onSetFilter} />
+
+            <div className=" stays-page">
+                <h2 className="main-title">Available Stays</h2>
+
+                <StayList
+                    stays={stays}
+                    onRemoveStay={onRemoveStay}
+                    onUpdateStay={onUpdateStay} />
+
             </div>
+        </>
     )
 }

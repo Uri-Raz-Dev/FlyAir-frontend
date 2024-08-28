@@ -262,14 +262,19 @@ export const stayService = {
 window.cs = stayService
 
 
-async function query({ filterBy = { price: 0 } }) {
+async function query(filterBy = {}) {
     var stays = await storageService.query(STORAGE_KEY)
-    // const { txt, minSpeed, maxPrice, sortField, sortDir } = filterBy
+    // const { filterBy } = store.getState().toyModule
+    const { txt } = filterBy
+    console.log('filterBy:', filterBy)
 
-    // if (txt) {
-    //     const regex = new RegExp(filterBy.txt, 'i')
-    //     stays = stays.filter(stay => regex.test(stay.vendor) || regex.test(stay.description))
-    // }
+    if (txt) {
+        const regex = new RegExp(filterBy.txt, 'i')
+        stays = stays.filter(stay => regex.test(stay.name) || regex.test(stay.description) || regex.test(stay.summary) || regex.test(stay.location.city) || regex.test(stay.location.country))
+        console.log('stays:', stays)
+    }
+
+    // const { txt, minSpeed, maxPrice, sortField, sortDir } = filterBy
     // if (minSpeed) {
     //     stays = stays.filter(stay => stay.speed >= minSpeed)
     // }
@@ -282,7 +287,7 @@ async function query({ filterBy = { price: 0 } }) {
     //         (stay1[sortField] - stay2[sortField]) * +sortDir)
     // }
 
-    // stays = stays.map(({ _id, vendor, price, speed, owner }) => ({ _id, vendor, price, speed, owner }))
+    // stays = stays.map(({ _id, name, description, }) => ({ _id, name, description }))
     return stays
 }
 

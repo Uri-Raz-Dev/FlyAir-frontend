@@ -1,5 +1,5 @@
 import React from 'react'
-import { Routes, Route, useParams, useLocation } from 'react-router'
+import { Routes, Route, Navigate, useParams, useLocation } from 'react-router'
 
 import { HomePage } from './pages/HomePage'
 import { AboutUs, AboutTeam, AboutVision } from './pages/AboutUs'
@@ -17,6 +17,8 @@ import { UserMsg } from './cmps/UserMsg.jsx'
 import { LoginSignup } from './pages/LoginSignup.jsx'
 import { Login } from './pages/Login.jsx'
 import { Signup } from './pages/Signup.jsx'
+import { HostingPage } from './pages/HostingPage.jsx'
+import { HostingList } from './cmps/HostingList.jsx'
 
 // export function RootCmp() {
 //     return (
@@ -53,6 +55,11 @@ const routes = [
     {
         path: '/stay',
         component: StayIndex,
+    },
+    {
+        path: '/hosting',
+        component: HostingPage,
+       
     },
     {
         path: 'about',
@@ -123,10 +130,11 @@ export function RootCmp() {
     return (
         <div className={isStayDetailsPage ? "main-container details" : "main-container"}>
             {/* <NavBar/> */}
-            <AppHeader />
+            {/* <AppHeader /> */}
             <UserMsg />
             <main>
                 <Routes>
+                    <Route path="/" element={<Navigate to="/stay" />} />
                     {renderRoutes(routes)}
                 </Routes>
             </main>
