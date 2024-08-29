@@ -10,6 +10,11 @@
 //   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); // Subtle shadow for depth
   background-color: #fff;
 
+// :hover
+//  .card-carousel .carousel-container .carousel .next
+// {
+// opacity: 1;
+// }
 
 
     &-carousel {
@@ -32,9 +37,14 @@
     
        
     .card-image {
+        position: relative;
         width: 100%;
         height: 281px; // Each slide should fill the carousel container
-        
+        :hover{
+            .arrow-prev{
+          opacity: 1;
+            }
+        }
         img {
             height: 100%;
             width: 100%;
@@ -42,15 +52,25 @@
             border-radius: 12px 12px 0 0;
             // font-weight: 400;
         }
+        div{
+            position: absolute;
+            right: 11px;
+            top: 9px;
+            font-size: 16px;
+            line-height: 20px;
+            :hover{
+                transform: scale(1.08);
+            }
+        }
     
     }
 
     &-content {
         display: grid;
 
-        grid-template-rows: var(--card-content-grid_template-rows, unset);
+        // grid-template-rows:  unset;
         // grid-template-columns: var(--card-content-grid_template-columns, minmax(0, 1fr) max-content);
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0,1fr) max-content;
 
         column-gap: 8px;
         row-gap: 2px;
@@ -58,10 +78,49 @@
         line-height: 1.1875rem;
         font-size: 0.9375rem;
 
+        &-location{
+font-weight: 550;
+
+        }
+
+        &-data{
+            color: rgba(106,106,106,1);
+
+        }
+&-price{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    font-weight: 400;
+    margin-top: 6px;
+grid-column-start: 1;
+grid-column-end: -1;
+gap: 2px;
+
+.num{
+    font-weight: 550;
+}
+
+}
+&-score{
+position: relative;
+
+    display: flex;
+    align-items: center;
+    column-gap: 4px;
+
+    grid-row-start: 1;
+    grid-row-end: auto;
+    grid-column-start: -1;
+    grid-column-end: -2;
+    justify-self: end;
+star-content{
+
+}
+}
 
     }
 
-   
 
 
 }
