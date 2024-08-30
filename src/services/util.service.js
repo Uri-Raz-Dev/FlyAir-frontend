@@ -52,15 +52,43 @@ export function loadFromStorage(key) {
     return (data) ? JSON.parse(data) : undefined
 }
 
-// document.querySelector('.reserve-button').addEventListener('mousemove', function (e) {
-//     const rect = this.getBoundingClientRect();
-//     const x = e.clientX - rect.left; // X coordinate relative to the button
-//     const y = e.clientY - rect.top;  // Y coordinate relative to the button
 
-//     // Calculate the background position to center the specific color
-//     const xPercent = (x / rect.width) * 100;
-//     const yPercent = (y / rect.height) * 100;
 
-//     // Update background position to center the rgb(255, 56, 92) color
-//     this.style.backgroundPosition = `${xPercent}% ${yPercent}%`;
-// });
+function getCalendar(date) {
+    const month = date.getMonth()
+    const year = date.getFullYear()
+    const daysInMonth = new Date(year, month + 1, 0).getDate()
+    const firstDayOfMonth = new Date(year, month, 1).getDay()
+    const lastDayOfMonth = new Date(year, month, daysInMonth).getDay()
+    const daysInPreviousMonth = new Date(year, month, 0).getDate()
+    const calendar = []
+
+    // Days in the previous month
+    for (let i = 1; i <= firstDayOfMonth; i++) {
+        calendar.push({
+            dayNumber: daysInPreviousMonth - firstDayOfMonth + i,
+            isCurrentMonth: false,
+        })
+    }
+
+    // Days in the current month
+    for (let i = 1; i <= daysInMonth; i++) {
+        calendar.push({
+            dayNumber: i,
+            isCurrentMonth: true,
+        })
+    }
+
+    // Days in the next month
+    const remainingDays = 7 - (lastDayOfMonth + 1)
+    for (let i = 1; i <= remainingDays; i++) {
+        calendar.push({
+            dayNumber: i,
+            isCurrentMonth: false,
+        })
+    }
+
+    return calendar
+}
+
+console.log(getCalendar(new Date()))

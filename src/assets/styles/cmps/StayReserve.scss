@@ -124,7 +124,7 @@
                     >label {
                         position: absolute;
                         top: em(12px);
-                        left: em(12px);
+                        left: em(18px);
                         cursor: pointer;
                     }
 
@@ -170,14 +170,16 @@
             margin-block-start: em(4px);
             height: rem(48px);
             background-image:
-                radial-gradient(circle, rgb(255, 56, 92) 0%, rgb(230, 30, 77) 27.5%,
-                    rgb(227, 28, 95) 40%, rgb(215, 4, 102) 57.5%, rgb(189, 30, 89) 75%,
-                    rgb(189, 30, 89) 100%);
+                radial-gradient(circle, #ff385c 0, #e61e4d 27.5%,
+                    #e31c5f 40%, #d70466 57.5%, #bd1e59 75%, #bd1e59 100%);
+
+            background-size: 200% 200%;
+            width: 100%;
+            background-position: calc((100 - var(--mouse-x, 0))* 1%) calc((100 - var(--mouse-y, 0))* 1%);
             border-radius: 10px;
             text-align: center;
             // transition-property: opacity;
             transition-timing-function: ease;
-            background-size: 200%;
             transition: background-position 0.1s ease;
             /* Increase the size so that the gradient can move */
             // transition-timing-function: ease;
@@ -265,5 +267,21 @@
                 flex-grow: 1;
             }
         }
+    }
+
+    .calendar-container {
+        position: absolute;
+        background: white;
+        z-index: 2;
+        top: 80px;
+        left: -230px;
+        width: rem(597px);
+        height: rem(428px);
+        padding-inline: em(32px);
+        padding-top: em(24px);
+        padding-bottom: em(16px);
+        border-radius: 16px;
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 20px;
+        // opacity: 10%;
     }
 }

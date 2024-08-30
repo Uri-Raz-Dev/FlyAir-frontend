@@ -4,7 +4,7 @@
     grid-template-columns: minmax(1.4286rem, 5.7143rem) 1fr minmax(1.4286rem, 5.7143rem);
 
     &.details {
-        grid-template-columns: minmax(1.4286rem, 273px) 1fr minmax(1.4286rem, 273px);
+        grid-template-columns: 273px 1fr 273px;
     }
 
 
