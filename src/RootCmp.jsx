@@ -19,6 +19,8 @@ import { Login } from './pages/Login.jsx'
 import { Signup } from './pages/Signup.jsx'
 import { HostingPage } from './pages/HostingPage.jsx'
 import { HostingList } from './cmps/HostingList.jsx'
+import { useSelector } from 'react-redux'
+import { setFilterBy } from './store/actions/stay.actions.js'
 
 // export function RootCmp() {
 //     return (
@@ -127,17 +129,24 @@ export function RootCmp() {
     const location = useLocation()
     const { stayId } = useParams()
     const isStayDetailsPage = location.pathname.startsWith(`/stay/s`)
+
+    const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
+
+    function onSetFilter(filterBy) {
+        setFilterBy(filterBy)
+    }
+
     return (
         <div className={isStayDetailsPage ? "main-container details" : "main-container"}>
             {/* <NavBar/> */}
-            {/* <AppHeader /> */}
+            <AppHeader filterBy={filterBy} onSetFilter={onSetFilter} />
             <UserMsg />
-            <main>
+            <main >
                 <Routes>
                     <Route path="/" element={<Navigate to="/stay" />} />
                     {renderRoutes(routes)}
                 </Routes>
-            </main>
+            </main >
             <AppFooter />
         </div>
     )

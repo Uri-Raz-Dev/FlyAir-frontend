@@ -47,19 +47,21 @@ $bnb-black: #222;
 
 $bnb-font-bold: 'Airbnb Cereal VF-B',
     sans-serif;
+$bnb-font-light: 'Airbnb Cereal VF-L',
+    sans-serif;
+
 
 // Breakpoints
 $small-breakpoint: 550px; //2 stays per row
 $narrow-breakpoint: 950px; //3 stays per row
-$normal-breakpoint: 1128px;  //4 stays per row
-$desktop-breakpoint: 1460px;  //5 stays per row
-$full-screen-breakpoint: 1880px;  //6 stays per row
+$normal-breakpoint: 1128px; //4 stays per row
+$desktop-breakpoint: 1460px; //5 stays per row
+$full-screen-breakpoint: 1880px; //6 stays per row
 
 // grid data : 
 $breakpoint-grid_row-gap: 40px;
 $breakpoint-grid_column-gap: 24px;
-$breakpoint-grid_columns:1;
+$breakpoint-grid_columns: 1;
 
 //stay-card data:
 $margin-bottom-img : 12px;
-
