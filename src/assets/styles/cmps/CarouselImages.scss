@@ -1,0 +1,46 @@
+.carousel-root{
+.carousel{
+
+    .next{
+        position: absolute;
+        right: 12px;
+        top:50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        height: 32px;
+        width: 32px;
+        border-color: rgba(0,0,0,0.08);
+        cursor: pointer;
+        :hover{
+            transform: scale(1.04);
+            border-color:#00000014 ;
+           box-shadow: (1 0 0 1px transparent, 0 0 0 4px transparent,0,6px,16px,rgba(0,0,0,0.12) );
+           color: black;
+        }
+    }
+    .prev{
+        position: absolute;
+        left: 12px;
+        top:50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        height: 32px;
+        width: 32px;
+        border-color: rgba(0,0,0,0.08);
+        cursor: pointer;
+        :hover{
+            transform: scale(1.04);
+            border-color:#00000014 ;
+           box-shadow: (1 0 0 1px transparent, 0 0 0 4px transparent,0,6px,16px,rgba(0,0,0,0.12) );
+           color: black;
+        }
+        }
+}
+//     :hover{
+// background-color: rgba(0,0,0,0)
+//     }
+}

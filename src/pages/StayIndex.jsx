@@ -10,6 +10,7 @@ import { userService } from '../services/user'
 import { StayList } from '../cmps/StayList'
 import { StayFilter } from '../cmps/StayFilter'
 import { AppHeader } from '../cmps/AppHeader'
+import { TypeLabels } from '../cmps/TypeLabels'
 
 export function StayIndex() {
 
@@ -64,7 +65,8 @@ export function StayIndex() {
             <AppHeader filterBy={filterBy} onSetFilter={onSetFilter} />
 
             <div className=" stays-page">
-                <h2 className="main-title">Available Stays</h2>
+                {/* <h2 className="main-title">Available Stays</h2> */}
+                <TypeLabels/>
 
                 <StayList
                     stays={stays}

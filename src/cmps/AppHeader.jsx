@@ -5,11 +5,12 @@ import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service"
 import { logout } from "../store/actions/user.actions"
 import { StayFilter } from "./StayFilter.jsx"
 import { SvgIcon } from "./Svgicon.jsx"
-import { useState } from "react"
+import { useRef, useState } from "react"
+
 // import { NavBar } from './NavBarUser.jsx'
 export function AppHeader({filterBy, onSetFilter}) {
 	const user = useSelector(storeState => storeState.userModule.user)
-
+const headerRef=useRef(null)
 	const [isNavOpen, setIsNavOpen] = useState(false);
 
 	function toggleNav() {
@@ -34,7 +35,7 @@ export function AppHeader({filterBy, onSetFilter}) {
 	}
 
 	return (
-		<header className={isLocation ? "app-header details full" : "app-header full"}>
+		<header ref={headerRef} className={isLocation ? "app-header details full" : "app-header full"}>
 			<Link to={"stay/"} className="logo">
 
 				<SvgIcon iconName={"logosymbol"}></SvgIcon>
