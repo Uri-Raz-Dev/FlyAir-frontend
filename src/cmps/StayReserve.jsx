@@ -70,7 +70,7 @@ export function StayReserve({ stay }) {
 
                     <div className="guests">
                         <label htmlFor="guests">GUESTS</label>
-                        <input type="text" name="guests" id="guests" value={'1 guest'} />
+                        <input type="text" name="guests" id="guests" />
                     </div>
 
                 </form>
