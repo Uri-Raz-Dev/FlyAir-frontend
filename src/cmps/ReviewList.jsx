@@ -9,7 +9,6 @@ export function ReviewList({ stay }) {
     const { reviews, host } = stay
 
 
-
     function shouldShowActionBtns(review) {
         const user = userService.getLoggedinUser()
 

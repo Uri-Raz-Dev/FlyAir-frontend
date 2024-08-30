@@ -4,16 +4,44 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import { Link } from 'react-router-dom';
 import { Calendar } from './Calendar';
+import { useEffect, useRef } from 'react';
 
 export function StayReserve({ stay }) {
     const { _id, name, summary, type, imgurls, price, capacity, amenities, labels } = stay || {}
     const { city, country, countryCode, address, lat, lag } = stay?.location || {}
     const { fullname, imgUrl } = stay?.host || {}
 
+    const buttonRef = useRef(null);
+
+    useEffect(() => {
+        const handleMouseMove = (event) => {
+            if (buttonRef.current) {
+                const rect = buttonRef.current.getBoundingClientRect()
+                const mouseX = event.clientX - rect.left
+                const mouseY = event.clientY - rect.top
+                const percentX = (mouseX / rect.width) * 100
+                const percentY = (mouseY / rect.height) * 100
+                buttonRef.current.style.setProperty('--mouse-x', percentX)
+                buttonRef.current.style.setProperty('--mouse-y', percentY)
+            }
+        }
+
+        const buttonElement = buttonRef.current
+        buttonElement.addEventListener('mousemove', handleMouseMove)
+
+        return () => {
+            buttonElement.removeEventListener('mousemove', handleMouseMove)
+        }
+    }, [])
+
+
     let nights = 5
     let nightsPrice = price * nights
     let serviceFee = price * 0.8
     let totalPrice = nightsPrice + serviceFee
+
+
+
 
 
     return (
@@ -47,8 +75,8 @@ export function StayReserve({ stay }) {
 
                 </form>
             </div>
-            <Link to="/" className='reserve-button'>
-                <span to="/">Reserve</span>
+            <Link to="/" className='reserve-button' ref={buttonRef}>
+                <span>Reserve</span>
             </Link>
 
             <span className="charge">

@@ -59,7 +59,7 @@ const routes = [
     {
         path: '/hosting',
         component: HostingPage,
-       
+
     },
     {
         path: 'about',
