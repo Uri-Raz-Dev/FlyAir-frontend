@@ -62,7 +62,7 @@ const stays = [
         "description": 'Nestled on the bustling 5th Avenue, this charming studio offers a warm and intimate atmosphere. Ideal for couples or solo travelers, it features a private entrance, a cozy fireplace, and a backyard for some outdoor relaxation. Hosted by Emily Watson, this pet-friendly retreat provides the perfect balance of city excitement and homey comfort.',
 
         "amenities": ['Fireplace', 'Wifi', 'Kitchen', 'Free parking', 'Private entrance', 'Backyard'],
-        "labels": ['Countryside', 'Romantic Getaway', 'Pet-Friendly', 'Cozy'],
+        "labels": ['Beach', 'Lake', 'Luxe', 'Islands'],
         "host": {
             "_id": 'u103',
             "fullname": 'Emily Watson',

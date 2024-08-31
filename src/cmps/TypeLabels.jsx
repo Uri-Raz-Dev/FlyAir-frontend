@@ -6,9 +6,10 @@ export function TypeLabels() {
     const listRef = useRef(null);
     const [canScrollLeft, setCanScrollLeft] = useState(false);
     const [canScrollRight, setCanScrollRight] = useState(true);
+    const [selectedLabel, setSelectedLabel] = useState(null);
 
     const handleScroll = (direction) => {
-        const scrollAmount = listRef.current.clientWidth; // Scroll by the width of the visible area
+        const scrollAmount = listRef.current.clientWidth;
         if (direction === "left") {
             listRef.current.scrollBy({ left: -scrollAmount, behavior: "smooth" });
         } else {
@@ -24,23 +25,19 @@ export function TypeLabels() {
     };
 
     return (
-
-
-        <div className="labels-container" >
-
-
-
+        <div className="labels-container">
             <div className="scroll-button left-button" style={{ display: canScrollLeft ? "flex" : "none" }} onClick={() => handleScroll("left")}
-                disabled={!canScrollLeft} >
-                <SvgIcon iconName={"leftlabelarrow"}></SvgIcon>
+                disabled={!canScrollLeft}>
+                <SvgIcon iconName={"leftlabelarrow"} />
             </div>
-
-
-
 
             <ul ref={listRef} className="labels-list" onScroll={checkScrollPosition}>
                 {Object.keys(labels).map((label, index) => (
-                    <li className="filter-item" key={index}>
+                    <li
+                        className={`filter-item ${selectedLabel === label ? 'active' : ''}`}
+                        onClick={() => setSelectedLabel(label)}
+                        key={index}
+                    >
                         <label className="filter-label">
                             <input type="radio" name="type-filter" value={label} />
                             <div className="stay-labal-item">
@@ -52,18 +49,15 @@ export function TypeLabels() {
                 ))}
             </ul>
 
-
             <div className="scroll-button right-button" style={{ display: canScrollRight ? "flex" : "none" }} onClick={() => handleScroll("right")}
-                disabled={!canScrollRight} >
-                <SvgIcon iconName={"rightlabelarrow"}></SvgIcon>
+                disabled={!canScrollRight}>
+                <SvgIcon iconName={"rightlabelarrow"} />
             </div>
-
 
             <div className="filters">
-                <SvgIcon iconName={"filters"}></SvgIcon>
+                <SvgIcon iconName={"filters"} />
                 <div>Filters</div>
             </div>
-
         </div>
     );
 }

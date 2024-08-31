@@ -11,6 +11,8 @@ import { StayList } from '../cmps/StayList'
 import { StayFilter } from '../cmps/StayFilter'
 import { AppHeader } from '../cmps/AppHeader'
 import { TypeLabels } from '../cmps/TypeLabels'
+import { DatePicker } from '@mui/x-date-pickers'
+import { DatePickerr } from '../cmps/DatePicker'
 
 export function StayIndex() {
 
@@ -71,7 +73,7 @@ export function StayIndex() {
                     stays={stays}
                     onRemoveStay={onRemoveStay}
                     onUpdateStay={onUpdateStay} />
-
+                <DatePickerr />
             </div>
         </>
     )
