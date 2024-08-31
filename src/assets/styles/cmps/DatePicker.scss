@@ -1,0 +1,38 @@
+.date-picker-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.date-picker-controls {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.date-picker-controls button {
+    border: 1px solid #ddd;
+    background-color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.date-picker-controls button:hover {
+    border-color: #bbb;
+}
+
+.date-picker-controls button.active {
+    border-color: #ff385c;
+    background-color: #ff385c;
+    color: white;
+}
+
+.rdrDefinedRangesWrapper {
+    display: none;
+}
+
+// .rdrDateDisplayWrapper {
+//     display: none;
+// }

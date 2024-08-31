@@ -11,6 +11,9 @@ import { StayList } from '../cmps/StayList'
 import { StayFilter } from '../cmps/StayFilter'
 import { AppHeader } from '../cmps/AppHeader'
 import { TypeLabels } from '../cmps/TypeLabels'
+import { DatePicker } from '@mui/x-date-pickers'
+import { DatePickerr } from '../cmps/DatePicker'
+
 export function StayIndex() {
 
     // const [filterBy, setFilterBy] = useState(stayService.getDefaultFilter())
@@ -61,17 +64,16 @@ export function StayIndex() {
 
     return (
         <>
-            {/* <AppHeader filterBy={filterBy} onSetFilter={onSetFilter} /> */}
 
-            <div className=" stays-page">
+            <div className="stays-page full">
                 {/* <h2 className="main-title">Available Stays</h2> */}
-                <TypeLabels/>
+                <TypeLabels />
 
                 <StayList
                     stays={stays}
                     onRemoveStay={onRemoveStay}
                     onUpdateStay={onUpdateStay} />
-
+                <DatePickerr />
             </div>
         </>
     )

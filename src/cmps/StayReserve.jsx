@@ -12,7 +12,6 @@ export function StayReserve({ stay }) {
     const { fullname, imgUrl } = stay?.host || {}
 
     const buttonRef = useRef(null);
-
     useEffect(() => {
         const handleMouseMove = (event) => {
             if (buttonRef.current) {

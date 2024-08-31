@@ -1,46 +1,76 @@
-.carousel-root{
-.carousel{
+.carousel-root {
+    .carousel {
+        .hide {
+            display: none;
+        }
 
-    .next{
-        position: absolute;
-        right: 12px;
-        top:50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 50%;
-        height: 32px;
-        width: 32px;
-        border-color: rgba(0,0,0,0.08);
-        cursor: pointer;
-        :hover{
-            transform: scale(1.04);
-            border-color:#00000014 ;
-           box-shadow: (1 0 0 1px transparent, 0 0 0 4px transparent,0,6px,16px,rgba(0,0,0,0.12) );
-           color: black;
+        .next,
+        .prev {
+            // display: none;
+            position: absolute;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
         }
+
+        &:hover {
+
+            .next,
+            .prev {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .next {
+                position: absolute;
+                right: 12px;
+                top: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 50%;
+                height: 32px;
+                width: 32px;
+                border-color: rgba(0, 0, 0, 0.08);
+                cursor: pointer;
+                z-index: 1;
+
+                :hover {
+                    transform: scale(1.04);
+                    border-color: #00000014;
+                    box-shadow: (1 0 0 1px transparent, 0 0 0 4px transparent, 0, 6px, 16px, rgba(0, 0, 0, 0.12));
+                    color: black;
+                }
+            }
+
+
+            .prev {
+                position: absolute;
+                left: 12px;
+                top: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 50%;
+                height: 32px;
+                width: 32px;
+                border-color: rgba(0, 0, 0, 0.08);
+                cursor: pointer;
+                z-index: 1;
+
+                :hover {
+                    transform: scale(1.04);
+                    border-color: #00000014;
+                    box-shadow: (1 0 0 1px transparent, 0 0 0 4px transparent, 0, 6px, 16px, rgba(0, 0, 0, 0.12));
+                    color: black;
+                }
+            }
+
+        }
+
     }
-    .prev{
-        position: absolute;
-        left: 12px;
-        top:50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 50%;
-        height: 32px;
-        width: 32px;
-        border-color: rgba(0,0,0,0.08);
-        cursor: pointer;
-        :hover{
-            transform: scale(1.04);
-            border-color:#00000014 ;
-           box-shadow: (1 0 0 1px transparent, 0 0 0 4px transparent,0,6px,16px,rgba(0,0,0,0.12) );
-           color: black;
-        }
-        }
-}
-//     :hover{
-// background-color: rgba(0,0,0,0)
-//     }
+
+    //     :hover{
+    // background-color: rgba(0,0,0,0)
+    //     }
 }

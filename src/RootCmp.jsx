@@ -135,12 +135,12 @@ export function RootCmp() {
             {/* <NavBar/> */}
             <AppHeader filterBy={filterBy} onSetFilter={setFilterBy} />
             <UserMsg />
-            <main>
+            <main >
                 <Routes>
                     <Route path="/" element={<Navigate to="/stay" />} />
                     {renderRoutes(routes)}
                 </Routes>
-            </main>
+            </main >
             <AppFooter />
         </div>
     )
