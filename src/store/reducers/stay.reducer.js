@@ -8,7 +8,8 @@ export const SET_FILTER_BY = 'SET_FILTER_BY'
 
 const initialState = {
     stays: [],
-    stay: null
+    stay: null,
+    filterBy:{region:''}
 }
 
 export function stayReducer(state = initialState, action) {

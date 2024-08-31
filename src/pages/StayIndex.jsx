@@ -11,7 +11,6 @@ import { StayList } from '../cmps/StayList'
 import { StayFilter } from '../cmps/StayFilter'
 import { AppHeader } from '../cmps/AppHeader'
 import { TypeLabels } from '../cmps/TypeLabels'
-
 export function StayIndex() {
 
     // const [filterBy, setFilterBy] = useState(stayService.getDefaultFilter())

@@ -36,6 +36,7 @@ const stays = [
             "lat": 48.8556,
             "lang": 2.3522
         },
+        "region":"Greece",
         "reviews": [
             { "id": makeId(), "by": "Alice Johnson", "txt": "Absolutely loved this apartment! The location was perfect for exploring Paris." },
             { "id": makeId(), "by": "Bob Smith", "txt": "Great place to stay, very modern and comfortable. Samantha was a wonderful host." },
@@ -76,6 +77,7 @@ const stays = [
             "lat": 40.7484,
             "lang": -73.9857
         },
+        "region":"US",
         "reviews": [
             { "id": makeId(), "by": "Grace Hill", "txt": "The studio was perfect for our weekend in NYC. Loved the cozy atmosphere!" },
             { "id": makeId(), "by": "Henry Adams", "txt": "Great location, right on 5th Avenue. The backyard was a nice touch." },
@@ -118,6 +120,7 @@ const stays = [
             "lat": 35.6824,
             "lang": 139.7591
         },
+        "region":"Italy",
         "reviews": [
             { "id": makeId(), "by": "Mia Kim", "txt": "The loft was beautiful! Loved the sunset views from the balcony." },
             { "id": makeId(), "by": "Nathan Lee", "txt": "A perfect place for our family vacation. The pool and beach access were great." },
@@ -158,6 +161,7 @@ const stays = [
             "lat": -33.8587,
             "lang": 151.2140
         },
+        "region":"SouthUs",
         "reviews": [
             { "id": makeId(), "by": "Sophia Martinez", "txt": "The villa was amazing! The gardens and pool were perfect for our group." },
             { "id": makeId(), "by": "Thomas Wilson", "txt": "We had a wonderful time. The game room was a hit with the kids." },
@@ -198,6 +202,7 @@ const stays = [
             "lat": -33.9088,
             "lang": 18.4173
         },
+        "region":"Europe",
         "reviews": [
             { "id": makeId(), "by": "Yasmin Ali", "txt": "The penthouse was beyond our expectations. The views were incredible!" },
             { "id": makeId(), "by": "Zane Ford", "txt": "We had an amazing stay. The infinity pool was a highlight." },
@@ -238,6 +243,7 @@ const stays = [
             "lat": -33.9088,
             "lang": 18.4173
         },
+        "region":"Greece",
         "reviews": [
             { "id": makeId(), "by": "Yasmin Ali", "txt": "The penthouse was beyond our expectations. The views were incredible!" },
             { "id": makeId(), "by": "Zane Ford", "txt": "We had an amazing stay. The infinity pool was a highlight." },
@@ -265,13 +271,14 @@ window.cs = stayService
 async function query(filterBy = {}) {
     var stays = await storageService.query(STORAGE_KEY)
     // const { filterBy } = store.getState().toyModule
-    const { txt } = filterBy
+    const { region } = filterBy
     console.log('filterBy:', filterBy)
 
-    if (txt) {
-        const regex = new RegExp(filterBy.txt, 'i')
-        stays = stays.filter(stay => regex.test(stay.name) || regex.test(stay.description) || regex.test(stay.summary) || regex.test(stay.location.city) || regex.test(stay.location.country))
-        console.log('stays:', stays)
+    if (region) {
+        const regex = new RegExp(filterBy.region, 'i')
+        stays = stays.filter(stay => regex.test(stay.region))
+        //  || regex.test(stay.description) || regex.test(stay.summary) || regex.test(stay.location.city) || regex.test(stay.location.country))
+        console.log('stays after region filter:', stays)
     }
 
     // const { txt, minSpeed, maxPrice, sortField, sortDir } = filterBy
