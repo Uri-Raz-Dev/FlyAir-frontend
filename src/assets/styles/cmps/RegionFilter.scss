@@ -1,0 +1,47 @@
+.regions-picker{
+    text-align: left;
+  box-shadow:   rgba(0, 0, 0, 0.15) 0px em(3px,14px) em(12px,14px) 0px;
+min-width: em(428px,14px);
+padding: em(32px,14px) em(24px,14px) em(24px,14px) em(24px,14px);
+  border-radius: em(32px,14px);
+.regoins-header{
+    line-height: em(18px,14px);
+    font-weight: 700;
+    padding: 0 0 em(16px,14px) em(8px,14px);
+
+}
+    .regions-container{
+display: grid;
+// grid-template-columns 126.656px 126.672px 126.656px
+// grid-template-rows 152.672px 152.672px
+
+grid-template-columns: repeat(3,minmax(0,1fr));
+grid-template-rows: repeat(2,minmax(0,1fr));
+row-gap: em(6px,14px);
+
+.region-card{
+display: flex;
+flex-direction: column;
+row-gap: em(8px,14px);
+padding:em(8px,14px) ;
+border-radius: (16px,14px);
+
+.region-img{
+border: solid 1px rgb(221,221,221);
+border-radius: em(12px,14px);
+
+img{
+    height: 100%;
+            width: 100%;
+            object-fit: cover;
+}
+}
+
+span{
+
+}
+}
+
+
+    }
+}
