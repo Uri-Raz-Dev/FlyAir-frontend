@@ -5,9 +5,9 @@
     justify-content: space-between;
     
     line-height: 1.25rem;
-    min-width: 80em;
+    min-width: 80rem;
     box-shadow: 0 .1px 0 0;
-
+padding-inline:em(80px) ;
 
     &.details {
         padding-inline: 273px;
@@ -41,7 +41,7 @@
 
     .user-menu {
         display: flex;
-        column-gap: 1rem;
+        // column-gap: 1rem;
     }
 
     .language-link {

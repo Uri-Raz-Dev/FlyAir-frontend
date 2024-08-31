@@ -130,7 +130,7 @@ export function RootCmp() {
     return (
         <div className={isStayDetailsPage ? "main-container details" : "main-container"}>
             {/* <NavBar/> */}
-            {/* <AppHeader /> */}
+            <AppHeader />
             <UserMsg />
             <main>
                 <Routes>

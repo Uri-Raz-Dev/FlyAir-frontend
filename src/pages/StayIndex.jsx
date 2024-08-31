@@ -62,7 +62,7 @@ export function StayIndex() {
 
     return (
         <>
-            <AppHeader filterBy={filterBy} onSetFilter={onSetFilter} />
+            {/* <AppHeader filterBy={filterBy} onSetFilter={onSetFilter} /> */}
 
             <div className=" stays-page">
                 {/* <h2 className="main-title">Available Stays</h2> */}
