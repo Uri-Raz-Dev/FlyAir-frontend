@@ -6,7 +6,7 @@
     grid-template-columns: minmax(rem(20px), rem(80px)) 1fr minmax(rem(20px),
             rem(80px));
 
-    grid-template-rows: rem(80px) 1fr rem(80px);
+    grid-template-rows: rem(160px) 1fr rem(80px);
 
     &.details {
         grid-template-columns: 273px 1fr 273px;
