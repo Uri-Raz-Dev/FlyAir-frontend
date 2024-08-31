@@ -92,7 +92,7 @@ export function StayFilter({ filterBy, onSetFilter }) {
                 <div>
                     <label>Where</label>
                     <input type="text" value={selectedRegion}
-                        onClick={() => setRegionPickerOpen(true)} onChange={handleChange} placeholder="Search destinations" name='region' />
+                        onChange={handleChange} placeholder="Search destinations" name='region' />
 
                 </div>
             </a>
@@ -101,7 +101,7 @@ export function StayFilter({ filterBy, onSetFilter }) {
                 <div>
 
                     <label>Check in</label>
-                    <input  onClick={() => setDatesPickerOpen(true)}   type="text" placeholder="Add dates" />
+                    <input   type="text" placeholder="Add dates" />
                 </div>
             </a>
 
