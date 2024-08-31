@@ -8,10 +8,11 @@ import { SvgIcon } from "./Svgicon.jsx"
 import { useRef, useState } from "react"
 
 // import { NavBar } from './NavBarUser.jsx'
-export function AppHeader({filterBy, onSetFilter}) {
+export function AppHeader({ filterBy, onSetFilter }) {
 	const user = useSelector(storeState => storeState.userModule.user)
-const headerRef=useRef(null)
+	const headerRef = useRef(null)
 	const [isNavOpen, setIsNavOpen] = useState(false);
+	const stays = useSelector(storeState => storeState.stayModule.stays)
 
 	function toggleNav() {
 		setIsNavOpen(!isNavOpen)
@@ -54,10 +55,10 @@ const headerRef=useRef(null)
 				</Link>
 
 				<Link to={"/login"}>
-					<button className="user-menu">
+					<div className="user-menu">
 						<SvgIcon iconName={"usermenu"}></SvgIcon>
-						<div>user</div>
-					</button>
+						{stays.length > 0 && stays[0].host && <img src={stays[0].host.imgUrl} alt="" />}
+					</div>
 				</Link>
 			</nav>
 
