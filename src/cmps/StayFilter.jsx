@@ -1,11 +1,9 @@
 import { useState, useEffect, useRef } from 'react'
-import { useState, useEffect, useRef } from 'react'
 import { SvgIcon } from './Svgicon.jsx'
 import { svgService } from '../services/svg.service'
 import { Link } from 'react-router-dom'
 import Modal from './Modal.jsx';
 import { RegionFilter } from './RegionFilter.jsx';
-// import { Calendar } from './Calendar.jsx';
 import { DatePickerr } from './DatePicker.jsx';
 
 export function StayFilter({ filterBy, onSetFilter }) {
@@ -107,8 +105,7 @@ export function StayFilter({ filterBy, onSetFilter }) {
                 </div>
             </a>
 
-            <a href='#' className="search-filter-item">
-                <div>
+         
             <a href='#' className="search-filter-item">
                 <div>
 
@@ -117,8 +114,7 @@ export function StayFilter({ filterBy, onSetFilter }) {
                 </div>
             </a>
 
-            <a href='#' className="search-filter-item">
-                <div>
+           
             <a href='#' className="search-filter-item">
                 <div>
 
@@ -135,12 +131,7 @@ export function StayFilter({ filterBy, onSetFilter }) {
                     <input type="text" placeholder="Add guests" />
                 </div>
 
-            {/* <div className='search-btn-container'>
-                <button className="search-button">
-                    <span><SvgIcon iconName="search" /></span>
-                </button>
-
-            </div> */}
+     
 
             <Modal show={isRegionPickerOpen} onClose={handleregionsCloseModal}>
                 <RegionFilter onSelectRegion={handleSelectRegion} />
@@ -151,7 +142,6 @@ export function StayFilter({ filterBy, onSetFilter }) {
             </Modal>
 
 
-        </div>
         </div>
 
     )

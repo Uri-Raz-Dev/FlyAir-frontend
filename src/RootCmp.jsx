@@ -21,36 +21,7 @@ import { HostingPage } from './pages/HostingPage.jsx'
 import { HostingList } from './cmps/HostingList.jsx'
 import { setFilterBy } from './store/actions/stay.actions.js'
 import { store } from './store/store.js'
-import { useSelector } from 'react-redux'
-// export function RootCmp() {
-//     return (
-//         <div className="main-container">
-//             <AppHeader />
-//             <UserMsg />
 
-//             <main>
-//                 <Routes>
-//                     <Route path="/" element={<StayIndex />} />
-//                     <Route path="about" element={<AboutUs />}>
-//                         <Route path="team" element={<AboutTeam />} />
-//                         <Route path="vision" element={<AboutVision />} />
-//                     </Route>
-//                     {/* <Route path="stay" element={<StayIndex />} /> */}
-//                     <Route path="stay/:stayId" element={<StayDetails />} />
-//                     <Route path="user/:id" element={<UserDetails />} />
-//                     <Route path="review" element={<ReviewIndex />} />
-//                     <Route path="chat" element={<ChatApp />} />
-//                     <Route path="admin" element={<AdminIndex />} />
-//                     <Route path="login" element={<LoginSignup />}>
-//                         <Route index element={<Login />} />
-//                         <Route path="signup" element={<Signup />} />
-//                     </Route>
-//                 </Routes>
-//             </main>
-//             <AppFooter />
-//         </div>
-//     )
-// }
 
 
 const routes = [
@@ -132,17 +103,15 @@ export function RootCmp() {
     const { filterBy } = store.getState().stayModule
     return (
         <div className={isStayDetailsPage ? "main-container details" : "main-container"}>
-            {/* <NavBar/> */}
             <AppHeader filterBy={filterBy} onSetFilter={setFilterBy} />
             <UserMsg />
-            <main >
             <main >
                 <Routes>
                     <Route path="/" element={<Navigate to="/stay" />} />
                     {renderRoutes(routes)}
                 </Routes>
             </main >
-            </main >
+
             <AppFooter />
         </div>
     )
