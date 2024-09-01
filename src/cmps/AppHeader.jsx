@@ -36,31 +36,34 @@ export function AppHeader({ filterBy, onSetFilter }) {
 	}
 
 	return (
-		<header ref={headerRef} className={isLocation ? "app-header details full" : "app-header full"}>
-			<Link to={"stay/"} className="logo">
+		<header ref={headerRef} className={isLocation ? "app-header details full main-container" : "app-header full main-container"}>
+			<div>
 
-				<SvgIcon iconName={"logosymbol"}></SvgIcon>
-				<p>FlyAir</p>
+				<Link to={"stay/"} className="logo">
 
-			</Link>
+					<SvgIcon iconName={"logosymbol"}></SvgIcon>
+					<p>FlyAir</p>
 
-			<StayFilter filterBy={filterBy} onSetFilter={onSetFilter} />
-
-			<nav className="profile">
-				<Link className="host-link" to={"/hosting"}>
-					<div>Switch to hosting</div>
-				</Link>  {/* //new user will show "airbnb your home" */}
-				<Link className="language-link" to={"/"}>
-					<SvgIcon iconName={"language"}></SvgIcon>
 				</Link>
 
-				<Link to={"/login"}>
-					<div className="user-menu">
-						<SvgIcon iconName={"usermenu"}></SvgIcon>
-						{stays.length > 0 && stays[0].host && <img src={stays[0].host.imgUrl} alt="" />}
-					</div>
-				</Link>
-			</nav>
+				<StayFilter filterBy={filterBy} onSetFilter={onSetFilter} />
+
+				<nav className="profile">
+					<Link className="host-link" to={"/hosting"}>
+						<div>Switch to hosting</div>
+					</Link>  {/* //new user will show "airbnb your home" */}
+					<Link className="language-link" to={"/"}>
+						<SvgIcon iconName={"language"}></SvgIcon>
+					</Link>
+
+					<Link to={"/login"}>
+						<div className="user-menu">
+							<SvgIcon iconName={"usermenu"}></SvgIcon>
+							{stays.length > 0 && stays[0].host && <img src={stays[0].host.imgUrl} alt="" />}
+						</div>
+					</Link>
+				</nav>
+			</div>
 
 
 		</header>
