@@ -1,203 +1,70 @@
-.labels-container {
-    position: relative;
-    font-size: 0.875rem;
-    padding-block-start: 12px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    overflow-x: hidden;
-    overflow-y: hidden;
+.filter-item {
+    min-width: 56px;
+    text-align: center;
+    padding: 4px 0;
+    margin: 12px 0;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
 
-    .scroll-button {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        border: 1px $bnb-gray3 solid;
-        background-clip: padding-box;
+    // העברתי את ההצהרה מעל הכללים המקוננים
+    &.active {
+        box-shadow: 0px 2px 0px 0px $bnb-black;
 
-        &:hover {
-            cursor: pointer;
-            box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px 0;
-            width: rem(33.28px);
-            height: rem(33.28px);
-        }
-    }
-
-    .left-button {
-        position: absolute;
-    }
-
-    .right-button {
-        position: absolute;
-        right: 100px;
-        margin-left: 8px;
-    }
-
-    .labels-list {
-        display: flex;
-        gap: 32px;
-        overflow-x: auto;
-        scroll-behavior: smooth;
-        flex-wrap: nowrap;
-        width: calc((56px + 32px) * 16 - 32px);
-        overflow: hidden;
-    }
-
-    .filter-item {
-        min-width: 56px;
-        text-align: center;
-        padding: 4px 0;
-        margin: 12px 0;
-        font-size: 12px;
-        font-weight: 500;
-        line-height: 16px;
-
-        &.active {
-            .stay-labal-item {
-                >span {
-                    color: black;
-                }
-
-                >img {
-                    filter: brightness(0) saturate(100%);
-                    // border: 2px solid red;
-                }
+        .stay-labal-item {
+            >span {
+                color: black;
             }
 
-            box-shadow: 0px 2px 0px 0px $bnb-black;
+            >img {
+                filter: brightness(0) saturate(100%);
+                // border: 2px solid red;
+            }
         }
 
-        &.active:hover {
+        &:hover {
             box-shadow: 0px 2px 0px 0px $bnb-black;
         }
+    }
 
-        .filter-label {
+    .filter-label {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        input {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: 3px 3px 0 5px;
+        }
+
+        .stay-labal-item {
             display: flex;
             flex-direction: column;
-            align-items: center;
+            row-gap: 8px;
+            cursor: pointer;
 
-            input {
-                position: absolute;
-                width: 1px;
-                height: 1px;
-                margin: 3px 3px 0 5px;
+            img {
+                opacity: 0.674208;
             }
 
-            .stay-labal-item {
-                display: flex;
-                flex-direction: column;
-                row-gap: 8px;
-                cursor: pointer;
-                color: rgb(106, 106, 106);
+            // העברתי את ההצהרה מעל הכללים המקוננים
+            color: rgb(106, 106, 106);
+            transition: color 0.3s ease;
 
-                img {
-                    opacity: 0.674208;
-                }
-
-                // העברתי את ההצהרות שמתחת לכללים המקוננים כדי להתאים להתנהגות העתידית של Sass
-                color: rgb(106, 106, 106); // העברה מעל הכלל המקונן
-                transition: color 0.3s ease; // העברה מעל הכלל המקונן
-
-                &:hover {
-                    color: black;
-                }
+            &:hover {
+                color: black;
             }
         }
-
-        &:hover {
-            cursor: pointer;
-            box-shadow: 0px 2px 0px 0px $bnb-gray3;
-        }
-
-        &:active {
-            box-shadow: 0px 2px 0px 0px $bnb-black;
-        }
     }
 
-    .filters {
-        display: flex;
-        position: absolute;
-        right: 0;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        width: rem(90px);
-        height: rem(32px);
-        border: 1px $bnb-gray3 solid;
-        border-radius: 10px;
-        padding-block: em(7px);
-        padding-inline: em(1px);
-        font-family: 'Airbnb Cereal VF-L';
-        font-weight: bold;
-
-        &:hover {
-            cursor: pointer;
-            background-color: rgb(247, 247, 247);
-            border: 1px rgb(34, 34, 34) solid;
-        }
+    &:hover {
+        cursor: pointer;
+        box-shadow: 0px 2px 0px 0px $bnb-gray3;
     }
 
-    /* Media Queries for Responsiveness */
-    @media (max-width: 1200px) {
-        .labels-list {
-            gap: 16px;
-            /* Reduce gap for medium screens */
-        }
-    }
-
-    @media (max-width: 768px) {
-        flex-direction: column;
-        /* Stack elements vertically */
-        align-items: flex-start;
-
-        .labels-list {
-            gap: 12px;
-            /* Further reduce gap for smaller screens */
-            width: 100%;
-            /* Ensure full width */
-            flex-wrap: wrap;
-            /* Wrap items to fit screen */
-        }
-
-        .scroll-button {
-            display: none;
-            /* Hide scroll buttons on small screens */
-        }
-
-        .filters {
-            position: static;
-            width: 100%;
-            justify-content: flex-end;
-            margin-top: 16px;
-            /* Add some spacing */
-        }
-
-        .filter-item {
-            min-width: 48px;
-            /* Reduce item width */
-            font-size: 10px;
-            /* Adjust font size */
-            line-height: 14px;
-            margin: 8px 0;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .filter-item {
-            min-width: 40px;
-            /* Further reduce item width */
-            font-size: 9px;
-            /* Adjust font size */
-            line-height: 12px;
-            margin: 4px 0;
-        }
-
-        .filters {
-            justify-content: center;
-            /* Center filters on very small screens */
-        }
+    &:active {
+        box-shadow: 0px 2px 0px 0px $bnb-black;
     }
 }
