@@ -14,7 +14,7 @@ export const DatePickerr = () => {
 
     const datePickerRef = useRef();
 
-    console.log(state[0].startDate.toLocaleDateString());
+    console.log(state[0]);
 
     // useEffect(() => {
 
@@ -32,14 +32,14 @@ export const DatePickerr = () => {
                 direction="horizontal"
                 rangeColors={['#ff385c']}
             />
-            <div className="date-picker-controls">
+            {/* <div className="date-picker-controls">
                 <button>Exact dates</button>
                 <button>± 1 day</button>
                 <button>± 2 days</button>
                 <button>± 3 days</button>
                 <button>± 7 days</button>
                 <button>± 14 days</button>
-            </div>
+            </div> */}
         </div>
     );
 };

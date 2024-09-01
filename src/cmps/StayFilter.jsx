@@ -1,10 +1,12 @@
 import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { SvgIcon } from './Svgicon.jsx'
 import { svgService } from '../services/svg.service'
 import { Link } from 'react-router-dom'
 import Modal from './Modal.jsx';
 import { RegionFilter } from './RegionFilter.jsx';
-import { Calendar } from './Calendar.jsx';
+// import { Calendar } from './Calendar.jsx';
+import { DatePickerr } from './DatePicker.jsx';
 
 export function StayFilter({ filterBy, onSetFilter }) {
 
@@ -97,11 +99,11 @@ export function StayFilter({ filterBy, onSetFilter }) {
                 </div>
             </a>
 
-            <a onClick={openDatesModal} href='#' className="search-filter-item">
+            <a onClick={openDatesModal} href='#' className="search-filter-item ">
                 <div>
 
                     <label>Check in</label>
-                    <input   type="text" placeholder="Add dates" />
+                    <input  className='check-in'   type="text" placeholder="Add dates" />
                 </div>
             </a>
 
@@ -111,7 +113,7 @@ export function StayFilter({ filterBy, onSetFilter }) {
                 <div>
 
                     <label>Check out</label>
-                    <input type="text" placeholder="Add dates" />
+                    <input  className='check-in' type="text" placeholder="Add dates" />
                 </div>
             </a>
 
@@ -124,33 +126,28 @@ export function StayFilter({ filterBy, onSetFilter }) {
                     <input type="text" placeholder="Add guests" />
                 </div>
             </a>
+
             <div className='search-btn-container'>
                 <button className="search-button">
                     <span><SvgIcon iconName="search" /></span>
                 </button>
-<<<<<<< HEAD
-
-            </div>
-=======
                     <label>Who</label>
                     <input type="text" placeholder="Add guests" />
                 </div>
-            </a>
-            <div className='search-btn-container'>
+
+            {/* <div className='search-btn-container'>
                 <button className="search-button">
                     <span><SvgIcon iconName="search" /></span>
                 </button>
 
-            </div>
-            </div>
->>>>>>> parent of 7a7fd63 (fix bugs)
+            </div> */}
 
             <Modal show={isRegionPickerOpen} onClose={handleregionsCloseModal}>
                 <RegionFilter onSelectRegion={handleSelectRegion} />
             </Modal>
 
             <Modal show={isDatesPickerOpen} onClose={handledatesCloseModal}>
-                <Calendar />
+               <DatePickerr/>
             </Modal>
 
 
@@ -170,6 +167,87 @@ export function StayFilter({ filterBy, onSetFilter }) {
 
 
 
+    // //     return <section classnameName="stay-filter">
+    // //         <h3>Filter:</h3>
+    // //         <input
+    // //             type="text"
+    // //             name="txt"
+    // //             value={filterToEdit.txt}
+    // //             placeholder="Free text"
+    // //             onChange={handleChange}
+    // //             required
+    // //         />
+    // //         <input
+    // //             type="number"
+    // //             min="0"
+    // //             name="minSpeed"
+    // //             value={filterToEdit.minSpeed}
+    // //             placeholder="min. speed"
+    // //             onChange={handleChange}
+    // //             required
+    // //         />
+    // //         <button
+    // //             classnameName="btn-clear"
+    // //             onClick={clearFilter}>Clear</button>
+    // //         <h3>Sort:</h3>
+    // //         <div classnameName="sort-field">
+    // //             <label>
+    // //                 <span>Speed</span>
+    // //                 <input
+    // //                     type="radio"
+    // //                     name="sortField"
+    // //                     value="speed"
+    // //                     checked={filterToEdit.sortField === 'speed'}
+    // //                     onChange={handleChange}
+    // //                 />
+    // //             </label>
+    // //             <label>
+    // //                 <span>Vendor</span>
+    // //                 <input
+    // //                     type="radio"
+    // //                     name="sortField"
+    // //                     value="vendor"
+    // //                     checked={filterToEdit.sortField === 'vendor'}
+    // //                     onChange={handleChange}
+    // //                 />
+    // //             </label>
+    // //             <label>
+    // //                 <span>Owner</span>
+    // //                 <input
+    // //                     type="radio"
+    // //                     name="sortField"
+    // //                     value="owner"
+    // //                     checked={filterToEdit.sortField === 'owner'}
+    // //                     onChange={handleChange}
+    // //                 />
+    // //             </label>
+    // //         </div>
+    // //         <div classnameName="sort-dir">
+    // //             <label>
+    // //                 <span>Asce</span>
+    // //                 <input
+    // //                     type="radio"
+    // //                     name="sortDir"
+    // //                     value="1"
+    // //                     checked={filterToEdit.sortDir === 1}
+    // //                     onChange={handleChange}
+    // //                 />
+    // //             </label>
+    // //             <label>
+    // //                 <span>Desc</span>
+    // //                 <input
+    // //                     type="radio"
+    // //                     name="sortDir"
+    // //                     value="-1"
+    // //                     onChange={handleChange}
+    // //                     checked={filterToEdit.sortDir === -1}
+    // //                 />
+    // //             </label>
+    // //         </div>
+    // //         <button
+    // //             classnameName="btn-clear"
+    // //             onClick={clearSort}>Clear</button>
+    // //     </section>
     // //     return <section classnameName="stay-filter">
     // //         <h3>Filter:</h3>
     // //         <input
