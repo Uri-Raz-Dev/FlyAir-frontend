@@ -109,8 +109,6 @@ export function StayFilter({ filterBy, onSetFilter }) {
 
             <a href='#' className="search-filter-item">
                 <div>
-            <a href='#' className="search-filter-item">
-                <div>
 
                     <label>Check out</label>
                     <input  className='check-in' type="text" placeholder="Add dates" />
@@ -119,13 +117,12 @@ export function StayFilter({ filterBy, onSetFilter }) {
 
             <a href='#' className="search-filter-item">
                 <div>
-            <a href='#' className="search-filter-item">
-                <div>
 
                     <label>Who</label>
                     <input type="text" placeholder="Add guests" />
                 </div>
             </a>
+
             <div className='search-btn-container'>
                 <button className="search-button">
                     <span><SvgIcon iconName="search" /></span>
@@ -133,14 +130,13 @@ export function StayFilter({ filterBy, onSetFilter }) {
                     <label>Who</label>
                     <input type="text" placeholder="Add guests" />
                 </div>
-            </a>
-            <div className='search-btn-container'>
+
+            {/* <div className='search-btn-container'>
                 <button className="search-button">
                     <span><SvgIcon iconName="search" /></span>
                 </button>
 
-            </div>
-            </div>
+            </div> */}
 
             <Modal show={isRegionPickerOpen} onClose={handleregionsCloseModal}>
                 <RegionFilter onSelectRegion={handleSelectRegion} />
@@ -151,7 +147,6 @@ export function StayFilter({ filterBy, onSetFilter }) {
             </Modal>
 
 
-        </div>
         </div>
 
     )
