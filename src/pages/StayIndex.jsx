@@ -73,7 +73,7 @@ export function StayIndex() {
                     stays={stays}
                     onRemoveStay={onRemoveStay}
                     onUpdateStay={onUpdateStay} />
-                <DatePickerr />
+                {/* <DatePickerr /> */}
             </div>
         </>
     )

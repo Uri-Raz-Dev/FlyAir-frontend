@@ -4,7 +4,8 @@ import { svgService } from '../services/svg.service'
 import { Link } from 'react-router-dom'
 import Modal from './Modal.jsx';
 import { RegionFilter } from './RegionFilter.jsx';
-import { Calendar } from './Calendar.jsx';
+// import { Calendar } from './Calendar.jsx';
+import { DatePickerr } from './DatePicker.jsx';
 
 export function StayFilter({ filterBy, onSetFilter }) {
 
@@ -97,11 +98,11 @@ export function StayFilter({ filterBy, onSetFilter }) {
                 </div>
             </a>
 
-            <a onClick={openDatesModal} href='#' className="search-filter-item">
+            <a onClick={openDatesModal} href='#' className="search-filter-item ">
                 <div>
 
                     <label>Check in</label>
-                    <input   type="text" placeholder="Add dates" />
+                    <input  className='check-in'   type="text" placeholder="Add dates" />
                 </div>
             </a>
 
@@ -109,7 +110,7 @@ export function StayFilter({ filterBy, onSetFilter }) {
                 <div>
 
                     <label>Check out</label>
-                    <input type="text" placeholder="Add dates" />
+                    <input  className='check-in' type="text" placeholder="Add dates" />
                 </div>
             </a>
 
@@ -132,7 +133,7 @@ export function StayFilter({ filterBy, onSetFilter }) {
             </Modal>
 
             <Modal show={isDatesPickerOpen} onClose={handledatesCloseModal}>
-                <Calendar />
+               <DatePickerr/>
             </Modal>
 
 
