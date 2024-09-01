@@ -97,14 +97,12 @@
                     opacity: 0.674208;
                 }
 
-                color: rgb(106, 106, 106);
-                transition: color 0.3s ease;
+                // העברתי את ההצהרות שמתחת לכללים המקוננים כדי להתאים להתנהגות העתידית של Sass
+                color: rgb(106, 106, 106); // העברה מעל הכלל המקונן
+                transition: color 0.3s ease; // העברה מעל הכלל המקונן
 
                 &:hover {
-
-
                     color: black;
-
                 }
             }
         }
