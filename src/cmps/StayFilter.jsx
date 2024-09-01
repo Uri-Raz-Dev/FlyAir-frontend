@@ -127,8 +127,6 @@ export function StayFilter({ filterBy, onSetFilter }) {
                 <button className="search-button">
                     <span><SvgIcon iconName="search" /></span>
                 </button>
-                    <label>Who</label>
-                    <input type="text" placeholder="Add guests" />
                 </div>
 
      
