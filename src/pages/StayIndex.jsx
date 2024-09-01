@@ -13,6 +13,8 @@ import { AppHeader } from '../cmps/AppHeader'
 import { TypeLabels } from '../cmps/TypeLabels'
 import { DatePicker } from '@mui/x-date-pickers'
 import { DatePickerr } from '../cmps/DatePicker'
+import { DatePicker } from '@mui/x-date-pickers'
+import { DatePickerr } from '../cmps/DatePicker'
 
 export function StayIndex() {
 
@@ -66,7 +68,9 @@ export function StayIndex() {
         <>
 
             <div className="stays-page full">
+            <div className="stays-page full">
                 {/* <h2 className="main-title">Available Stays</h2> */}
+                <TypeLabels />
                 <TypeLabels />
 
                 <StayList

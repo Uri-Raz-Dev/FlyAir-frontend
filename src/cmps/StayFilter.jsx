@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { SvgIcon } from './Svgicon.jsx'
 import { svgService } from '../services/svg.service'
 import { Link } from 'react-router-dom'
@@ -108,12 +109,16 @@ export function StayFilter({ filterBy, onSetFilter }) {
 
             <a href='#' className="search-filter-item">
                 <div>
+            <a href='#' className="search-filter-item">
+                <div>
 
                     <label>Check out</label>
                     <input  className='check-in' type="text" placeholder="Add dates" />
                 </div>
             </a>
 
+            <a href='#' className="search-filter-item">
+                <div>
             <a href='#' className="search-filter-item">
                 <div>
 
@@ -125,7 +130,16 @@ export function StayFilter({ filterBy, onSetFilter }) {
                 <button className="search-button">
                     <span><SvgIcon iconName="search" /></span>
                 </button>
+                    <label>Who</label>
+                    <input type="text" placeholder="Add guests" />
+                </div>
+            </a>
+            <div className='search-btn-container'>
+                <button className="search-button">
+                    <span><SvgIcon iconName="search" /></span>
+                </button>
 
+            </div>
             </div>
 
             <Modal show={isRegionPickerOpen} onClose={handleregionsCloseModal}>
@@ -137,6 +151,7 @@ export function StayFilter({ filterBy, onSetFilter }) {
             </Modal>
 
 
+        </div>
         </div>
 
     )
@@ -152,6 +167,87 @@ export function StayFilter({ filterBy, onSetFilter }) {
 
 
 
+    // //     return <section classnameName="stay-filter">
+    // //         <h3>Filter:</h3>
+    // //         <input
+    // //             type="text"
+    // //             name="txt"
+    // //             value={filterToEdit.txt}
+    // //             placeholder="Free text"
+    // //             onChange={handleChange}
+    // //             required
+    // //         />
+    // //         <input
+    // //             type="number"
+    // //             min="0"
+    // //             name="minSpeed"
+    // //             value={filterToEdit.minSpeed}
+    // //             placeholder="min. speed"
+    // //             onChange={handleChange}
+    // //             required
+    // //         />
+    // //         <button
+    // //             classnameName="btn-clear"
+    // //             onClick={clearFilter}>Clear</button>
+    // //         <h3>Sort:</h3>
+    // //         <div classnameName="sort-field">
+    // //             <label>
+    // //                 <span>Speed</span>
+    // //                 <input
+    // //                     type="radio"
+    // //                     name="sortField"
+    // //                     value="speed"
+    // //                     checked={filterToEdit.sortField === 'speed'}
+    // //                     onChange={handleChange}
+    // //                 />
+    // //             </label>
+    // //             <label>
+    // //                 <span>Vendor</span>
+    // //                 <input
+    // //                     type="radio"
+    // //                     name="sortField"
+    // //                     value="vendor"
+    // //                     checked={filterToEdit.sortField === 'vendor'}
+    // //                     onChange={handleChange}
+    // //                 />
+    // //             </label>
+    // //             <label>
+    // //                 <span>Owner</span>
+    // //                 <input
+    // //                     type="radio"
+    // //                     name="sortField"
+    // //                     value="owner"
+    // //                     checked={filterToEdit.sortField === 'owner'}
+    // //                     onChange={handleChange}
+    // //                 />
+    // //             </label>
+    // //         </div>
+    // //         <div classnameName="sort-dir">
+    // //             <label>
+    // //                 <span>Asce</span>
+    // //                 <input
+    // //                     type="radio"
+    // //                     name="sortDir"
+    // //                     value="1"
+    // //                     checked={filterToEdit.sortDir === 1}
+    // //                     onChange={handleChange}
+    // //                 />
+    // //             </label>
+    // //             <label>
+    // //                 <span>Desc</span>
+    // //                 <input
+    // //                     type="radio"
+    // //                     name="sortDir"
+    // //                     value="-1"
+    // //                     onChange={handleChange}
+    // //                     checked={filterToEdit.sortDir === -1}
+    // //                 />
+    // //             </label>
+    // //         </div>
+    // //         <button
+    // //             classnameName="btn-clear"
+    // //             onClick={clearSort}>Clear</button>
+    // //     </section>
     // //     return <section classnameName="stay-filter">
     // //         <h3>Filter:</h3>
     // //         <input
