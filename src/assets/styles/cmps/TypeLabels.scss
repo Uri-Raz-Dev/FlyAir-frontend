@@ -26,14 +26,31 @@
         }
     }
 
+
+
     .left-button {
         position: absolute;
+        z-index: 999;
+        background-color: white;
+        box-shadow: 10px 0.1px 3px 16px rgba(255, 255, 255, 0.7);
+
+        &:hover {
+            box-shadow: 10px 0.1px 3px 16px rgba(255, 255, 255, 0.7);
+        }
     }
+
+
 
     .right-button {
         position: absolute;
         right: 100px;
         margin-left: 8px;
+        z-index: 999;
+        box-shadow: -40px 0px 0px 20px rgba(255, 255, 255, 0.7);
+
+        &:hover {
+            box-shadow: -40px 0px 0px 20px rgba(255, 255, 255, 0.7);
+        }
     }
 
     .labels-list {
@@ -42,8 +59,9 @@
         overflow-x: auto;
         scroll-behavior: smooth;
         flex-wrap: nowrap;
-        width: calc((56px + 32px) * 16 - 32px);
+        width: calc((56px + 32px) * 16.1 - 32px);
         overflow: hidden;
+        z-index: 1;
     }
 
     .filter-item {
