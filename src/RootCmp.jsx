@@ -141,7 +141,7 @@ export function RootCmp() {
             {/* <NavBar/> */}
             <AppHeader filterBy={filterBy} onSetFilter={onSetFilter} />
             <UserMsg />
-            <main >
+            <main className='empty-div'>
                 <Routes>
                     <Route path="/" element={<Navigate to="/stay" />} />
                     {renderRoutes(routes)}

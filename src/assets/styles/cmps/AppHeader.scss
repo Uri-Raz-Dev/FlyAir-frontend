@@ -1,6 +1,7 @@
 .app-header {
     position: sticky;
     top: 0;
+    height: 80px;
     // height: 168px;
     background-color: white;
     line-height: 1.25rem;
@@ -13,9 +14,7 @@
         grid-template-columns: auto 1fr auto;
     }
 
-    &.details {
-        padding-inline: 273px;
-    }
+    &.details {}
 
     .profile {
         display: flex;
