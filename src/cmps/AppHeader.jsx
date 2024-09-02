@@ -37,7 +37,7 @@ export function AppHeader({ filterBy, onSetFilter }) {
 
 	return (
 		<header ref={headerRef} className={isLocation ? "app-header details full main-container" : "app-header full main-container"}>
-			<div>
+			<div className="header-container">
 
 				<Link to={"stay/"} className="logo">
 
