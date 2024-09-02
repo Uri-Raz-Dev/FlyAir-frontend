@@ -1,11 +1,77 @@
-.filter-item {
-    min-width: 56px;
-    text-align: center;
-    padding: 4px 0;
-    margin: 12px 0;
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 16px;
+.labels-container {
+    position: relative;
+    font-size: 0.875rem;
+    padding-block-start: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    overflow-x: hidden;
+    overflow-y: hidden;
+
+    .scroll-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        border: 1px $bnb-gray3 solid;
+        background-clip: padding-box;
+
+        &:hover {
+            cursor: pointer;
+            box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px 0;
+            width: rem(33.28px);
+            height: rem(33.28px);
+        }
+    }
+
+
+
+    .left-button {
+        position: absolute;
+        z-index: 999;
+        background-color: white;
+        box-shadow: 10px 0.1px 3px 16px rgba(255, 255, 255, 0.7);
+
+        &:hover {
+            box-shadow: 10px 0.1px 3px 16px rgba(255, 255, 255, 0.7);
+        }
+    }
+
+
+
+    .right-button {
+        position: absolute;
+        right: 100px;
+        margin-left: 8px;
+        z-index: 999;
+        box-shadow: -40px 0px 0px 20px rgba(255, 255, 255, 0.7);
+
+        &:hover {
+            box-shadow: -40px 0px 0px 20px rgba(255, 255, 255, 0.7);
+        }
+    }
+
+    .labels-list {
+        display: flex;
+        gap: 32px;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        flex-wrap: nowrap;
+        width: calc((56px + 32px) * 16.1 - 32px);
+        overflow: hidden;
+        z-index: 1;
+    }
+
+    .filter-item {
+        min-width: 56px;
+        text-align: center;
+        padding: 4px 0;
+        margin: 12px 0;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 16px;
 
     // העברתי את ההצהרה מעל הכללים המקוננים
     &.active {
