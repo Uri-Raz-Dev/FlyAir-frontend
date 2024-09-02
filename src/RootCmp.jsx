@@ -19,38 +19,9 @@ import { Login } from './pages/Login.jsx'
 import { Signup } from './pages/Signup.jsx'
 import { HostingPage } from './pages/HostingPage.jsx'
 import { HostingList } from './cmps/HostingList.jsx'
-import { useSelector } from 'react-redux'
 import { setFilterBy } from './store/actions/stay.actions.js'
+import { store } from './store/store.js'
 
-// export function RootCmp() {
-//     return (
-//         <div className="main-container">
-//             <AppHeader />
-//             <UserMsg />
-
-//             <main>
-//                 <Routes>
-//                     <Route path="/" element={<StayIndex />} />
-//                     <Route path="about" element={<AboutUs />}>
-//                         <Route path="team" element={<AboutTeam />} />
-//                         <Route path="vision" element={<AboutVision />} />
-//                     </Route>
-//                     {/* <Route path="stay" element={<StayIndex />} /> */}
-//                     <Route path="stay/:stayId" element={<StayDetails />} />
-//                     <Route path="user/:id" element={<UserDetails />} />
-//                     <Route path="review" element={<ReviewIndex />} />
-//                     <Route path="chat" element={<ChatApp />} />
-//                     <Route path="admin" element={<AdminIndex />} />
-//                     <Route path="login" element={<LoginSignup />}>
-//                         <Route index element={<Login />} />
-//                         <Route path="signup" element={<Signup />} />
-//                     </Route>
-//                 </Routes>
-//             </main>
-//             <AppFooter />
-//         </div>
-//     )
-// }
 
 
 const routes = [
@@ -129,17 +100,10 @@ export function RootCmp() {
     const location = useLocation()
     const { stayId } = useParams()
     const isStayDetailsPage = location.pathname.startsWith(`/stay/s`)
-
-    const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
-
-    function onSetFilter(filterBy) {
-        setFilterBy(filterBy)
-    }
-
+    const { filterBy } = store.getState().stayModule
     return (
         <div className={isStayDetailsPage ? "main-container details" : "main-container"}>
-            {/* <NavBar/> */}
-            <AppHeader filterBy={filterBy} onSetFilter={onSetFilter} />
+            <AppHeader filterBy={filterBy} onSetFilter={setFilterBy} />
             <UserMsg />
             <main className='empty-div'>
                 <Routes>
@@ -147,6 +111,7 @@ export function RootCmp() {
                     {renderRoutes(routes)}
                 </Routes>
             </main >
+
             <AppFooter />
         </div>
     )
