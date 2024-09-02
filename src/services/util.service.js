@@ -90,5 +90,3 @@ function getCalendar(date) {
 
     return calendar
 }
-
-console.log(getCalendar(new Date()))

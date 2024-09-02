@@ -8,8 +8,6 @@ import { DatePickerr } from './DatePicker.jsx';
 
 export function StayFilter({ filterBy, onSetFilter }) {
 
-
-
     const filterActive = useRef('')
     const regionActive = useRef(false)
 
@@ -20,6 +18,8 @@ export function StayFilter({ filterBy, onSetFilter }) {
     }, [filterToEdit])
 
     function handleChange(ev) {
+        console.log('target' , ev.target);
+        
         const type = ev.target.type
         const field = ev.target.name
         let value
@@ -48,6 +48,8 @@ export function StayFilter({ filterBy, onSetFilter }) {
 
     // const [showModal, setShowModal] = useState(false);
     const [selectedRegion, setSelectedRegion] = useState('');
+    const [selectedCheckIn, setSelectedCheckIn] = useState('');
+    const [selectedCheckOut, setSelectedCheckOut] = useState('');
     const [isRegionPickerOpen, setRegionPickerOpen] = useState(false);
     const [isDatesPickerOpen, setDatesPickerOpen] = useState(false);
 
@@ -68,6 +70,8 @@ export function StayFilter({ filterBy, onSetFilter }) {
     }
     function openDatesModal() {
         setDatesPickerOpen(true)
+        // console.log(new Date("2024-09-01"));
+
     }
     function handleSelectRegion(region) {
 
@@ -82,7 +86,29 @@ export function StayFilter({ filterBy, onSetFilter }) {
         setRegionPickerOpen(false)
     }
 
+    function displayDateShortly(date) {
+        // const d=new Date(date)
+        const shortMonthName = date.toLocaleString('en-US', { month: 'short' });
+        const shortDate = `${date.getDate()} ${shortMonthName}`
+        return shortDate
+    }
+    function handleCheckIn(checkIn) {
+        // console.log("checkIn:"+checkIn);
+        
+        
+        const startDate=new Date(checkIn)
+        // console.log('startDate'+startDate);
+        const miniStartDate = displayDateShortly(startDate)
+        setSelectedCheckIn(miniStartDate)
+        setFilterToEdit({ ...filterToEdit, startDate })
 
+    }
+    function handleCheckOut(checkOut) {
+        const endDate=new Date(checkOut)
+        const miniEndDate = displayDateShortly(endDate)
+        setSelectedCheckOut(miniEndDate)
+        setFilterToEdit({ ...filterToEdit, endDate })
+    }
     return (
 
 
@@ -92,7 +118,7 @@ export function StayFilter({ filterBy, onSetFilter }) {
                 <div>
                     <label>Where</label>
                     <input type="text" value={selectedRegion}
-                        onChange={handleChange} placeholder="Search destinations" name='region' />
+                         placeholder="Search destinations" name='region' />
 
                 </div>
             </a>
@@ -101,25 +127,25 @@ export function StayFilter({ filterBy, onSetFilter }) {
                 <div>
 
                     <label>Check in</label>
-                    <input  className='check-in'   type="text" placeholder="Add dates" />
+                    <input  value={selectedCheckIn} className='check-in' name='startDate' type="text" placeholder="Add dates" />
                 </div>
             </a>
 
-         
-            <a href='#' className="search-filter-item">
+
+            <a onClick={openDatesModal} href='#' className="search-filter-item">
                 <div>
 
                     <label>Check out</label>
-                    <input  className='check-in' type="text" placeholder="Add dates" />
+                    <input   onChange={handleChange} value={selectedCheckOut} name='endDate' className='check-in' type="text" placeholder="Add dates" />
                 </div>
             </a>
 
-           
+
             <a href='#' className="search-filter-item">
                 <div>
 
                     <label>Who</label>
-                    <input type="text" placeholder="Add guests" />
+                    <input readOnly type="text" placeholder="Add guests" />
                 </div>
             </a>
 
@@ -127,16 +153,16 @@ export function StayFilter({ filterBy, onSetFilter }) {
                 <button className="search-button">
                     <span><SvgIcon iconName="search" /></span>
                 </button>
-                </div>
+            </div>
 
-     
+
 
             <Modal show={isRegionPickerOpen} onClose={handleregionsCloseModal}>
                 <RegionFilter onSelectRegion={handleSelectRegion} />
             </Modal>
 
             <Modal show={isDatesPickerOpen} onClose={handledatesCloseModal}>
-               <DatePickerr/>
+                <DatePickerr handleCheckIn={handleCheckIn} handleCheckOut={handleCheckOut} />
             </Modal>
 
 

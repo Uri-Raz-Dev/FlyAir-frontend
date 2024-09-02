@@ -3,7 +3,7 @@ import { DateRangePicker } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 
-export const DatePickerr = () => {
+export const DatePickerr = ({ handleCheckIn, handleCheckOut }) => {
     const [state, setState] = useState([
         {
             startDate: new Date(),
@@ -11,6 +11,24 @@ export const DatePickerr = () => {
             key: 'selection'
         }
     ]);
+
+
+    // useEffect(() => {
+    //     handleCheckIn(state[0].startDate)
+
+    // }, [state[0].startDate])
+
+    // useEffect(() => {
+    //     handleCheckOut(state.endDate)
+    //     console.log(state[0].endDate);
+
+    // }, [state[0].endDate])
+
+
+    useEffect(()=>{
+    handleCheckIn(state[0].startDate)
+    handleCheckOut(state[0].endDate)
+    },[state[0]])
 
     const datePickerRef = useRef();
 
@@ -20,11 +38,12 @@ export const DatePickerr = () => {
 
     //     // If you want to inspect the internal state, you would need to rely on props/state or the component's API
     // }, [state]);
-
     return (
         <div className="date-picker-container">
             <DateRangePicker ref={datePickerRef}
-                onChange={item => setState([item.selection])}
+                onChange={item =>{
+                    setState([item.selection])}
+            }
                 showSelectionPreview={false}
                 moveRangeOnFirstSelection={false}
                 months={2}

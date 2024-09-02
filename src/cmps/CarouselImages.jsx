@@ -6,7 +6,6 @@ import { PrevArrow } from './PrevArrow.jsx';
 export function CarouselImages({ imgs }) {
     // Custom right arrow button
     function renderArrowNext(clickHandler, hasNext) {
-        console.log(` next: ${hasNext}`);
         return (
 
             hasNext &&
@@ -31,7 +30,6 @@ export function CarouselImages({ imgs }) {
 
 
     function renderArrowPrev(clickHandler, hasPrev) {
-        console.log(` prev: ${hasPrev}`);
         return (
             hasPrev && (
                 <div className={`custom-prev-button-container ${!hasPrev ? 'hide' : ''}`}>
