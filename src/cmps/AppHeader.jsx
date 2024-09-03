@@ -1,28 +1,29 @@
 import { Link, NavLink } from "react-router-dom"
 import { useLocation, useNavigate } from "react-router"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service"
 import { logout } from "../store/actions/user.actions"
 import { StayFilter } from "./StayFilter.jsx"
 import { SvgIcon } from "./Svgicon.jsx"
 import { useRef, useState } from "react"
+import { LoginSignup } from '../pages/LoginSignup.jsx'
 
-// import { NavBar } from './NavBarUser.jsx'
 export function AppHeader({ filterBy, onSetFilter }) {
+	const dispatch = useDispatch()
+
 	const user = useSelector(storeState => storeState.userModule.user)
 	const headerRef = useRef(null)
-	const [isNavOpen, setIsNavOpen] = useState(false);
+	const [isNavOpen, setIsNavOpen] = useState(false); // ניהול ה-state לפתיחת/סגירת המודל
 	const stays = useSelector(storeState => storeState.stayModule.stays)
 
 	function toggleNav() {
-		setIsNavOpen(!isNavOpen)
+		
+		setIsNavOpen(!isNavOpen) // משנה את ה-state לפתיחה או סגירה של המודל
 	}
 
 	const navigate = useNavigate()
 	const location = useLocation()
 	const isLocation = location.pathname.startsWith(`/stay/s`)
-	// const [filterBy, setFilterBy] = useState(stayService.getDefaultFilter())
-	// const stays = useSelector(storeState => storeState.stayModule.stays)
 
 	async function onLogout() {
 
@@ -49,6 +50,7 @@ export function AppHeader({ filterBy, onSetFilter }) {
 				<StayFilter filterBy={filterBy} onSetFilter={onSetFilter} />
 
 				<nav className="profile">
+
 					<Link className="host-link" to={"/hosting"}>
 						<div>Switch to hosting</div>
 					</Link>  {/* //new user will show "airbnb your home" */}
@@ -56,15 +58,14 @@ export function AppHeader({ filterBy, onSetFilter }) {
 						<SvgIcon iconName={"language"}></SvgIcon>
 					</Link>
 
-					<Link to={"/login"}>
-						<div className="user-menu">
-							<SvgIcon iconName={"usermenu"}></SvgIcon>
-							{stays.length > 0 && stays[0].host && <img src={stays[0].host.imgUrl} alt="" />}
-						</div>
-					</Link>
+					<div className="user-menu" onClick={toggleNav}> 
+						<SvgIcon iconName={"usermenu"}></SvgIcon>
+						{stays.length > 0 && stays[0].host && <img src={stays[0].host.imgUrl} alt="" />}
+						{isNavOpen && <LoginSignup toggleNav={toggleNav} />} 
+					</div>
+
 				</nav>
 			</div>
-
 
 		</header>
 	)
