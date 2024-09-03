@@ -6,6 +6,7 @@ import { logout } from "../store/actions/user.actions"
 import { StayFilter } from "./StayFilter.jsx"
 import { SvgIcon } from "./Svgicon.jsx"
 import { useRef, useState } from "react"
+import { MiniFilter } from "./MiniFliter.jsx"
 import { LoginSignup } from '../pages/LoginSignup.jsx'
 
 export function AppHeader({ filterBy, onSetFilter }) {
@@ -13,6 +14,8 @@ export function AppHeader({ filterBy, onSetFilter }) {
 
 	const user = useSelector(storeState => storeState.userModule.user)
 	const headerRef = useRef(null)
+	const [isNavOpen, setIsNavOpen] = useState(false);
+	const [isFilterOpen, setIsFilterOpen] = useState(false);
 	const [isNavOpen, setIsNavOpen] = useState(false); 
 	const stays = useSelector(storeState => storeState.stayModule.stays)
 
@@ -20,6 +23,11 @@ export function AppHeader({ filterBy, onSetFilter }) {
 		
 		setIsNavOpen(!isNavOpen) 
 	}
+	function openFilter() {
+		setIsFilterOpen(!isFilterOpen)
+	}
+
+	console.log(isFilterOpen);
 
 	const navigate = useNavigate()
 	const location = useLocation()
@@ -38,7 +46,7 @@ export function AppHeader({ filterBy, onSetFilter }) {
 
 	return (
 		<header ref={headerRef} className={isLocation ? "app-header details full main-container" : "app-header full main-container"}>
-			<div>
+			<div className="header-container">
 
 				<Link to={"stay/"} className="logo">
 
@@ -46,8 +54,9 @@ export function AppHeader({ filterBy, onSetFilter }) {
 					<p>FlyAir</p>
 
 				</Link>
+				{isFilterOpen ? <StayFilter filterBy={filterBy} onSetFilter={onSetFilter} /> : <MiniFilter openFilter={openFilter} />}
 
-				<StayFilter filterBy={filterBy} onSetFilter={onSetFilter} />
+				{/* <StayFilter filterBy={filterBy} onSetFilter={onSetFilter} /> */}
 
 				<nav className="profile">
 

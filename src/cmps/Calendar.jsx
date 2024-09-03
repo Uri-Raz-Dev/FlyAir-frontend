@@ -52,4 +52,3 @@ export function Calendar() {
     )
 }
 
-console.log(DateCalendar);

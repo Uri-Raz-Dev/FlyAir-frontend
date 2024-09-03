@@ -1,26 +1,26 @@
 .app-header {
     position: sticky;
     top: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    height: 80px;
+    // height: 168px;
     background-color: white;
     line-height: 1.25rem;
     box-shadow: 0 .1px 0 0;
-    padding-inline: em(80px);
     // padding-block-start: em(80px);
     z-index: 999;
 
-
-    &.details {
-        padding-inline: 273px;
+    .header-container {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
     }
+
+    &.details {}
 
     .profile {
         display: flex;
         align-items: center;
         justify-self: end;
-        padding-inline-start: em(140px);
+        // padding-inline-start: em(140px);
     }
 
     .logo {
@@ -28,6 +28,7 @@
         align-items: start;
         color: $bnb-red;
         // flex-grow: 0.5;
+        align-items: center;
         flex-grow: 1;
 
         &:hover {

@@ -36,7 +36,7 @@ const stays = [
             "lat": 48.8556,
             "lang": 2.3522
         },
-        "region":"Greece",
+        "region": "Greece",
         "reviews": [
             { "id": makeId(), "by": "Alice Johnson", "txt": "Absolutely loved this apartment! The location was perfect for exploring Paris." },
             { "id": makeId(), "by": "Bob Smith", "txt": "Great place to stay, very modern and comfortable. Samantha was a wonderful host." },
@@ -45,6 +45,8 @@ const stays = [
             { "id": makeId(), "by": "Emma Davis", "txt": "Perfect for a romantic getaway. The view from the apartment was stunning." },
             { "id": makeId(), "by": "Frank Green", "txt": "Enjoyed our stay! The location was central and close to many attractions." }
         ],
+        "checkIn": '3/9/2024',
+        "checkOut": '8/9/2024',
     },
     {
         "_id": 's102',
@@ -77,7 +79,7 @@ const stays = [
             "lat": 40.7484,
             "lang": -73.9857
         },
-        "region":"US",
+        "region": "US",
         "reviews": [
             { "id": makeId(), "by": "Grace Hill", "txt": "The studio was perfect for our weekend in NYC. Loved the cozy atmosphere!" },
             { "id": makeId(), "by": "Henry Adams", "txt": "Great location, right on 5th Avenue. The backyard was a nice touch." },
@@ -85,7 +87,9 @@ const stays = [
             { "id": makeId(), "by": "Jack White", "txt": "We enjoyed our stay. The private entrance made it feel very exclusive." },
             { "id": makeId(), "by": "Kathy Martinez", "txt": "A bit small, but cozy and comfortable. Perfect for a short stay." },
             { "id": makeId(), "by": "Leo Clark", "txt": "The fireplace was a highlight! Made the studio feel so warm and inviting." }
-        ]
+        ],
+        "checkIn": '28/9/2024',
+        "checkOut": '2/10/2024',
     },
 
     {
@@ -120,7 +124,7 @@ const stays = [
             "lat": 35.6824,
             "lang": 139.7591
         },
-        "region":"Italy",
+        "region": "Italy",
         "reviews": [
             { "id": makeId(), "by": "Mia Kim", "txt": "The loft was beautiful! Loved the sunset views from the balcony." },
             { "id": makeId(), "by": "Nathan Lee", "txt": "A perfect place for our family vacation. The pool and beach access were great." },
@@ -128,7 +132,9 @@ const stays = [
             { "id": makeId(), "by": "Paul Anderson", "txt": "The private beach made our stay special. Highly recommended!" },
             { "id": makeId(), "by": "Quincy Brown", "txt": "A bit expensive, but the luxury and location were worth it." },
             { "id": makeId(), "by": "Rachel Evans", "txt": "We had a wonderful time. The outdoor BBQ grill was a nice touch." }
-        ]
+        ],
+        "checkIn": '15/9/2024',
+        "checkOut": '24/9/2024',
     },
     {
         "_id": 's104',
@@ -161,7 +167,7 @@ const stays = [
             "lat": -33.8587,
             "lang": 151.2140
         },
-        "region":"SouthUs",
+        "region": "SouthUs",
         "reviews": [
             { "id": makeId(), "by": "Sophia Martinez", "txt": "The villa was amazing! The gardens and pool were perfect for our group." },
             { "id": makeId(), "by": "Thomas Wilson", "txt": "We had a wonderful time. The game room was a hit with the kids." },
@@ -169,7 +175,9 @@ const stays = [
             { "id": makeId(), "by": "Victor Turner", "txt": "A beautiful rustic escape. The BBQ area was perfect for family dinners." },
             { "id": makeId(), "by": "Wendy Scott", "txt": "The location was perfect for exploring Tuscany. Highly recommended!" },
             { "id": makeId(), "by": "Xander Harris", "txt": "A bit expensive, but the villa and surroundings were worth it." }
-        ]
+        ],
+        "checkIn": '9/9/2024',
+        "checkOut": '14/9/2024',
     },
     {
         "_id": 's105',
@@ -202,7 +210,7 @@ const stays = [
             "lat": -33.9088,
             "lang": 18.4173
         },
-        "region":"Europe",
+        "region": "Europe",
         "reviews": [
             { "id": makeId(), "by": "Yasmin Ali", "txt": "The penthouse was beyond our expectations. The views were incredible!" },
             { "id": makeId(), "by": "Zane Ford", "txt": "We had an amazing stay. The infinity pool was a highlight." },
@@ -210,7 +218,9 @@ const stays = [
             { "id": makeId(), "by": "Benjamin Clark", "txt": "A bit pricey, but worth every penny for the luxury experience." },
             { "id": makeId(), "by": "Chloe Adams", "txt": "The rooftop terrace was perfect for relaxing and enjoying the views." },
             { "id": makeId(), "by": "Daniel Evans", "txt": "We loved the penthouse. The gourmet kitchen was a nice touch." }
-        ]
+        ],
+        "checkIn": '15-09-2024',
+        "checkOut": '21-09-2024',
     }
     ,
     {
@@ -243,7 +253,7 @@ const stays = [
             "lat": -33.9088,
             "lang": 18.4173
         },
-        "region":"Greece",
+        "region": "Greece",
         "reviews": [
             { "id": makeId(), "by": "Yasmin Ali", "txt": "The penthouse was beyond our expectations. The views were incredible!" },
             { "id": makeId(), "by": "Zane Ford", "txt": "We had an amazing stay. The infinity pool was a highlight." },
@@ -251,7 +261,9 @@ const stays = [
             { "id": makeId(), "by": "Benjamin Clark", "txt": "A bit pricey, but worth every penny for the luxury experience." },
             { "id": makeId(), "by": "Chloe Adams", "txt": "The rooftop terrace was perfect for relaxing and enjoying the views." },
             { "id": makeId(), "by": "Daniel Evans", "txt": "We loved the penthouse. The gourmet kitchen was a nice touch." }
-        ]
+        ],
+        "checkIn": '22/9/2024',
+        "checkOut": '25/9/2024',
     }
 ]
 localStorage.setItem('stay', JSON.stringify(stays));
@@ -271,16 +283,26 @@ window.cs = stayService
 async function query(filterBy = {}) {
     var stays = await storageService.query(STORAGE_KEY)
     // const { filterBy } = store.getState().toyModule
-    const { region } = filterBy
+    const { region, startDate, endDate } = filterBy
     console.log('filterBy:', filterBy)
 
+    
     if (region) {
         const regex = new RegExp(filterBy.region, 'i')
         stays = stays.filter(stay => regex.test(stay.region))
-        //  || regex.test(stay.description) || regex.test(stay.summary) || regex.test(stay.location.city) || regex.test(stay.location.country))
         console.log('stays after region filter:', stays)
     }
+    
+    if (startDate && endDate) {
+        stays.filter(stay => {
+            const stayCheckIn = new Date(stay.checkIn)
+            const stayCheckOut = new Date(stay.checkOut)
+            return (stayCheckIn >= startDate &&
+                stayCheckOut <= endDate
+            )
+        })
 
+    }
     // const { txt, minSpeed, maxPrice, sortField, sortDir } = filterBy
     // if (minSpeed) {
     //     stays = stays.filter(stay => stay.speed >= minSpeed)

@@ -113,7 +113,7 @@ export function RootCmp() {
         <div className={isStayDetailsPage ? "main-container details" : "main-container"}>
             <AppHeader filterBy={filterBy} onSetFilter={setFilterBy} />
             <UserMsg />
-            <main >
+            <main className='empty-div'>
                 <Routes>
                     <Route path="/" element={<Navigate to="/stay" />} />
                     {renderRoutes(routes)}
