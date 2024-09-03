@@ -70,18 +70,26 @@ const routes = [
     },
     {
         path: 'login',
-        component: LoginSignup,
-        children: [
-            {
-                path: '',
-                component: Login,
-            },
-            {
-                path: 'signup',
-                component: Signup,
-            },
-        ]
+        component: Login,
     },
+    {
+        path: 'signup',
+        component: Signup,
+    },
+    // {
+    //     path: '',
+    //     component: LoginSignup,
+    //     children: [
+    //         {
+    //             path: 'login',
+    //             component: Login,
+    //         },
+    //         {
+    //             path: 'signup',
+    //             component: Signup,
+    //         },
+    //     ]
+    // },
 ]
 
 const renderRoutes = (routes) => routes.map((route) => (
