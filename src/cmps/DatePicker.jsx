@@ -21,7 +21,7 @@ export const DatePickerr = ({ handleCheckIn, handleCheckOut }) => {
 
     const datePickerRef = useRef();
 
-    console.log(state[0]);
+    // console.log(state[0]);
 
     const [startDate, setStartDate] = useState(null);
     const [endDate, setEndDate] = useState(null);
@@ -67,7 +67,7 @@ export const DatePickerr = ({ handleCheckIn, handleCheckOut }) => {
             onFocusChange={handleFocusChange} // Handle focus changes
             displayFormat="MM/DD/YYYY" // Format of the displayed date
             numberOfMonths={2} // Show 2 months in the calendar view
-            isOutsideRange={isOutsideRange} // Disable dates outside this range
+            // isOutsideRange={isOutsideRange} // Disable dates outside this range
             />
             {/* <div className="date-picker-controls">
                 <button>Exact dates</button>
