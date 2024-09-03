@@ -219,8 +219,8 @@ const stays = [
             { "id": makeId(), "by": "Chloe Adams", "txt": "The rooftop terrace was perfect for relaxing and enjoying the views." },
             { "id": makeId(), "by": "Daniel Evans", "txt": "We loved the penthouse. The gourmet kitchen was a nice touch." }
         ],
-        "checkIn": '15/9/2024',
-        "checkOut": '21/9/2024',
+        "checkIn": '15-09-2024',
+        "checkOut": '21-09-2024',
     }
     ,
     {
