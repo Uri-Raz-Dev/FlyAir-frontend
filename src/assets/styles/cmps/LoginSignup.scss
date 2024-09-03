@@ -1,0 +1,27 @@
+.login-page {
+    font-size: 1.1rem; // גודל הגופן הבסיסי בקומפוננטה
+    text-decoration: none;
+    border: 0.0625rem solid red; // 1px ב-rem
+    background-color: rgb(255, 255, 255);
+    margin: 0 auto; // מרכז את הקומפוננטה בעמוד
+    padding: 1.25em; // Padding של 20px ב-em
+    width: 257px;
+
+    .login-nav {
+        display: flex;
+        flex-direction: column;
+        border: 0.0625rem solid rgb(7, 114, 18); // 1px ב-rem
+        padding: 1.25em; // Padding של 20px ב-em
+        
+
+        a {
+            color: red;
+            // padding: 1.25em; // Padding של 20px ב-em
+            text-decoration: none; // הסרת קו תחתון מהקישורים
+            
+            &:hover {
+                background-color: rgb(221, 221, 221);
+            }
+        }
+    }
+}

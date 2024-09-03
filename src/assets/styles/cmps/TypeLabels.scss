@@ -26,8 +26,6 @@
         }
     }
 
-
-
     .left-button {
         position: absolute;
         z-index: 999;
@@ -38,8 +36,6 @@
             box-shadow: 10px 0.1px 3px 16px rgba(255, 255, 255, 0.7);
         }
     }
-
-
 
     .right-button {
         position: absolute;
@@ -73,64 +69,62 @@
         font-weight: 500;
         line-height: 16px;
 
-    // העברתי את ההצהרה מעל הכללים המקוננים
-    &.active {
-        box-shadow: 0px 2px 0px 0px $bnb-black;
+        &.active {
+            box-shadow: 0px 2px 0px 0px $bnb-black;
 
-        .stay-labal-item {
-            >span {
-                color: black;
+            .stay-labal-item {
+                > span {
+                    color: black;
+                }
+
+                > img {
+                    filter: brightness(0) saturate(100%);
+                }
             }
 
-            >img {
-                filter: brightness(0) saturate(100%);
-                // border: 2px solid red;
+            &:hover {
+                box-shadow: 0px 2px 0px 0px $bnb-black;
+            }
+        }
+
+        .filter-label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            input {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                margin: 3px 3px 0 5px;
+            }
+
+            .stay-labal-item {
+                display: flex;
+                flex-direction: column;
+                row-gap: 8px;
+                cursor: pointer;
+
+                img {
+                    opacity: 0.674208;
+                }
+
+                color: rgb(106, 106, 106);
+                transition: color 0.3s ease;
+
+                &:hover {
+                    color: black;
+                }
             }
         }
 
         &:hover {
+            cursor: pointer;
+            box-shadow: 0px 2px 0px 0px $bnb-gray3;
+        }
+
+        &:active {
             box-shadow: 0px 2px 0px 0px $bnb-black;
         }
-    }
-
-    .filter-label {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        input {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            margin: 3px 3px 0 5px;
-        }
-
-        .stay-labal-item {
-            display: flex;
-            flex-direction: column;
-            row-gap: 8px;
-            cursor: pointer;
-
-            img {
-                opacity: 0.674208;
-            }
-
-            // העברתי את ההצהרה מעל הכללים המקוננים
-            color: rgb(106, 106, 106);
-            transition: color 0.3s ease;
-
-            &:hover {
-                color: black;
-            }
-        }
-    }
-
-    &:hover {
-        cursor: pointer;
-        box-shadow: 0px 2px 0px 0px $bnb-gray3;
-    }
-
-    &:active {
-        box-shadow: 0px 2px 0px 0px $bnb-black;
     }
 }
