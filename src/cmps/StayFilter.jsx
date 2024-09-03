@@ -166,9 +166,25 @@ export function StayFilter({ filterBy, onSetFilter }) {
             </Modal>
 
 
+
+
+
         </div>
 
     )
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
