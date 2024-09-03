@@ -13,12 +13,12 @@ export function AppHeader({ filterBy, onSetFilter }) {
 
 	const user = useSelector(storeState => storeState.userModule.user)
 	const headerRef = useRef(null)
-	const [isNavOpen, setIsNavOpen] = useState(false); // ניהול ה-state לפתיחת/סגירת המודל
+	const [isNavOpen, setIsNavOpen] = useState(false); 
 	const stays = useSelector(storeState => storeState.stayModule.stays)
 
 	function toggleNav() {
 		
-		setIsNavOpen(!isNavOpen) // משנה את ה-state לפתיחה או סגירה של המודל
+		setIsNavOpen(!isNavOpen) 
 	}
 
 	const navigate = useNavigate()
@@ -62,6 +62,7 @@ export function AppHeader({ filterBy, onSetFilter }) {
 						<SvgIcon iconName={"usermenu"}></SvgIcon>
 						{stays.length > 0 && stays[0].host && <img src={stays[0].host.imgUrl} alt="" />}
 						{isNavOpen && <LoginSignup toggleNav={toggleNav} />} 
+
 					</div>
 
 				</nav>
