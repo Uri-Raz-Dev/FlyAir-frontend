@@ -5,31 +5,55 @@ import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service"
 import { logout } from "../store/actions/user.actions"
 import { StayFilter } from "./StayFilter.jsx"
 import { SvgIcon } from "./Svgicon.jsx"
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { MiniFilter } from "./MiniFliter.jsx"
 
 // import { NavBar } from './NavBarUser.jsx'
 export function AppHeader({ filterBy, onSetFilter }) {
 	const user = useSelector(storeState => storeState.userModule.user)
 	const headerRef = useRef(null)
-	const [isNavOpen, setIsNavOpen] = useState(false);
-	const [isFilterOpen, setIsFilterOpen] = useState(false);
+	const [isNavOpen, setIsNavOpen] = useState(false)
+	const [isFilterOpen, setIsFilterOpen] = useState(false)
+	const [isScrolled, setIsScrolled] = useState(false)
+
 	const stays = useSelector(storeState => storeState.stayModule.stays)
-
-	function toggleNav() {
-		setIsNavOpen(!isNavOpen)
-	}
-	function openFilter() {
-		setIsFilterOpen(!isFilterOpen)
-	}
-
-	console.log(isFilterOpen);
-
 	const navigate = useNavigate()
 	const location = useLocation()
 	const isLocation = location.pathname.startsWith(`/stay/s`)
+	const scrollY = useRef(0)
+
+	useEffect(() => {
+		function handleScroll() {
+			scrollY.current = window.scrollY;  // Update the current scroll position
+			if (scrollY.current === 0) {
+				setIsFilterOpen(true);
+			} else {
+				setIsFilterOpen(false);
+			}
+			console.log(scrollY.current);
+		}
+
+
+		window.addEventListener("scroll", handleScroll);
+
+		// Initial check in case the page is already scrolled when component mounts
+		handleScroll();
+
+		return () => {
+			window.removeEventListener("scroll", handleScroll);
+		};
+	}, []);
+	function openFilter() {
+		// Toggle the filter state
+		setIsFilterOpen(prev => !prev)
+
+		// Preserve the current scroll position after filter toggle
+
+	}
+
 	// const [filterBy, setFilterBy] = useState(stayService.getDefaultFilter())
 	// const stays = useSelector(storeState => storeState.stayModule.stays)
+
 
 	async function onLogout() {
 
@@ -42,8 +66,24 @@ export function AppHeader({ filterBy, onSetFilter }) {
 		}
 	}
 
+
+	function handleHeader() {
+		let header = "app-header full main-container"
+
+		if (isLocation) {
+			header = "app-header details full main-container"
+		}
+
+		if (isFilterOpen && isLocation) {
+			header = "app-header details full main-container header-wide"
+		} else if (isFilterOpen) {
+			header = "app-header full main-container header-wide"
+		}
+		return header
+	}
+
 	return (
-		<header ref={headerRef} className={isLocation ? "app-header details full main-container" : "app-header full main-container"}>
+		<header ref={headerRef} className={handleHeader()}>
 			<div className="header-container">
 
 				<Link to={"stay/"} className="logo">
@@ -52,7 +92,8 @@ export function AppHeader({ filterBy, onSetFilter }) {
 					<p>FlyAir</p>
 
 				</Link>
-				{isFilterOpen ? <StayFilter filterBy={filterBy} onSetFilter={onSetFilter} /> : <MiniFilter openFilter={openFilter} />}
+				{isFilterOpen ? <StayFilter filterBy={filterBy} onSetFilter={onSetFilter} isFilterOpen={isFilterOpen} />
+					: <MiniFilter openFilter={openFilter} isFilterOpen={isFilterOpen} />}
 
 				{/* <StayFilter filterBy={filterBy} onSetFilter={onSetFilter} /> */}
 
@@ -73,6 +114,6 @@ export function AppHeader({ filterBy, onSetFilter }) {
 				</nav>
 			</div>
 
-		</header>
+		</header >
 	)
 }

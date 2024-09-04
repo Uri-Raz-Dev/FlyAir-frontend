@@ -12,6 +12,15 @@
     height: 46px;
     border: solid 1px rgb(221, 221, 221);
     border-radius: 50px;
+    /* Initial state */
+    opacity: 1;
+    transition: transform 250ms opacity 250ms border 250ms ease;
+    transform: initial;
+
+    &.active {
+        opacity: 1;
+        transition: transform 250ms opacity 250ms border 250ms ease;
+    }
 
     >:nth-child(3) {
         // background-color: red;
