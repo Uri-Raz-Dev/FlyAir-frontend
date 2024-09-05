@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap');
 
-/* סגנונות עבור LoginSignup */
 .login-signup-btn {
     position: absolute;
     font-size: 16px;
@@ -9,10 +8,12 @@
     background-color: #ffffff;
     width: 240px;
     height: 253px;
+    // top: -10px;
+    right: 10px;
     bottom: -10px;
-    left: 0;
+    // left: 0;
     transform: translateY(100%);
-    z-index: 10000;
+    z-index: $z-index-highest;
     box-shadow: 0px 2px 16px 0px rgba(0, 0, 0, 0.12);
     font-family: 'Nunito', sans-serif;
 }
@@ -24,7 +25,7 @@
     width: 100%;
     height: 100%;
     // background-color: rgba(0, 0, 0, 0.5);
-    z-index: 9999;
+    z-index: $z-index-modal-overlay;
 }
 
 .login-signup-nav {
@@ -53,40 +54,3 @@
     }
 }
 
-.login-modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #ffffff;
-    padding: 2em;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    z-index: 10000;
-    width: 300px;
-    font-family: 'Nunito', sans-serif;
-}
-
-
-.login-form {
-    display: flex;
-    flex-direction: column;
-
-    select, button {
-        margin-bottom: 1em;
-        padding: 0.75em;
-        font-size: 1rem;
-    }
-
-    button {
-        background-color: #007bff;
-        color: #fff;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-
-        &:hover {
-            background-color: #0056b3;
-        }
-    }
-}

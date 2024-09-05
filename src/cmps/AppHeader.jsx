@@ -9,20 +9,21 @@ import { useRef, useState } from "react"
 import { MiniFilter } from "./MiniFliter.jsx"
 import { LoginSignup } from '../pages/LoginSignup.jsx'
 
-export function AppHeader({ filterBy, onSetFilter }) {
+export function AppHeader({ filterBy, onSetFilter , toggleModal}) {
 	const dispatch = useDispatch()
 
 	const user = useSelector(storeState => storeState.userModule.user)
 	const headerRef = useRef(null)
-	const [isNavOpen, setIsNavOpen] = useState(false);
-	const [isFilterOpen, setIsFilterOpen] = useState(false);
-	const [isNavOpen, setIsNavOpen] = useState(false); 
+	const [isFilterOpen, setIsFilterOpen] = useState(false)
+	const [isNavOpen, setIsNavOpen] = useState(false)
+
 	const stays = useSelector(storeState => storeState.stayModule.stays)
 
 	function toggleNav() {
-		
-		setIsNavOpen(!isNavOpen) 
+
+		setIsNavOpen(!isNavOpen)
 	}
+
 	function openFilter() {
 		setIsFilterOpen(!isFilterOpen)
 	}
@@ -67,11 +68,11 @@ export function AppHeader({ filterBy, onSetFilter }) {
 						<SvgIcon iconName={"language"}></SvgIcon>
 					</Link>
 
-					<div className="user-menu" onClick={toggleNav}> 
+					<div className="user-menu" onClick={toggleNav}>
 						<SvgIcon iconName={"usermenu"}></SvgIcon>
 						{stays.length > 0 && stays[0].host && <img src={stays[0].host.imgUrl} alt="" />}
-						{isNavOpen && <LoginSignup toggleNav={toggleNav} />} 
 
+						{isNavOpen && <LoginSignup toggleNav={toggleNav} setIsNavOpen={setIsNavOpen} toggleModal={toggleModal} />}
 					</div>
 
 				</nav>

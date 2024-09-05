@@ -7,7 +7,7 @@
     line-height: 1.25rem;
     box-shadow: 0 .1px 0 0;
     // padding-block-start: em(80px);
-    z-index: 999;
+    z-index: $z-index-high;
 
     .header-container {
         display: grid;
@@ -58,9 +58,8 @@
         transition: box-shadow 0.2s ease-in-out;
         border: 1px solid $bnb-gray3;
         border-radius: 30px;
-        position: relative;
         cursor: pointer;
-        
+        position: relative;
 
         
        

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Routes, Route, Navigate, useParams, useLocation } from 'react-router'
 
 import { HomePage } from './pages/HomePage'
@@ -21,6 +21,8 @@ import { HostingPage } from './pages/HostingPage.jsx'
 import { HostingList } from './cmps/HostingList.jsx'
 import { setFilterBy } from './store/actions/stay.actions.js'
 import { store } from './store/store.js'
+import { toggleUserIsShown } from './store/actions/user.actions.js'
+import { useSelector } from 'react-redux'
 
 
 
@@ -109,12 +111,22 @@ export function RootCmp() {
     const { stayId } = useParams()
     const isStayDetailsPage = location.pathname.startsWith(`/stay/s`)
     const { filterBy } = store.getState().stayModule
+    const isShown = useSelector(storeState => storeState.userModule.isUserShown)
+
+    const [isModalOpen, setIsModalOpen] = useState(false)
+
+    const toggleModal = () => {
+        setIsModalOpen(prevState => !prevState)
+    };
+
     return (
         <div className={isStayDetailsPage ? "main-container details" : "main-container"}>
-            <AppHeader filterBy={filterBy} onSetFilter={setFilterBy} />
+            <AppHeader filterBy={filterBy} onSetFilter={setFilterBy} toggleModal={toggleModal} />
             <UserMsg />
             <main className='empty-div'>
+            <div className='login-container'>{isModalOpen && <Login toggleModal={toggleModal} />}</div>
                 <Routes>
+                    {isShown && console.log('isShown main main main:', isShown)}
                     <Route path="/" element={<Navigate to="/stay" />} />
                     {renderRoutes(routes)}
                 </Routes>

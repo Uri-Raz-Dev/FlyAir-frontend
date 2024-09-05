@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
 import { Outlet, NavLink } from 'react-router-dom';
-import { Login } from '../pages/Login.jsx'; 
+import { Login } from '../pages/Login.jsx';
 
-export function LoginSignup({ toggleNav }) {
-    const [isModalOpen, setIsModalOpen] = useState(false); // ניהול מצב המודל
+export function LoginSignup({ toggleNav, toggleModal }) {
+    // const [isModalOpen, setIsModalOpen] = useState(false); // ניהול מצב המודל המקומי
 
     const stopPropagation = (e) => {
         e.stopPropagation();
     };
 
-    const toggleModal = () => {
-        setIsModalOpen(!isModalOpen); 
-        
-    };
+    // const toggleModal = () => {
+    //     // קודם מבצעים את toggleNav ולאחר מכן את setIsModalOpen עם גישה לפונקציה הנוכחית של המצב
+    //     // toggleNav();
+    //     setIsModalOpen(prevState => !prevState); // שימוש בגרסה הפונקציונלית כדי לוודא שהשינוי נכון
+    // };
 
     return (
         <>
@@ -22,7 +23,6 @@ export function LoginSignup({ toggleNav }) {
                     {/* כפתור לפתיחת המודל */}
                     <a onClick={toggleModal}>Log in</a>
 
-                    {/* לינק ל-signup */}
                     <NavLink to="signup">Sign up</NavLink>
                     <div className='signup-nav-border'></div>
                     <a href="#">Gift cards</a>
@@ -30,9 +30,9 @@ export function LoginSignup({ toggleNav }) {
                     <a href="#">Help center</a>
                 </nav>
                 <Outlet />
-
-                {isModalOpen && <Login toggleModal={toggleModal} />}
+                {/* רינדור המודל רק אם הוא פתוח */}
             </div>
+            {/* <div className='login-container'>{isModalOpen && <Login toggleModal={toggleModal} />}</div> */}
         </>
     );
 }
