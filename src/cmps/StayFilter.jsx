@@ -7,6 +7,16 @@ import { RegionFilter } from './RegionFilter.jsx';
 import { DatePickerr } from './DatePicker.jsx';
 
 export function StayFilter({ filterBy, onSetFilter }) {
+    const [selectedRegion, setSelectedRegion] = useState('');
+
+    const [selectedCheckIn, setSelectedCheckIn] = useState(new Date());
+    const [selectedCheckOut, setSelectedCheckOut] = useState(null);
+    
+    const [isRegionPickerOpen, setRegionPickerOpen] = useState(false);
+    const [isDatesPickerOpen, setDatesPickerOpen] = useState(false);
+
+    const [startDate,setStartDate]=useState(new Date())
+    const [endDate,setEndDate]=useState(null)
 
     const filterActive = useRef('')
     const regionActive = useRef(false)
@@ -47,11 +57,7 @@ export function StayFilter({ filterBy, onSetFilter }) {
     // }
 
     // const [showModal, setShowModal] = useState(false);
-    const [selectedRegion, setSelectedRegion] = useState('');
-    const [selectedCheckIn, setSelectedCheckIn] = useState('');
-    const [selectedCheckOut, setSelectedCheckOut] = useState('');
-    const [isRegionPickerOpen, setRegionPickerOpen] = useState(false);
-    const [isDatesPickerOpen, setDatesPickerOpen] = useState(false);
+ 
 
 
 
@@ -68,9 +74,9 @@ export function StayFilter({ filterBy, onSetFilter }) {
 
         setRegionPickerOpen(true)
     }
+
     function openDatesModal() {
         setDatesPickerOpen(true)
-        // console.log(new Date("2024-09-01"));
 
     }
     function handleSelectRegion(region) {
@@ -117,7 +123,7 @@ export function StayFilter({ filterBy, onSetFilter }) {
             <a onClick={openRegionsModal} href='#' className={`search-filter-item ${regionActive.current} `}>
                 <div>
                     <label>Where</label>
-                    <input type="text" value={selectedRegion}
+                    <input  type="text" value={selectedRegion}
                          placeholder="Search destinations" name='region' />
 
                 </div>
@@ -127,7 +133,7 @@ export function StayFilter({ filterBy, onSetFilter }) {
                 <div>
 
                     <label>Check in</label>
-                    <input  value={selectedCheckIn} className='check-in' name='startDate' type="text" placeholder="Add dates" />
+                    <input  readOnly value={selectedCheckIn}  className='check-in' name='startDate' type="text" placeholder="Add dates" />
                 </div>
             </a>
 
@@ -136,7 +142,7 @@ export function StayFilter({ filterBy, onSetFilter }) {
                 <div>
 
                     <label>Check out</label>
-                    <input   onChange={handleChange} value={selectedCheckOut} name='endDate' className='check-in' type="text" placeholder="Add dates" />
+                    <input readOnly    value={selectedCheckOut} name='endDate' className='check-in' type="text" placeholder="Add dates" />
                 </div>
             </a>
 

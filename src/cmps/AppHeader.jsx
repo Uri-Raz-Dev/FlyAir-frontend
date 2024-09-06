@@ -23,7 +23,7 @@ export function AppHeader({ filterBy, onSetFilter }) {
 		setIsFilterOpen(!isFilterOpen)
 	}
 
-	console.log(isFilterOpen);
+	// console.log(isFilterOpen);
 
 	const navigate = useNavigate()
 	const location = useLocation()

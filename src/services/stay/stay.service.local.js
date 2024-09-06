@@ -45,8 +45,8 @@ const stays = [
             { "id": makeId(), "by": "Emma Davis", "txt": "Perfect for a romantic getaway. The view from the apartment was stunning." },
             { "id": makeId(), "by": "Frank Green", "txt": "Enjoyed our stay! The location was central and close to many attractions." }
         ],
-        "checkIn": '3/9/2024',
-        "checkOut": '8/9/2024',
+        "checkIn": new Date('2024-09-05'),
+        "checkOut": new Date('2024-09-08'),
     },
     {
         "_id": 's102',
@@ -88,8 +88,8 @@ const stays = [
             { "id": makeId(), "by": "Kathy Martinez", "txt": "A bit small, but cozy and comfortable. Perfect for a short stay." },
             { "id": makeId(), "by": "Leo Clark", "txt": "The fireplace was a highlight! Made the studio feel so warm and inviting." }
         ],
-        "checkIn": '28/9/2024',
-        "checkOut": '2/10/2024',
+        "checkIn": new Date('2024-09-27'),
+        "checkOut": new Date('2024-10-02'),
     },
 
     {
@@ -133,8 +133,8 @@ const stays = [
             { "id": makeId(), "by": "Quincy Brown", "txt": "A bit expensive, but the luxury and location were worth it." },
             { "id": makeId(), "by": "Rachel Evans", "txt": "We had a wonderful time. The outdoor BBQ grill was a nice touch." }
         ],
-        "checkIn": '15/9/2024',
-        "checkOut": '24/9/2024',
+        "checkIn": new Date('2024-09-15'),
+        "checkOut": new Date('2024-09-22'),
     },
     {
         "_id": 's104',
@@ -176,8 +176,8 @@ const stays = [
             { "id": makeId(), "by": "Wendy Scott", "txt": "The location was perfect for exploring Tuscany. Highly recommended!" },
             { "id": makeId(), "by": "Xander Harris", "txt": "A bit expensive, but the villa and surroundings were worth it." }
         ],
-        "checkIn": '9/9/2024',
-        "checkOut": '14/9/2024',
+        "checkIn": '9-9-2024',
+        "checkOut": '14-9-2024',
     },
     {
         "_id": 's105',
@@ -219,8 +219,8 @@ const stays = [
             { "id": makeId(), "by": "Chloe Adams", "txt": "The rooftop terrace was perfect for relaxing and enjoying the views." },
             { "id": makeId(), "by": "Daniel Evans", "txt": "We loved the penthouse. The gourmet kitchen was a nice touch." }
         ],
-        "checkIn": '15-09-2024',
-        "checkOut": '21-09-2024',
+        "checkIn": new Date('2024-09-23'),
+        "checkOut": new Date('2024-09-27'),
     }
     ,
     {
@@ -262,8 +262,8 @@ const stays = [
             { "id": makeId(), "by": "Chloe Adams", "txt": "The rooftop terrace was perfect for relaxing and enjoying the views." },
             { "id": makeId(), "by": "Daniel Evans", "txt": "We loved the penthouse. The gourmet kitchen was a nice touch." }
         ],
-        "checkIn": '22/9/2024',
-        "checkOut": '25/9/2024',
+        "checkIn": new Date('2024-10-01'),
+        "checkOut": new Date('2024-10-05'),
     }
 ]
 localStorage.setItem('stay', JSON.stringify(stays));
@@ -286,22 +286,17 @@ async function query(filterBy = {}) {
     const { region, startDate, endDate } = filterBy
     console.log('filterBy:', filterBy)
 
-    
-    if (region) {
+
+    if (region ) {
         const regex = new RegExp(filterBy.region, 'i')
         stays = stays.filter(stay => regex.test(stay.region))
         console.log('stays after region filter:', stays)
     }
-    
-    if (startDate && endDate) {
-        stays.filter(stay => {
-            const stayCheckIn = new Date(stay.checkIn)
-            const stayCheckOut = new Date(stay.checkOut)
-            return (stayCheckIn >= startDate &&
-                stayCheckOut <= endDate
-            )
-        })
 
+    if (endDate&&startDate) {
+        console.log('filter by dates');
+                stays.filter(stay =>  (stay.checkIn >= startDate &&stay.checkOut <= endDate ))
+return stays
     }
     // const { txt, minSpeed, maxPrice, sortField, sortDir } = filterBy
     // if (minSpeed) {
