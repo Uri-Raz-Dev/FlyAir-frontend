@@ -1,17 +1,16 @@
 import { SvgIcon } from "./Svgicon";
 
-export function MiniFilter({
-    openFilter }) {
+export function MiniFilter({ openFilter, isFilterOpen }) {
     return (
-        <div onClick={() => openFilter()} className="mini-filter">
+        <div onClick={() => openFilter()} className={isFilterOpen ? "mini-filter active" : "mini-filter"}>
 
-            <a href='#' className={`mini-filter-item `}>
+            <a className={`mini-filter-item `}>
 
                 <div>Anywhere</div>
 
             </a>
 
-            <a href='#' className="mini-filter-item">
+            <a className="mini-filter-item">
 
 
                 <div>Any week</div>
@@ -19,7 +18,7 @@ export function MiniFilter({
 
             </a>
 
-            <a href='#' className="mini-filter-item">
+            <a className="mini-filter-item">
 
 
                 <div>Add guests</div>
