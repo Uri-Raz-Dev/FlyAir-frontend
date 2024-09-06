@@ -2,10 +2,11 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router'
 import { userService } from '../services/user'
 import { login, signup } from '../store/actions/user.actions'
+import { Link } from 'react-router-dom'
 
 export function Login({ toggleModal }) {
-    const [users, setUsers] = useState([]) 
-    const [isSignup, setIsSignUp] = useState(false) 
+    const [users, setUsers] = useState([])
+    const [isSignup, setIsSignUp] = useState(false)
     const [credentials, setCredentials] = useState({ username: '', password: '', fullname: '' })
 
     const navigate = useNavigate()
@@ -142,9 +143,12 @@ export function Login({ toggleModal }) {
                     </form>
 
                     <div className="btns">
-                        <a href="#" onClick={() => setIsSignUp(!isSignup)}>
+                        {/* <a href="signup" onClick={() => setIsSignUp(!isSignup)}>
                             {isSignup ? 'Already a member? Log in' : 'New user? Sign up here'}
-                        </a>
+                        </a> */}
+                        <Link onClick={() => setIsSignUp(!isSignup)} to="signup">
+                            {isSignup ? 'Already a member? Log in' : 'New user? Sign up here'}
+                        </Link>
                     </div>
                 </div>
             </div>
