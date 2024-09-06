@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Routes, Route, Navigate, useParams, useLocation } from 'react-router'
 
 import { HomePage } from './pages/HomePage'
@@ -21,6 +21,9 @@ import { HostingPage } from './pages/HostingPage.jsx'
 import { HostingList } from './cmps/HostingList.jsx'
 import { setFilterBy } from './store/actions/stay.actions.js'
 import { store } from './store/store.js'
+import { StayBook } from './pages/StayBook.jsx'
+import { toggleUserIsShown } from './store/actions/user.actions.js'
+import { useSelector } from 'react-redux'
 
 
 
@@ -65,23 +68,35 @@ const routes = [
         component: ChatApp,
     },
     {
+        path: 'book/:stayId',
+        component: StayBook,
+    },
+    {
         path: 'admin',
         component: AdminIndex,
     },
     {
         path: 'login',
-        component: LoginSignup,
-        children: [
-            {
-                path: '',
-                component: Login,
-            },
-            {
-                path: 'signup',
-                component: Signup,
-            },
-        ]
+        component: Login,
     },
+    {
+        path: 'signup',
+        component: Signup,
+    },
+    // {
+    //     path: '',
+    //     component: LoginSignup,
+    //     children: [
+    //         {
+    //             path: 'login',
+    //             component: Login,
+    //         },
+    //         {
+    //             path: 'signup',
+    //             component: Signup,
+    //         },
+    //     ]
+    // },
 ]
 
 const renderRoutes = (routes) => routes.map((route) => (
@@ -99,20 +114,53 @@ const renderRoutes = (routes) => routes.map((route) => (
 export function RootCmp() {
     const location = useLocation()
     const { stayId } = useParams()
-    const isStayDetailsPage = location.pathname.startsWith(`/stay/s`)
     const { filterBy } = store.getState().stayModule
+    let isStayDetailsPage = location.pathname
+
+    function handleHeader() {
+        if (isStayDetailsPage.startsWith(`/stay/s`)) {
+            return "main-container details"
+        } else if (isStayDetailsPage.startsWith(`/book/`)) {
+            return "main-container book"
+        } else if (isStayDetailsPage.startsWith(`/wishlist/`)) {
+            return "main-container wishlist"
+        } else if (isStayDetailsPage.startsWith(`/user/inbox`)) {
+            return "main-container inbox"
+
+        } else if (isStayDetailsPage.startsWith(`/hosting/order`)) {
+            return "main-container order"
+        } else if (isStayDetailsPage.startsWith(`/trip/`)) {
+            return "main-container trip"
+        } else {
+            return "main-container"
+        }
+    }
+    const isShown = useSelector(storeState => storeState.userModule.isUserShown)
+
+    const [isModalOpen, setIsModalOpen] = useState(false)
+
+    const toggleModal = () => {
+        setIsModalOpen(prevState => !prevState)
+    };
+
     return (
-        <div className={isStayDetailsPage ? "main-container details" : "main-container"}>
-            <AppHeader filterBy={filterBy} onSetFilter={setFilterBy} />
+        <div className={handleHeader()}>
+
+            <AppHeader filterBy={filterBy} onSetFilter={setFilterBy} toggleModal={toggleModal} />
             <UserMsg />
             <main className='empty-div'>
+                <div className='login-container'>{isModalOpen && <Login toggleModal={toggleModal} />}</div>
                 <Routes>
+                    {isShown && console.log('isShown main main main:', isShown)}
                     <Route path="/" element={<Navigate to="/stay" />} />
                     {renderRoutes(routes)}
                 </Routes>
             </main >
 
             <AppFooter />
+
         </div>
     )
 }
+
+

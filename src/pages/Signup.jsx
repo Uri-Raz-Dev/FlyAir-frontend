@@ -36,6 +36,7 @@ export function Signup() {
     }
 
     return (
+        
         <form className="signup-form" onSubmit={onSignup}>
             <input
                 type="text"

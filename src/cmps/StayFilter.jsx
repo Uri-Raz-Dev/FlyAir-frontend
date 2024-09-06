@@ -28,8 +28,8 @@ export function StayFilter({ filterBy, onSetFilter }) {
     }, [filterToEdit])
 
     function handleChange(ev) {
-        console.log('target' , ev.target);
-        
+        console.log('target', ev.target);
+
         const type = ev.target.type
         const field = ev.target.name
         let value
@@ -100,9 +100,9 @@ export function StayFilter({ filterBy, onSetFilter }) {
     }
     function handleCheckIn(checkIn) {
         // console.log("checkIn:"+checkIn);
-        
-        
-        const startDate=new Date(checkIn)
+
+
+        const startDate = new Date(checkIn)
         // console.log('startDate'+startDate);
         const miniStartDate = displayDateShortly(startDate)
         setSelectedCheckIn(miniStartDate)
@@ -110,7 +110,7 @@ export function StayFilter({ filterBy, onSetFilter }) {
 
     }
     function handleCheckOut(checkOut) {
-        const endDate=new Date(checkOut)
+        const endDate = new Date(checkOut)
         const miniEndDate = displayDateShortly(endDate)
         setSelectedCheckOut(miniEndDate)
         setFilterToEdit({ ...filterToEdit, endDate })
@@ -118,9 +118,9 @@ export function StayFilter({ filterBy, onSetFilter }) {
     return (
 
 
-        <div className="search-filter">
+        <div className={isFilterOpen ? "search-filter" : "search-filter active"}>
 
-            <a onClick={openRegionsModal} href='#' className={`search-filter-item ${regionActive.current} `}>
+            <a onClick={openRegionsModal} className={`search-filter-item ${regionActive.current} `}>
                 <div>
                     <label>Where</label>
                     <input  type="text" value={selectedRegion}
@@ -129,7 +129,7 @@ export function StayFilter({ filterBy, onSetFilter }) {
                 </div>
             </a>
 
-            <a onClick={openDatesModal} href='#' className="search-filter-item ">
+            <a onClick={openDatesModal} className="search-filter-item ">
                 <div>
 
                     <label>Check in</label>
@@ -138,7 +138,7 @@ export function StayFilter({ filterBy, onSetFilter }) {
             </a>
 
 
-            <a onClick={openDatesModal} href='#' className="search-filter-item">
+            <a onClick={openDatesModal} className="search-filter-item">
                 <div>
 
                     <label>Check out</label>

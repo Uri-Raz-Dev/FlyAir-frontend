@@ -174,17 +174,17 @@
                     #e31c5f 40%, #d70466 57.5%, #bd1e59 75%, #bd1e59 100%);
 
             background-size: 200% 200%;
-            width: 100%;
             background-position: calc((100 - var(--mouse-x, 0))* 1%) calc((100 - var(--mouse-y, 0))* 1%);
+            width: 100%;
             border-radius: 10px;
             text-align: center;
             // transition-property: opacity;
             transition-timing-function: ease;
             transition: background-position 0.1s ease;
+            text-decoration: none;
             /* Increase the size so that the gradient can move */
             // transition-timing-function: ease;
             // transition-delay: 0;
-            text-decoration: none;
             // transition: opacity 1.25s ease, background-position 1.25s ease;
             // animation: slideBackground 12.5s ease-in-out infinite;
 

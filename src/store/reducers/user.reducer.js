@@ -8,9 +8,13 @@ export const SET_WATCHED_USER = 'SET_WATCHED_USER'
 export const REMOVE_USER = 'REMOVE_USER'
 export const SET_USERS = 'SET_USERS'
 export const SET_SCORE = 'SET_SCORE'
+export const TOGGLE_USER_IS_SHOWN = 'TOGGLE_USER_IS_SHOWN'
+
+
 
 const initialState = {
     count: 10,
+    isUserShown: false,
     user: userService.getLoggedinUser(),
     users: [],
     watchedUser : null
@@ -42,6 +46,9 @@ export function userReducer(state = initialState, action) {
             break
         case SET_USERS:
             newState = { ...state, users: action.users }
+            break
+        case TOGGLE_USER_IS_SHOWN:
+            newState = { ...state, isUserShown: !state.isUserShown }
             break
         case SET_SCORE:
             const user = { ...state.user, score: action.score }

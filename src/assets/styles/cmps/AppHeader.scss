@@ -2,19 +2,41 @@
     position: sticky;
     top: 0;
     height: 80px;
-    // height: 168px;
     background-color: white;
     line-height: 1.25rem;
     box-shadow: 0 .1px 0 0;
     // padding-block-start: em(80px);
-    z-index: 999;
+    z-index: $z-index-high;
 
     .header-container {
         display: grid;
         grid-template-columns: auto 1fr auto;
     }
 
-    &.details {}
+    &.details {
+        position: relative;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        height: 80px;
+        right: 0;
+        left: 0;
+        background-color: rgb(255, 255, 255);
+        box-shadow: 0 .1px 0 0;
+        z-index: -1;
+        transition: transform 250ms ease;
+        transform: initial;
+    }
+
+    &.header-wide::after {
+        transform: scaleY(3.3);
+        /* Expanded state */
+        border-bottom: none;
+    }
+
 
     .profile {
         display: flex;
@@ -58,6 +80,11 @@
         transition: box-shadow 0.2s ease-in-out;
         border: 1px solid $bnb-gray3;
         border-radius: 30px;
+        cursor: pointer;
+        position: relative;
+
+        
+       
 
 
         &:hover {
