@@ -24,39 +24,34 @@ export function AppHeader({ filterBy, onSetFilter }) {
 
 	useEffect(() => {
 		function handleScroll() {
-			scrollY.current = window.scrollY;  // Update the current scroll position
+			scrollY.current = window.scrollY
 			if (scrollY.current === 0) {
-				setIsFilterOpen(true);
+				setIsFilterOpen(true)
 			} else {
-				setIsFilterOpen(false);
+				setIsFilterOpen(false)
 			}
-			console.log(scrollY.current);
+			console.log(scrollY.current)
 		}
 
 
-		window.addEventListener("scroll", handleScroll);
+		window.addEventListener("scroll", handleScroll)
 
-		// Initial check in case the page is already scrolled when component mounts
 		handleScroll();
 
 		return () => {
-			window.removeEventListener("scroll", handleScroll);
+			window.removeEventListener("scroll", handleScroll)
 		};
 	}, []);
 	function openFilter() {
-		// Toggle the filter state
 		setIsFilterOpen(prev => !prev)
 
-		// Preserve the current scroll position after filter toggle
 
 	}
 
-	// const [filterBy, setFilterBy] = useState(stayService.getDefaultFilter())
-	// const stays = useSelector(storeState => storeState.stayModule.stays)
+
 
 
 	async function onLogout() {
-
 		try {
 			await logout()
 			navigate("/")

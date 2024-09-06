@@ -28,6 +28,8 @@ const stays = [
             "fullname": 'Samantha Lee',
             "imgUrl": 'https://res.cloudinary.com/dooscjcpt/image/upload/v1724504652/Flyair/Samantha%20Lee.jpg',
         },
+
+
         "location": {
             "city": "Paris",
             "country": "France",
@@ -286,13 +288,13 @@ async function query(filterBy = {}) {
     const { region, startDate, endDate } = filterBy
     console.log('filterBy:', filterBy)
 
-    
+
     if (region) {
         const regex = new RegExp(filterBy.region, 'i')
         stays = stays.filter(stay => regex.test(stay.region))
         console.log('stays after region filter:', stays)
     }
-    
+
     if (startDate && endDate) {
         stays.filter(stay => {
             const stayCheckIn = new Date(stay.checkIn)

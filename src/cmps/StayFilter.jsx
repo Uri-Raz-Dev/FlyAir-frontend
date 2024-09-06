@@ -114,7 +114,7 @@ export function StayFilter({ filterBy, onSetFilter, isFilterOpen }) {
 
         <div className={isFilterOpen ? "search-filter" : "search-filter active"}>
 
-            <a onClick={openRegionsModal} href='#' className={`search-filter-item ${regionActive.current} `}>
+            <a onClick={openRegionsModal} className={`search-filter-item ${regionActive.current} `}>
                 <div>
                     <label>Where</label>
                     <input type="text" value={selectedRegion}
@@ -123,7 +123,7 @@ export function StayFilter({ filterBy, onSetFilter, isFilterOpen }) {
                 </div>
             </a>
 
-            <a onClick={openDatesModal} href='#' className="search-filter-item ">
+            <a onClick={openDatesModal} className="search-filter-item ">
                 <div>
 
                     <label>Check in</label>
@@ -132,7 +132,7 @@ export function StayFilter({ filterBy, onSetFilter, isFilterOpen }) {
             </a>
 
 
-            <a onClick={openDatesModal} href='#' className="search-filter-item">
+            <a onClick={openDatesModal} className="search-filter-item">
                 <div>
 
                     <label>Check out</label>
