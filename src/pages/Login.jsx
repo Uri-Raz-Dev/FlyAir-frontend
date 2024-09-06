@@ -4,8 +4,8 @@ import { userService } from '../services/user'
 import { login, signup } from '../store/actions/user.actions'
 
 export function Login({ toggleModal }) {
-    const [users, setUsers] = useState([]) // שמירה על רשימת המשתמשים
-    const [isSignup, setIsSignUp] = useState(false) // ניהול המצב של התחברות/הרשמה
+    const [users, setUsers] = useState([]) 
+    const [isSignup, setIsSignUp] = useState(false) 
     const [credentials, setCredentials] = useState({ username: '', password: '', fullname: '' })
 
     const navigate = useNavigate()
@@ -49,12 +49,11 @@ export function Login({ toggleModal }) {
         e.stopPropagation()
     }
 
-    // useEffect למניעת גלילה כאשר המודל פתוח
+
+    //TODO: NEED TO FIX - OMER
     useEffect(() => {
-        // כאשר המודל פתוח (נגיד, לפי מה שקורה ב`toggleModal`)
         document.body.style.overflow = 'hidden'
 
-        // כאשר המודל נסגר, מאפשרים גלילה שוב
         return () => {
             document.body.style.overflow = 'auto'
         }
@@ -86,7 +85,6 @@ export function Login({ toggleModal }) {
                                         </option>
                                     ))}
                                 </select>
-                                {/* <p className='privacy-policy-note'>We'll call or text you to confirm your number. Standard message and data rates apply. Privacy Policy</p> */}
                             </>
                         )}
 

@@ -11,30 +11,25 @@
 	width: 100%;
 	height: 100%;
 	background-color: rgba(0, 0, 0, 0.30);
-	/* שכבת הצללה מאחורי המודל */
 	z-index: 9998;
 }
 
 .login-modal {
 	position: fixed;
-	/* עדכון ל-position: fixed כדי להבטיח שהמודל תמיד באמצע */
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	background-color: #ffffff;
 	border-radius: 12px;
-	/* עדכון לשוליים מעוגלים יותר */
 	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 	width: 34vw;
 	height: 87vh;
-	// max-width: 567px; /* הגדרת מקסימום רוחב דומה לאתרי מודלים כמו Airbnb */
 	z-index: 9999;
 	display: flex;
 	flex-direction: column;
 	// font-size: 16px;
 	line-height: 20px;
 	padding-top: 15px;
-	/* מרווח פנימי לתוכן המודל */
 
 	.close-login-singup-modal{
 		position: absolute;
@@ -158,18 +153,12 @@
 
 select[name="username"] {
 	border-top-left-radius: 8px;
-	/* פינה שמאלית עליונה */
 	border-top-right-radius: 8px;
-	/* פינה ימנית עליונה */
-	/* ניתן להוסיף כאן סגנונות נוספים */
 }
 
 input[name="password"] {
 	border-bottom-left-radius: 8px;
-	/* פינה שמאלית תחתונה */
 	border-bottom-right-radius: 8px;
-	/* פינה ימנית תחתונה */
-	/* ניתן להוסיף כאן סגנונות נוספים */
 }
 
 .continue-btn {
@@ -192,7 +181,6 @@ input[name="password"] {
 
 .login-form button {
 	background-color: #ff5a5f;
-	/* צבע הכפתור הדומה ל-Airbnb */
 	color: #fff;
 	border: none;
 	border-radius: 8px;
@@ -207,7 +195,6 @@ input[name="password"] {
 
 	&:hover {
 		background-color: #e04848;
-		/* צבע בעת ריחוף */
 	}
 }
 
