@@ -145,20 +145,20 @@ export function RootCmp() {
 
     return (
         <div className={handleHeader()}>
-            <div className={isStayDetailsPage ? "main-container details" : "main-container"}>
-                <AppHeader filterBy={filterBy} onSetFilter={setFilterBy} toggleModal={toggleModal} />
-                <UserMsg />
-                <main className='empty-div'>
-                    <div className='login-container'>{isModalOpen && <Login toggleModal={toggleModal} />}</div>
-                    <Routes>
-                        {isShown && console.log('isShown main main main:', isShown)}
-                        <Route path="/" element={<Navigate to="/stay" />} />
-                        {renderRoutes(routes)}
-                    </Routes>
-                </main >
 
-                <AppFooter />
-            </div>
+            <AppHeader filterBy={filterBy} onSetFilter={setFilterBy} toggleModal={toggleModal} />
+            <UserMsg />
+            <main className='empty-div'>
+                <div className='login-container'>{isModalOpen && <Login toggleModal={toggleModal} />}</div>
+                <Routes>
+                    {isShown && console.log('isShown main main main:', isShown)}
+                    <Route path="/" element={<Navigate to="/stay" />} />
+                    {renderRoutes(routes)}
+                </Routes>
+            </main >
+
+            <AppFooter />
+
         </div>
     )
 }
