@@ -1,11 +1,11 @@
-import { stayService } from '../../services/stay/stay.service.local.js'
+import { stayService } from '../../services/stay/stay.service.remote.js'
 
 import { store } from '../store'
 import { ADD_STAY, REMOVE_STAY, SET_STAYS, SET_STAY, UPDATE_STAY, ADD_STAY_MSG, SET_FILTER_BY } from '../reducers/stay.reducer'
 
 export async function loadStays(filterBy) {
     console.log('give the stays :filterBy', filterBy);
-    
+
     try {
         const stays = await stayService.query(filterBy)
         console.log('staysaaaaaaaaaaaaaaaaa:', stays)

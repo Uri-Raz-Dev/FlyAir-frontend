@@ -1,5 +1,5 @@
 export function StayBook() {
     return (
-        <div>StayBook</div>
+        <h1>HIII</h1>
     )
 }

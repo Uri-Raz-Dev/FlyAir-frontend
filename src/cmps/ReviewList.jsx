@@ -8,6 +8,7 @@ export function ReviewList({ stay }) {
 
     const { reviews, host } = stay
 
+    console.log(stay);
 
     function shouldShowActionBtns(review) {
         const user = userService.getLoggedinUser()
@@ -115,9 +116,9 @@ export function ReviewList({ stay }) {
                                 <div className='review-preview'>
 
                                     <div className='review-header'>
-                                        <img src={host.imgUrl} alt="" />
+                                        <img src={review.by.imgUrl} alt="" />
                                         <div className='by-review'>
-                                            <div>{review.by}</div>
+                                            <div>{review.by.name}</div>
                                             <span>Tel Aviv-Yafo, Israel</span>
                                         </div>
                                     </div >

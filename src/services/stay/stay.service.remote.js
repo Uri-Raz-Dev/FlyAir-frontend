@@ -1,4 +1,4 @@
-import { httpService } from '../http.service'
+import { httpService } from "../http.service.js"
 
 export const stayService = {
     query,
@@ -8,7 +8,7 @@ export const stayService = {
     addStayMsg
 }
 
-async function query(filterBy = {price: 0, sortDir: 1, txt: ''}) {
+async function query(filterBy = { price: 0, sortDir: 1, txt: '' }) {
     return httpService.get(`stay`, filterBy)
 }
 

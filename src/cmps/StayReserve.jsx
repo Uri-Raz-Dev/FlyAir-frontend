@@ -2,7 +2,7 @@ import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Calendar } from './Calendar';
 import { useEffect, useRef } from 'react';
 
@@ -10,6 +10,7 @@ export function StayReserve({ stay }) {
     const { _id, name, summary, type, imgurls, price, capacity, amenities, labels } = stay || {}
     const { city, country, countryCode, address, lat, lag } = stay?.location || {}
     const { fullname, imgUrl } = stay?.host || {}
+    const { stayId } = useParams()
 
     const buttonRef = useRef(null);
     useEffect(() => {
@@ -72,11 +73,11 @@ export function StayReserve({ stay }) {
                         <input type="text" name="guests" id="guests" />
                     </div>
 
+                    <Link to={`/book/${stayId}`} className='reserve-button' ref={buttonRef}>
+                        <span>Reserve</span>
+                    </Link>
                 </form>
             </div>
-            <Link to="/" className='reserve-button' ref={buttonRef}>
-                <span>Reserve</span>
-            </Link>
 
             <span className="charge">
                 You won't be charged yet
