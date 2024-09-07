@@ -47,8 +47,15 @@ const stays = [
             { "id": makeId(), "by": "Emma Davis", "txt": "Perfect for a romantic getaway. The view from the apartment was stunning." },
             { "id": makeId(), "by": "Frank Green", "txt": "Enjoyed our stay! The location was central and close to many attractions." }
         ],
-        "checkIn": new Date('2024-09-05'),
-        "checkOut": new Date('2024-09-08'),
+        "checkIn": '2024-09-05',
+        "checkOut": '2024-09-08',
+        "guests":{
+            adults:2,
+            children:2,
+            infants:0,
+            pets:0
+        }
+
     },
     {
         "_id": 's102',
@@ -90,8 +97,14 @@ const stays = [
             { "id": makeId(), "by": "Kathy Martinez", "txt": "A bit small, but cozy and comfortable. Perfect for a short stay." },
             { "id": makeId(), "by": "Leo Clark", "txt": "The fireplace was a highlight! Made the studio feel so warm and inviting." }
         ],
-        "checkIn": new Date('2024-09-27'),
-        "checkOut": new Date('2024-10-02'),
+        "checkIn": '2024-09-27',
+        "checkOut": '2024-10-02',
+        "guests":{
+            adults:2,
+            children:4,
+            infants:0,
+            pets:0
+        }
     },
 
     {
@@ -135,8 +148,14 @@ const stays = [
             { "id": makeId(), "by": "Quincy Brown", "txt": "A bit expensive, but the luxury and location were worth it." },
             { "id": makeId(), "by": "Rachel Evans", "txt": "We had a wonderful time. The outdoor BBQ grill was a nice touch." }
         ],
-        "checkIn": new Date('2024-09-15'),
-        "checkOut": new Date('2024-09-22'),
+        "checkIn": '2024-09-15',
+        "checkOut": '2024-09-22',
+        "guests":{
+            adults:2,
+            children:1,
+            infants:1,
+            pets:1
+        }
     },
     {
         "_id": 's104',
@@ -178,8 +197,14 @@ const stays = [
             { "id": makeId(), "by": "Wendy Scott", "txt": "The location was perfect for exploring Tuscany. Highly recommended!" },
             { "id": makeId(), "by": "Xander Harris", "txt": "A bit expensive, but the villa and surroundings were worth it." }
         ],
-        "checkIn": '9-9-2024',
-        "checkOut": '14-9-2024',
+        "checkIn": '2024-09-07',
+        "checkOut": '2024-10-01',
+        "guests":{
+            adults:4,
+            children:4,
+            infants:4,
+            pets:5
+        }
     },
     {
         "_id": 's105',
@@ -221,8 +246,8 @@ const stays = [
             { "id": makeId(), "by": "Chloe Adams", "txt": "The rooftop terrace was perfect for relaxing and enjoying the views." },
             { "id": makeId(), "by": "Daniel Evans", "txt": "We loved the penthouse. The gourmet kitchen was a nice touch." }
         ],
-        "checkIn": new Date('2024-09-23'),
-        "checkOut": new Date('2024-09-27'),
+        "checkIn": '2024-09-23',
+        "checkOut": '2024-09-27',
     }
     ,
     {
@@ -264,8 +289,14 @@ const stays = [
             { "id": makeId(), "by": "Chloe Adams", "txt": "The rooftop terrace was perfect for relaxing and enjoying the views." },
             { "id": makeId(), "by": "Daniel Evans", "txt": "We loved the penthouse. The gourmet kitchen was a nice touch." }
         ],
-        "checkIn": new Date('2024-10-01'),
-        "checkOut": new Date('2024-10-05'),
+        "checkIn": '2024-10-01',
+        "checkOut": '2024-10-05',
+        "guests":{
+            adults:1,
+            children:3,
+            infants:1,
+            pets:2
+        }
     }
 ]
 localStorage.setItem('stay', JSON.stringify(stays));
@@ -287,19 +318,23 @@ async function query(filterBy = {}) {
     // const { filterBy } = store.getState().toyModule
     const { region, startDate, endDate } = filterBy
     console.log('filterBy:', filterBy)
+    console.log((`start date that we filter by : ${startDate}`));
+    console.log((`end date that we filter by : ${endDate}`));
 
 
-    if (region ) {
+    if (region) {
         const regex = new RegExp(filterBy.region, 'i')
         stays = stays.filter(stay => regex.test(stay.region))
         console.log('stays after region filter:', stays)
     }
 
-    if (endDate&&startDate) {
-        console.log('filter by dates');
-                stays.filter(stay =>  (stay.checkIn >= startDate &&stay.checkOut <= endDate ))
-return stays
+    if (endDate && startDate) {
+        console.log('filter by dates!!!!!!!');
+        stays = stays.filter(stay =>
+            (new Date(stay.checkIn) >= startDate && new Date(stay.checkOut) <= endDate)
+        )
     }
+
     // const { txt, minSpeed, maxPrice, sortField, sortDir } = filterBy
     // if (minSpeed) {
     //     stays = stays.filter(stay => stay.speed >= minSpeed)

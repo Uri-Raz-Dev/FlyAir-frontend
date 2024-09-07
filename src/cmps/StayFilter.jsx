@@ -5,27 +5,56 @@ import { Link } from 'react-router-dom'
 import Modal from './Modal.jsx';
 import { RegionFilter } from './RegionFilter.jsx';
 import { DatePickerr } from './DatePicker.jsx';
+import DateRange from './DateRange.jsx';
+import DateRangePickerComponent from './DateRangePickerComponent.jsx';
+import { Guests } from './Guests.jsx';
+// import '../assets/styles/basics/_helpers.scss';
 
 export function StayFilter({ filterBy, onSetFilter }) {
     const [selectedRegion, setSelectedRegion] = useState('');
 
-    const [selectedCheckIn, setSelectedCheckIn] = useState(new Date());
+    const [selectedCheckIn, setSelectedCheckIn] = useState(null);
     const [selectedCheckOut, setSelectedCheckOut] = useState(null);
-    
+
+    const [checkInFilter, setCheckInFilter] = useState(false)
+    const [checkOutFilter, setCheckOutFilter] = useState(false)
+
     const [isRegionPickerOpen, setRegionPickerOpen] = useState(false);
     const [isDatesPickerOpen, setDatesPickerOpen] = useState(false);
+    const [isGuestsOpen, setGuestsOpen] = useState(false);
 
-    const [startDate,setStartDate]=useState(new Date())
-    const [endDate,setEndDate]=useState(null)
+    const [startDate, setStartDate] = useState(new Date())
+    const [endDate, setEndDate] = useState(null)
 
     const filterActive = useRef('')
     const regionActive = useRef(false)
 
+    const checkOutinputRef = useRef(null)
+    const checkIninputRef = useRef(null)
+    const regioninputRef = useRef(null)
+
+
+
+
     const [filterToEdit, setFilterToEdit] = useState({ ...filterBy })
+
+    // const [checkInDate, setCheckInDate] = useState(null);
+    // const [checkOutDate, setCheckOutDate] = useState(null);
+
+    // const handleDateChange = (checkIn, checkOut) => {
+    //     setCheckInDate(checkIn);
+    //     setCheckOutDate(checkOut);
+
+    //     // Close the modal if both dates are selected
+    //     if (checkIn && checkOut) {
+    //         setIsModalOpen(false);
+    //     }
+    // };
 
     useEffect(() => {
         onSetFilter(filterToEdit)
     }, [filterToEdit])
+
 
     function handleChange(ev) {
         console.log('target', ev.target);
@@ -47,6 +76,12 @@ export function StayFilter({ filterBy, onSetFilter }) {
         setFilterToEdit({ ...filterToEdit, [field]: value })
         console.log('filterToEdit:', filterToEdit)
     }
+    function handleFocus(inputRef) {
+        if (inputRef.current) {
+            inputRef.current.focus();
+        }
+
+    }
 
     // function clearFilter() {
     //     setFilterToEdit({ ...filterToEdit, txt: '', minSpeed: '', maxPrice: '' })
@@ -57,7 +92,7 @@ export function StayFilter({ filterBy, onSetFilter }) {
     // }
 
     // const [showModal, setShowModal] = useState(false);
- 
+
 
 
 
@@ -70,15 +105,51 @@ export function StayFilter({ filterBy, onSetFilter }) {
 
     }
 
+    function handleCloseGuests(){
+        setGuestsOpen(false)
+    }
+
     function openRegionsModal() {
+        if (isRegionPickerOpen) {
+            setRegionPickerOpen(false)
+        }
+        else {
+            setRegionPickerOpen(true)
+        }
+        setDatesPickerOpen(false)
+        handleFocus(regioninputRef)
 
-        setRegionPickerOpen(true)
     }
 
-    function openDatesModal() {
-        setDatesPickerOpen(true)
-
+    function openCheckInDatesModal() {
+        if (isDatesPickerOpen && checkInFilter) {
+            setDatesPickerOpen(false)
+        }
+        else {
+            setDatesPickerOpen(true)
+        }
+        setCheckInFilter(true)
+        setCheckOutFilter(false)
+        setRegionPickerOpen(false)
+        handleFocus(checkIninputRef)
     }
+    function openCheckOutDatesModal() {
+        if (isDatesPickerOpen && checkOutFilter) {
+            setDatesPickerOpen(false)
+        }
+        else {
+            setDatesPickerOpen(true)
+        }
+        setCheckOutFilter(true)
+        setCheckInFilter(false)
+        setRegionPickerOpen(false)
+        handleFocus(checkOutinputRef)
+    }
+
+    function openGuestsModal(){
+        setGuestsOpen(true)
+    }
+    
     function handleSelectRegion(region) {
 
         if (region === selectedRegion || region === "flexibile") {
@@ -93,30 +164,34 @@ export function StayFilter({ filterBy, onSetFilter }) {
     }
 
     function displayDateShortly(date) {
-        // const d=new Date(date)
-        const shortMonthName = date.toLocaleString('en-US', { month: 'short' });
-        const shortDate = `${date.getDate()} ${shortMonthName}`
+        const shortMonthName = new Date(date).toLocaleString('en-US', { month: 'short' });
+        const shortDate = `${new Date(date).getDate()} ${shortMonthName}`
         return shortDate
     }
     function handleCheckIn(checkIn) {
-        // console.log("checkIn:"+checkIn);
+        console.log(`check in date : ${checkIn}`);
 
-
-        const startDate = new Date(checkIn)
-        // console.log('startDate'+startDate);
-        const miniStartDate = displayDateShortly(startDate)
-        setSelectedCheckIn(miniStartDate)
-        setFilterToEdit({ ...filterToEdit, startDate })
-
+        setSelectedCheckIn(checkIn)
+        setFilterToEdit({ ...filterToEdit, startDate: checkIn })
+        // setCheckOutFilter(true)
+        // handleFocus(checkOutinputRef)
+        // handleFocus(checkOutinputRef)
     }
     function handleCheckOut(checkOut) {
-        const endDate = new Date(checkOut)
-        const miniEndDate = displayDateShortly(endDate)
-        setSelectedCheckOut(miniEndDate)
-        setFilterToEdit({ ...filterToEdit, endDate })
+        console.log(`check out date : ${checkOut}`);
+
+        setSelectedCheckOut(checkOut)
+        setFilterToEdit({ ...filterToEdit, endDate: checkOut })
+
+    }
+
+    function clearDates() {
+        setSelectedCheckIn(null)
+        setSelectedCheckOut(null)
+        setDatesPickerOpen(false)
+        setFilterToEdit({ ...filterToEdit, startDate: null, endDate: null })
     }
     return (
-
 
         // <div className={isFilterOpen ? "search-filter" : "search-filter active"}>
         <div className='search-filter'>
@@ -124,31 +199,35 @@ export function StayFilter({ filterBy, onSetFilter }) {
             <a onClick={openRegionsModal} className={`search-filter-item ${regionActive.current} `}>
                 <div>
                     <label>Where</label>
-                    <input  type="text" value={selectedRegion}
-                         placeholder="Search destinations" name='region' />
+                    <input ref={regioninputRef} onChange={handleChange} type="text" value={selectedRegion}
+                        placeholder="Search destinations" name='region' />
 
                 </div>
             </a>
 
-            <a onClick={openDatesModal} className="search-filter-item ">
+            <a onClick={openCheckInDatesModal} className={`search-filter-item ${checkInFilter ? 'active-filter' : ''}`}>
                 <div>
 
                     <label>Check in</label>
-                    <input  readOnly value={selectedCheckIn}  className='check-in' name='startDate' type="text" placeholder="Add dates" />
+                    <input ref={checkIninputRef} value={selectedCheckIn ? displayDateShortly(selectedCheckIn) : null}
+                        className='check-in' name='startDate' type="text" placeholder="Add dates" />
+                    {/* <button style={{display:'none'}} onClick={clearDates}>x</button> */}
                 </div>
             </a>
 
 
-            <a onClick={openDatesModal} className="search-filter-item">
+            <a onClick={openCheckOutDatesModal} className={`search-filter-item ${checkInFilter ? 'active-filter' : ''}`}>
                 <div>
 
                     <label>Check out</label>
-                    <input readOnly    value={selectedCheckOut} name='endDate' className='check-in' type="text" placeholder="Add dates" />
+                    <input ref={checkOutinputRef} value={selectedCheckOut ? displayDateShortly(selectedCheckOut) : null} name='endDate'
+                        className={`check-in`} type="text" placeholder="Add dates" />
+                    {/* <button style={{display:'none'}} onClick={clearDates}>x</button> */}
                 </div>
             </a>
 
 
-            <a href='#' className="search-filter-item">
+            <a onClick={openGuestsModal} href='#' className="search-filter-item">
                 <div>
 
                     <label>Who</label>
@@ -169,7 +248,12 @@ export function StayFilter({ filterBy, onSetFilter }) {
             </Modal>
 
             <Modal show={isDatesPickerOpen} onClose={handledatesCloseModal}>
-                <DatePickerr handleCheckIn={handleCheckIn} handleCheckOut={handleCheckOut} />
+                {/* <DatePickerr handleCheckIn={handleCheckIn} handleCheckOut={handleCheckOut} isCheckIn={checkInFilter.current} isCheckOut={checkOutFilter.current} /> */}
+                <DateRange handleCheckIn={handleCheckIn} handleCheckOut={handleCheckOut} isCheckIn={checkInFilter} isCheckOut={checkOutFilter} />
+            </Modal>
+
+            <Modal show={isGuestsOpen} onClose={handleCloseGuests}>
+                <Guests />
             </Modal>
 
 

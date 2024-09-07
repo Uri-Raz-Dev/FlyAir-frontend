@@ -3,18 +3,23 @@ import { DateRangePicker } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 
-export const DatePickerr = ({ handleCheckIn, handleCheckOut }) => {
+export const DatePickerr = ({ handleCheckIn, handleCheckOut,isCheckIn,isCheckOut }) => {
     const [state, setState] = useState([
         {
-            startDate: new Date(),
+            startDate: null,
             endDate: null,
             key: 'selection'
         }
     ]);
 
     useEffect(() => {
-        handleCheckIn(state[0].startDate)
-        handleCheckOut(state[0].endDate)
+        if(isCheckIn){
+            handleCheckIn(state[0].startDate)
+        }
+        if(isCheckOut){
+            handleCheckOut(state[0].endDate)
+        }
+
     }, [state[0]])
 
 

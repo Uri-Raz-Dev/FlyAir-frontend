@@ -11,7 +11,7 @@ const initialState = {
     stay: null,
     filterBy:{
         region:'',
-        startDate: new Date(),
+        startDate:null,
         endDate: null,
     },
 }

@@ -68,7 +68,7 @@ export function StayIndex() {
 
             <div className="stays-page full">
                 {/* <h2 className="main-title">Available Stays</h2> */}
-                {/* <TypeLabels /> */}
+                <TypeLabels />
 
                 <StayList
                     stays={stays}
