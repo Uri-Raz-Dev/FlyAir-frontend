@@ -9,7 +9,7 @@ import { useEffect, useRef, useState } from "react"
 import { MiniFilter } from "./MiniFliter.jsx"
 import { LoginSignup } from '../pages/LoginSignup.jsx'
 
-export function AppHeader({ filterBy, onSetFilter , toggleModal}) {
+export function AppHeader({ filterBy, onSetFilter, toggleModal }) {
 	const dispatch = useDispatch()
 
 	const user = useSelector(storeState => storeState.userModule.user)
@@ -31,18 +31,19 @@ export function AppHeader({ filterBy, onSetFilter , toggleModal}) {
 
 	const navigate = useNavigate()
 	const location = useLocation()
-	const isLocation = location.pathname.startsWith(`/stay/s`)
+	const stayLocation = location.pathname.startsWith(`/stay`)
+	const detailsLocation = location.pathname.startsWith(`/stay/6`)
+	const bookLocation = location.pathname.startsWith(`/book/6`)
 	const scrollY = useRef(0)
 
 	useEffect(() => {
 		function handleScroll() {
 			scrollY.current = window.scrollY
-			if (scrollY.current === 0) {
+			if (scrollY.current === 0 && !stayLocation) {
 				setIsFilterOpen(true)
 			} else {
 				setIsFilterOpen(false)
 			}
-			console.log(scrollY.current)
 		}
 
 
@@ -76,12 +77,11 @@ export function AppHeader({ filterBy, onSetFilter , toggleModal}) {
 
 	function handleHeader() {
 		let header = "app-header full main-container"
-
-		if (isLocation) {
-			header = "app-header details full main-container"
-		}
-
-		if (isFilterOpen && isLocation) {
+		if (detailsLocation) {
+			header = "app-header details full main-container "
+		} else if (bookLocation) {
+			header = "app-header book full main-container"
+		} if (isFilterOpen && detailsLocation) {
 			header = "app-header details full main-container header-wide"
 		} else if (isFilterOpen) {
 			header = "app-header full main-container header-wide"

@@ -15,11 +15,8 @@ export function StayDetails() {
 
   const { stayId } = useParams()
   const stay = useSelector(storeState => storeState.stayModule.stay)
-  console.log(stay);
 
-  const { _id, name, summary, type, imgurls, price, capacity, amenities, labels, description, reviews } = stay || {}
-  const { city, country, countryCode, address, lat, lag } = stay?.location || {}
-  const { fullname, imgUrl } = stay?.host || {}
+
 
 
 
@@ -47,7 +44,7 @@ export function StayDetails() {
     <section className="stay-details">
       <DetailsHeader stay={stay}></DetailsHeader>
       <StayInfo stay={stay}></StayInfo>
-      {reviews && <ReviewList stay={stay} />}
+      {stay && <ReviewList stay={stay} />}
     </section>
 
 

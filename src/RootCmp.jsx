@@ -117,8 +117,8 @@ export function RootCmp() {
     const { filterBy } = store.getState().stayModule
     let isStayDetailsPage = location.pathname
 
-    function handleHeader() {
-        if (isStayDetailsPage.startsWith(`/stay/s`)) {
+    function handleMainContainer() {
+        if (isStayDetailsPage.startsWith(`/stay/6`)) {
             return "main-container details"
         } else if (isStayDetailsPage.startsWith(`/book/`)) {
             return "main-container book"
@@ -135,6 +135,10 @@ export function RootCmp() {
             return "main-container"
         }
     }
+
+    function handleHeader() {
+
+    }
     const isShown = useSelector(storeState => storeState.userModule.isUserShown)
 
     const [isModalOpen, setIsModalOpen] = useState(false)
@@ -144,7 +148,7 @@ export function RootCmp() {
     };
 
     return (
-        <div className={handleHeader()}>
+        <div className={handleMainContainer()}>
 
             <AppHeader filterBy={filterBy} onSetFilter={setFilterBy} toggleModal={toggleModal} />
             <UserMsg />

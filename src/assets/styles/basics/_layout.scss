@@ -4,8 +4,10 @@
     grid-template-columns: rem(80px) 1fr rem(80px);
 
     &.details {
-        grid-template-columns: 273px 1fr 273px;
+        grid-template-columns: rem(273px) 1fr rem(273px);
     }
+
+
 
 
     >* {
@@ -16,5 +18,5 @@
         }
     }
 
-    
+
 }
