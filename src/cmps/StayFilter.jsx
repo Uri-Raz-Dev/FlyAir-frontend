@@ -118,7 +118,8 @@ export function StayFilter({ filterBy, onSetFilter }) {
     return (
 
 
-        <div className={isFilterOpen ? "search-filter" : "search-filter active"}>
+        // <div className={isFilterOpen ? "search-filter" : "search-filter active"}>
+        <div className='search-filter'>
 
             <a onClick={openRegionsModal} className={`search-filter-item ${regionActive.current} `}>
                 <div>
