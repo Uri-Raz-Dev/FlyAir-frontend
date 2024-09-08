@@ -231,7 +231,7 @@ export function StayFilter({ filterBy, onSetFilter }) {
                 <div>
 
                     <label>Who</label>
-                    <input readOnly type="text" placeholder="Add guests" />
+                    <input  type="text" placeholder="Add guests" />
                 </div>
             </a>
 
@@ -251,10 +251,10 @@ export function StayFilter({ filterBy, onSetFilter }) {
                 {/* <DatePickerr handleCheckIn={handleCheckIn} handleCheckOut={handleCheckOut} isCheckIn={checkInFilter.current} isCheckOut={checkOutFilter.current} /> */}
                 <DateRange handleCheckIn={handleCheckIn} handleCheckOut={handleCheckOut} isCheckIn={checkInFilter} isCheckOut={checkOutFilter} />
             </Modal>
-
+{/* 
             <Modal show={isGuestsOpen} onClose={handleCloseGuests}>
                 <Guests />
-            </Modal>
+            </Modal> */}
 
 
 
