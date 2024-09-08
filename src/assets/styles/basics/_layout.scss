@@ -3,7 +3,8 @@
     display: grid;
     grid-template-columns: rem(80px) 1fr rem(80px);
 
-    &.details {
+    &.details,
+    &.book {
         grid-template-columns: rem(273px) 1fr rem(273px);
     }
 

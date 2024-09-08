@@ -39,6 +39,10 @@
         // &:hover {
         //     box-shadow: 10px 0.1px 3px 16px rgba(255, 255, 255, 0.7);
         // }
+        i {
+            height: 12px;
+            width: 12px;
+        }
     }
 
     .right-button {
@@ -76,11 +80,11 @@
             box-shadow: 0px 2px 0px 0px $bnb-black;
 
             .stay-labal-item {
-                > span {
+                >span {
                     color: black;
                 }
 
-                > img {
+                >img {
                     filter: brightness(0) saturate(100%);
                 }
             }

@@ -1,0 +1,132 @@
+.staybook-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 94px;
+
+    .header-container {
+        position: relative;
+        padding-block-start: rem(64px);
+        padding-block-end: rem(16px);
+
+        :first-child {
+            font-size: 32px;
+            font-family: $bnb-font-light;
+            font-weight: bold;
+        }
+    }
+
+    .book-back {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        top: 70px;
+        left: -42px;
+        width: 40px;
+        height: 40px;
+
+        // background-color: red;
+        i {
+            width: 16px;
+            height: 16px;
+        }
+
+        &:hover {
+            cursor: pointer;
+            background: $bnb-gray2;
+            border-radius: 100%;
+        }
+    }
+
+}
+
+
+.book-details-container {
+    position: relative;
+    grid-column: 2;
+
+    .book-details {
+        display: grid;
+        grid-template-columns: rem(415px);
+        grid-template-rows: rem(122px) rem(26px) rem(197px);
+        position: sticky;
+        padding: rem(24px);
+        background: pink;
+        height: 300px;
+        border-radius: 12px;
+        border: 1px $bnb-gray3 solid;
+
+
+    }
+
+    .book-preview {
+        // background-color: white;
+        display: flex;
+        gap: rem(16px);
+        padding-block-end: rem(24px);
+        box-shadow: 0px 1px 0px 0px $bnb-gray3;
+
+        .preview-img {
+            width: rem(104px);
+            height: rem(109px);
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 12px;
+            }
+        }
+
+
+        .book-info {
+            display: flex;
+            flex-direction: column;
+            text-wrap: pretty;
+            gap: rem(5px);
+            margin-block-start: rem(16px);
+
+            font-family: $bnb-font-light;
+
+            :nth-child(1) {
+                font-weight: 600;
+            }
+
+            :nth-child(2),
+            :nth-child(3) {
+                font-size: rem(14px);
+
+            }
+
+        }
+
+        .book-rating {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+
+            span:first-of-type {
+                height: 14px;
+                width: 14px;
+
+                i {
+
+                    height: 14px;
+                    width: 14px;
+                }
+            }
+
+            span:nth-child(2) {
+                font-weight: 600;
+            }
+        }
+
+    }
+}
+
+
+
+.book-pay-container {
+    grid-column: 1;
+}
