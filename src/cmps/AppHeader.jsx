@@ -30,7 +30,7 @@ export function AppHeader({ filterBy, onSetFilter, toggleModal }) {
 
 	const navigate = useNavigate()
 	const location = useLocation()
-	const stayLocation = location.pathname.startsWith(`/stay`)
+	const stayLocation = location.pathname.endsWith(`/stay`)
 	const detailsLocation = location.pathname.startsWith(`/stay/6`)
 	const bookLocation = location.pathname.startsWith(`/book/6`)
 	const scrollY = useRef(0)
@@ -38,7 +38,7 @@ export function AppHeader({ filterBy, onSetFilter, toggleModal }) {
 	useEffect(() => {
 		function handleScroll() {
 			scrollY.current = window.scrollY
-			if (scrollY.current === 0 && stayLocation) {
+			if (scrollY.current === 0 && location.pathname === '/stay/') {
 				setIsFilterOpen(true)
 			} else {
 				setIsFilterOpen(false)
@@ -53,7 +53,7 @@ export function AppHeader({ filterBy, onSetFilter, toggleModal }) {
 		return () => {
 			window.removeEventListener("scroll", handleScroll)
 		};
-	}, []);
+	}, [location.pathname]);
 	function openFilter() {
 		setIsFilterOpen(prev => !prev)
 

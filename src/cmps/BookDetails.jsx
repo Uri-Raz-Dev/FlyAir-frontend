@@ -1,6 +1,17 @@
+import { useParams } from "react-router";
 import { SvgIcon } from "./Svgicon";
+import { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 
-export function BookDetails({ imgurls, name, summary, reviews, calculateReviewScore }) {
+export function BookDetails({ imgurls, name, summary, reviews, calculateReviewScore, price }) {
+    const { stayId } = useParams()
+    const nights = 5
+    const fee = (price * nights) * 0.15
+    const total = (price * nights) + fee
+    const showPrice = price.toLocaleString()
+    const showFee = fee.toLocaleString()
+    const showTotal = total.toLocaleString()
+
     return (
         <aside className="book-details-container">
             <div className="book-details">
@@ -19,9 +30,25 @@ export function BookDetails({ imgurls, name, summary, reviews, calculateReviewSc
                         </div>
                     </div>
                 </div>
-                <div className="price-header"></div>
-                <div className="price-details"></div>
+
+                <div className="price-header">Price details</div>
+
+                <div className="price-details">
+                    <div className="price">
+                        <div>₪{showPrice} x {nights} nights</div>
+                        <div>₪{(showPrice * nights).toLocaleString()}</div>
+                    </div>
+                    <div className="fee">
+                        <div>Airbnb service fee</div>
+                        <div>₪{showFee}</div>
+                    </div>
+                    <div className="total">
+                        <div>Total <span>(ILS)</span> </div>
+                        <div>₪{showTotal}</div>
+                    </div>
+                </div>
             </div>
+
         </aside>
     )
 }

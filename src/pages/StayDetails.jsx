@@ -43,7 +43,7 @@ export function StayDetails() {
   return (
     <section className="stay-details">
       <DetailsHeader stay={stay}></DetailsHeader>
-      <StayInfo stay={stay}></StayInfo>
+      {<StayInfo stay={stay}></StayInfo>}
       {stay && <ReviewList stay={stay} />}
     </section>
 

@@ -1,14 +1,49 @@
 import { Link, useParams } from "react-router-dom";
 import { SvgIcon } from "../cmps/Svgicon";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { BookDetails } from "../cmps/BookDetails";
+import { useEffect, useRef } from "react";
+import { loadStay } from "../store/actions/stay.actions";
 
 export function StayBook() {
     const { stayId } = useParams()
     const stay = useSelector(storeState => storeState.stayModule.stay)
-
-    const { imgurls, reviews, name, summary } = stay
     console.log(stay);
+
+    useEffect(() => {
+        if (stayId) {
+            loadStay(stayId) // Ensure that the stay is loaded when the component mounts
+        }
+    }, [stayId])
+
+    const buttonRef = useRef(null)
+    const dispatch = useDispatch();
+
+    console.log(stay);
+
+
+    useEffect(() => {
+        const buttonElement = buttonRef.current
+        if (!buttonElement) return
+        const handleMouseMove = (event) => {
+            if (buttonRef.current) {
+                const rect = buttonRef.current.getBoundingClientRect()
+                const mouseX = event.clientX - rect.left
+                const mouseY = event.clientY - rect.top
+                const percentX = (mouseX / rect.width) * 100
+                const percentY = (mouseY / rect.height) * 100
+                buttonRef.current.style.setProperty('--mouse-x', percentX)
+                buttonRef.current.style.setProperty('--mouse-y', percentY)
+            }
+        }
+
+        buttonElement.addEventListener('mousemove', handleMouseMove)
+
+        return () => {
+            buttonElement.removeEventListener('mousemove', handleMouseMove)
+        }
+    }, [])
+
 
 
     function calculateReviewScore() {
@@ -23,7 +58,13 @@ export function StayBook() {
 
         return totalReviewAvg.toFixed(2)
     }
-    calculateReviewScore()
+
+    if (!stay) {
+        return <div>Loading...</div>; // Optionally show a loading state
+    }
+
+    const { imgurls, reviews, name, summary, price } = stay
+
     return (
         <main className="staybook-container">
             <header className="header-container">
@@ -32,10 +73,24 @@ export function StayBook() {
             </header>
 
             <main className="book-pay-container">
-                test
+                <div>Your trip</div>
+                <div className="dates">
+                    <div>Dates</div>
+                    <div>Oct 5 – 10</div>
+                    <div>Edit</div>
+                </div>
+                <div className="guests">
+                    <div>Guests</div>
+                    <div>1 guest</div>
+                    <div>Edit</div>
+                </div>
+                <Link to={`/hosting/`} className='reserve-button' ref={buttonRef}>
+                    <span>Request to book</span>
+                </Link>
             </main>
 
-            <BookDetails imgurls={imgurls} name={name} summary={summary} reviews={reviews} calculateReviewScore={calculateReviewScore} />
+            <BookDetails imgurls={imgurls} name={name} summary={summary} reviews={reviews} calculateReviewScore={calculateReviewScore} price={price} />
+
         </main>
     )
 }
