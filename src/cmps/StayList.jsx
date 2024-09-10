@@ -11,6 +11,8 @@ export function StayList({ stays, onRemoveStay, onUpdateStay }) {
     //     if (user.isAdmin) return true
     //     return stay.owner?._id === user._id
     // }
+
+
     return (
 
         <div className="main-grid">

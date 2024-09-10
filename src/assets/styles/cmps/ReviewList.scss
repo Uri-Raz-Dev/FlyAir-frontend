@@ -38,15 +38,18 @@
         padding-block-end: em(40px);
         margin-block-end: em(40px);
         border-block-end: 1px $bnb-gray3 solid;
+        text-wrap: nowrap;
 
         .reviews-ratings-list {
             display: flex;
             padding-block-end: em(4px);
             // justify-content: space-between;
+            flex-shrink: 1;
 
             li {
-                width: rem(158px);
-
+                max-width: rem(158px);
+                flex-shrink: 1;
+                
                 span {
                     font-size: rem(14px);
                     font-weight: 600;

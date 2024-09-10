@@ -5,7 +5,7 @@
 
     &.details,
     &.book {
-        grid-template-columns: rem(273px) 1fr rem(273px);
+        grid-template-columns: minmax(rem(40px), rem(273px)) minmax(rem(751px), rem(1120px)) minmax(rem(40px), rem(273px));
     }
 
 

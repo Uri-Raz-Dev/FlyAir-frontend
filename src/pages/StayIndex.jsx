@@ -58,17 +58,21 @@ export function StayIndex() {
         }
     }
 
+
+
     function onSetFilter(filterBy) {
         setFilterBy(filterBy)
         // console.log('filterBy:', filterBy)
     }
+
+
 
     return (
         <>
 
             <div className="stays-page full">
                 {/* <h2 className="main-title">Available Stays</h2> */}
-                <TypeLabels />
+                <TypeLabels filterBy={filterBy} onSetFilter={onSetFilter} />
 
                 <StayList
                     stays={stays}

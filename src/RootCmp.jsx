@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Routes, Route, Navigate, useParams, useLocation } from 'react-router'
 
 import { HomePage } from './pages/HomePage'
@@ -116,6 +116,34 @@ export function RootCmp() {
     const { stayId } = useParams()
     const { filterBy } = store.getState().stayModule
     let isStayDetailsPage = location.pathname
+    const [isFilterOpen, setIsFilterOpen] = useState(false)
+    const scrollY = useRef(0)
+
+    useEffect(() => {
+        function handleScroll() {
+            scrollY.current = window.scrollY
+            if (scrollY.current === 0 && location.pathname === '/stay/') {
+                setIsFilterOpen(true)
+            } else {
+                setIsFilterOpen(false)
+            }
+        }
+
+
+        window.addEventListener("scroll", handleScroll)
+
+        handleScroll();
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll)
+        };
+    }, [location.pathname]);
+
+    function openFilter() {
+        setIsFilterOpen(prev => !prev)
+
+
+    }
 
     function handleMainContainer() {
         if (isStayDetailsPage.startsWith(`/stay/6`)) {
@@ -150,7 +178,7 @@ export function RootCmp() {
     return (
         <div className={handleMainContainer()}>
 
-            <AppHeader filterBy={filterBy} onSetFilter={setFilterBy} toggleModal={toggleModal} />
+            <AppHeader filterBy={filterBy} onSetFilter={setFilterBy} toggleModal={toggleModal} isFilterOpen={isFilterOpen} openFilter={openFilter} />
             <UserMsg />
             <main className='empty-div'>
                 <div className='login-container'>{isModalOpen && <Login toggleModal={toggleModal} />}</div>

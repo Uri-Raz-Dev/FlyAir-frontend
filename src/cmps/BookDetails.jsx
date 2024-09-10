@@ -8,9 +8,9 @@ export function BookDetails({ imgurls, name, summary, reviews, calculateReviewSc
     const nights = 5
     const fee = (price * nights) * 0.15
     const total = (price * nights) + fee
-    const showPrice = price.toLocaleString()
-    const showFee = fee.toLocaleString()
-    const showTotal = total.toLocaleString()
+    const showPrice = price.toFixed(0).toLocaleString()
+    const showFee = fee.toFixed(0).toLocaleString()
+    const showTotal = total.toFixed(0).toLocaleString()
 
     return (
         <aside className="book-details-container">
@@ -36,7 +36,7 @@ export function BookDetails({ imgurls, name, summary, reviews, calculateReviewSc
                 <div className="price-details">
                     <div className="price">
                         <div>₪{showPrice} x {nights} nights</div>
-                        <div>₪{(showPrice * nights).toLocaleString()}</div>
+                        <div>₪{(showPrice * nights).toFixed(0).toLocaleString()}</div>
                     </div>
                     <div className="fee">
                         <div>Airbnb service fee</div>

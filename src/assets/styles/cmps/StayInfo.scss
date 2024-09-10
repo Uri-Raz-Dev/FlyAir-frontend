@@ -2,6 +2,8 @@
     // position: relative;
     display: grid;
     grid-template-columns: minmax(rem(200px), rem(653.33px)) 1fr;
+    // background-color: pink;
+    text-wrap: pretty;
 
     h2 {
         font-size: rem(22px);

@@ -36,52 +36,52 @@
 
 .details-image-grid {
     display: grid;
-    grid-template-columns: 32.5vw repeat(4, 8vw);
-    grid-template-rows: rem(244.89px) rem(236.89px);
-    gap: em(8px);
+    grid-template-columns: repeat(2, minmax(rem(167px), rem(280px))) repeat(2, minmax(rem(159px), rem(272px)));
+    grid-template-rows: repeat(2, auto);
+    grid-template-areas:
+        "img1 img1 img2 img3"
+        "img1 img1 img4 img5";
+    gap: 8px;
     overflow-x: clip;
     overflow-y: clip;
-
 
     >li {
         img {
             height: 100%;
+            width: 100%;
             object-fit: cover;
         }
     }
 
     >li:first-child {
-        grid-column: 1/2;
-        grid-row: 1/3;
+        grid-area: img1;
 
         img {
-
             border-radius: 10px 0 0 10px;
         }
-
-
     }
 
-    >li:nth-child(even) {
-        grid-column: 2/4;
-    }
-
-    >li:nth-child(3),
-    >li:nth-child(5) {
-        grid-column: 4/6;
+    >li:nth-child(2) {
+        grid-area: img2;
     }
 
     >li:nth-child(3) {
+        grid-area: img3;
+
         img {
             border-radius: 0 10px 0 0;
         }
     }
 
+    >li:nth-child(4) {
+        grid-area: img4;
+    }
+
     >li:nth-child(5) {
+        grid-area: img5;
+
         img {
             border-radius: 0 0 10px 0;
         }
     }
-
-
 }

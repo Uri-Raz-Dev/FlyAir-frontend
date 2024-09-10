@@ -4,6 +4,8 @@
     grid-column: 2;
     grid-row: 1/6;
     padding-inline-start: em(93px);
+    width: min-content;
+    // background-color: grey;
     // height: 100%;
 
     .stay-reserve {
@@ -12,13 +14,13 @@
         top: em(32px);
         right: 0px;
         margin-block-start: em(32px);
-        grid-template-columns: rem(24px) 1fr rem(24px);
+        grid-template-columns: rem(24px) max-content rem(24px);
         // grid-template-rows: min-content min-content min-content min-content;
         row-gap: 0;
         // grid-column: 2;
         // grid-row: 1/4;
         padding-block: em(24px);
-        width: rem(372px);
+        max-width: rem(372px);
         height: rem(459px);
         border: 1px $bnb-gray3 solid;
         font-weight: 400;
@@ -60,7 +62,7 @@
 
             form {
                 display: grid;
-                grid-template-columns: rem(160.67px) rem(160.67px);
+                grid-template-columns: repeat(2, minmax(rem(84px), rem(160.67px)));
                 grid-template-areas:
                     'check-in checkout'
                     'guests guests'
@@ -177,7 +179,7 @@
 
             background-size: 200% 200%;
             background-position: calc((100 - var(--mouse-x, 0))* 1%) calc((100 - var(--mouse-y, 0))* 1%);
-            width: 100%;
+            max-width: 100%;
             border-radius: 10px;
             text-align: center;
             // transition-property: opacity;

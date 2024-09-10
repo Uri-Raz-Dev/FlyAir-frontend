@@ -9,10 +9,11 @@ export const SET_FILTER_BY = 'SET_FILTER_BY'
 const initialState = {
     stays: [],
     stay: null,
-    filterBy:{
-        region:'',
-        startDate:'',
-        endDate:'',
+    filterBy: {
+        region: '',
+        startDate: '',
+        endDate: '',
+        labels: [],
     },
 }
 
@@ -39,7 +40,7 @@ export function stayReducer(state = initialState, action) {
             newState = { ...state, stays }
             break
         case SET_FILTER_BY:
-             console.log('filter by in reducer' ,action.filterBy)
+            console.log('filter by in reducer', action.filterBy)
             return {
                 ...state,
                 filterBy: { ...state.filterBy, ...action.filterBy }

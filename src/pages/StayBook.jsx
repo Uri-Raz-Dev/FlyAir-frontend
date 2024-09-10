@@ -8,7 +8,6 @@ import { loadStay } from "../store/actions/stay.actions";
 export function StayBook() {
     const { stayId } = useParams()
     const stay = useSelector(storeState => storeState.stayModule.stay)
-    console.log(stay);
 
     useEffect(() => {
         if (stayId) {
@@ -19,7 +18,6 @@ export function StayBook() {
     const buttonRef = useRef(null)
     const dispatch = useDispatch();
 
-    console.log(stay);
 
 
     useEffect(() => {

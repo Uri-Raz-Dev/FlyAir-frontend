@@ -9,13 +9,13 @@ import { useEffect, useRef, useState } from "react"
 import { MiniFilter } from "./MiniFliter.jsx"
 import { LoginSignup } from '../pages/LoginSignup.jsx'
 
-export function AppHeader({ filterBy, onSetFilter, toggleModal }) {
+export function AppHeader({ filterBy, onSetFilter, toggleModal, isFilterOpen, openFilter }) {
 	const dispatch = useDispatch()
 
 	const user = useSelector(storeState => storeState.userModule.user)
 	const headerRef = useRef(null)
 	const [isNavOpen, setIsNavOpen] = useState(false)
-	const [isFilterOpen, setIsFilterOpen] = useState(false)
+	// const [isFilterOpen, setIsFilterOpen] = useState(false)
 	const [isScrolled, setIsScrolled] = useState(false)
 
 	const stays = useSelector(storeState => storeState.stayModule.stays)
@@ -23,9 +23,7 @@ export function AppHeader({ filterBy, onSetFilter, toggleModal }) {
 	function toggleNav() {
 		setIsNavOpen(!isNavOpen)
 	}
-	function openFilter() {
-		setIsFilterOpen(!isFilterOpen)
-	}
+
 
 
 	const navigate = useNavigate()
@@ -33,32 +31,32 @@ export function AppHeader({ filterBy, onSetFilter, toggleModal }) {
 	const stayLocation = location.pathname.endsWith(`/stay`)
 	const detailsLocation = location.pathname.startsWith(`/stay/6`)
 	const bookLocation = location.pathname.startsWith(`/book/6`)
-	const scrollY = useRef(0)
+	// const scrollY = useRef(0)
 
-	useEffect(() => {
-		function handleScroll() {
-			scrollY.current = window.scrollY
-			if (scrollY.current === 0 && location.pathname === '/stay/') {
-				setIsFilterOpen(true)
-			} else {
-				setIsFilterOpen(false)
-			}
-		}
-
-
-		window.addEventListener("scroll", handleScroll)
-
-		handleScroll();
-
-		return () => {
-			window.removeEventListener("scroll", handleScroll)
-		};
-	}, [location.pathname]);
-	function openFilter() {
-		setIsFilterOpen(prev => !prev)
+	// useEffect(() => {
+	// 	function handleScroll() {
+	// 		scrollY.current = window.scrollY
+	// 		if (scrollY.current === 0 && location.pathname === '/stay/') {
+	// 			setIsFilterOpen(true)
+	// 		} else {
+	// 			setIsFilterOpen(false)
+	// 		}
+	// 	}
 
 
-	}
+	// 	window.addEventListener("scroll", handleScroll)
+
+	// 	handleScroll();
+
+	// 	return () => {
+	// 		window.removeEventListener("scroll", handleScroll)
+	// 	};
+	// }, [location.pathname]);
+	// function openFilter() {
+	// 	setIsFilterOpen(prev => !prev)
+
+
+	// }
 
 
 
