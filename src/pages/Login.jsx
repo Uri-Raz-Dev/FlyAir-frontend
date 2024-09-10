@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router'
 import { userService } from '../services/user'
 import { login, signup } from '../store/actions/user.actions'
@@ -50,16 +50,22 @@ export function Login({ toggleModal }) {
         e.stopPropagation()
     }
 
+    // const hiddenRef = useRef(false)
 
     //TODO: NEED TO FIX - OMER
     useEffect(() => {
         document.body.style.overflow = 'hidden'
+        // hiddenRef.current = 'hidden'
 
         return () => {
             document.body.style.overflow = 'auto'
+            // hiddenRef.current = 'auto'
+
         }
     }, [])
 
+        // <div div className = "modal-overlay" ></div >
+    // className={`modal-overlay ${hiddenRef.current} `}
     return (
         <>
             <div className="modal-overlay" ></div>
