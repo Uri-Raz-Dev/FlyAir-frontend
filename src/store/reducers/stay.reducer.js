@@ -11,8 +11,8 @@ const initialState = {
     stay: null,
     filterBy: {
         region: '',
-        startDate: '',
-        endDate: '',
+        startDate: null,
+        endDate: null,
         labels: [],
     },
 }
@@ -32,14 +32,18 @@ export function stayReducer(state = initialState, action) {
             stays = state.stays.filter(stay => stay._id !== action.stayId)
             newState = { ...state, stays, lastRemovedStay }
             break
+        // case ADD_STAY:
+        //     newState = { ...state, stays: [...state.stays, action.stay] }
+        //     break
         case ADD_STAY:
-            newState = { ...state, stays: [...state.stays, action.stay] }
-            break
+            return { ...state, stays: [...state.stays, action.stay] };
+
         case UPDATE_STAY:
             stays = state.stays.map(stay => (stay._id === action.stay._id) ? action.stay : stay)
             newState = { ...state, stays }
             break
         case SET_FILTER_BY:
+            console.log('filter by in reducer', action.filterBy)
             console.log('filter by in reducer', action.filterBy)
             return {
                 ...state,

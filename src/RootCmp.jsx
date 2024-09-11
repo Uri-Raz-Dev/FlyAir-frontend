@@ -24,6 +24,13 @@ import { store } from './store/store.js'
 import { StayBook } from './pages/StayBook.jsx'
 import { toggleUserIsShown } from './store/actions/user.actions.js'
 import { useSelector } from 'react-redux'
+import { UserDashboard } from './pages/UserDashboard.jsx'
+import { Messages } from './cmps/hosting/Messages.jsx'
+import { Menu } from './cmps/hosting/menu.jsx'
+import { Listings } from './cmps/hosting/Listings.jsx'
+import { Calendar } from './cmps/Calendar.jsx'
+import { Today } from './cmps/hosting/Today.jsx'
+import { AddStay } from './cmps/AddStay.jsx'
 
 
 
@@ -33,9 +40,31 @@ const routes = [
         component: StayIndex,
     },
     {
-        path: '/hosting',
+        path: 'hosting',
         component: HostingPage,
+        children: [
+            {
+                path: 'today',
+                component: Today,
+            },
+            {
+                path: 'calendar',
+                component: Calendar,
+            },
+            {
+                path: 'listings',
+                component: Listings,
 
+            },
+            {
+                path: 'messages',
+                component: Messages,
+            },
+            {
+                path: 'menu',
+                component: Menu,
+            },
+        ],
     },
     {
         path: 'about',
@@ -54,6 +83,10 @@ const routes = [
     {
         path: 'stay/:stayId',
         component: StayDetails,
+    },
+    {
+        path: 'add-stay',
+        component: AddStay,
     },
     {
         path: 'user/:id',
@@ -82,6 +115,10 @@ const routes = [
     {
         path: 'signup',
         component: Signup,
+    },
+    {
+        path: 'dashboard/:id',
+        component: UserDashboard,
     },
     // {
     //     path: '',

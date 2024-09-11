@@ -35,15 +35,19 @@ export async function removeStay(stayId) {
 }
 
 export async function addStay(stay) {
+    console.log('stay omeromer:', stay )
     try {
-        const savedStay = await stayService.save(stay)
-        store.dispatch(getCmdAddStay(savedStay))
-        return savedStay
+        const savedStay = await stayService.save(stay);
+        store.dispatch(getCmdAddStay(savedStay));
+        return savedStay;
     } catch (err) {
-        console.log('Cannot add stay', err)
-        throw err
+        console.log('Cannot add stay', err);
+        throw err;
     }
 }
+
+
+
 
 export async function updateStay(stay) {
     try {

@@ -8,15 +8,18 @@ import { SvgIcon } from "./Svgicon.jsx"
 import { useEffect, useRef, useState } from "react"
 import { MiniFilter } from "./MiniFliter.jsx"
 import { LoginSignup } from '../pages/LoginSignup.jsx'
+import { LoggedInUserModal } from './LoggedInUserModal.jsx'
 
 export function AppHeader({ filterBy, onSetFilter, toggleModal, isFilterOpen, openFilter }) {
 	const dispatch = useDispatch()
+
 
 	const user = useSelector(storeState => storeState.userModule.user)
 	const headerRef = useRef(null)
 	const [isNavOpen, setIsNavOpen] = useState(false)
 	// const [isFilterOpen, setIsFilterOpen] = useState(false)
 	const [isScrolled, setIsScrolled] = useState(false)
+	
 
 	const stays = useSelector(storeState => storeState.stayModule.stays)
 
@@ -25,6 +28,7 @@ export function AppHeader({ filterBy, onSetFilter, toggleModal, isFilterOpen, op
 	}
 
 
+	// console.log(isFilterOpen);
 
 	const navigate = useNavigate()
 	const location = useLocation()
@@ -83,6 +87,9 @@ export function AppHeader({ filterBy, onSetFilter, toggleModal, isFilterOpen, op
 		} else if (isFilterOpen) {
 			header = "app-header full main-container header-wide"
 		}
+		// if (isFilterOpen) {  // OMER TEPER ADDED - GOOD FOR MAGRE
+		// 	header = "hidden"
+		// }
 		return header
 	}
 
@@ -90,6 +97,7 @@ export function AppHeader({ filterBy, onSetFilter, toggleModal, isFilterOpen, op
 		<header ref={headerRef} className={handleHeader()}>
 			<div className="header-container">
 
+				
 				<Link to={"stay/"} className="logo">
 
 					<SvgIcon iconName={"logosymbol"}></SvgIcon>
@@ -103,18 +111,22 @@ export function AppHeader({ filterBy, onSetFilter, toggleModal, isFilterOpen, op
 
 				<nav className="profile">
 
-					<Link className="host-link" to={"/hosting"}>
-						<div>Switch to hosting</div>
-					</Link>  {/* //new user will show "airbnb your home" */}
-					<Link className="language-link" to={"/"}>
-						<SvgIcon iconName={"language"}></SvgIcon>
-					</Link>
+					<Link className="host-link" to={"/hosting"}><div>Switch to hosting</div></Link>
+
+					{/* <Link className="" to={`dashboard/${user._id}`}><div>Switch to hosting</div></Link> */}
+				
+					<Link className="language-link" to={"/"}><SvgIcon iconName={"language"}></SvgIcon></Link>
+
+					
 
 					<div className="user-menu" onClick={toggleNav}>
 						<SvgIcon iconName={"usermenu"}></SvgIcon>
-						{stays.length > 0 && stays[0].host && <img src={stays[0].host.imgUrl} alt="" />}
+						{!user && stays.length > 0 && stays[0].host && <img src={stays[0].host.imgUrl} alt="" />}
+						{!user && isNavOpen && <LoginSignup toggleNav={toggleNav} setIsNavOpen={setIsNavOpen} toggleModal={toggleModal} />}
 
-						{isNavOpen && <LoginSignup toggleNav={toggleNav} setIsNavOpen={setIsNavOpen} toggleModal={toggleModal} />}
+						{user && isNavOpen && (<LoggedInUserModal onLogout={onLogout} toggleNav={toggleNav}/>)}
+						{user && user.imgUrl && (<Link to={`user/${user._id}`}><img src={user.imgUrl} /></Link>)}
+
 					</div>
 
 				</nav>
@@ -123,3 +135,16 @@ export function AppHeader({ filterBy, onSetFilter, toggleModal, isFilterOpen, op
 		</header >
 	)
 }
+
+{/* // <div className="user-info">
+						// </div> */}
+{/* // <div> */ }
+
+
+{/* {user.imgUrl && <img src={user.imgUrl} />} */ }
+{/* {user.fullname} */ }
+
+{/* <span className="score">{user.score?.toLocaleString()}</span> */ }
+{/* <button onClick={onLogout}>logout</button> */ }
+{/* <LoggedInUserModal onLogout={onLogout} /> */ }
+{/* </div> */ }
