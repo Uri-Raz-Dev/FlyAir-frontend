@@ -13,6 +13,12 @@ const initialState = {
         region:'',
         startDate:null,
         endDate: null,
+        // guests:{
+        //     adults:0,
+        //     children:0,
+        //     infants:0,
+        //     pets:0
+        // },
     },
 }
 
