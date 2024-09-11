@@ -19,6 +19,14 @@
     }
 
     &.book {
+        position: relative;
+
+        .header-container {
+            width: 100%;
+            grid-column: 1/-1;
+            padding-inline-start: rem(24px);
+        }
+
         .logo {
             justify-self: start;
         }

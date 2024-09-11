@@ -1,5 +1,8 @@
-.modal-overlay {
+.modal-over-search {
+    // position: absolute;
+    // position: fixed;
     position: absolute;
+
     top: em(77px,14px);
     left: 0;
     width: 100%;
@@ -8,12 +11,17 @@
     z-index: 1000;
 }
 
-.modal-content {
+.modal-content   {  //region 
+    // position: relative;
+    position: absolute;
     background: white;
     // padding: 20px;
     // border-radius: 8px;
-    width: 80%;
-    max-width: 500px;
-    position: relative;
+    // left: em(528px,14px);
+    // top:em(162px,14px);
+    // width: em(425px,14px);
+    
+    width: 50%;
+    // max-width: 500px;
 }
 

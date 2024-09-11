@@ -9,10 +9,16 @@ export const SET_FILTER_BY = 'SET_FILTER_BY'
 const initialState = {
     stays: [],
     stay: null,
-    filterBy: {
-        region: '',
-        startDate: '',
-        endDate: '',
+    filterBy:{
+        region:'',
+        startDate:null,
+        endDate: null,
+        // guests:{
+        //     adults:0,
+        //     children:0,
+        //     infants:0,
+        //     pets:0
+        // },
     },
 }
 
