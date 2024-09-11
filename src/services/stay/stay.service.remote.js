@@ -33,3 +33,4 @@ async function addStayMsg(stayId, txt) {
     const savedMsg = await httpService.post(`stay/${stayId}/msg`, { txt })
     return savedMsg
 }
+

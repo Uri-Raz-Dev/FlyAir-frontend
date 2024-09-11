@@ -19,6 +19,7 @@ export function AppHeader({ filterBy, onSetFilter, toggleModal }) {
 	const [isNavOpen, setIsNavOpen] = useState(false)
 	const [isFilterOpen, setIsFilterOpen] = useState(false)
 	const [isScrolled, setIsScrolled] = useState(false)
+	
 
 	const stays = useSelector(storeState => storeState.stayModule.stays)
 
@@ -87,9 +88,9 @@ export function AppHeader({ filterBy, onSetFilter, toggleModal }) {
 		} else if (isFilterOpen) {
 			header = "app-header full main-container header-wide"
 		}
-		if (isFilterOpen) {  // OMER TEPER ADDED - GOOD FOR MAGRE
-			header = "hidden"
-		}
+		// if (isFilterOpen) {  // OMER TEPER ADDED - GOOD FOR MAGRE
+		// 	header = "hidden"
+		// }
 		return header
 	}
 

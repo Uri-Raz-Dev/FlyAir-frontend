@@ -30,6 +30,7 @@ import { Menu } from './cmps/hosting/menu.jsx'
 import { Listings } from './cmps/hosting/Listings.jsx'
 import { Calendar } from './cmps/Calendar.jsx'
 import { Today } from './cmps/hosting/Today.jsx'
+import { AddStay } from './cmps/AddStay.jsx'
 
 
 
@@ -39,7 +40,7 @@ const routes = [
         component: StayIndex,
     },
     {
-        path: '/hosting',
+        path: 'hosting',
         component: HostingPage,
         children: [
             {
@@ -53,6 +54,7 @@ const routes = [
             {
                 path: 'listings',
                 component: Listings,
+
             },
             {
                 path: 'messages',
@@ -62,8 +64,7 @@ const routes = [
                 path: 'menu',
                 component: Menu,
             },
-        ]
-
+        ],
     },
     {
         path: 'about',
@@ -82,6 +83,10 @@ const routes = [
     {
         path: 'stay/:stayId',
         component: StayDetails,
+    },
+    {
+        path: 'add-stay',
+        component: AddStay,
     },
     {
         path: 'user/:id',
