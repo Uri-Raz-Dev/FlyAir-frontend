@@ -90,3 +90,7 @@ function getCalendar(date) {
 
     return calendar
 }
+
+function _createAmenities() {
+
+}

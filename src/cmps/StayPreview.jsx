@@ -4,10 +4,25 @@ import { SvgIcon } from './Svgicon.jsx'
 
 export function StayPreview({ stay }) {
     const navigate = useNavigate()
+    const { reviews } = stay || {}
+    console.log(stay);
 
     function onClickDetails(ev) {
         navigate(`/stay/${stay._id}`) // ניווט ידני לפי ה-ID של ה-stay
     }
+    function calculateReviewScore() {
+        const ratingKeys = ["value", "cleanliness", "communication", "check-in", "accuracy", "location"]
+
+        const totalScores = ratingKeys.reduce((acc, key) => {
+            const total = reviews.reduce((sum, review) => sum + review.rate[key], 0) / reviews.length
+            return acc + total
+        }, 0)
+
+        const totalReviewAvg = totalScores / ratingKeys.length;
+
+        return totalReviewAvg.toFixed(2)
+    }
+
 
     function handleCardDate() {
         let startDate = new Date(stay.startDate)
@@ -51,7 +66,7 @@ export function StayPreview({ stay }) {
                     </span>
 
                     <span>
-                        4.19
+                        {calculateReviewScore()}
                     </span>
                 </div>
             </div>
