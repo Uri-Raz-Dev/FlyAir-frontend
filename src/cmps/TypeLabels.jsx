@@ -6,7 +6,7 @@ export function TypeLabels({ filterBy, onSetFilter }) {
     const listRef = useRef(null);
     const [canScrollLeft, setCanScrollLeft] = useState(false);
     const [canScrollRight, setCanScrollRight] = useState(true);
-    const [selectedLabel, setSelectedLabel] = useState(filterBy.labels?.[0] || null);
+    const [selectedLabel, setSelectedLabel] = useState(filterBy.label || '');
     const [filterToEdit, setFilterToEdit] = useState({ ...filterBy })
     console.log(filterToEdit);
 
@@ -32,7 +32,7 @@ export function TypeLabels({ filterBy, onSetFilter }) {
 
     const handleLabelChange = (label) => {
         setSelectedLabel(label);
-        setFilterToEdit({ ...filterToEdit, labels: [label] });
+        setFilterToEdit({ ...filterToEdit, label});
     };
     return (
         <div className="labels-container">

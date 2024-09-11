@@ -11,9 +11,10 @@ const initialState = {
     stay: null,
     filterBy: {
         region: '',
-        startDate: null,
-        endDate: null,
-        labels: [],
+        startDate: '',
+        endDate: '',
+        // labels: [],
+        label: '',
     },
 }
 

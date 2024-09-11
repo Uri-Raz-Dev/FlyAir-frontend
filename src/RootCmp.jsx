@@ -217,6 +217,7 @@ export function RootCmp() {
 
             <AppHeader filterBy={filterBy} onSetFilter={setFilterBy} toggleModal={toggleModal} isFilterOpen={isFilterOpen} openFilter={openFilter} />
             <UserMsg />
+            
             <main className='empty-div'>
                 <div className='login-container'>{isModalOpen && <Login toggleModal={toggleModal} />}</div>
                 <Routes>
