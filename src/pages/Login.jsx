@@ -52,17 +52,17 @@ export function Login({ toggleModal }) {
 
     // const hiddenRef = useRef(false)
 
-    //TODO: NEED TO FIX - OMER
-    useEffect(() => {
-        document.body.style.overflow = 'hidden'
-        // hiddenRef.current = 'hidden'
+    // //TODO: NEED TO FIX - OMER
+    // useEffect(() => {
+    //     document.body.style.overflow = 'hidden'
+    //     // hiddenRef.current = 'hidden'
 
-        return () => {
-            document.body.style.overflow = 'auto'
-            // hiddenRef.current = 'auto'
+    //     return () => {
+    //         document.body.style.overflow = 'auto'
+    //         // hiddenRef.current = 'auto'
 
-        }
-    }, [])
+    //     }
+    // }, [])
 
         // <div div className = "modal-overlay" ></div >
     // className={`modal-overlay ${hiddenRef.current} `}

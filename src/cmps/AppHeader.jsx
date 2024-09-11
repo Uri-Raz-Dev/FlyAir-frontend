@@ -87,6 +87,9 @@ export function AppHeader({ filterBy, onSetFilter, toggleModal }) {
 		} else if (isFilterOpen) {
 			header = "app-header full main-container header-wide"
 		}
+		if (isFilterOpen) {  // OMER TEPER ADDED - GOOD FOR MAGRE
+			header = "hidden"
+		}
 		return header
 	}
 
@@ -94,6 +97,7 @@ export function AppHeader({ filterBy, onSetFilter, toggleModal }) {
 		<header ref={headerRef} className={handleHeader()}>
 			<div className="header-container">
 
+				
 				<Link to={"stay/"} className="logo">
 
 					<SvgIcon iconName={"logosymbol"}></SvgIcon>
@@ -109,9 +113,11 @@ export function AppHeader({ filterBy, onSetFilter, toggleModal }) {
 
 					<Link className="host-link" to={"/hosting"}><div>Switch to hosting</div></Link>
 
+					{/* <Link className="" to={`dashboard/${user._id}`}><div>Switch to hosting</div></Link> */}
+				
 					<Link className="language-link" to={"/"}><SvgIcon iconName={"language"}></SvgIcon></Link>
 
-
+					
 
 					<div className="user-menu" onClick={toggleNav}>
 						<SvgIcon iconName={"usermenu"}></SvgIcon>
