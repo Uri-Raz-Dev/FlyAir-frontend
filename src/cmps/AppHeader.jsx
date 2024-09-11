@@ -39,7 +39,7 @@ export function AppHeader({ filterBy, onSetFilter, toggleModal }) {
 	useEffect(() => {
 		function handleScroll() {
 			scrollY.current = window.scrollY
-			if (scrollY.current === 0 && !stayLocation) {
+			if (scrollY.current === 0 && stayLocation) {
 				setIsFilterOpen(true)
 			} else {
 				setIsFilterOpen(false)
