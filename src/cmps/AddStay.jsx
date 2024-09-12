@@ -11,7 +11,7 @@ export function AddStay() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    // מביא את המשתמש המחובר
+    // Get the logged-in user
     const loggedInUser = useSelector(storeState => storeState.userModule.user);
 
     function handleChange({ target }) {
@@ -20,32 +20,30 @@ export function AddStay() {
     }
 
     const onAddStay = async (ev) => {
-        ev.preventDefault();
+        ev.preventDefault()
 
         const stay = {
             ...stayDetails,
-            type: 'Chalet', // ברירת מחדל
+            type: stayDetails.type || 'Chalet', // Default value
             host: {
-                _id: loggedInUser._id, 
+                _id: loggedInUser._id,
                 fullname: loggedInUser.fullname,
                 // imgUrl: loggedInUser.imgUrl
             },
             location: {
-                city: 'Enter City', // ערך ברירת מחדל
-                country: 'Enter Country' // ערך ברירת מחדל
+                city: stayDetails.city || 'Enter City', // Default value
+                country: stayDetails.country || 'Enter Country' // Default value
             }
         }
 
         try {
-            // const savedStay = await dispatch(addStay(stayDetails));
-            const savedStay = await addStay(stayDetails)
+            // Dispatch the action to add stay
+            const savedStay = await addStay(stay); // Dispatch addStay
             showSuccessMsg(`Stay added (id: ${savedStay._id})`);
-            navigate('hosting/listings');
+            navigate('/hosting/listings'); // Corrected route navigation
         } catch (err) {
             showErrorMsg('Cannot add stay');
         }
-
-       
     };
 
     return (
