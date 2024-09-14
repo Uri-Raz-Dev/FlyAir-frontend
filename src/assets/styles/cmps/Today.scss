@@ -1,0 +1,215 @@
+// משתנים לצבעים ולגדלים לשימוש חוזר
+$primary-color: #ff385c;
+$secondary-color: #717171;
+$background-color: #f7f7f7;
+$font-color: #222;
+$button-bg-color: #fff;
+$button-border-color: #ddd;
+$button-hover-color: #f1f1f1;
+$card-border-radius: 8px;
+$max-width: 1200px;
+
+.today-page {
+    padding: 20px;
+    margin: 0 auto;
+    max-width: $max-width;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    header {
+        width: 100%;
+        h1 {
+            color: $font-color;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+    }
+
+    .reservations-section {
+        margin-bottom: 30px;
+        width: 100%;
+        h2 {
+            color: $font-color;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .reservation-buttons {
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            gap: 10px;
+
+            button {
+                background-color: $button-bg-color;
+                border: 1px solid $button-border-color;
+                padding: 10px 20px;
+                border-radius: $card-border-radius;
+                cursor: pointer;
+                font-size: 1rem;
+                color: $secondary-color;
+
+                &:hover {
+                    background-color: $button-hover-color;
+                }
+            }
+        }
+
+        .no-reservations {
+            padding: 20px;
+            background-color: $background-color;
+            border-radius: $card-border-radius;
+            text-align: left;
+            margin-top: 10px;
+
+            p {
+                color: $secondary-color;
+                font-size: 1rem;
+            }
+        }
+
+        .all-reservations {
+            margin-top: 20px;
+            text-align: left;
+            a {
+                color: $primary-color;
+                text-decoration: none;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+
+    .help-section {
+        margin-bottom: 30px;
+        width: 100%;
+        h2 {
+            color: $font-color;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .help-options {
+            display: flex;
+            justify-content: flex-start;
+            gap: 20px;
+
+            .help-card {
+                background-color: $button-bg-color;
+                padding: 20px;
+                border: 1px solid $button-border-color;
+                border-radius: $card-border-radius;
+                flex: 1;
+                max-width: 400px;
+                text-align: left;
+
+                h3 {
+                    color: $font-color;
+                    font-size: 1.25rem;
+                    margin-bottom: 10px;
+                }
+
+                p {
+                    color: $secondary-color;
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+
+    .resources-section {
+        width: 100%;
+        text-align: center;
+
+        h2 {
+            color: $font-color;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            text-align: left;  // יישור לשמאל
+
+        }
+
+        .scroll-container-wrapper {
+            display: flex;
+            align-items: center;
+            position: relative;
+            justify-content: center;
+
+            .scroll-btn {
+                background-color: $button-bg-color;
+                border: 1px solid $button-border-color;
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                position: absolute;
+                z-index: 1;
+
+                &:hover {
+                    background-color: #f7f7f7;
+                }
+
+                &.left {
+                    left: -20px;
+                }
+
+                &.right {
+                    right: -20px;
+                }
+            }
+
+            .scroll-container {
+                display: grid;
+                grid-auto-flow: column;
+                gap: 20px;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                padding: 10px 0;
+
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+
+                .resource-card {
+                    background-color: $button-bg-color;
+                    // padding: 20px;
+                    border: 1px solid $button-border-color;
+                    border-radius: $card-border-radius;
+                    text-align: left;
+                    width: 250px;
+                    height: 350px; /* Adjusted height */
+                    display: flex;
+                    flex-direction: column;
+
+                    img {
+                        width: 100%;
+                        height: 180px;
+                        object-fit: cover;
+                        // border-radius: $card-border-radius;
+                        border-top-left-radius: 8px;  /* רדיוס לפינה העליונה השמאלית */
+                        border-top-right-radius: 8px; /* רדיוס לפינה העליונה הימנית */
+                        // border-bottom-left-radius: 0;  /* אין רדיוס בפינה התחתונה השמאלית */
+                        // border-bottom-right-radius: 0; /* אין רדיוס בפינה התחתונה הימנית */
+                        margin-bottom: 10px;
+                    }
+
+                    h3 {
+                        color: $font-color;
+                        font-size: 1rem;
+                        padding: 1.7rem;
+                        font-weight: 500; /* עובי של הפונט */
+                        // margin-top: auto; /* Push the text to the bottom */
+                    }
+                }
+            }
+        }
+    }
+}

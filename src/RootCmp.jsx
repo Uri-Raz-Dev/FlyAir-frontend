@@ -31,13 +31,19 @@ import { Listings } from './cmps/hosting/Listings.jsx'
 import { Calendar } from './cmps/Calendar.jsx'
 import { Today } from './cmps/hosting/Today.jsx'
 import { AddStay } from './cmps/AddStay.jsx'
+import { HostingReservations } from './cmps/HostingReservations.jsx'
+// import HostingCalendar from './cmps/HostingCalendar.jsx'
 
 
 
 const routes = [
     {
-        path: '/stay',
+        path: 'stay',
         component: StayIndex,
+    },
+    {
+        path: 'add-stay',
+        component: AddStay,
     },
     {
         path: 'hosting',
@@ -48,9 +54,13 @@ const routes = [
                 component: Today,
             },
             {
-                path: 'calendar',
-                component: Calendar,
+                path: 'hosting-reservations',
+                component: HostingReservations,
             },
+            // {
+            //     path: 'calendar',
+            //     component: HostingCalendar,
+            // },
             {
                 path: 'listings',
                 component: Listings,
@@ -64,6 +74,7 @@ const routes = [
                 path: 'menu',
                 component: Menu,
             },
+
         ],
     },
     {
@@ -83,10 +94,6 @@ const routes = [
     {
         path: 'stay/:stayId',
         component: StayDetails,
-    },
-    {
-        path: 'add-stay',
-        component: AddStay,
     },
     {
         path: 'user/:id',
@@ -148,88 +155,140 @@ const renderRoutes = (routes) => routes.map((route) => (
 
 
 
+// import React, { useState, useEffect, useRef } from 'react';
+// import { useLocation, useParams, Route, Navigate, Routes } from 'react-router-dom';
+// import { useSelector } from 'react-redux';
+// import UserMsg from './UserMsg';
+// import Login from './Login';
+// import AppHeader from './AppHeader';
+// import AppFooter from './AppFooter';
+// import { renderRoutes } from './routes'; // נניח שיש פונקציה renderRoutes
+
+
 export function RootCmp() {
-    const location = useLocation()
-    const { stayId } = useParams()
-    const { filterBy } = store.getState().stayModule
-    let isStayDetailsPage = location.pathname
-    const [isFilterOpen, setIsFilterOpen] = useState(false)
-    const scrollY = useRef(0)
+    const location = useLocation();
+    const { stayId } = useParams();
+    const { filterBy } = store.getState().stayModule;
+    let isStayDetailsPage = location.pathname;
+    const [isFilterOpen, setIsFilterOpen] = useState(false);
+    const [isHosting, setIsHosting] = useState(''); // במקום activeTab, נשתמש ב-isHosting
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const scrollY = useRef(0);
+
+    const isShown = useSelector(storeState => storeState.userModule.isUserShown);
+    let isHostingPage = location.pathname;
+
+    // פונקציה למעבר בין הטאבים, כעת נשתמש ב-isHosting
+    function toggleHosting(tabName) {
+        setIsHosting(tabName); // עדכון isHosting לפי הטאב שנבחר
+    }
 
     useEffect(() => {
         function handleScroll() {
-            scrollY.current = window.scrollY
+            scrollY.current = window.scrollY;
+
             if (scrollY.current === 0 && location.pathname === '/stay/') {
-                setIsFilterOpen(true)
+                setIsFilterOpen(true);
             } else {
-                setIsFilterOpen(false)
+                setIsFilterOpen(false);
             }
+
+            // שינוי המצב של isHosting לפי pathname
+            // if (scrollY.current === 0) {
+            //     if (location.pathname.includes('hosting')) {
+            //         toggleHosting('hosting');
+            //     } else if (location.pathname.includes('today')) {
+            //         toggleHosting('today');
+            //     } else if (location.pathname.includes('listings')) {
+            //         toggleHosting('listings');
+            //     } else if (location.pathname.includes('calendar')) {
+            //         toggleHosting('calendar');
+            //     } else if (location.pathname.includes('messages')) {
+            //         toggleHosting('messages');
+            //     } else if (location.pathname.includes('add-stay')) {
+            //         toggleHosting('add-stay');
+            //     } else {
+            //         toggleHosting(''); // אם לא נמצאים בטאב מסוים, להחזיר את isHosting למצב ריק
+            //     }
+            // }
         }
 
-
-        window.addEventListener("scroll", handleScroll)
-
+        window.addEventListener("scroll", handleScroll);
         handleScroll();
 
         return () => {
-            window.removeEventListener("scroll", handleScroll)
+            window.removeEventListener("scroll", handleScroll);
         };
-    }, [location.pathname]);
+    }, [location.pathname, isHostingPage]);
 
     function openFilter() {
-        setIsFilterOpen(prev => !prev)
-
-
+        setIsFilterOpen(prev => !prev);
     }
 
     function handleMainContainer() {
         if (isStayDetailsPage.startsWith(`/stay/6`)) {
-            return "main-container details"
+            return "main-container details";
         } else if (isStayDetailsPage.startsWith(`/book/`)) {
-            return "main-container book"
+            return "main-container book";
         } else if (isStayDetailsPage.startsWith(`/wishlist/`)) {
-            return "main-container wishlist"
+            return "main-container wishlist";
         } else if (isStayDetailsPage.startsWith(`/user/inbox`)) {
-            return "main-container inbox"
-
+            return "main-container inbox";
         } else if (isStayDetailsPage.startsWith(`/hosting/order`)) {
-            return "main-container order"
+            return "main-container order";
         } else if (isStayDetailsPage.startsWith(`/trip/`)) {
-            return "main-container trip"
+            return "main-container trip";
+        } else if (isHostingPage.startsWith(`/hosting/`)) {
+            return "main-container trip";
         } else {
-            return "main-container"
+            return "main-container";
         }
     }
 
-    function handleHeader() {
-
-    }
-    const isShown = useSelector(storeState => storeState.userModule.isUserShown)
-
-    const [isModalOpen, setIsModalOpen] = useState(false)
-
     const toggleModal = () => {
-        setIsModalOpen(prevState => !prevState)
+        setIsModalOpen(prevState => !prevState);
     };
 
     return (
         <div className={handleMainContainer()}>
-
-            <AppHeader filterBy={filterBy} onSetFilter={setFilterBy} toggleModal={toggleModal} isFilterOpen={isFilterOpen} openFilter={openFilter} />
             <UserMsg />
-            <main className='empty-div'>
-                <div className='login-container'>{isModalOpen && <Login toggleModal={toggleModal} />}</div>
-                <Routes>
-                    {isShown && console.log('isShown main main main:', isShown)}
-                    <Route path="/" element={<Navigate to="/stay" />} />
-                    {renderRoutes(routes)}
-                </Routes>
-            </main >
-
-            <AppFooter />
-
+            {isHosting ? (
+                <main className='empty-div'>
+                    <div className='login-container'>{isModalOpen && <Login toggleModal={toggleModal} />}</div>
+                    <Routes>
+                        {isShown && console.log('isShown main main main:', isShown)}
+                        <Route path="/" element={<Navigate to="/stay" />} />
+                        {renderRoutes(routes)}
+                    </Routes>
+                </main>
+            ) : (
+                <>
+                    {/* הצגת ה-AppHeader רק אם isHosting ריק */}
+                    {isHosting === '' && (
+                        <AppHeader
+                            filterBy={filterBy}
+                            onSetFilter={setFilterBy}
+                            toggleModal={toggleModal}
+                            isFilterOpen={isFilterOpen}
+                            openFilter={openFilter}
+                            toggleHosting={toggleHosting}
+                        />
+                    )}
+                    <main className='empty-div'>
+                        <div className='login-container'>{isModalOpen && <Login toggleModal={toggleModal} />}</div>
+                        <Routes>
+                            {isShown && console.log('isShown main main main:', isShown)}
+                            <Route path="/" element={<Navigate to="/stay" />} />
+                            {renderRoutes(routes)}
+                        </Routes>
+                    </main>
+                    {/* הצגת ה-AppFooter רק אם isHosting ריק */}
+                    {isHosting === '' && <AppFooter />}
+                </>
+            )}
         </div>
-    )
+    );
 }
+
 
 

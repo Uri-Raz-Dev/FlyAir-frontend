@@ -1,0 +1,201 @@
+
+.main-container-add-stay {
+    // background-color: red;
+
+    .step-1 {}
+
+    // STEP 1 - about-your-place
+    .about-your-place {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+
+        //child-1
+        .info-about-your-place {
+            padding: 20px;
+            text-align: left;
+            font-size: 14px;
+
+            .p-step1:first-child {
+                padding-block-end: .8rem;
+            }
+
+            .p-step1 {
+                font-weight: 600;
+                font-size: 13px;
+            }
+
+            h1 {
+                font-family: 'Noto Sans', sans-serif;
+                font-size: 2em;
+                line-height: 20px;
+            }
+        }
+
+        //child-2 - הווידאו
+        .video-player-container {
+            padding: 20px;
+            text-align: center;
+
+            video {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                max-width: 100%;
+            }
+        }
+    }
+
+    // עיצוב עבור הכפתורים בתחתית המסך
+    .footer-progress-add-stay {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+        background-color: white;
+        border-top: 1px solid #e0e0e0;
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            background-color: #f7f7f7;
+            transition: background-color 0.2s ease;
+
+            &:hover {
+                background-color: #e0e0e0;
+            }
+        }
+
+        // עיצוב עבור כפתור ה-Next
+        button:last-child {
+            background-color: black;
+            color: white;
+            &:hover {
+                background-color: #333;
+            }
+        }
+    }
+
+
+    .footer-progress-add-stay button{
+        border-radius: 8px;
+        font-size: .8rem;
+        font-weight: 500;
+    }
+}
+
+
+
+//GOOODDDD MAIN
+// .main-container-add-stay {
+//     // background-color: red;
+
+//     .step-1 {}
+
+//     // STEP 1 - about-your-place
+//     .about-your-place {
+//         display: flex;
+//         justify-content: space-between;
+//         align-items: center;
+//         gap: 20px;
+
+//         //child-1
+//         .info-about-your-place {
+//             // background-color: lightblue;
+//             padding: 20px;
+//             text-align: left;
+//             font-size: 14px;
+
+//             .p-step1:first-child {
+
+//                 padding-block-end: .8rem;
+//             }
+
+//             .p-step1 {
+//                 font-weight: 600;
+//                 font-size: 13px;
+//             }
+
+
+
+//             h1 {
+//                 font-family: 'Noto Sans', sans-serif;
+//                 font-size: 2em;
+//                 line-height: 20px;
+//             }
+//         }
+
+//         //child-2 - הווידאו
+//         .video-player-container {
+//             // background-color: lightgreen;
+//             padding: 20px;
+//             padding: 20px;
+//             text-align: center;
+
+//             video {
+//                 width: 100%;
+//                 height: 100%;
+//                 object-fit: cover;
+//                 max-width: 100%; // שמירה על איכות הווידאו בהתאם לרוחב
+//             }
+//         }
+//     }
+// }
+
+
+// GODDDDD
+// .main-container-add-stay {
+//     background-color: red;
+
+//     .step-1 {}
+
+//     // STEP 1 - about-your-place
+//     .about-your-place {
+//         display: grid;
+//         grid-template-columns: repeat(2, 1fr);
+//         grid-gap: 20px;
+
+//         //child-1
+//         .info-about-your-place {
+//             background-color: lightblue;
+//             padding: 20px;
+//             text-align: center;
+//         }
+
+//         //child-2  
+//         .video-player {
+//             background-color: lightgreen;
+//             padding: 20px;
+//             text-align: center;
+
+//         }
+
+//     }
+
+// }
+
+// .parent {
+//     display: grid;
+//     grid-template-columns: repeat(2, 1fr); // שתי עמודות בגודל שווה
+//     grid-gap: 20px; // רווח בין האלמנטים
+
+//     // עיצוב עבור הילד הראשון
+//     .child-1 {
+//         background-color: lightblue;
+//         padding: 20px;
+//         text-align: center;
+//     }
+
+//     // עיצוב עבור הילד השני
+//     .child-2 {
+//         background-color: lightgreen;
+//         padding: 20px;
+//         text-align: center;
+//     }
+// }

@@ -10,7 +10,7 @@ import { MiniFilter } from "./MiniFliter.jsx"
 import { LoginSignup } from '../pages/LoginSignup.jsx'
 import { LoggedInUserModal } from './LoggedInUserModal.jsx'
 
-export function AppHeader({ filterBy, onSetFilter, toggleModal, isFilterOpen, openFilter }) {
+export function AppHeader({ filterBy, onSetFilter, toggleModal, isFilterOpen, openFilter, toggleHosting }) {
 	const dispatch = useDispatch()
 
 
@@ -35,6 +35,8 @@ export function AppHeader({ filterBy, onSetFilter, toggleModal, isFilterOpen, op
 	const stayLocation = location.pathname.endsWith(`/stay`)
 	const detailsLocation = location.pathname.startsWith(`/stay/6`)
 	const bookLocation = location.pathname.startsWith(`/book/6`)
+	const hosting = location.pathname.startsWith(`/hosting`)
+	const addStay = location.pathname.startsWith(`/add-stay`)
 	// const scrollY = useRef(0)
 
 	// useEffect(() => {
@@ -86,10 +88,10 @@ export function AppHeader({ filterBy, onSetFilter, toggleModal, isFilterOpen, op
 			header = "app-header details full main-container header-wide"
 		} else if (isFilterOpen) {
 			header = "app-header full main-container header-wide"
+		} else if (hosting || addStay) {
+			header = "app-header full main-container hosting"
 		}
-		// if (isFilterOpen) {  // OMER TEPER ADDED - GOOD FOR MAGRE
-		// 	header = "hidden"
-		// }
+		
 		return header
 	}
 
@@ -111,7 +113,7 @@ export function AppHeader({ filterBy, onSetFilter, toggleModal, isFilterOpen, op
 
 				<nav className="profile">
 
-					<Link className="host-link" to={"/hosting"}><div>Switch to hosting</div></Link>
+					<Link className="host-link" to="hosting" ><div>Switch to hosting</div></Link>
 
 					{/* <Link className="" to={`dashboard/${user._id}`}><div>Switch to hosting</div></Link> */}
 				

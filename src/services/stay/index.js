@@ -17,7 +17,7 @@ function getEmptyStay() {
             'https://example.com/img4.jpg',
             'https://example.com/img5.jpg'
         ],
-        price: getRandomIntInclusive(80, 240),  // אתה יכול לשנות את הטווח בהתאם
+        price: 100,  // אתה יכול לשנות את הטווח בהתאם
         capacity: 8,
         description: 'Experience the beauty of the Swiss Alps with this luxury mountain chalet.',
         amenities: ['Wifi', 'Fireplace', 'Mountain view', 'Hot tub'],
