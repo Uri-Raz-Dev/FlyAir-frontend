@@ -5,7 +5,7 @@ import { getRandomIntInclusive, makeId } from '../util.service'
 import { stayService as local } from './stay.service.remote'
 import { stayService as remote } from './stay.service.remote'
 
-function getEmptyStay() {
+export function getEmptyStay() {
     return {
         name: '',
         summary: 'REAL MADRID',
@@ -19,12 +19,11 @@ function getEmptyStay() {
         ],
         price: '',  // אתה יכול לשנות את הטווח בהתאם
         capacity: 8,
-        description: 'Experience the beauty of the Swiss Alps with this luxury mountain chalet.',
+        description: '',
         amenities: ['Wifi', 'Fireplace', 'Mountain view', 'Hot tub'],
         labels: ['Lake', 'Luxury', 'Mountain'],
         host: {
-            _id: '', // יש למלא בעת יצירת המשתמש
-            fullname: '',
+
             imgUrl: ''
         },
         location: {

@@ -7,7 +7,8 @@ const initialState = {
 
 export function hostReducer(state = initialState, action) {
     var newState = state
-    var userStays
+    // var userStays
+
     switch (action.type) {
         case SET_USER_STAYS:
             newState = { ...state, userStays: action.userStays }
