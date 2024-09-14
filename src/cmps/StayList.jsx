@@ -3,6 +3,7 @@ import { userService } from '../services/user'
 import { StayPreview } from './StayPreview'
 
 export function StayList({ stays, onRemoveStay, onUpdateStay }) {
+    console.log(stays);
 
     // function shouldShowActionBtns(stay) {
     //     const user = userService.getLoggedinUser()

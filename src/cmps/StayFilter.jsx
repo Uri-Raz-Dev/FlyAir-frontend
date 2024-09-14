@@ -35,7 +35,6 @@ export function StayFilter({ filterBy, onSetFilter }) {
 
 
 
-
     const [filterToEdit, setFilterToEdit] = useState({ ...filterBy })
 
     // const [checkInDate, setCheckInDate] = useState(null);

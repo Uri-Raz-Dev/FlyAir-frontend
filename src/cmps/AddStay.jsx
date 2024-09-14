@@ -1,38 +1,62 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-import { addStay } from '../store/actions/stay.actions'
-import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
-import { stayService } from '../services/stay'
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service';
+import { stayService } from '../services/stay';
+import { addStay, setStaytoEdit } from '../store/actions/stay.actions';
 import { labels } from "../services/labels.service";
-console.log('labels:', labels)
 
 
 export function AddStay() {
-    const navigate = useNavigate()
-    const dispatch = useDispatch()
+    const stay = useSelector(storeState => storeState.stayModule.stayToEdit);
+    const [stepNum, setStepNum] = useState(1)
 
-    const loggedInUser = useSelector(storeState => storeState.userModule.user)
-    const [stayDetails, setStayDetails] = useState(stayService.getEmptyStay())
-    const [stepNum, setStepNum] = useState(1) // מתחיל בשלב 1
-    console.log('stepNum:', stepNum)
+    console.log('stayDetails:', stayDetails)
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    // מביא את המשתמש המחובר
+    const loggedInUser = useSelector(storeState => storeState.userModule.user);
+    const { _id, fullname, imgurl } = loggedInUser
 
     function handleChange({ target }) {
-        const { name, value } = target
-        setStayDetails(prevDetails => ({ ...prevDetails, [name]: value }))
+        const field = target.name
+        let value = target.value
+        switch (target.type) {
+            case 'number':
+            case 'range':
+                value = +value
+                break
+
+            case 'checkbox': value = target.checked
+                break
+
+            default: break
+        }
+        setStaytoEdit({ ...stay, [field]: value })
     }
 
+
     async function onAddStay(ev) {
-        ev.preventDefault()
+        ev.preventDefault();
         try {
-            const savedStay = await dispatch(addStay(stayDetails))
-            console.log('savedStay ADD STAY $$$$$$$:', savedStay)
-            showSuccessMsg(`Stay added (id: ${savedStay._id})`)
-            navigate('hosting/listings')
+            const stayToSave = {
+                ...stay,
+                host: {
+                    _id,
+                    fullname,
+                },
+            };
+
+            await addStay(stayToSave)
+            showSuccessMsg('Stay saved successfully')
+            navigate('/hosting/listings')
         } catch (err) {
-            showErrorMsg('Cannot add stay')
+            console.error(err.message)
+            showErrorMsg('Failed to save stay')
         }
     }
+
 
     // שליטה בתצוגה על פי המספר של stepNum
     function renderStep() {
@@ -54,7 +78,6 @@ export function AddStay() {
         }
     }
 
-    // עדכון סטייט בצורה נכונה
     function nextStep() {
         setStepNum(prev => prev + 1)
     }
@@ -117,6 +140,73 @@ function placeTypes() {
            <p>{label}</p>
 
        ))}
+
+<div className="add-stay-container">
+            <h1>Add New Stay</h1>
+            <form onSubmit={onAddStay}>
+                <div>
+                    <label htmlFor="name">Stay Name:</label>
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        value={stay.name}
+                        onChange={handleChange}
+                        required
+                    />
+                </div>
+
+                <div>
+                    <label htmlFor="description">Stay description:</label>
+                    <input
+                        type="text"
+                        id="description"
+                        name="description"
+                        value={stay.description}
+                        onChange={handleChange}
+                        required
+                    />
+                </div>
+
+                <div>
+                    <label htmlFor="price">Price per Night:</label>
+                    <input
+                        type="number"
+                        id="price"
+                        name="price"
+                        value={stay.price}
+                        onChange={handleChange}
+                        required
+                    />
+                </div>
+
+                {/* <div>
+                    <label htmlFor="imgUrl">Image URL:</label>
+                    <input
+                        type="text"
+                        id="imgUrl"
+                        name="imgUrl"
+                        value={stayDetails.imgUrl}
+                        onChange={handleChange}
+                        required
+                    />
+                </div> */}
+
+                <div>
+                    <label htmlFor="street">type:</label>
+                    <input
+                        type="text"
+                        id="type"
+                        name="type"
+                        value={stay.type}
+                        onChange={handleChange}
+                        required
+                    />
+                </div>
+
+                <button type="submit">Add Stay</button>
+            </form>
+        </div>
     </div>
 
 }

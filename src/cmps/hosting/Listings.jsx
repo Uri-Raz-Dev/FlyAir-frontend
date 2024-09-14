@@ -2,26 +2,18 @@ import React, { useEffect, useState } from 'react';
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { CarouselImages } from '../CarouselImages'
 import { useSelector } from 'react-redux'
+import { getUserStays } from '../../store/actions/host.actions';
 import { loadStays } from '../../store/actions/stay.actions';
 
 export function Listings() {
     const navigate = useNavigate()
-    const loggedInUser = useSelector(storeState => storeState.userModule.user);
-
-    const stays = useSelector(storeState => storeState.stayModule.stays);
-    const userStays = stays.filter(stay => stay.host._id === loggedInUser._id);
-
+    const loggedInUser = useSelector(storeState => storeState.userModule.user)
+    const userStays = useSelector(storeState => storeState.hostModule.userStays)
+    console.log('userStays:', userStays)
     useEffect(() => {
-        const staysss = loadStays()
-        console.log('stays:', staysss)
-    }, [])
-
-    // async function loadStays() {
-    //     // const users = await userService.getUsers()
-    //     userStays = stays.filter(stay => stay.host._id === loggedInUser._id)
-    //     // setUsers(users)
-    // }
-
+        getUserStays()
+    }, [loggedInUser])
+    
     function onClickDetails(id) {
         console.log('onClickDetails:', id)
         navigate(`/stay/${id}`)
