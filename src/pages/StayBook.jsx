@@ -4,14 +4,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { BookDetails } from "../cmps/BookDetails";
 import { useEffect, useRef } from "react";
 import { loadStay } from "../store/actions/stay.actions";
+import { loadOrder } from "../store/actions/order.action";
 
 export function StayBook() {
     const { stayId } = useParams()
     const stay = useSelector(storeState => storeState.stayModule.stay)
+    const orders = useSelector(storeState => storeState.orderModule.orders)
+
+    console.log(orders);
 
     useEffect(() => {
         if (stayId) {
-            loadStay(stayId) // Ensure that the stay is loaded when the component mounts
+            loadStay(stayId)
+            loadOrder(stayId) // Ensure that the stay is loaded when the component mounts
         }
     }, [stayId])
 
