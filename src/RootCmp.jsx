@@ -258,6 +258,7 @@ export function RootCmp() {
                     <Routes>
                         {isShown && console.log('isShown main main main:', isShown)}
                         <Route path="/" element={<Navigate to="/stay" />} />
+                        {/* <Route path="/hosting" element={<Navigate to="hosting/today" />} /> */}
                         {renderRoutes(routes)}
                     </Routes>
                 </main>
@@ -279,6 +280,8 @@ export function RootCmp() {
                         <Routes>
                             {isShown && console.log('isShown main main main:', isShown)}
                             <Route path="/" element={<Navigate to="/stay" />} />
+                            <Route path="/hosting" element={<Navigate to="today" />} />
+                            
                             {renderRoutes(routes)}
                         </Routes>
                     </main>

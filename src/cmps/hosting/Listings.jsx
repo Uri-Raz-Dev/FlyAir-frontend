@@ -10,10 +10,11 @@ export function Listings() {
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
     const userStays = useSelector(storeState => storeState.hostModule.userStays)
     console.log('userStays:', userStays)
+    
     useEffect(() => {
         getUserStays()
     }, [loggedInUser])
-    
+
     function onClickDetails(id) {
         console.log('onClickDetails:', id)
         navigate(`/stay/${id}`)
@@ -26,35 +27,33 @@ export function Listings() {
                 <h1>Your Listings</h1>
                 <Link to="/add-stay" className="add-stay-btn">+ Add Stay</Link>
             </header>
-           
+
             <div className="hosting-listing-grid">  {/* //main-grid */}
 
                 <div className="hosting-listing-stays-grid"> {/* //stays-grid */}
-                    {stays
-                        .filter(stay => stay.host._id === loggedInUser._id) // תחילה מבצעים את הסינון
-                        .map(stay => (
-                            <div className="hosting-listing-stays-card" key={stay._id}>
-                                <>
-                                    <div className='card-carousel' onClick={() => onClickDetails(stay._id)}>
-                                        {/* הצגת תמונות הנכס */}
-                                        <CarouselImages imgs={stay.imgurls} />
-                                    </div>
+                    {userStays.map(stay => (
+                        <div className="hosting-listing-stays-card" key={stay._id}>
+                            <>
+                                <div className='card-carousel' onClick={() => onClickDetails(stay._id)}>
+                                    {/* הצגת תמונות הנכס */}
+                                    <CarouselImages imgs={stay.imgurls} />
+                                </div>
 
-                                    <div className="card-content">
-                                        <div className='card-content-location'>
-                                            <h2>{stay.location.name}</h2>
-                                        </div>
-                                        <div className='card-content-location'>
-                                            <h3>{stay.location.country}, {stay.location.city}</h3>
-                                        </div>
-                                        {/* <div className='card-content-data'>
+                                <div className="card-content">
+                                    <div className='card-content-location'>
+                                        <h2>{stay.location.name}</h2>
+                                    </div>
+                                    <div className='card-content-location'>
+                                        <h3>{stay.location.country}, {stay.location.city}</h3>
+                                    </div>
+                                    {/* <div className='card-content-data'>
                                             <p>{stay.description}</p>
                                         </div> */}
-                                        {/* <div className='card-content-price'>
+                                    {/* <div className='card-content-price'>
                                             <span className='num'>₪{stay.price} </span>
                                             <span> / night</span>
                                         </div> */}
-                                        {/* <div className='card-content-score'>
+                                    {/* <div className='card-content-score'>
                                             <span className='star-content'>
                                                 ★
                                             </span>
@@ -62,10 +61,10 @@ export function Listings() {
                                                 {stay.reviews && stay.reviews.length > 0 ? stay.reviews[0].rate.cleanliness : 'No rating'}
                                             </span>
                                         </div> */}
-                                    </div>
-                                </>
-                            </div>
-                        ))}
+                                </div>
+                            </>
+                        </div>
+                    ))}
                 </div>
             </div>
         </>

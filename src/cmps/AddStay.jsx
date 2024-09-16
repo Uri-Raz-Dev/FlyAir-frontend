@@ -11,13 +11,21 @@ export function AddStay() {
     const stay = useSelector(storeState => storeState.stayModule.stayToEdit);
     const [stepNum, setStepNum] = useState(1)
 
-    console.log('stayDetails:', stayDetails)
+    // STEP 2
+
+
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
     // מביא את המשתמש המחובר
     const loggedInUser = useSelector(storeState => storeState.userModule.user);
     const { _id, fullname, imgurl } = loggedInUser
+
+    const [selectedType, setSelectedType] = useState('') // סטייט לבחירה יחידה
+
+    const handleSelect = (event) => {
+        setSelectedType(event.target.value) // עדכון הסטייט בהתאם לכפתור שנבחר
+    }
 
     function handleChange({ target }) {
         const field = target.name
@@ -64,7 +72,7 @@ export function AddStay() {
             case 1:
                 return aboutyourPlace()
             case 2:
-                return placeTypes()
+                return placeTypes(onAddStay, stay, handleChange, selectedType, handleSelect)
             case 3:
                 return <h1>STEP 3</h1>
             case 4:
@@ -88,6 +96,15 @@ export function AddStay() {
 
     return (
         <div className='main-container-add-stay'>
+            <div className='header-add-stay'>
+                <div className='logo-add-stay'><img src="/public/img/airbnb-logo-add-stay-header.png" alt="" /></div>
+                <div className='header-add-stay-btn'>
+
+                    <button>Questions?</button>
+                    <button onClick={() => navigate('/hosting')}>Save & exit</button>
+
+                </div>
+            </div>
             {renderStep()}
 
             <div className='footer-progress-add-stay'>
@@ -132,81 +149,82 @@ function aboutyourPlace() {
 // style={{ objectFit: 'cover' }}
 
 //STEP2
-function placeTypes() {
+function placeTypes(func, stay, handleChange, selectedType, handleSelect) {
+    return (
+        <div className='step-2-container'>
+            <h1>Which of these best describes your place?</h1>
+            <div className='types-container'>
+                {Object.keys(labels).map((label, index) => (
+                    <div className='type-box'>
+                        <label key={index}>
+                            <input
+                                type="radio"
+                                value={label}
+                                checked={selectedType === label} // בדיקה אם זה הכפתור שנבחר
+                                onChange={handleSelect} // עדכון הבחירה
+                            />
+                            <span>{label}</span>
+                        </label>
+                    </div>
+                ))}
+            </div>
 
-    return <div>
-        <h1>STEP 2</h1>
-       { Object.keys(labels).map((label, index) => (
-           <p>{label}</p>
 
-       ))}
 
-<div className="add-stay-container">
-            <h1>Add New Stay</h1>
-            <form onSubmit={onAddStay}>
-                <div>
-                    <label htmlFor="name">Stay Name:</label>
-                    <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={stay.name}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
+            <div className="add-stay-container">
+                <h1>Add New Stay</h1>
+                <form onSubmit={func}>
+                    <div>
+                        <label htmlFor="name">Stay Name:</label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            value={stay.name}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
 
-                <div>
-                    <label htmlFor="description">Stay description:</label>
-                    <input
-                        type="text"
-                        id="description"
-                        name="description"
-                        value={stay.description}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
+                    <div>
+                        <label htmlFor="description">Stay description:</label>
+                        <input
+                            type="text"
+                            id="description"
+                            name="description"
+                            value={stay.description}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
 
-                <div>
-                    <label htmlFor="price">Price per Night:</label>
-                    <input
-                        type="number"
-                        id="price"
-                        name="price"
-                        value={stay.price}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
+                    <div>
+                        <label htmlFor="price">Price per Night:</label>
+                        <input
+                            type="number"
+                            id="price"
+                            name="price"
+                            value={stay.price}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
 
-                {/* <div>
-                    <label htmlFor="imgUrl">Image URL:</label>
-                    <input
-                        type="text"
-                        id="imgUrl"
-                        name="imgUrl"
-                        value={stayDetails.imgUrl}
-                        onChange={handleChange}
-                        required
-                    />
-                </div> */}
+                    <div>
+                        <label htmlFor="type">Type:</label>
+                        <input
+                            type="text"
+                            id="type"
+                            name="type"
+                            value={stay.type}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
 
-                <div>
-                    <label htmlFor="street">type:</label>
-                    <input
-                        type="text"
-                        id="type"
-                        name="type"
-                        value={stay.type}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-
-                <button type="submit">Add Stay</button>
-            </form>
+                    <button type="submit">Add Stay</button>
+                </form>
+            </div>
         </div>
-    </div>
-
+    )
 }
