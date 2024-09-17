@@ -1,5 +1,5 @@
 
-import { store } from '../store'
+import { store } from '../store.js'
 import {
   ADD_ORDER,
   REMOVE_ORDER,
