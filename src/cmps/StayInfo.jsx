@@ -28,7 +28,7 @@ export function StayInfo({ stay, orderToEdit, setOrderToEdit, onAddOrder, handle
             </header>
             <div className="reserve-wrapper">
 
-                <StayReserve stay={stay} orderToEdit={orderToEdit} setOrderToEdit={setOrderToEdit} onAddOrder={onAddOrder} handleChange={handleChange} loggedInUser={loggedInUser} />
+                <StayReserve stay={stay} orderToEdit={orderToEdit} setOrderToEdit={setOrderToEdit} handleChange={handleChange} />
             </div>
 
             <section className='about-host'>

@@ -18,7 +18,6 @@ export function StayDetails() {
   const { stayId } = useParams()
   const stay = useSelector(storeState => storeState.stayModule.stay)
   const [orderToEdit, setOrderToEdit] = useState(orderService.getEmptyOrder())
-  const loggedInUser = useSelector(storeState => storeState.userModule.user);
 
 
 
@@ -64,29 +63,14 @@ export function StayDetails() {
     }
   }
 
-  function onAddOrder(ev) {
-    ev.preventDefault();
-    try {
-      const orderToSave = {
-        ...orderToEdit,
-        stayId,
-        buyerId: loggedInUser._id,
-        hostId: stay.host._id,
-      }
-      saveOrder(orderToSave)
-    } catch (err) {
-      console.error(err.message)
-      showErrorMsg('Failed to save order')
 
-    }
-  }
 
 
   return (
     <section className="stay-details">
       <DetailsHeader stay={stay}></DetailsHeader>
       {<StayInfo stay={stay} orderToEdit={orderToEdit} setOrderToEdit={setOrderToEdit} handleChange={handleChange}
-        onAddOrder={onAddOrder} loggedInUser={loggedInUser} ></StayInfo>}
+      ></StayInfo>}
       {stay && <ReviewList stay={stay} />}
     </section>
 

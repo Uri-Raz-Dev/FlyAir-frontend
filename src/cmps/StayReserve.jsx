@@ -11,7 +11,7 @@ import { useSelector } from 'react-redux';
 import { orderService } from '../services/order/order.service.js';
 import { debounce } from '../services/util.service.js';
 
-export function StayReserve({ stay, orderToEdit, setOrderToEdit, onAddOrder, handleChange, loggedInUser }) {
+export function StayReserve({ stay, orderToEdit, setOrderToEdit, handleChange }) {
     const { _id, name, summary, type, imgurls, price, capacity, amenities, labels, startDate, endDate } = stay || {}
     const { city, country, countryCode, address, lat, lag } = stay?.location || {}
     const { fullname, imgUrl } = stay?.host || {}
@@ -42,29 +42,34 @@ export function StayReserve({ stay, orderToEdit, setOrderToEdit, onAddOrder, han
 
     useEffect(() => {
         debounceRef.current = debounce(() => {
-            const startDate = dayjs(orderToEdit.startDate, 'MM/DD/YYYY');
-            const endDate = dayjs(orderToEdit.endDate, 'MM/DD/YYYY');
+            const startDate = dayjs(orderToEdit.startDate, 'MM/DD/YYYY')
+            const endDate = dayjs(orderToEdit.endDate, 'MM/DD/YYYY')
 
             if (!startDate.isValid() || !endDate.isValid()) {
-                console.error('Invalid date format.');
-                setDayDiff(0);
-                setTotalPrice(0);
-                return;
+                console.error('Invalid date format.')
+                setDayDiff(0)
+                setTotalPrice(0)
+                return
             }
 
             const dayDiff = endDate.diff(startDate, 'day');
 
-            const adultPrice = 400 * orderToEdit.guests.adults;
+            // Only charge for additional adults beyond the first
+            const additionalAdults = Math.max(0, orderToEdit.guests.adults - 1);
+            const adultPrice = 400 * additionalAdults;
             const childPrice = 300 * orderToEdit.guests.kids;
             const infantPrice = 200 * orderToEdit.guests.infants;
             const petPrice = 200 * orderToEdit.guests.pets;
             const serviceFee = price * 0.8;
-            const totalPrice = (dayDiff * price) + serviceFee + adultPrice + childPrice + infantPrice + petPrice;
+
+            // Calculate total price
+            const totalPrice = (dayDiff * fee) + serviceFee + adultPrice + childPrice + infantPrice + petPrice
 
             setDayDiff(dayDiff);
             setTotalPrice(totalPrice);
         }, 300);
     }, [orderToEdit, price]);
+
 
     useEffect(() => {
         if (debounceRef.current) {
@@ -99,11 +104,8 @@ export function StayReserve({ stay, orderToEdit, setOrderToEdit, onAddOrder, han
     let nights = 5
     let nightsPrice = price * nights
     let serviceFee = price * 0.8
-    let adultPrice = 400 * adults
-    let childPrice = 300 * kids
-    let infantPrice = 200 * infants
-    let petPrice = 200 * pets
 
+    let fee = price + (Math.max(0, adults - 1) * 40) + (kids * 30) + (infants * 20) + (pets * 20)
     // function calculateOrderPrice() {
     //     const startDate = dayjs(orderToEdit.startDate, 'MM/DD/YYYY')
     //     const endDate = dayjs(orderToEdit.endDate, 'MM/DD/YYYY')
@@ -133,14 +135,16 @@ export function StayReserve({ stay, orderToEdit, setOrderToEdit, onAddOrder, han
         <aside className="stay-reserve">
 
             <div className="reserve-price">
-                <span>₪{price}</span>
+                <span>
+                    ₪{fee}
+                </span>
                 <span>night</span>
             </div>
 
 
 
             <div className="reserve-form-wrapper">
-                <form onSubmit={onAddOrder} className="reserve-form"  >
+                <form className="reserve-form"  >
 
                     <div className="check-in">
                         <label htmlFor="startDate">CHECK-IN</label>
@@ -166,7 +170,7 @@ export function StayReserve({ stay, orderToEdit, setOrderToEdit, onAddOrder, han
                             value={orderToEdit.guests.pets} />
                     </div>
 
-                    <Link to={`/book/${stayId}/?startDate=${orderToEdit.startDate}&endDate=${orderToEdit.endDate}&guests=${+orderToEdit.guests.adults + +orderToEdit.guests.kids + +orderToEdit.guests.infants + +orderToEdit.guests.pets}&nights=${dayDiff}&serviceFee=${serviceFee}&totalPrice=${totalPrice}`} className='reserve-button' ref={buttonRef}>
+                    <Link to={`/book/${stayId}/?startDate=${orderToEdit.startDate}&endDate=${orderToEdit.endDate}&adults=${+orderToEdit.guests.adults}&kids=${+orderToEdit.guests.kids}&infants=${+orderToEdit.guests.infants}&pets=${+orderToEdit.guests.pets}&guests=${+orderToEdit.guests.adults + +orderToEdit.guests.kids + +orderToEdit.guests.infants + +orderToEdit.guests.pets}&nights=${dayDiff}&serviceFee=${serviceFee}&price=${fee}&totalPrice=${totalPrice}`} className='reserve-button' ref={buttonRef}>
                         <span>Reserve</span>
                     </Link>
                 </form>
@@ -177,10 +181,10 @@ export function StayReserve({ stay, orderToEdit, setOrderToEdit, onAddOrder, han
             </span>
 
             <div className='reserve-info'>
-                {(price > 0 && dayDiff > 0) && (
+                {(fee > 0 && dayDiff > 0) && (
                     <div>
-                        <span>₪{price} x {dayDiff} nights</span>
-                        <span>₪{price * dayDiff}</span>
+                        <span>₪{fee} x {dayDiff} nights</span>
+                        <span>₪{fee * dayDiff}</span>
                     </div>
                 )}
 

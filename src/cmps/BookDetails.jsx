@@ -3,14 +3,14 @@ import { SvgIcon } from "./Svgicon";
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
-export function BookDetails({ imgurls, name, summary, reviews, calculateReviewScore, price }) {
+export function BookDetails({ imgurls, name, summary, reviews, calculateReviewScore, price, fee, nights, serviceFee, totalPrice }) {
     const { stayId } = useParams()
-    const nights = 5
-    const fee = (price * nights) * 0.15
-    const total = (price * nights) + fee
-    const showPrice = price.toFixed(0).toLocaleString()
-    const showFee = fee.toFixed(0).toLocaleString()
-    const showTotal = total.toFixed(0).toLocaleString()
+    // const nights = 5
+    // const fee = (price * nights) * 0.15
+    // const total = (price * nights) + fee
+    // const showPrice = price.toFixed(0).toLocaleString()
+    // const showFee = fee.toFixed(0).toLocaleString()
+    // const showTotal = total.toFixed(0).toLocaleString()
 
     return (
         <aside className="book-details-container">
@@ -35,16 +35,16 @@ export function BookDetails({ imgurls, name, summary, reviews, calculateReviewSc
 
                 <div className="price-details">
                     <div className="price">
-                        <div>₪{showPrice} x {nights} nights</div>
-                        <div>₪{(showPrice * nights).toFixed(0).toLocaleString()}</div>
+                        <div>₪{fee} x {nights} nights</div>
+                        <div>₪{(fee * nights).toFixed(0).toLocaleString()}</div>
                     </div>
                     <div className="fee">
                         <div>Airbnb service fee</div>
-                        <div>₪{showFee}</div>
+                        <div>₪{serviceFee}</div>
                     </div>
                     <div className="total">
                         <div>Total <span>(ILS)</span> </div>
-                        <div>₪{showTotal}</div>
+                        <div>₪{totalPrice}</div>
                     </div>
                 </div>
             </div>
