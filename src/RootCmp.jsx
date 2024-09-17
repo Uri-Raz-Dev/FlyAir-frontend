@@ -32,6 +32,7 @@ import { Calendar } from './cmps/Calendar.jsx'
 import { Today } from './cmps/hosting/Today.jsx'
 import { AddStay } from './cmps/AddStay.jsx'
 import { HostingReservations } from './cmps/HostingReservations.jsx'
+import { TripList } from './cmps/TripList.jsx'
 // import HostingCalendar from './cmps/HostingCalendar.jsx'
 
 
@@ -94,6 +95,10 @@ const routes = [
     {
         path: 'stay/:stayId',
         component: StayDetails,
+    },
+    {
+        path: 'trips',
+        component: TripList,
     },
     {
         path: 'user/:id',

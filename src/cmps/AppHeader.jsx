@@ -123,10 +123,14 @@ export function AppHeader({ filterBy, onSetFilter, toggleModal, isFilterOpen, op
 
 					<div className="user-menu" onClick={toggleNav}>
 						<SvgIcon iconName={"usermenu"}></SvgIcon>
+						{/* <SvgIcon className="user-avatar-logout" iconName={"userAvatarLogOut"} /> */}
+
 						{!user && stays.length > 0 && stays[0].host && <img src={stays[0].host.imgUrl} alt="" />}
+						{/* {!user && stays.length > 0 && stays[0].host && <SvgIcon iconName={"userAvatarLogOut"} />} */}
 						{!user && isNavOpen && <LoginSignup toggleNav={toggleNav} setIsNavOpen={setIsNavOpen} toggleModal={toggleModal} />}
 
 						{user && isNavOpen && (<LoggedInUserModal onLogout={onLogout} toggleNav={toggleNav}/>)}
+						{/* https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png */}
 						{user && user.imgUrl && (<Link to={`user/${user._id}`}><img src={user.imgUrl} /></Link>)}
 
 					</div>
