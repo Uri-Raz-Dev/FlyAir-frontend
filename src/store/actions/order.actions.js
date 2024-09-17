@@ -1,4 +1,4 @@
-import { orderService } from '../../services/order'
+import { orderService } from '../../services/order/order.service'
 
 import { store } from '../store'
 import { ADD_ORDER, REMOVE_ORDER, SET_ORDERS } from '../reducers/order.reducer'
