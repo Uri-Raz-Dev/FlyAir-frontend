@@ -21,6 +21,7 @@ export function AppHeader({ filterBy, onSetFilter, toggleModal, isFilterOpen, op
 	const [isScrolled, setIsScrolled] = useState(false)
 
 
+
 	const stays = useSelector(storeState => storeState.stayModule.stays)
 
 	function toggleNav() {
