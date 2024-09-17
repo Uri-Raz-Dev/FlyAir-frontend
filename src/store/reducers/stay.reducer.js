@@ -13,8 +13,17 @@ const initialState = {
         region: '',
         startDate: '',
         endDate: '',
-        // labels: [],
-        label: '',
+        guests: {
+            adults: '',
+            children: '',
+            infants: '',
+            pets: '',
+        },
+        // label: '',
+        // adults: '',
+        // children: '',
+        // infants: '',
+        // pets: '',
     },
 }
 
