@@ -123,11 +123,15 @@ export function AppHeader({ filterBy, onSetFilter, toggleModal, isFilterOpen, op
 
 					<div className="user-menu" onClick={toggleNav}>
 						<SvgIcon iconName={"usermenu"}></SvgIcon>
+						{/* <img src="https://res.cloudinary.com/dooscjcpt/image/upload/v1726549737/avatars/ejgyfwf6zcxkqk4qaldy.png" alt="" /> */}
 						{/* <SvgIcon className="user-avatar-logout" iconName={"userAvatarLogOut"} /> */}
 
-						{!user && stays.length > 0 && stays[0].host && <img src={stays[0].host.imgUrl} alt="" />}
+						{/* {!user && stays.length > 0 && stays[0].host && <img src={stays[0].host.imgUrl} alt="" />} */}
 						{/* {!user && stays.length > 0 && stays[0].host && <SvgIcon iconName={"userAvatarLogOut"} />} */}
+						{!user && stays.length > 0 && stays[0].host && <img src="https://res.cloudinary.com/dooscjcpt/image/upload/v1726549737/avatars/ejgyfwf6zcxkqk4qaldy.png" alt="" />}
+
 						{!user && isNavOpen && <LoginSignup toggleNav={toggleNav} setIsNavOpen={setIsNavOpen} toggleModal={toggleModal} />}
+						
 
 						{user && isNavOpen && (<LoggedInUserModal onLogout={onLogout} toggleNav={toggleNav}/>)}
 						{/* https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png */}
