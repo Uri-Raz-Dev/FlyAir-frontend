@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { BookDetails } from "../cmps/BookDetails";
 import { useEffect, useRef, useState } from "react";
 import { loadStay } from "../store/actions/stay.actions";
-import { loadOrder, saveOrder } from "../store/actions/order.actions";
+import { loadOrder, addOrder } from "../store/actions/order.actions";
 import { orderService } from "../services/order/order.service";
 
 export function StayBook() {
@@ -97,7 +97,7 @@ export function StayBook() {
                     pets
                 }
             }
-            saveOrder(orderToSave)
+            addOrder(orderToSave)
         } catch (err) {
             console.error(err.message)
             showErrorMsg('Failed to save order')
