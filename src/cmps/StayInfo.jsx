@@ -3,7 +3,7 @@ import { SvgIcon } from "./Svgicon"
 import { StayReserve } from "./StayReserve"
 import { ReviewList } from "./ReviewList"
 
-export function StayInfo({ stay }) {
+export function StayInfo({ stay, orderToEdit, setOrderToEdit, onAddOrder, handleChange, loggedInUser }) {
     const { _id, name, summary, type, imgurls, price, capacity, amenities, labels, description, reviews } = stay || {}
     const { city, country, countryCode, address, lat, lag } = stay?.location || {}
     const { fullname, imgUrl } = stay?.host || {}
@@ -28,7 +28,7 @@ export function StayInfo({ stay }) {
             </header>
             <div className="reserve-wrapper">
 
-                <StayReserve stay={stay} />
+                <StayReserve stay={stay} orderToEdit={orderToEdit} setOrderToEdit={setOrderToEdit} handleChange={handleChange} />
             </div>
 
             <section className='about-host'>

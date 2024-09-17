@@ -17,6 +17,26 @@
         grid-template-columns: auto 1fr auto;
     }
 
+
+
+    .middle-labels {
+        display: flex;
+        position: absolute;
+        left: 49.9%;
+        top: 50%;
+        translate: -50% -50%;
+        gap: rem(32px);
+        font-family: $bnb-font-bold;
+
+        :first-child {
+            font-weight: 500;
+        }
+
+        :nth-child(2) {
+            color: #6a6a6a;
+        }
+    }
+
     &.details {
         position: relative;
         cursor: pointer;
@@ -55,6 +75,8 @@
         transition: transform 250ms ease;
         transform: initial;
     }
+
+
 
     &.header-wide::after {
         transform: scaleY(3.3);
@@ -156,6 +178,6 @@
 
 }
 
-.hidden{
+.hidden {
     display: none;
 }

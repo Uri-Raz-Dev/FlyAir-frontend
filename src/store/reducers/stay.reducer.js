@@ -15,8 +15,17 @@ const initialState = {
         region: '',
         startDate: '',
         endDate: '',
-        // labels: [],
+        guests: {
+            adults: '',
+            children: '',
+            infants: '',
+            pets: '',
+        },
         label: '',
+        // adults: '',
+        // children: '',
+        // infants: '',
+        // pets: '',
     },
 
 }

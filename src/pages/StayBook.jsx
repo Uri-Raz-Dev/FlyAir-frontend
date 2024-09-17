@@ -1,17 +1,35 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { SvgIcon } from "../cmps/Svgicon";
 import { useDispatch, useSelector } from "react-redux";
 import { BookDetails } from "../cmps/BookDetails";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { loadStay } from "../store/actions/stay.actions";
+import { loadOrder, saveOrder } from "../store/actions/order.action";
+import { orderService } from "../services/order/order.service";
 
 export function StayBook() {
     const { stayId } = useParams()
     const stay = useSelector(storeState => storeState.stayModule.stay)
+    const location = useLocation();
+    const loggedInUser = useSelector(storeState => storeState.userModule.user)
+    const [orderToEdit, setOrderToEdit] = useState(orderService.getEmptyOrder())
 
+
+    const queryParams = new URLSearchParams(location.search)
+    const startDate = queryParams.get('startDate')
+    const endDate = queryParams.get('endDate')
+    const fee = queryParams.get('price')
+    const nights = queryParams.get('nights')
+    const serviceFee = queryParams.get('serviceFee')
+    const totalPrice = queryParams.get('totalPrice')
+    const guests = queryParams.get('guests')
+    const adults = queryParams.get('adults')
+    const kids = queryParams.get('kids')
+    const infants = queryParams.get('infants')
+    const pets = queryParams.get('pets')
     useEffect(() => {
         if (stayId) {
-            loadStay(stayId) // Ensure that the stay is loaded when the component mounts
+            loadStay(stayId)
         }
     }, [stayId])
 
@@ -43,6 +61,48 @@ export function StayBook() {
     }, [])
 
 
+    function handleCardDate() {
+        let startDates = new Date(startDate)
+        let endDates = new Date(endDate)
+        let getStartDate = startDates.getDate()
+        let getEndDate = endDates.getDate()
+        const startDateMonth = startDates.getMonth()
+        const endDateMonth = endDates.getMonth()
+
+
+        const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+        let cardDate = monthNames[startDateMonth] + ' ' + getStartDate + ' - ' + getEndDate
+
+        if (endDateMonth > startDateMonth || endDates.getFullYear() > startDates.getFullYear()) return monthNames[startDateMonth] + ' '
+            + getStartDate + ' - ' + monthNames[endDateMonth] + ' ' + getEndDate
+
+        return cardDate
+    }
+
+    function onAddOrder(ev) {
+        ev.preventDefault();
+        try {
+            const orderToSave = {
+                ...orderToEdit,
+                stayId,
+                buyerId: loggedInUser._id,
+                hostId: stay.host._id,
+                startDate,
+                endDate,
+                totalPrice,
+                guests: {
+                    adults,
+                    kids,
+                    infants,
+                    pets
+                }
+            }
+            saveOrder(orderToSave)
+        } catch (err) {
+            console.error(err.message)
+            showErrorMsg('Failed to save order')
+        }
+    }
 
     function calculateReviewScore() {
         const ratingKeys = ["value", "cleanliness", "communication", "check-in", "accuracy", "location"]
@@ -52,13 +112,13 @@ export function StayBook() {
             return acc + total
         }, 0)
 
-        const totalReviewAvg = totalScores / ratingKeys.length;
+        const totalReviewAvg = totalScores / ratingKeys.length
 
         return totalReviewAvg.toFixed(2)
     }
 
     if (!stay) {
-        return <div>Loading...</div>; // Optionally show a loading state
+        return <div>Loading...</div>
     }
 
     const { imgurls, reviews, name, summary, price } = stay
@@ -74,20 +134,20 @@ export function StayBook() {
                 <div>Your trip</div>
                 <div className="dates">
                     <div>Dates</div>
-                    <div>Oct 5 – 10</div>
+                    <div>{handleCardDate()}</div>
                     <div>Edit</div>
                 </div>
                 <div className="guests">
                     <div>Guests</div>
-                    <div>1 guest</div>
+                    <div>{guests}</div>
                     <div>Edit</div>
                 </div>
-                <Link to={`/hosting/`} className='reserve-button' ref={buttonRef}>
+                <Link onClick={() => onAddOrder} to={`/hosting/`} className='reserve-button' ref={buttonRef}>
                     <span>Request to book</span>
                 </Link>
             </main>
 
-            <BookDetails imgurls={imgurls} name={name} summary={summary} reviews={reviews} calculateReviewScore={calculateReviewScore} price={price} />
+            <BookDetails imgurls={imgurls} name={name} summary={summary} reviews={reviews} calculateReviewScore={calculateReviewScore} price={price} fee={fee} nights={nights} serviceFee={serviceFee} totalPrice={totalPrice} />
 
         </main>
     )

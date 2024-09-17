@@ -23,6 +23,7 @@
 
   }
 
+  
 
   .search-filter-item {
     position: relative;
@@ -30,9 +31,9 @@
     text-decoration: none;
     border-radius: 50px;
 
-// .search-filter-item.active-filter{
-//   background-color: white;
-// }
+    // .search-filter-item.active-filter{
+    //   background-color: white;
+    // }
 
     &:not(:last-child)::after {
       content: '';
