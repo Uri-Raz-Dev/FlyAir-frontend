@@ -64,7 +64,7 @@ export function AppHeader({ filterBy, onSetFilter, toggleModal, isFilterOpen, op
 
 	// }
 
-	console.log(scrollY.current);
+	// console.log(scrollY.current);
 
 
 
