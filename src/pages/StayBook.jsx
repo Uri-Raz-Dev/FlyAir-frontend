@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { SvgIcon } from "../cmps/Svgicon";
 import { useDispatch, useSelector } from "react-redux";
 import { BookDetails } from "../cmps/BookDetails";
@@ -10,13 +10,20 @@ export function StayBook() {
     const { stayId } = useParams()
     const stay = useSelector(storeState => storeState.stayModule.stay)
     const orders = useSelector(storeState => storeState.orderModule.orders)
+    const location = useLocation();
 
-    console.log(orders);
 
+    const queryParams = new URLSearchParams(location.search);
+    const startDate = queryParams.get('startDate');
+    const endDate = queryParams.get('endDate');
+    const nights = queryParams.get('daydiff');
+    const serviceFee = queryParams.get('serviceFee');
+    const totalPrice = queryParams.get('totalPrice');
+    const pets = queryParams.get('pets');
+    const guests = queryParams.get('guests');
     useEffect(() => {
         if (stayId) {
             loadStay(stayId)
-            loadOrder(stayId) // Ensure that the stay is loaded when the component mounts
         }
     }, [stayId])
 
@@ -79,12 +86,12 @@ export function StayBook() {
                 <div>Your trip</div>
                 <div className="dates">
                     <div>Dates</div>
-                    <div>Oct 5 – 10</div>
+                    <div>{startDate} – {endDate}</div>
                     <div>Edit</div>
                 </div>
                 <div className="guests">
                     <div>Guests</div>
-                    <div>1 guest</div>
+                    <div>{guests}</div>
                     <div>Edit</div>
                 </div>
                 <Link to={`/hosting/`} className='reserve-button' ref={buttonRef}>

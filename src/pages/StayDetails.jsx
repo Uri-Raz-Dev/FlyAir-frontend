@@ -20,7 +20,6 @@ export function StayDetails() {
   const [orderToEdit, setOrderToEdit] = useState(orderService.getEmptyOrder())
   const loggedInUser = useSelector(storeState => storeState.userModule.user);
 
-  console.log(orderToEdit)
 
 
 
@@ -41,25 +40,28 @@ export function StayDetails() {
   }
 
   function handleImageUpload(url) {
-    setUploadedImageUrl(url);
-    console.log('Image uploaded successfully:', url);
+    setUploadedImageUrl(url)
+    console.log('Image uploaded successfully:', url)
   }
   function handleChange({ target }) {
-    const field = target.name
-    let value = target.value
-    switch (target.type) {
-      case 'number':
-      case 'range':
-        value = +value
-        break
+    const { name, value } = target
 
-      case 'checkbox': value = target.checked
-        break
 
-      default: break
+    if (['adults', 'kids', 'infants', 'pets'].includes(name)) {
+      setOrderToEdit(prevOrder => ({
+        ...prevOrder,
+        guests: {
+          ...prevOrder.guests,
+          [name]: value,
+        },
+      }))
+    } else {
+
+      setOrderToEdit(prevOrder => ({
+        ...prevOrder,
+        [name]: value,
+      }))
     }
-
-    setOrderToEdit({ ...orderToEdit, [field]: value })
   }
 
   function onAddOrder(ev) {

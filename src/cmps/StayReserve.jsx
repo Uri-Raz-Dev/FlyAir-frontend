@@ -155,12 +155,18 @@ export function StayReserve({ stay, orderToEdit, setOrderToEdit, onAddOrder, han
                     </div>
 
                     <div className="guests">
-                        <label htmlFor="guests">GUESTS</label>
-                        <input onChange={handleChange} type="text" name="guests" id="guests" ref={guestRef}
+                        <label htmlFor="adults">GUESTS</label>
+                        <input onChange={handleChange} type="text" name="adults" id="adults" ref={guestRef}
                             value={orderToEdit.guests.adults} />
+                        <input onChange={handleChange} type="text" name="kids" id="kids" ref={guestRef}
+                            value={orderToEdit.guests.kids} />
+                        <input onChange={handleChange} type="text" name="infants" id="infants" ref={guestRef}
+                            value={orderToEdit.guests.infants} />
+                        <input onChange={handleChange} type="text" name="pets" id="pets" ref={guestRef}
+                            value={orderToEdit.guests.pets} />
                     </div>
 
-                    <Link to={`/book/${stayId}`} className='reserve-button' ref={buttonRef}>
+                    <Link to={`/book/${stayId}/?startDate=${orderToEdit.startDate}&endDate=${orderToEdit.endDate}&guests=${+orderToEdit.guests.adults + +orderToEdit.guests.kids + +orderToEdit.guests.infants + +orderToEdit.guests.pets}&nights=${dayDiff}&serviceFee=${serviceFee}&totalPrice=${totalPrice}`} className='reserve-button' ref={buttonRef}>
                         <span>Reserve</span>
                     </Link>
                 </form>
