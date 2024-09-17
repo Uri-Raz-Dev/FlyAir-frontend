@@ -1,7 +1,7 @@
 import { orderService } from '../../services/order'
 
 import { store } from '../store'
-import { ADD_ORDER, REMOVE_ORDER, SET_ORDERS } from '../reducers/order.Reducer'
+import { ADD_ORDER, REMOVE_ORDER, SET_ORDERS } from '../reducers/order.reducer'
 import { SET_SCORE } from '../reducers/user.reducer'
 
 export async function loadOrders() {
