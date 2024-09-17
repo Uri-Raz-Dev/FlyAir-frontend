@@ -10,7 +10,7 @@ import { MiniFilter } from "./MiniFliter.jsx"
 import { LoginSignup } from '../pages/LoginSignup.jsx'
 import { LoggedInUserModal } from './LoggedInUserModal.jsx'
 
-export function AppHeader({ filterBy, onSetFilter, toggleModal, isFilterOpen, openFilter }) {
+export function AppHeader({ filterBy, onSetFilter, toggleModal, isFilterOpen, openFilter, scrollY }) {
 	const dispatch = useDispatch()
 
 
@@ -19,7 +19,7 @@ export function AppHeader({ filterBy, onSetFilter, toggleModal, isFilterOpen, op
 	const [isNavOpen, setIsNavOpen] = useState(false)
 	// const [isFilterOpen, setIsFilterOpen] = useState(false)
 	const [isScrolled, setIsScrolled] = useState(false)
-	
+
 
 	const stays = useSelector(storeState => storeState.stayModule.stays)
 
@@ -62,6 +62,7 @@ export function AppHeader({ filterBy, onSetFilter, toggleModal, isFilterOpen, op
 
 	// }
 
+	console.log(scrollY.current);
 
 
 
@@ -77,35 +78,48 @@ export function AppHeader({ filterBy, onSetFilter, toggleModal, isFilterOpen, op
 
 
 	function handleHeader() {
-		let header = "app-header full main-container"
-		if (detailsLocation) {
-			header = "app-header details full main-container "
+		let header = "app-header full main-container";
+
+		if (isFilterOpen && scrollY.current === 0) {
+			header = "app-header full main-container header-wide position";
+		} else if (detailsLocation) {
+			header = "app-header details full main-container";
 		} else if (bookLocation) {
-			header = "app-header book full main-container"
-		} if (isFilterOpen && detailsLocation) {
-			header = "app-header details full main-container header-wide"
+			header = "app-header book full main-container";
+		} else if (isFilterOpen && detailsLocation) {
+			header = "app-header details full main-container header-wide";
 		} else if (isFilterOpen) {
-			header = "app-header full main-container header-wide"
+			header = "app-header full main-container header-wide";
 		}
-		// if (isFilterOpen) {  // OMER TEPER ADDED - GOOD FOR MAGRE
-		// 	header = "hidden"
-		// }
-		return header
+
+		return header;
 	}
 
 	return (
 		<header ref={headerRef} className={handleHeader()}>
 			<div className="header-container">
 
-				
+
 				<Link to={"stay/"} className="logo">
 
 					<SvgIcon iconName={"logosymbol"}></SvgIcon>
 					<p>FlyAir</p>
 
+
 				</Link>
+
+				{isFilterOpen && <div className="middle-labels">
+					<span>
+						Stays
+					</span>
+					<span>
+						Experiences
+					</span>
+				</div>}
 				{isFilterOpen ? <StayFilter filterBy={filterBy} onSetFilter={onSetFilter} isFilterOpen={isFilterOpen} />
-					: <MiniFilter openFilter={openFilter} isFilterOpen={isFilterOpen} />}
+					: <MiniFilter openFilter={openFilter} isFilterOpen={isFilterOpen} scrollY={scrollY} />}
+
+
 
 				{/* <StayFilter filterBy={filterBy} onSetFilter={onSetFilter} /> */}
 
@@ -114,17 +128,17 @@ export function AppHeader({ filterBy, onSetFilter, toggleModal, isFilterOpen, op
 					<Link className="host-link" to={"/hosting"}><div>Switch to hosting</div></Link>
 
 					{/* <Link className="" to={`dashboard/${user._id}`}><div>Switch to hosting</div></Link> */}
-				
+
 					<Link className="language-link" to={"/"}><SvgIcon iconName={"language"}></SvgIcon></Link>
 
-					
+
 
 					<div className="user-menu" onClick={toggleNav}>
 						<SvgIcon iconName={"usermenu"}></SvgIcon>
 						{!user && stays.length > 0 && stays[0].host && <img src={stays[0].host.imgUrl} alt="" />}
 						{!user && isNavOpen && <LoginSignup toggleNav={toggleNav} setIsNavOpen={setIsNavOpen} toggleModal={toggleModal} />}
 
-						{user && isNavOpen && (<LoggedInUserModal onLogout={onLogout} toggleNav={toggleNav}/>)}
+						{user && isNavOpen && (<LoggedInUserModal onLogout={onLogout} toggleNav={toggleNav} />)}
 						{user && user.imgUrl && (<Link to={`user/${user._id}`}><img src={user.imgUrl} /></Link>)}
 
 					</div>

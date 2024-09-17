@@ -160,7 +160,7 @@ export function RootCmp() {
         function handleScroll() {
             scrollY.current = window.scrollY
             if (scrollY.current === 0 && location.pathname === '/stay/') {
-                setIsFilterOpen(true)
+                setIsFilterOpen(false)
             } else {
                 setIsFilterOpen(false)
             }
@@ -215,9 +215,9 @@ export function RootCmp() {
     return (
         <div className={handleMainContainer()}>
 
-            <AppHeader filterBy={filterBy} onSetFilter={setFilterBy} toggleModal={toggleModal} isFilterOpen={isFilterOpen} openFilter={openFilter} />
+            <AppHeader filterBy={filterBy} onSetFilter={setFilterBy} toggleModal={toggleModal} isFilterOpen={isFilterOpen} openFilter={openFilter} scrollY={scrollY} />
             <UserMsg />
-            
+
             <main className='empty-div'>
                 <div className='login-container'>{isModalOpen && <Login toggleModal={toggleModal} />}</div>
                 <Routes>
