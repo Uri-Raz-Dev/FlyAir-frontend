@@ -32,7 +32,7 @@ export function TypeLabels({ filterBy, onSetFilter }) {
 
     const handleLabelChange = (label) => {
         setSelectedLabel(label);
-        setFilterToEdit({ ...filterToEdit, label});
+        setFilterToEdit({ ...filterToEdit, label });
     };
     return (
         <div className="labels-container">
@@ -64,10 +64,10 @@ export function TypeLabels({ filterBy, onSetFilter }) {
                 <SvgIcon iconName={"rightlabelarrow"} />
             </div>
 
-            <div className="filters">
+            {/* <div className="filters">
                 <SvgIcon iconName={"filters"} />
                 <div>Filters</div>
-            </div>
+            </div> */}
         </div>
     );
 }

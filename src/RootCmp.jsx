@@ -193,7 +193,7 @@ export function RootCmp() {
             scrollY.current = window.scrollY;
 
             if (scrollY.current === 0 && location.pathname === '/stay/') {
-                setIsFilterOpen(true);
+                setIsFilterOpen(false)
             } else {
                 setIsFilterOpen(false);
             }

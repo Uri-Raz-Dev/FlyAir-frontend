@@ -6,8 +6,8 @@ import 'react-date-range/dist/theme/default.css'; // Theme style file
 const DateRange = ({ handleCheckIn, handleCheckOut,isCheckIn,isCheckOut }) =>{
     const [state, setState] = useState([
         {
-            startDate: null,
-            endDate: null,
+            startDate: '',
+            endDate: '',
             key: 'selection'
         }
     ]);
@@ -22,20 +22,26 @@ const DateRange = ({ handleCheckIn, handleCheckOut,isCheckIn,isCheckOut }) =>{
 
     }, [state[0]])
 
-
+ 
 
     return (
-        <DateRangePicker
-            ranges={state}
-            onChange={item => setState([item.selection])}
-            months={2}
-            direction='horizontal'
-            rangeColors={['rgb(34, 34, 34)']}
-            minDate={new Date()}
-            showDateDisplay={false}
-            moveRangeOnFirstSelection={false}
-        />
+        <div className='date-picker-range'>
+            <DateRangePicker
+                ranges={state}
+                onChange={item => setState([item.selection])}
+                months={2}
+                direction='horizontal'
+                rangeColors={['rgb(34, 34, 34)']}
+                minDate={new Date()}
+                showDateDisplay={false}
+                moveRangeOnFirstSelection={false}
+                editableDateInputs={true}
+            />
+
+        </div>
     );
 };
 
 export default DateRange;
+
+

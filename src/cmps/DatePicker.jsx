@@ -42,7 +42,9 @@ export const DatePickerr = ({ handleCheckIn, handleCheckOut,isCheckIn,isCheckOut
                 ranges={state}
                 direction="horizontal"
                 showDateDisplay={false}
-                rangeColors={['rgb(34, 34, 34)']}
+                rangeColors={['rgb(34, 34, 34)']
+                
+                }
 
 
 

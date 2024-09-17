@@ -8,6 +8,8 @@ import { DatePickerr } from './DatePicker.jsx';
 import DateRange from './DateRange.jsx';
 import DateRangePickerComponent from './DateRangePickerComponent.jsx';
 import { Guests } from './Guests.jsx';
+import { CalendarPicker } from './CalendarPicker.jsx';
+import { GuestsModal } from './GuestsModal.jsx';
 // import '../assets/styles/basics/_helpers.scss';
 
 export function StayFilter({ filterBy, onSetFilter }) {
@@ -18,13 +20,26 @@ export function StayFilter({ filterBy, onSetFilter }) {
 
     const [checkInFilter, setCheckInFilter] = useState(false)
     const [checkOutFilter, setCheckOutFilter] = useState(false)
+    const [adultsAmount, setAdultsAmount] = useState(0);
+    const [childrenAmount, setChildrenAmount] = useState(0);
+    const [infantsAmount, setInfantsAmount] = useState(0);
+    const [petsAmount, setPetsAmount] = useState(0);
+
+    const [guestsTree, setGuestTree] = useState({
+        adults: 0,
+        children: 0,
+        infants: 0,
+        pets: 0,
+    })
+
+    // const [selectedGuests, setSelectedGuests] = useState(0);
+
 
     const [isRegionPickerOpen, setRegionPickerOpen] = useState(false);
     const [isDatesPickerOpen, setDatesPickerOpen] = useState(false);
     const [isGuestsOpen, setGuestsOpen] = useState(false);
 
-    const [startDate, setStartDate] = useState(new Date())
-    const [endDate, setEndDate] = useState(null)
+
 
     const filterActive = useRef('')
     const regionActive = useRef(false)
@@ -32,6 +47,7 @@ export function StayFilter({ filterBy, onSetFilter }) {
     const checkOutinputRef = useRef(null)
     const checkIninputRef = useRef(null)
     const regioninputRef = useRef(null)
+    const guestsinputRef = useRef(null)
 
 
 
@@ -104,7 +120,7 @@ export function StayFilter({ filterBy, onSetFilter }) {
 
     }
 
-    function handleCloseGuests(){
+    function handleCloseGuests() {
         setGuestsOpen(false)
     }
 
@@ -145,10 +161,14 @@ export function StayFilter({ filterBy, onSetFilter }) {
         handleFocus(checkOutinputRef)
     }
 
-    function openGuestsModal(){
+    function openGuestsModal() {
         setGuestsOpen(true)
+        setRegionPickerOpen(false)
+        setDatesPickerOpen(false)
+        handleFocus(guestsinputRef)
+
     }
-    
+
     function handleSelectRegion(region) {
 
         if (region === selectedRegion || region === "flexibile") {
@@ -160,6 +180,136 @@ export function StayFilter({ filterBy, onSetFilter }) {
             setFilterToEdit({ ...filterToEdit, region })
         }
         setRegionPickerOpen(false)
+    }
+
+    function handleGuestsTree(adults, children, infants, pets, type, operation) {
+        var dec = 1
+        if (type === 'adults') {
+            if (operation === 'increment') {
+                dec = 1
+            }
+            else dec = -1
+            setGuestTree({ ...guestsTree, adults: adults + dec, children: children, infants: infants, pets: pets })
+        }
+        else if (type === 'children') {
+            if (operation === 'increment') {
+                dec = 1
+            }
+            else dec = -1
+            setGuestTree({ ...guestsTree, adults: adults, children: children + dec, infants: infants, pets: pets })
+        }
+        else if (type === 'infants') {
+            if (operation === 'increment') {
+                dec = 1
+            }
+            else dec = -1
+            setGuestTree({ ...guestsTree, adults: adults, children: children, infants: infants + dec, pets: pets })
+        }
+        else if (type === 'pets') {
+            if (operation === 'increment') {
+                dec = 1
+            }
+            else dec = -1
+            setGuestTree({ ...guestsTree, adults: adults, children: children, infants: infants, pets: pets + dec })
+
+        }
+    }
+    function handleAmountChange(type, operation) {
+        switch (type) {
+            case "adults":
+                setAdultsAmount((prevAmount) =>
+                    operation === "increment"
+                        ? prevAmount + 1
+                        : prevAmount > 0
+                            ? prevAmount - 1
+                            : 0
+                );
+                break;
+            case "children":
+                setChildrenAmount((prevAmount) =>
+                    operation === "increment"
+                        ? prevAmount + 1
+                        : prevAmount > 0
+                            ? prevAmount - 1
+                            : 0
+                );
+                break;
+            case "infants":
+                setInfantsAmount((prevAmount) =>
+                    operation === "increment"
+                        ? prevAmount + 1
+                        : prevAmount > 0
+                            ? prevAmount - 1
+                            : 0
+                );
+                break;
+            case "pets":
+                setPetsAmount((prevAmount) =>
+                    operation === "increment"
+                        ? prevAmount + 1
+                        : prevAmount > 0
+                            ? prevAmount - 1
+                            : 0
+                );
+                break;
+            default:
+                break;
+        }
+
+        handleGuestsTree(adultsAmount, childrenAmount, infantsAmount, petsAmount, type, operation)
+
+        
+
+        // if (type === 'adults') {
+        //     setGuestTree((prevguestsTree) =>
+        //         prevguestsTree.adults + 1
+        //     )
+
+        // }
+
+        // if (type === 'children') {
+        //     setGuestTree({ ...guestsTree, children: childrenAmount })
+
+        // }
+
+        // if (type === 'infants') {
+        //     setGuestTree({ ...guestsTree, infants: infantsAmount })
+
+        // }
+
+        // if (type === 'pets') {
+        //     setGuestTree({ ...guestsTree, pets: petsAmount })
+
+        // }
+        // setSelectedGuests((prev) => {
+        //     if (operation === "increment") {
+        //         return prev + 1;
+        //     } else {
+        //         return prev > 0 ? prev - 1 : 0;
+        //     }
+        // });
+    }
+
+    function showGuestsValue(guestsTree) {
+
+        const adults = guestsTree.adults > 0 ? guestsTree.adults : 0
+        const children = guestsTree.children > 0 ? guestsTree.children : 0
+        const adultsChildrenInt = adults + children
+        const adultsAndChildren = (adultsChildrenInt) === 0 ? '' : `${adultsChildrenInt} guests`
+        // const adultsAndChildren =  (``+(guestsTree.adults + guestsTree.children)) || ``
+        // const guests = adultsAndChildren? ` ${adultsAndChildren} guests ` :``
+        const infants = guestsTree.infants ? `${'' + guestsTree.infants} infants` : ''
+        const pets = guestsTree.pets ? `${'' + guestsTree.pets} pets` : ''
+        const str = `${adultsAndChildren} ${infants} ${pets}`
+        console.log(str);
+
+        return (
+
+            // ` ${guests} ${infants} ${pets}  `
+            str
+
+        )
+
     }
 
     function displayDateShortly(date) {
@@ -190,6 +340,27 @@ export function StayFilter({ filterBy, onSetFilter }) {
         setDatesPickerOpen(false)
         setFilterToEdit({ ...filterToEdit, startDate: null, endDate: null })
     }
+
+    function updateGuestsFilter(){
+setFilterToEdit({
+            ...filterToEdit, guests: {
+                ...filterToEdit.guests, adults: guestsTree.adults
+                , children: guestsTree.children, infants: guestsTree.infants, pets: guestsTree.pets,
+            }
+        })
+
+// setFilterToEdit({
+//             ...filterToEdit, guests: {
+//                 ...filterToEdit.guests, adults:adultsAmount
+//                 , children: childrenAmount, infants:infantsAmount, pets: petsAmount,
+//             }
+//         })
+    }
+
+    // console.log({selectedGuests});
+    console.log(guestsTree);
+    console.log(filterToEdit);
+
     return (
 
         // <div className={isFilterOpen ? "search-filter" : "search-filter active"}>
@@ -230,7 +401,8 @@ export function StayFilter({ filterBy, onSetFilter }) {
                 <div>
 
                     <label>Who</label>
-                    <input  type="text" placeholder="Add guests" />
+                    {/* <input ref={guestsinputRef} value={`${selectedGuests } guests`} type="text" placeholder="Add guests" /> */}
+                    <input onChange={updateGuestsFilter} ref={guestsinputRef} value={showGuestsValue(guestsTree)} type="text" placeholder="Add guests" />
                 </div>
             </a>
 
@@ -248,12 +420,18 @@ export function StayFilter({ filterBy, onSetFilter }) {
 
             <Modal show={isDatesPickerOpen} onClose={handledatesCloseModal}>
                 {/* <DatePickerr handleCheckIn={handleCheckIn} handleCheckOut={handleCheckOut} isCheckIn={checkInFilter.current} isCheckOut={checkOutFilter.current} /> */}
+                {/* <CalendarPicker/> */}
                 <DateRange handleCheckIn={handleCheckIn} handleCheckOut={handleCheckOut} isCheckIn={checkInFilter} isCheckOut={checkOutFilter} />
             </Modal>
 
-            {/* <Modal show={isGuestsOpen} onClose={handleCloseGuests}>
-                <Guests />
-            </Modal> */}
+            <Modal show={isGuestsOpen} onClose={handleCloseGuests}>
+                {/* <Guests handleGuestsTree={handleGuestsTree} /> */}
+                <GuestsModal adultsAmount={adultsAmount}
+                    childrenAmount={childrenAmount}
+                    infantsAmount={infantsAmount}
+                    petsAmount={petsAmount}
+                    handleAmountChange={handleAmountChange} />
+            </Modal>
 
 
 
