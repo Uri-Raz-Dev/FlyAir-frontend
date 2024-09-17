@@ -19,7 +19,7 @@ const initialState = {
             infants: '',
             pets: '',
         },
-        // label: '',
+        label: '',
         // adults: '',
         // children: '',
         // infants: '',
