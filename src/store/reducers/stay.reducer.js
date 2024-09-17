@@ -1,3 +1,5 @@
+import { getEmptyStay } from "../../services/stay"
+
 export const SET_STAYS = 'SET_STAYS'
 export const SET_STAY = 'SET_STAY'
 export const REMOVE_STAY = 'REMOVE_STAY'
@@ -5,10 +7,10 @@ export const ADD_STAY = 'ADD_STAY'
 export const UPDATE_STAY = 'UPDATE_STAY'
 export const ADD_STAY_MSG = 'ADD_STAY_MSG'
 export const SET_FILTER_BY = 'SET_FILTER_BY'
-
+export const EDIT_STAY = 'EDIT_STAY'
 const initialState = {
     stays: [],
-    stay: null,
+    stayToEdit: getEmptyStay(),
     filterBy: {
         region: '',
         startDate: '',
@@ -25,6 +27,7 @@ const initialState = {
         // infants: '',
         // pets: '',
     },
+
 }
 
 export function stayReducer(state = initialState, action) {
@@ -47,6 +50,10 @@ export function stayReducer(state = initialState, action) {
         //     break
         case ADD_STAY:
             return { ...state, stays: [...state.stays, action.stay] };
+
+
+        case EDIT_STAY:
+            return { ...state, stayToEdit: action.stayToEdit }
 
         case UPDATE_STAY:
             stays = state.stays.map(stay => (stay._id === action.stay._id) ? action.stay : stay)

@@ -1,7 +1,7 @@
 import { stayService } from '../../services/stay/stay.service.remote.js'
 
 import { store } from '../store'
-import { ADD_STAY, REMOVE_STAY, SET_STAYS, SET_STAY, UPDATE_STAY, ADD_STAY_MSG, SET_FILTER_BY } from '../reducers/stay.reducer'
+import { ADD_STAY, REMOVE_STAY, SET_STAYS, SET_STAY, UPDATE_STAY, ADD_STAY_MSG, SET_FILTER_BY, EDIT_STAY } from '../reducers/stay.reducer'
 
 export async function loadStays(filterBy) {
     try {
@@ -35,7 +35,7 @@ export async function removeStay(stayId) {
 }
 
 export async function addStay(stay) {
-    console.log('stay omeromer:', stay )
+    console.log('stay omeromer:', stay)
     try {
         const savedStay = await stayService.save(stay);
         store.dispatch(getCmdAddStay(savedStay));
@@ -71,6 +71,10 @@ export async function addStayMsg(stayId, txt) {
     }
 }
 
+
+export function setStaytoEdit(stayToEdit) {
+    store.dispatch({ type: EDIT_STAY, stayToEdit })
+}
 // Command Creators:
 function getCmdSetStays(stays) {
     return {

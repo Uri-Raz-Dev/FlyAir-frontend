@@ -1,18 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { CarouselImages } from '../CarouselImages'
 import { useSelector } from 'react-redux'
+import { getUserStays } from '../../store/actions/host.actions';
 
 export function Listings() {
     const navigate = useNavigate()
-
-    const stays = useSelector(storeState => storeState.stayModule.stays);
-    const loggedInUser = useSelector(storeState => storeState.userModule.user);
-    const userStays = stays.filter(stay => stay.host._id === loggedInUser._id);
-
+    const loggedInUser = useSelector(storeState => storeState.userModule.user)
+    const userStays = useSelector(storeState => storeState.hostModule.userStays)
+    console.log('userStays:', userStays)
+    useEffect(() => {
+        getUserStays()
+    }, [loggedInUser])
     function onClickDetails(id) {
         console.log('onClickDetails:', id)
-        navigate(`/stay/${id}`) 
+        navigate(`/stay/${id}`)
     }
 
     return (

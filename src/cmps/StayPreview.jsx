@@ -5,7 +5,7 @@ import { SvgIcon } from './Svgicon.jsx'
 export function StayPreview({ stay }) {
     const navigate = useNavigate()
     const { reviews } = stay || {}
-    console.log(stay);
+    console.log(stay.startDate);
 
     function onClickDetails(ev) {
         navigate(`/stay/${stay._id}`) // ניווט ידני לפי ה-ID של ה-stay
