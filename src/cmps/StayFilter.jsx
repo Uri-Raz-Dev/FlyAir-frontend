@@ -258,7 +258,7 @@ export function StayFilter({ filterBy, onSetFilter }) {
 
         handleGuestsTree(adultsAmount, childrenAmount, infantsAmount, petsAmount, type, operation)
 
-        
+
 
         // if (type === 'adults') {
         //     setGuestTree((prevguestsTree) =>
@@ -341,20 +341,20 @@ export function StayFilter({ filterBy, onSetFilter }) {
         setFilterToEdit({ ...filterToEdit, startDate: null, endDate: null })
     }
 
-    function updateGuestsFilter(){
-setFilterToEdit({
+    function updateGuestsFilter() {
+        setFilterToEdit({
             ...filterToEdit, guests: {
                 ...filterToEdit.guests, adults: guestsTree.adults
                 , children: guestsTree.children, infants: guestsTree.infants, pets: guestsTree.pets,
             }
         })
 
-// setFilterToEdit({
-//             ...filterToEdit, guests: {
-//                 ...filterToEdit.guests, adults:adultsAmount
-//                 , children: childrenAmount, infants:infantsAmount, pets: petsAmount,
-//             }
-//         })
+        // setFilterToEdit({
+        //             ...filterToEdit, guests: {
+        //                 ...filterToEdit.guests, adults:adultsAmount
+        //                 , children: childrenAmount, infants:infantsAmount, pets: petsAmount,
+        //             }
+        //         })
     }
 
     // console.log({selectedGuests});

@@ -1,7 +1,7 @@
 // .guests-container{
 //     text-align: left;
 //     box-shadow:   rgba(0, 0, 0, 0.15) 0px 3px 12px 0px;
-  
+
 //   padding: em(28px,14px) em(32px,14px) em(16px,14px) em(32px,14px);
 //   border-radius: em(32px,14px);
 
@@ -52,8 +52,11 @@
   font-size: 12px;
   cursor: auto;
 
+  &.details {
+    top: -220px;
+    left: 760px;
+  }
 
-  
   &>*:not(:nth-last-child(2)):not(:last-child) {
     content: "";
     border-bottom: 1px solid #ebebeb;
@@ -114,4 +117,5 @@
     }
   }
 }
+
 // }

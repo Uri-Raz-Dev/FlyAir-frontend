@@ -11,6 +11,7 @@ import { orderService } from '../services/order/order.service.js';
 import { debounce } from '../services/util.service.js';
 import Modal from './Modal.jsx';
 import DateRange from './DateRange.jsx';
+import { GuestsModal } from './GuestsModal.jsx';
 
 export function StayReserve({ stay, orderToEdit, setOrderToEdit, handleChange }) {
     const { _id, name, summary, type, imgurls, price, capacity, amenities, labels, startDate, endDate } = stay || {}
@@ -23,14 +24,16 @@ export function StayReserve({ stay, orderToEdit, setOrderToEdit, handleChange })
     const { adults, kids, infants, pets } = orderToEdit.guests
     const buttonRef = useRef(null);
 
+    console.log(orderToEdit.guests);
+
     const guestRef = useRef(null);
-    const totalGuests = adults + kids + infants + pets
+    const totalGuests = +orderToEdit.guests.adults + +orderToEdit.guests.kids + +orderToEdit.guests.infants + +orderToEdit.guests.pets
     const [totalPrice, setTotalPrice] = useState(0)
     const [dayDiff, setDayDiff] = useState(0)
     const [isDatesPickerOpen, setDatesPickerOpen] = useState(false)
     const [isCheckIn, setIsCheckIn] = useState(true);
     const [isCheckOut, setIsCheckOut] = useState(false);
-
+    const [isGuestsOpen, setGuestsOpen] = useState(false);
     useEffect(() => {
         if (startDate && endDate) {
             setOrderToEdit(prevOrder => ({
@@ -154,6 +157,24 @@ export function StayReserve({ stay, orderToEdit, setOrderToEdit, handleChange })
     //     setTotalPrice(totalPrice)
     // }
 
+    const handleAmountChange = (type, operation) => {
+        setOrderToEdit(prevOrder => {
+            const newGuests = { ...prevOrder.guests };
+
+            // Convert the current values to numbers to avoid string concatenation
+            newGuests[type] = Number(newGuests[type]);
+
+            if (operation === 'increment') {
+                newGuests[type] += 1;
+            } else if (operation === 'decrement' && newGuests[type] > 0) {
+                newGuests[type] -= 1;
+            }
+
+            return { ...prevOrder, guests: newGuests };
+        });
+    };
+    console.log('orderToEdit', orderToEdit.guests.kids)
+
     return (
         <aside className="stay-reserve">
 
@@ -187,11 +208,10 @@ export function StayReserve({ stay, orderToEdit, setOrderToEdit, handleChange })
 
                     </div>
 
-                    <div className="guests">
+                    <div onClick={() => setGuestsOpen(true)} className="guests">
                         <label htmlFor="guests">GUESTS</label>
                         <input onChange={handleChange} type="text" name="guests" id="guests"
-                            value={orderToEdit.guests.adults} readOnly />
-
+                            value={`${totalGuests} guest${totalGuests > 1 ? 's' : ''}`} readOnly />
                     </div>
 
                     <Link to={`/book/${stayId}/?startDate=${orderToEdit.startDate}&endDate=${orderToEdit.endDate}&adults=${+orderToEdit.guests.adults}&kids=${+orderToEdit.guests.kids}&infants=${+orderToEdit.guests.infants}&pets=${+orderToEdit.guests.pets}&guests=${+orderToEdit.guests.adults + +orderToEdit.guests.kids + +orderToEdit.guests.infants + +orderToEdit.guests.pets}&nights=${dayDiff}&serviceFee=${serviceFee}&price=${fee}&totalPrice=${totalPrice}`} className='reserve-button' ref={buttonRef}>
@@ -226,6 +246,17 @@ export function StayReserve({ stay, orderToEdit, setOrderToEdit, handleChange })
                     <span>₪{totalPrice}</span>
                 </div>
             )}
+
+            <Modal show={isGuestsOpen} onClose={() => setGuestsOpen(false)}>
+                {/* <Guests handleGuestsTree={handleGuestsTree} /> */}
+                <GuestsModal adultsAmount={orderToEdit.guests.adults}
+                    childrenAmount={orderToEdit.guests.kids}
+                    infantsAmount={orderToEdit.guests.infants}
+                    petsAmount={orderToEdit.guests.pets}
+                    handleAmountChange={handleAmountChange} />
+            </Modal>
+
         </aside>
     )
+
 }

@@ -44,7 +44,7 @@ async function removeOrderMsg(orderId, msgId) {
 function getEmptyOrder(
     startDate = '',
     endDate = '',
-    guests = { adults: '', kids: '', infants: '', pets: '' },
+    guests = { adults: 1, kids: 0, infants: 0, pets: 0 },
     stayId = '',
     buyerId = '',
     totalPrice = '',
