@@ -13,6 +13,48 @@
 .dadModal {
     position: relative;
 
+    &.details {
+
+        .modal-overlay {}
+
+        .modal-content {
+            position: absolute;
+            background-color: white;
+            z-index: 1001;
+            right: 350%;
+            top: -232px; // padding: 20px;
+            // border-radius: 8px;
+            // left: em(528px,14px);
+            // top:em(162px,14px);
+            // width: em(425px,14px);
+
+            // width: 50%;
+            // max-width: 500px;
+
+            .date-picker-range {
+
+
+                // position: absolute;
+                // top: 0;
+
+                .rdrDateRangePickerWrapper {
+                    // padding-right: 200px;
+
+                    .rdrCalendarWrapper.rdrDateRangeWrapper {
+                        position: absolute;
+                        top: 11px;
+                        left: 5px;
+                        width: 52rem;
+                        align-items: center;
+                        box-shadow: 0 0 0 1px #0000000a, 0 8px 16px #00000026;
+                        border-radius: 32px;
+                    }
+                }
+            }
+
+        }
+    }
+
     .modal-overlay {}
 
     .modal-content {
@@ -30,14 +72,14 @@
 
         .date-picker-range {
 
-          
+
             // position: absolute;
             // top: 0;
 
             .rdrDateRangePickerWrapper {
                 // padding-right: 200px;
 
-                .rdrCalendarWrapper.rdrDateRangeWrapper{
+                .rdrCalendarWrapper.rdrDateRangeWrapper {
                     position: absolute;
                     top: 11px;
                     left: 5px;
@@ -51,6 +93,6 @@
 
     }
 
-    
+
 
 }

@@ -9,24 +9,27 @@ import dayjs from 'dayjs';
 import { useSelector } from 'react-redux';
 import { orderService } from '../services/order/order.service.js';
 import { debounce } from '../services/util.service.js';
+import Modal from './Modal.jsx';
+import DateRange from './DateRange.jsx';
 
 export function StayReserve({ stay, orderToEdit, setOrderToEdit, handleChange }) {
     const { _id, name, summary, type, imgurls, price, capacity, amenities, labels, startDate, endDate } = stay || {}
     const { city, country, countryCode, address, lat, lag } = stay?.location || {}
     const { fullname, imgUrl } = stay?.host || {}
     const debounceRef = useRef();
-    console.log(type);
 
     const { stayId } = useParams()
     const orders = useSelector(storeState => storeState.orderModule.orders)
     const { adults, kids, infants, pets } = orderToEdit.guests
     const buttonRef = useRef(null);
-    const checkInRef = useRef(null);
-    const checkOutRef = useRef(null);
+
     const guestRef = useRef(null);
     const totalGuests = adults + kids + infants + pets
     const [totalPrice, setTotalPrice] = useState(0)
     const [dayDiff, setDayDiff] = useState(0)
+    const [isDatesPickerOpen, setDatesPickerOpen] = useState(false)
+    const [isCheckIn, setIsCheckIn] = useState(true);
+    const [isCheckOut, setIsCheckOut] = useState(false);
 
     useEffect(() => {
         if (startDate && endDate) {
@@ -105,6 +108,28 @@ export function StayReserve({ stay, orderToEdit, setOrderToEdit, handleChange })
     let serviceFee = price * 0.8
 
     let fee = price + (Math.max(0, adults - 1) * 40) + (kids * 30) + (infants * 20) + (pets * 20)
+
+    const handleCheckIn = (date) => {
+        setOrderToEdit(prevOrder => ({
+            ...prevOrder,
+            startDate: dayjs(date).format('MM/DD/YYYY')
+        }));
+    };
+
+    // Handle Check-Out date change
+    const handleCheckOut = (date) => {
+        setOrderToEdit(prevOrder => ({
+            ...prevOrder,
+            endDate: dayjs(date).format('MM/DD/YYYY')
+        }));
+    };
+
+    const openDatePicker = (isCheckInSelected) => {
+        setDatesPickerOpen(true);
+        setIsCheckIn(isCheckInSelected);
+        setIsCheckOut(!isCheckInSelected);
+    };
+
     // function calculateOrderPrice() {
     //     const startDate = dayjs(orderToEdit.startDate, 'MM/DD/YYYY')
     //     const endDate = dayjs(orderToEdit.endDate, 'MM/DD/YYYY')
@@ -144,17 +169,23 @@ export function StayReserve({ stay, orderToEdit, setOrderToEdit, handleChange })
 
             <div className="reserve-form-wrapper">
                 <form className="reserve-form"  >
-
-                    <div className="check-in">
+                    <div onClick={() => openDatePicker(true)} className="check-in">
                         <label htmlFor="startDate">CHECK-IN</label>
-                        <input onChange={handleChange} type="text" name="startDate" id="startDate" ref={checkInRef}
+                        <input onChange={handleChange} type="text" name="startDate" id="startDate" readOnly
                             value={orderToEdit.startDate || ''} />
                     </div>
 
-                    <div className="checkout">
+                    <Modal show={isDatesPickerOpen} onClose={() => setDatesPickerOpen(false)}>
+                        <DateRange handleCheckIn={handleCheckIn} handleCheckOut={handleCheckOut} isCheckIn={isCheckIn}
+                            isCheckOut={isCheckOut} checkIn={orderToEdit.startDate} checkOut={orderToEdit.endDate} />
+                        {/* checkIn={checkInRef.current.value} checkOut={checkOutRef.current.value} */}
+                    </Modal>
+
+                    <div onClick={() => openDatePicker(false)} className="checkout">
                         <label htmlFor="endDate">CHECKOUT</label>
-                        <input onChange={handleChange} type="text" name="endDate" id="endDate" ref={checkOutRef}
+                        <input onChange={handleChange} type="text" name="endDate" id="endDate" readOnly
                             value={orderToEdit.endDate || ''} />
+
                     </div>
 
                     <div className="guests">
