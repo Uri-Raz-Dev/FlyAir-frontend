@@ -129,7 +129,6 @@ export function StayReserve({ stay, orderToEdit, setOrderToEdit, handleChange })
         setIsCheckIn(isCheckInSelected);
         setIsCheckOut(!isCheckInSelected);
     };
-
     // function calculateOrderPrice() {
     //     const startDate = dayjs(orderToEdit.startDate, 'MM/DD/YYYY')
     //     const endDate = dayjs(orderToEdit.endDate, 'MM/DD/YYYY')
@@ -189,15 +188,10 @@ export function StayReserve({ stay, orderToEdit, setOrderToEdit, handleChange })
                     </div>
 
                     <div className="guests">
-                        <label htmlFor="adults">GUESTS</label>
-                        <input onChange={handleChange} type="text" name="adults" id="adults" ref={guestRef}
-                            value={orderToEdit.guests.adults} />
-                        <input onChange={handleChange} type="text" name="kids" id="kids" ref={guestRef}
-                            value={orderToEdit.guests.kids} />
-                        <input onChange={handleChange} type="text" name="infants" id="infants" ref={guestRef}
-                            value={orderToEdit.guests.infants} />
-                        <input onChange={handleChange} type="text" name="pets" id="pets" ref={guestRef}
-                            value={orderToEdit.guests.pets} />
+                        <label htmlFor="guests">GUESTS</label>
+                        <input onChange={handleChange} type="text" name="guests" id="guests"
+                            value={orderToEdit.guests.adults} readOnly />
+
                     </div>
 
                     <Link to={`/book/${stayId}/?startDate=${orderToEdit.startDate}&endDate=${orderToEdit.endDate}&adults=${+orderToEdit.guests.adults}&kids=${+orderToEdit.guests.kids}&infants=${+orderToEdit.guests.infants}&pets=${+orderToEdit.guests.pets}&guests=${+orderToEdit.guests.adults + +orderToEdit.guests.kids + +orderToEdit.guests.infants + +orderToEdit.guests.pets}&nights=${dayDiff}&serviceFee=${serviceFee}&price=${fee}&totalPrice=${totalPrice}`} className='reserve-button' ref={buttonRef}>
