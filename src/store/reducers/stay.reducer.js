@@ -12,20 +12,16 @@ const initialState = {
     stays: [],
     stayToEdit: getEmptyStay(),
     filterBy: {
+        guests: {
+            adults: 0,
+            children: 0,
+            infants: 0,
+            pets: 0,
+        },
         region: '',
         startDate: '',
         endDate: '',
-        guests: {
-            adults: '',
-            children: '',
-            infants: '',
-            pets: '',
-        },
         label: '',
-        // adults: '',
-        // children: '',
-        // infants: '',
-        // pets: '',
     },
 
 }

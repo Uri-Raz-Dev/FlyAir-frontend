@@ -185,33 +185,70 @@ export function StayFilter({ filterBy, onSetFilter }) {
     function handleGuestsTree(adults, children, infants, pets, type, operation) {
         var dec = 1
         if (type === 'adults') {
-            if (operation === 'increment') {
-                dec = 1
-            }
+            if (operation === 'increment')  dec = 1
             else dec = -1
+
             setGuestTree({ ...guestsTree, adults: adults + dec, children: children, infants: infants, pets: pets })
+            setFilterToEdit({
+                ...filterToEdit,
+                guests: {
+                  ...filterToEdit.guests, // Spread the previous guests object
+                  adults: guestsTree.adults+dec, // Update values
+                  children: guestsTree.children,
+                  infants: guestsTree.infants,
+                  pets: guestsTree.pets
+                }
+              });
+    
         }
         else if (type === 'children') {
-            if (operation === 'increment') {
-                dec = 1
-            }
+            if (operation === 'increment') dec = 1
             else dec = -1
             setGuestTree({ ...guestsTree, adults: adults, children: children + dec, infants: infants, pets: pets })
+            setFilterToEdit({
+                ...filterToEdit,
+                guests: {
+                  ...filterToEdit.guests, // Spread the previous guests object
+                  adults: guestsTree.adults, // Update values
+                  children: guestsTree.children+dec,
+                  infants: guestsTree.infants,
+                  pets: guestsTree.pets
+                }
+              });
+    
         }
         else if (type === 'infants') {
-            if (operation === 'increment') {
-                dec = 1
-            }
+            if (operation === 'increment') dec = 1
             else dec = -1
+
             setGuestTree({ ...guestsTree, adults: adults, children: children, infants: infants + dec, pets: pets })
+            setFilterToEdit({
+                ...filterToEdit,
+                guests: {
+                  ...filterToEdit.guests, // Spread the previous guests object
+                  adults: guestsTree.adults, // Update values
+                  children: guestsTree.children,
+                  infants: guestsTree.infants+dec,
+                  pets: guestsTree.pets
+                }
+              });
+    
         }
         else if (type === 'pets') {
-            if (operation === 'increment') {
-                dec = 1
-            }
+            if (operation === 'increment')   dec = 1
             else dec = -1
             setGuestTree({ ...guestsTree, adults: adults, children: children, infants: infants, pets: pets + dec })
-
+            setFilterToEdit({
+                ...filterToEdit,
+                guests: {
+                  ...filterToEdit.guests, // Spread the previous guests object
+                  adults: guestsTree.adults, // Update values
+                  children: guestsTree.children,
+                  infants: guestsTree.infants,
+                  pets: guestsTree.pets+dec
+                }
+              });
+    
         }
     }
     function handleAmountChange(type, operation) {
@@ -253,6 +290,16 @@ export function StayFilter({ filterBy, onSetFilter }) {
                 );
                 break;
             default:
+                setFilterToEdit({
+                    ...filterToEdit,
+                    guests: {
+                      ...filterToEdit.guests, // Spread the previous guests object
+                      adults: guestsTree.adults, // Update values
+                      children: guestsTree.children,
+                      infants: guestsTree.infants,
+                      pets: guestsTree.pets
+                    }
+                  });
                 break;
         }
 
@@ -295,11 +342,11 @@ export function StayFilter({ filterBy, onSetFilter }) {
         const adults = guestsTree.adults > 0 ? guestsTree.adults : 0
         const children = guestsTree.children > 0 ? guestsTree.children : 0
         const adultsChildrenInt = adults + children
-        const adultsAndChildren = (adultsChildrenInt) === 0 ? '' : `${adultsChildrenInt} guests`
+        const adultsAndChildren = (adultsChildrenInt) === 0 ? '': `${adultsChildrenInt} guests`
         // const adultsAndChildren =  (``+(guestsTree.adults + guestsTree.children)) || ``
         // const guests = adultsAndChildren? ` ${adultsAndChildren} guests ` :``
-        const infants = guestsTree.infants ? `${'' + guestsTree.infants} infants` : ''
-        const pets = guestsTree.pets ? `${'' + guestsTree.pets} pets` : ''
+        const infants = guestsTree.infants ? `${ guestsTree.infants} infants` : ''
+        const pets = guestsTree.pets ? `${ guestsTree.pets} pets` : ''
         const str = `${adultsAndChildren} ${infants} ${pets}`
         console.log(str);
 
@@ -341,13 +388,19 @@ export function StayFilter({ filterBy, onSetFilter }) {
         setFilterToEdit({ ...filterToEdit, startDate: null, endDate: null })
     }
 
-    function updateGuestsFilter(){
-setFilterToEdit({
-            ...filterToEdit, guests: {
-                ...filterToEdit.guests, adults: guestsTree.adults
-                , children: guestsTree.children, infants: guestsTree.infants, pets: guestsTree.pets,
+    function updateGuestesFilter(){
+
+
+        setFilterToEdit({
+            ...filterToEdit,
+            guests: {
+              ...filterToEdit.guests, // Spread the previous guests object
+              adults: guestsTree.adults, // Update values
+              children: guestsTree.children,
+              infants: guestsTree.infants,
+              pets: guestsTree.pets
             }
-        })
+          });
 
 // setFilterToEdit({
 //             ...filterToEdit, guests: {
@@ -402,7 +455,7 @@ setFilterToEdit({
 
                     <label>Who</label>
                     {/* <input ref={guestsinputRef} value={`${selectedGuests } guests`} type="text" placeholder="Add guests" /> */}
-                    <input onChange={updateGuestsFilter} ref={guestsinputRef} value={showGuestsValue(guestsTree)} type="text" placeholder="Add guests" />
+                    <input ref={guestsinputRef} value={showGuestsValue(guestsTree)} type="text" placeholder="Add guests" />
                 </div>
             </a>
 
@@ -430,7 +483,11 @@ setFilterToEdit({
                     childrenAmount={childrenAmount}
                     infantsAmount={infantsAmount}
                     petsAmount={petsAmount}
-                    handleAmountChange={handleAmountChange} />
+                    handleAmountChange={handleAmountChange}
+                    // onSetFilter={setFilterToEdit}
+                    updateGuestesFilter={updateGuestesFilter}
+                    />
+            
             </Modal>
 
 

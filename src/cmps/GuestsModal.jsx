@@ -1,4 +1,4 @@
-export function GuestsModal({ adultsAmount, childrenAmount, infantsAmount, petsAmount, handleAmountChange }) {
+export function GuestsModal({ adultsAmount, childrenAmount, infantsAmount, petsAmount, handleAmountChange , updateGuestesFilter}) {
     return (
         <section className='add-guests-modal'>
             <div>
