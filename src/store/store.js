@@ -14,7 +14,6 @@ const rootReducer = combineReducers({
     reviewModule: reviewReducer,
     hostModule: hostReducer,
     orderModule: orderReducer,
-
 })
 
 

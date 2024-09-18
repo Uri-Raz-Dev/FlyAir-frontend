@@ -14,4 +14,36 @@
         margin: 0;
     }
 
+
+
+
+    // /* מדיה קווארי עבור טאבלטים (רוחב בין 768px ל-1024px) */
+    // @media only screen and (min-width: 768px) and (max-width: 1024px) {
+    //     .stay-reserve {
+    //         display: none !important;
+    //     }
+
+    //     .details-image-list {
+    //         display: none !important;
+
+    //     }
+    // }
+}
+
+// Mobail
+@media only screen and (max-width: 818px) {
+    .stay-reserve {
+        display: none;
+    }
+
+    .details-image-list {
+        display: none;
+        
+    }
+    
+    .app-header.full.main-container {
+        // display: none;
+        
+
+    }
 }

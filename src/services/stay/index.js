@@ -21,7 +21,7 @@ export function getEmptyStay() {
         capacity: 8,
         description: '',
         amenities: ['Wifi', 'Fireplace', 'Mountain view', 'Hot tub'],
-        labels: ['Lake', 'Luxury', 'Mountain'],
+        labels: [],
         host: {
 
             imgUrl: ''
@@ -29,6 +29,7 @@ export function getEmptyStay() {
         location: {
             city: '',
             country: '',
+            address: '',
             lat: 0,
             lng: 0
         },

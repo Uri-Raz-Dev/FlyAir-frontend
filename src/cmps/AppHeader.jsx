@@ -10,7 +10,7 @@ import { MiniFilter } from "./MiniFliter.jsx"
 import { LoginSignup } from '../pages/LoginSignup.jsx'
 import { LoggedInUserModal } from './LoggedInUserModal.jsx'
 
-export function AppHeader({ filterBy, onSetFilter, toggleModal, isFilterOpen, openFilter, scrollY }) {
+export function AppHeader({ filterBy, onSetFilter, toggleModal, isFilterOpen, openFilter, scrollY, toggleHosting }) {
 	const dispatch = useDispatch()
 
 
@@ -35,6 +35,8 @@ export function AppHeader({ filterBy, onSetFilter, toggleModal, isFilterOpen, op
 	const stayLocation = location.pathname.endsWith(`/stay`)
 	const detailsLocation = location.pathname.startsWith(`/stay/6`)
 	const bookLocation = location.pathname.startsWith(`/book/6`)
+	const hosting = location.pathname.startsWith(`/hosting`)
+	const addStay = location.pathname.startsWith(`/add-stay`)
 	// const scrollY = useRef(0)
 
 	// useEffect(() => {
@@ -62,7 +64,7 @@ export function AppHeader({ filterBy, onSetFilter, toggleModal, isFilterOpen, op
 
 	// }
 
-	console.log(scrollY.current);
+	// console.log(scrollY.current);
 
 
 
@@ -89,10 +91,12 @@ export function AppHeader({ filterBy, onSetFilter, toggleModal, isFilterOpen, op
 		} else if (isFilterOpen && detailsLocation) {
 			header = "app-header details full main-container header-wide";
 		} else if (isFilterOpen) {
-			header = "app-header full main-container header-wide";
+			header = "app-header full main-container header-wide"
+		} else if (hosting || addStay) {
+			header = "app-header full main-container hosting"
 		}
-
-		return header;
+		
+		return header
 	}
 
 	return (
@@ -125,7 +129,7 @@ export function AppHeader({ filterBy, onSetFilter, toggleModal, isFilterOpen, op
 
 				<nav className="profile">
 
-					<Link className="host-link" to={"/hosting"}><div>Switch to hosting</div></Link>
+					<Link className="host-link" to="hosting" ><div>Switch to hosting</div></Link>
 
 					{/* <Link className="" to={`dashboard/${user._id}`}><div>Switch to hosting</div></Link> */}
 
@@ -135,8 +139,15 @@ export function AppHeader({ filterBy, onSetFilter, toggleModal, isFilterOpen, op
 
 					<div className="user-menu" onClick={toggleNav}>
 						<SvgIcon iconName={"usermenu"}></SvgIcon>
-						{!user && stays.length > 0 && stays[0].host && <img src={stays[0].host.imgUrl} alt="" />}
+						{/* <img src="https://res.cloudinary.com/dooscjcpt/image/upload/v1726549737/avatars/ejgyfwf6zcxkqk4qaldy.png" alt="" /> */}
+						{/* <SvgIcon className="user-avatar-logout" iconName={"userAvatarLogOut"} /> */}
+
+						{/* {!user && stays.length > 0 && stays[0].host && <img src={stays[0].host.imgUrl} alt="" />} */}
+						{/* {!user && stays.length > 0 && stays[0].host && <SvgIcon iconName={"userAvatarLogOut"} />} */}
+						{!user && stays.length > 0 && stays[0].host && <img src="https://res.cloudinary.com/dooscjcpt/image/upload/v1726549737/avatars/ejgyfwf6zcxkqk4qaldy.png" alt="" />}
+
 						{!user && isNavOpen && <LoginSignup toggleNav={toggleNav} setIsNavOpen={setIsNavOpen} toggleModal={toggleModal} />}
+
 
 						{user && isNavOpen && (<LoggedInUserModal onLogout={onLogout} toggleNav={toggleNav} />)}
 						{user && user.imgUrl && (<Link to={`user/${user._id}`}><img src={user.imgUrl} /></Link>)}
