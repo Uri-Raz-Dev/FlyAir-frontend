@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { loadStay } from "../store/actions/stay.actions";
 // import { loadOrder, saveOrder } from "../store/actions/order.action";
 import { orderService } from "../services/order/order.service";
+import { addOrder } from "../store/actions/order.actions";
 
 export function StayBook() {
     const { stayId } = useParams()
@@ -97,7 +98,7 @@ export function StayBook() {
                     pets
                 }
             }
-            saveOrder(orderToSave)
+            addOrder(orderToSave)
         } catch (err) {
             console.error(err.message)
             showErrorMsg('Failed to save order')
