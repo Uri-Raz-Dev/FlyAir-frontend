@@ -1,0 +1,105 @@
+.trip-container {
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+
+    h1 {
+        font-size: 32px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .no-trips {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #f7f7f7;
+        padding: 20px;
+        border-radius: 10px;
+
+        .no-trips-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            h2 {
+                font-size: 24px;
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+
+            p {
+                font-size: 16px;
+                color: #717171;
+                margin-bottom: 20px;
+            }
+
+            .start-searching-btn {
+                background-color: #ff385c;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 8px;
+                cursor: pointer;
+            }
+        }
+
+        .trip-image {
+            border-radius: 10px;
+            object-fit: cover;
+            width: 300px;
+            height: 200px;
+        }
+    }
+
+    .trips-section {
+        margin-top: 40px;
+
+        h2 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .trip-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .trip-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: calc(33% - 20px);
+            min-width: 200px;
+
+            .trip-info {
+                display: flex;
+                flex-direction: column;
+
+                h3 {
+                    font-size: 18px;
+                    font-weight: bold;
+                    margin-bottom: 5px;
+                }
+
+                p {
+                    font-size: 14px;
+                    color: #717171;
+                }
+            }
+
+            .trip-image {
+                width: 80px;
+                height: 80px;
+                border-radius: 8px;
+                object-fit: cover;
+            }
+        }
+    }
+}

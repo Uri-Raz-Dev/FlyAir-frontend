@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react"
-import { Outlet, NavLink } from 'react-router-dom'
+import { Outlet, NavLink, Link } from 'react-router-dom'
 import { Login } from '../pages/Login.jsx';
 
 export function LoggedInUserModal({ toggleNav, toggleModal, onLogout }) {
@@ -13,10 +13,11 @@ export function LoggedInUserModal({ toggleNav, toggleModal, onLogout }) {
             <div className="login-signup-btn" onClick={stopPropagation}>
                 <nav className="login-signup-nav" onClick={toggleNav}>
                     <a href="#">Messages</a>
-                    <a href="#">Trips</a>
+                    <Link to={`trips`}>Trips</Link>
+                    {/* <a href="#">Trips</a> */}
                     <a href="#">Wishlists</a>
                     <div className='signup-nav-border'></div>
-                    <a href="#">Manage listings</a>
+                    <Link to={`hosting/listings`}>Manage listings</Link>
                     <a href="#">Account</a>
                     <div className='signup-nav-border'></div>
                     <a href="#">Gift cards</a>
