@@ -9,7 +9,12 @@ export const stayService = {
     addStayMsg
 }
 
-async function query(filterBy = {region: '', startdate: '', startDate: '',  label: '' }) {
+async function query(filterBy = {
+    region: '', startdate: '', startDate: '', label: '', guests: {
+        adults: 0, children: 0, infants: 0, pets: 0
+    },
+}) 
+{
     return httpService.get(`stay`, filterBy)
 }
 
