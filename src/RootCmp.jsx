@@ -278,6 +278,7 @@ export function RootCmp() {
                             isFilterOpen={isFilterOpen}
                             openFilter={openFilter}
                             toggleHosting={toggleHosting}
+                            scrollY={scrollY.current}
                         />
                     )}
                     <main className='empty-div'>
@@ -286,7 +287,7 @@ export function RootCmp() {
                             {isShown && console.log('isShown main main main:', isShown)}
                             <Route path="/" element={<Navigate to="/stay" />} />
                             <Route path="/hosting" element={<Navigate to="today" />} />
-                            
+
                             {renderRoutes(routes)}
                         </Routes>
                     </main>

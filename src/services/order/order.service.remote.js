@@ -11,7 +11,7 @@ export const orderService = {
 
 
 // price: 0, sortDir: 1, txt: '', labels: []
-async function query(filterBy = { }) { 
+async function query(filterBy = {}) {
     return httpService.get(`order`, filterBy)
 }
 

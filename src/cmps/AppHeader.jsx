@@ -95,7 +95,7 @@ export function AppHeader({ filterBy, onSetFilter, toggleModal, isFilterOpen, op
 		} else if (hosting || addStay) {
 			header = "app-header full main-container hosting"
 		}
-		
+
 		return header
 	}
 

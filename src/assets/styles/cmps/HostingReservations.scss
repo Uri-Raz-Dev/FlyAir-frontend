@@ -3,6 +3,27 @@
     margin: 0 auto;
     padding: 20px;
 
+    .status-button {
+        padding: 5px 10px;
+        border: none;
+        border-radius: 5px;
+        // color: white;    
+        cursor: pointer;
+    }
+
+    .status-button.upcoming {
+        background-color: yellow;
+        color: black;
+    }
+
+    .status-button.approved {
+        background-color: green;
+    }
+
+    .status-button.cancelled {
+        background-color: red;
+    }
+
     h2 {
         font-size: 2rem;
         margin-bottom: 20px;
@@ -14,7 +35,7 @@
         margin-bottom: 20px;
         font-size: 1rem;
         font-weight: 500;
-    
+
         button {
             background: none;
             border: none;
@@ -23,17 +44,17 @@
             cursor: pointer;
             position: relative;
             transition: color 0.3s;
-    
+
             &:hover {
                 color: black;
             }
-    
+
             &.active {
                 color: black;
                 font-weight: bold;
                 border-bottom: 2px solid black;
             }
-    
+
             &:not(.active):hover::after {
                 content: '';
                 position: absolute;
@@ -45,14 +66,15 @@
             }
         }
     }
-    
+
 
     .reservations-table {
         width: 100%;
         border-collapse: collapse;
         margin-top: 20px;
 
-        th, td {
+        th,
+        td {
             padding: 15px;
             text-align: left;
             border-bottom: 1px solid #ddd;
@@ -86,6 +108,15 @@
                 &:hover {
                     background-color: #f7f7f7;
                 }
+            }
+        }
+
+        tr {
+            td:nth-of-type(3) {
+                text-align: center;
+                // text-overflow: clip;
+                // text-overflow: ellipsis;
+                text
             }
         }
 

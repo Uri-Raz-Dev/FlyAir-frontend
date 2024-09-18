@@ -1,4 +1,4 @@
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate, useParams } from "react-router-dom";
 import { SvgIcon } from "../cmps/Svgicon";
 import { useDispatch, useSelector } from "react-redux";
 import { BookDetails } from "../cmps/BookDetails";
@@ -7,6 +7,7 @@ import { loadStay } from "../store/actions/stay.actions";
 // import { loadOrder, saveOrder } from "../store/actions/order.action";
 import { orderService } from "../services/order/order.service";
 import { addOrder } from "../store/actions/order.actions";
+import Swal from 'sweetalert2'
 
 export function StayBook() {
     const { stayId } = useParams()
@@ -14,8 +15,8 @@ export function StayBook() {
     const location = useLocation();
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
     const [orderToEdit, setOrderToEdit] = useState(orderService.getEmptyOrder())
-
-
+    const navigate = useNavigate()
+    console.log(stay.imgurls[0])
     const queryParams = new URLSearchParams(location.search)
     const startDate = queryParams.get('startDate')
     const endDate = queryParams.get('endDate')
@@ -96,12 +97,27 @@ export function StayBook() {
                     kids,
                     infants,
                     pets
-                }
+                },
+                status: 'Upcoming',
+                stayImg: stay.imgurls[0]
             }
-            addOrder(orderToSave)
+            orderService.save(orderToSave)
+            console.log(orderToSave);
+
         } catch (err) {
             console.error(err.message)
             showErrorMsg('Failed to save order')
+        } finally {
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Your work has been saved",
+                showConfirmButton: false,
+                timer: 15000,
+                iconColor: '#ff385c',
+                position: 'center'
+            })
+            navigate(`/stay`)
         }
     }
 
@@ -143,7 +159,7 @@ export function StayBook() {
                     <div>{guests}</div>
                     <div>Edit</div>
                 </div>
-                <Link onClick={() => onAddOrder} to={`/hosting/`} className='reserve-button' ref={buttonRef}>
+                <Link onClick={(ev) => onAddOrder(ev)} to={`/hosting/`} className='reserve-button' ref={buttonRef}>
                     <span>Request to book</span>
                 </Link>
             </main>
