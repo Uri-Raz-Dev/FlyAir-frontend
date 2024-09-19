@@ -52,7 +52,7 @@ export function StayFilter({ filterBy, onSetFilter }) {
 
 
     const [filterToEdit, setFilterToEdit] = useState({ ...filterBy })
-
+    const debounceRef = useRef(null)
     // const [checkInDate, setCheckInDate] = useState(null);
     // const [checkOutDate, setCheckOutDate] = useState(null);
 
@@ -72,31 +72,30 @@ export function StayFilter({ filterBy, onSetFilter }) {
 
 
     function handleChange(ev) {
-        console.log('target', ev.target);
-
-        const type = ev.target.type
-        const field = ev.target.name
-        let value
+        const type = ev.target.type;
+        const field = ev.target.name;
+        let value;
 
         switch (type) {
             case 'text':
             case 'radio':
-                value = field === 'sortDir' ? +ev.target.value : ev.target.value
-                if (!filterToEdit.sortDir) filterToEdit.sortDir = 1
-                break
+                value = field === 'sortDir' ? +ev.target.value : ev.target.value;
+                if (!filterToEdit.sortDir) filterToEdit.sortDir = 1;
+                break;
             case 'number':
-                value = +ev.target.value || ''
-                break
-        }
-        setFilterToEdit({ ...filterToEdit, [field]: value })
-        console.log('filterToEdit:', filterToEdit)
-    }
-    function handleFocus(inputRef) {
-        if (inputRef.current) {
-            inputRef.current.focus();
+                value = +ev.target.value || '';
+                break;
         }
 
+        // Clear the previous debounce timeout
+        if (debounceRef.current) clearTimeout(debounceRef.current);
+
+        // Set a new debounce timeout
+        debounceRef.current = setTimeout(() => {
+            setFilterToEdit({ ...filterToEdit, [field]: value });
+        }, 300); // Adjust the delay as needed
     }
+
 
     // function clearFilter() {
     //     setFilterToEdit({ ...filterToEdit, txt: '', minSpeed: '', maxPrice: '' })
@@ -185,21 +184,21 @@ export function StayFilter({ filterBy, onSetFilter }) {
     function handleGuestsTree(adults, children, infants, pets, type, operation) {
         var dec = 1
         if (type === 'adults') {
-            if (operation === 'increment')  dec = 1
+            if (operation === 'increment') dec = 1
             else dec = -1
 
             setGuestTree({ ...guestsTree, adults: adults + dec, children: children, infants: infants, pets: pets })
             setFilterToEdit({
                 ...filterToEdit,
                 guests: {
-                  ...filterToEdit.guests, // Spread the previous guests object
-                  adults: guestsTree.adults+dec, // Update values
-                  children: guestsTree.children,
-                  infants: guestsTree.infants,
-                  pets: guestsTree.pets
+                    ...filterToEdit.guests, // Spread the previous guests object
+                    adults: guestsTree.adults + dec, // Update values
+                    children: guestsTree.children,
+                    infants: guestsTree.infants,
+                    pets: guestsTree.pets
                 }
-              });
-    
+            });
+
         }
         else if (type === 'children') {
             if (operation === 'increment') dec = 1
@@ -208,14 +207,14 @@ export function StayFilter({ filterBy, onSetFilter }) {
             setFilterToEdit({
                 ...filterToEdit,
                 guests: {
-                  ...filterToEdit.guests, // Spread the previous guests object
-                  adults: guestsTree.adults, // Update values
-                  children: guestsTree.children+dec,
-                  infants: guestsTree.infants,
-                  pets: guestsTree.pets
+                    ...filterToEdit.guests, // Spread the previous guests object
+                    adults: guestsTree.adults, // Update values
+                    children: guestsTree.children + dec,
+                    infants: guestsTree.infants,
+                    pets: guestsTree.pets
                 }
-              });
-    
+            });
+
         }
         else if (type === 'infants') {
             if (operation === 'increment') dec = 1
@@ -225,30 +224,30 @@ export function StayFilter({ filterBy, onSetFilter }) {
             setFilterToEdit({
                 ...filterToEdit,
                 guests: {
-                  ...filterToEdit.guests, // Spread the previous guests object
-                  adults: guestsTree.adults, // Update values
-                  children: guestsTree.children,
-                  infants: guestsTree.infants+dec,
-                  pets: guestsTree.pets
+                    ...filterToEdit.guests, // Spread the previous guests object
+                    adults: guestsTree.adults, // Update values
+                    children: guestsTree.children,
+                    infants: guestsTree.infants + dec,
+                    pets: guestsTree.pets
                 }
-              });
-    
+            });
+
         }
         else if (type === 'pets') {
-            if (operation === 'increment')   dec = 1
+            if (operation === 'increment') dec = 1
             else dec = -1
             setGuestTree({ ...guestsTree, adults: adults, children: children, infants: infants, pets: pets + dec })
             setFilterToEdit({
                 ...filterToEdit,
                 guests: {
-                  ...filterToEdit.guests, // Spread the previous guests object
-                  adults: guestsTree.adults, // Update values
-                  children: guestsTree.children,
-                  infants: guestsTree.infants,
-                  pets: guestsTree.pets+dec
+                    ...filterToEdit.guests, // Spread the previous guests object
+                    adults: guestsTree.adults, // Update values
+                    children: guestsTree.children,
+                    infants: guestsTree.infants,
+                    pets: guestsTree.pets + dec
                 }
-              });
-    
+            });
+
         }
     }
     function handleAmountChange(type, operation) {
@@ -293,13 +292,13 @@ export function StayFilter({ filterBy, onSetFilter }) {
                 setFilterToEdit({
                     ...filterToEdit,
                     guests: {
-                      ...filterToEdit.guests, // Spread the previous guests object
-                      adults: guestsTree.adults, // Update values
-                      children: guestsTree.children,
-                      infants: guestsTree.infants,
-                      pets: guestsTree.pets
+                        ...filterToEdit.guests, // Spread the previous guests object
+                        adults: guestsTree.adults, // Update values
+                        children: guestsTree.children,
+                        infants: guestsTree.infants,
+                        pets: guestsTree.pets
                     }
-                  });
+                });
                 break;
         }
 
@@ -342,11 +341,11 @@ export function StayFilter({ filterBy, onSetFilter }) {
         const adults = guestsTree.adults > 0 ? guestsTree.adults : 0
         const children = guestsTree.children > 0 ? guestsTree.children : 0
         const adultsChildrenInt = adults + children
-        const adultsAndChildren = (adultsChildrenInt) === 0 ? '': `${adultsChildrenInt} guests`
+        const adultsAndChildren = (adultsChildrenInt) === 0 ? '' : `${adultsChildrenInt} guests`
         // const adultsAndChildren =  (``+(guestsTree.adults + guestsTree.children)) || ``
         // const guests = adultsAndChildren? ` ${adultsAndChildren} guests ` :``
-        const infants = guestsTree.infants ? `${ guestsTree.infants} infants` : ''
-        const pets = guestsTree.pets ? `${ guestsTree.pets} pets` : ''
+        const infants = guestsTree.infants ? `${guestsTree.infants} infants` : ''
+        const pets = guestsTree.pets ? `${guestsTree.pets} pets` : ''
         const str = `${adultsAndChildren} ${infants} ${pets}`
         console.log(str);
 
@@ -388,19 +387,19 @@ export function StayFilter({ filterBy, onSetFilter }) {
         setFilterToEdit({ ...filterToEdit, startDate: null, endDate: null })
     }
 
-    function updateGuestesFilter(){
+    function updateGuestesFilter() {
 
 
         setFilterToEdit({
             ...filterToEdit,
             guests: {
-              ...filterToEdit.guests, // Spread the previous guests object
-              adults: guestsTree.adults, // Update values
-              children: guestsTree.children,
-              infants: guestsTree.infants,
-              pets: guestsTree.pets
+                ...filterToEdit.guests, // Spread the previous guests object
+                adults: guestsTree.adults, // Update values
+                children: guestsTree.children,
+                infants: guestsTree.infants,
+                pets: guestsTree.pets
             }
-          });
+        });
 
         // setFilterToEdit({
         //             ...filterToEdit, guests: {
@@ -486,8 +485,8 @@ export function StayFilter({ filterBy, onSetFilter }) {
                     handleAmountChange={handleAmountChange}
                     // onSetFilter={setFilterToEdit}
                     updateGuestesFilter={updateGuestesFilter}
-                    />
-            
+                />
+
             </Modal>
 
 
