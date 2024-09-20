@@ -44,7 +44,7 @@ export function HostingReservations() {
                     reservationId: updatedReservation._id,
                     stayName: updatedReservation.stay.name
                 });
-                showSuccessMsg(`Reservation ${reservationId} has been approved!`)
+                showSuccessMsg(`Reservation ${updatedReservation.stay.name} has been approved!`)
             }
             console.log('Emitting reservation-approved event', updatedReservation.buyer._id)
             console.log({
