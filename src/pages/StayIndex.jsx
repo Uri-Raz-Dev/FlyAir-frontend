@@ -71,14 +71,12 @@ export function StayIndex() {
         <>
 
             <div className="stays-page full">
-                {/* <h2 className="main-title">Available Stays</h2> */}
-                {/* <TypeLabels filterBy={filterBy} onSetFilter={onSetFilter} /> */}
+                <TypeLabels filterBy={filterBy} onSetFilter={onSetFilter} />
 
                 <StayList
                     stays={stays}
                     onRemoveStay={onRemoveStay}
                     onUpdateStay={onUpdateStay} />
-                {/* <DatePickerr /> */}
             </div>
         </>
     )
