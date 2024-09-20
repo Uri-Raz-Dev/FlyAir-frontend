@@ -9,7 +9,7 @@ export const SOCKET_EVENT_USER_UPDATED = 'user-updated'
 export const SOCKET_EVENT_REVIEW_ADDED = 'review-added'
 export const SOCKET_EVENT_REVIEW_REMOVED = 'review-removed'
 export const SOCKET_EVENT_REVIEW_ABOUT_YOU = 'review-about-you'
-
+export const ORDER_STATUS_UPDATE = 'order-status-update'
 const SOCKET_EMIT_LOGIN = 'set-user-socket'
 const SOCKET_EMIT_LOGOUT = 'unset-user-socket'
 

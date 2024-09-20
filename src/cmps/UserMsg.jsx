@@ -7,8 +7,9 @@ export function UserMsg() {
 	const timeoutIdRef = useRef()
 
 	useEffect(() => {
-		const unsubscribe = eventBus.on('show-msg', msg => {
+		const unsubscribe = eventBus.on('show-msg', (msg) => {
 			setMsg(msg)
+
 			if (timeoutIdRef.current) {
 				timeoutIdRef.current = null
 				clearTimeout(timeoutIdRef.current)
@@ -16,23 +17,27 @@ export function UserMsg() {
 			timeoutIdRef.current = setTimeout(closeMsg, 3000)
 		})
 
-		socketService.on(SOCKET_EVENT_REVIEW_ABOUT_YOU, review => {
-			showSuccessMsg(`New review about me ${review.txt}`)
+		// Listen for the "reservation-approved" event
+		socketService.on('reservation-approved', (data) => {
+			showSuccessMsg(`Your reservation for ${data.stayName} has been approved!`)
 		})
 
 		return () => {
 			unsubscribe()
-			socketService.off(SOCKET_EVENT_REVIEW_ABOUT_YOU)
+			socketService.off('reservation-approved')
 		}
 	}, [])
 
+	// Function to close the message
 	function closeMsg() {
 		setMsg(null)
 	}
 
-    function msgClass() {
-        return msg ? 'visible' : ''
-    }
+	// Determine the visibility class for the message
+	function msgClass() {
+		return msg ? 'visible' : ''
+	}
+
 	return (
 		<section className={`user-msg ${msg?.type} ${msgClass()}`}>
 			<button onClick={closeMsg}>x</button>
