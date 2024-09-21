@@ -10,7 +10,7 @@ import { MiniFilter } from "./MiniFliter.jsx"
 import { LoginSignup } from '../pages/LoginSignup.jsx'
 import { LoggedInUserModal } from './LoggedInUserModal.jsx'
 
-export function AppHeader({ filterBy, onSetFilter, toggleModal, isFilterOpen, openFilter, scrollY, toggleHosting }) {
+export function AppHeader({ filterBy, onSetFilter, toggleModal, isFilterOpen, openFilter, }) {
 	const dispatch = useDispatch()
 
 
@@ -82,7 +82,7 @@ export function AppHeader({ filterBy, onSetFilter, toggleModal, isFilterOpen, op
 	function handleHeader() {
 		let header = "app-header full main-container";
 
-		if (isFilterOpen && scrollY.current === 0) {
+		if (isFilterOpen) {
 			header = "app-header full main-container header-wide position";
 		} else if (detailsLocation) {
 			header = "app-header details full main-container";
@@ -121,7 +121,7 @@ export function AppHeader({ filterBy, onSetFilter, toggleModal, isFilterOpen, op
 					</span>
 				</div>}
 				{isFilterOpen ? <StayFilter filterBy={filterBy} onSetFilter={onSetFilter} isFilterOpen={isFilterOpen} />
-					: <MiniFilter openFilter={openFilter} isFilterOpen={isFilterOpen} scrollY={scrollY} />}
+					: <MiniFilter openFilter={openFilter} isFilterOpen={isFilterOpen} />}
 
 
 

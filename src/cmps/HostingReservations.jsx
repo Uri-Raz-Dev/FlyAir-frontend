@@ -14,7 +14,7 @@ export function HostingReservations() {
     const { stayId } = useParams()
     useEffect(() => {
         loadOrders()
-        socketService.on(ORDER_STATUS_UPDATE, test)
+        // socketService.on(ORDER_STATUS_UPDATE, test)
         socketService.on(SOCKET_EVENT_REVIEW_ADDED, (data) => {
 
 
@@ -27,7 +27,7 @@ export function HostingReservations() {
         });
 
         return () => {
-            socketService.off(ORDER_STATUS_UPDATE, test)
+            // socketService.off(ORDER_STATUS_UPDATE, test)
             socketService.off(SOCKET_EVENT_REVIEW_ADDED)
             socketService.off(SOCKET_NEW_ORDER)
         }
@@ -71,9 +71,9 @@ export function HostingReservations() {
     console.log(filteredReservations);
 
     console.log(orders)
-    function test() {
-        toast.success('yay', { position: "bottom-center" })
-    }
+    // function test() {
+    //     toast.success('yay', { position: "bottom-center" })
+    // }
     return (
         <div className="reservations-container">
             <div className='back-btn-container'>
