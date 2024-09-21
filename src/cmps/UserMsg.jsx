@@ -19,7 +19,7 @@ export function UserMsg() {
 
 		// Listen for the "reservation-approved" event
 		socketService.on('reservation-approved', (data) => {
-			showToast({ txt: `Your reservation for ${data.stayName} has been approved!`, type: 'success' })
+			showToast({ txt: `Your reservation has been approved!`, type: 'success' })
 		})
 
 		return () => {

@@ -180,7 +180,7 @@ export function RootCmp() {
     const [isFilterOpen, setIsFilterOpen] = useState(false);
     const [isHosting, setIsHosting] = useState(''); // במקום activeTab, נשתמש ב-isHosting
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const scrollY = useRef(0);
+    // const scrollY = useRef(0);
 
     const isShown = useSelector(storeState => storeState.userModule.isUserShown);
     let isHostingPage = location.pathname;
@@ -190,43 +190,43 @@ export function RootCmp() {
         setIsHosting(tabName); // עדכון isHosting לפי הטאב שנבחר
     }
 
-    useEffect(() => {
-        function handleScroll() {
-            scrollY.current = window.scrollY;
+    // useEffect(() => {
+    //     function handleScroll() {
+    //         scrollY.current = window.scrollY;
 
-            if (scrollY.current === 0 && location.pathname === '/stay/') {
-                setIsFilterOpen(false)
-            } else {
-                setIsFilterOpen(false);
-            }
+    //         if (scrollY.current === 0 && location.pathname === '/stay/') {
+    //             setIsFilterOpen(false)
+    //         } else {
+    //             setIsFilterOpen(false);
+    //         }
 
-            // שינוי המצב של isHosting לפי pathname
-            // if (scrollY.current === 0) {
-            //     if (location.pathname.includes('hosting')) {
-            //         toggleHosting('hosting');
-            //     } else if (location.pathname.includes('today')) {
-            //         toggleHosting('today');
-            //     } else if (location.pathname.includes('listings')) {
-            //         toggleHosting('listings');
-            //     } else if (location.pathname.includes('calendar')) {
-            //         toggleHosting('calendar');
-            //     } else if (location.pathname.includes('messages')) {
-            //         toggleHosting('messages');
-            //     } else if (location.pathname.includes('add-stay')) {
-            //         toggleHosting('add-stay');
-            //     } else {
-            //         toggleHosting(''); // אם לא נמצאים בטאב מסוים, להחזיר את isHosting למצב ריק
-            //     }
-            // }
-        }
+    //         // שינוי המצב של isHosting לפי pathname
+    //         // if (scrollY.current === 0) {
+    //         //     if (location.pathname.includes('hosting')) {
+    //         //         toggleHosting('hosting');
+    //         //     } else if (location.pathname.includes('today')) {
+    //         //         toggleHosting('today');
+    //         //     } else if (location.pathname.includes('listings')) {
+    //         //         toggleHosting('listings');
+    //         //     } else if (location.pathname.includes('calendar')) {
+    //         //         toggleHosting('calendar');
+    //         //     } else if (location.pathname.includes('messages')) {
+    //         //         toggleHosting('messages');
+    //         //     } else if (location.pathname.includes('add-stay')) {
+    //         //         toggleHosting('add-stay');
+    //         //     } else {
+    //         //         toggleHosting(''); // אם לא נמצאים בטאב מסוים, להחזיר את isHosting למצב ריק
+    //         //     }
+    //         // }
+    //     }
 
-        window.addEventListener("scroll", handleScroll);
-        handleScroll();
+    //     window.addEventListener("scroll", handleScroll);
+    //     handleScroll();
 
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
-        };
-    }, [location.pathname, isHostingPage]);
+    //     return () => {
+    //         window.removeEventListener("scroll", handleScroll);
+    //     };
+    // }, [location.pathname, isHostingPage]);
 
     function openFilter() {
         setIsFilterOpen(prev => !prev);
@@ -280,7 +280,7 @@ export function RootCmp() {
                             isFilterOpen={isFilterOpen}
                             openFilter={openFilter}
                             toggleHosting={toggleHosting}
-                            scrollY={scrollY.current}
+
                         />
                     )}
                     <main className='empty-div'>
