@@ -149,7 +149,7 @@ export function AppHeader({ filterBy, onSetFilter, toggleModal, isFilterOpen, op
 						{!user && isNavOpen && <LoginSignup toggleNav={toggleNav} setIsNavOpen={setIsNavOpen} toggleModal={toggleModal} />}
 
 
-						{user && isNavOpen && (<LoggedInUserModal onLogout={onLogout} toggleNav={toggleNav} />)}
+						{user && isNavOpen && (<LoggedInUserModal onLogout={onLogout} toggleNav={toggleNav} user={user} />)}
 						{user && user.imgUrl && (<img className="user-avatar" src={user.imgUrl} />)}
 						{/* <Link to={`user/${user._id}`}></Link> */}
 
