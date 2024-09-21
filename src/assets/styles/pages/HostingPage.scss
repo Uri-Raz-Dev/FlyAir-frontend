@@ -1,19 +1,141 @@
-.home-page-hosting{
-   
+.home-page-hosting {
     margin: 20px;
-
     border-bottom: 1px solid #6A6A6A;
 
-    .home-page-header{
+    .home-page-header {
         display: flex;
-        justify-content: center;
         align-items: center;
-        
         height: 69px;
-    }
-    
-    .nav-btn{
-        margin-inline-end: 2rem;
 
+
+        .logo-hosting-container {
+            // display: flex;
+            // justify-content: center;
+            flex-shrink: 0;
+            padding: 10px;
+            // width: 100%;
+            cursor: pointer;
+
+            .logo-hosting {
+                width: auto;
+                /* מתאים לגודל המקורי של הלוגו */
+                color: #FF385C;
+            }
+        }
+
+        .nav-bar-header-hosting {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            // width: 100%;
+            height: auto;
+            // padding: 20px; 
+
+        }
+    }
+
+
+
+
+    .nav-btn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 20px;
+        border: none;
+        background-color: transparent;
+        color: #666;
+        cursor: pointer;
+        text-align: center;
+        font-size: 14px;
+        text-decoration: none;
+
+        &:hover {
+            color: #ff385c;
+        }
+    }
+}
+
+// @media only screen and (max-width: 1200px) {
+//     .nav-bar-header-hosting {
+//         padding: 15px;
+//     }
+// }
+
+// @media only screen and (max-width: 768px) {
+//     .nav-bar-header-hosting {
+//         padding: 10px;
+//     }
+// }
+
+
+@media only screen and (max-width: 600px) {
+
+    /* עיצוב מותאם למובייל */
+    .home-page-header {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: white;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        border-top: 1px solid #ddd;
+        padding: 10px 0;
+        z-index: 1000;
+
+
+
+
+
+        .logo-hosting-container {
+            // position: none;
+            display: none;
+            background-color: red;
+            /* הסתרת הלוגו במובייל */
+        }
+
+    }
+
+    .home-page-hosting {
+
+        .nav-btn {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+            flex: 1;
+            padding: 5px 10px;
+            // padding: 10px;
+            color: #666;
+            text-decoration: none;
+
+
+        }
+    }
+
+    /* הצגת האייקונים רק במובייל */
+    .nav-btn .icon {
+        display: block;
+        margin: 0 auto 5px;
+        width: 24px;
+        height: 24px;
+    }
+
+    /* שינוי צבע ורקע לכפתור שנבחר במובייל */
+    .nav-btn.active {
+        color: #ff385c;
+        border-radius: 10px;
+    }
+
+    .nav-btn.active svg {
+        fill: white;
+    }
+
+    .content {
+        margin-bottom: 80px;
     }
 }

@@ -1,4 +1,5 @@
 .main-container-add-stay {
+    margin-block-end: 5rem;
     .header-add-stay {
         display: flex;
         justify-content: space-between;
@@ -73,6 +74,13 @@
         justify-content: space-between;
         align-items: center;
         gap: 20px;
+        
+        @media only screen and (max-width: 600px) {
+            // display: flex;
+            flex-direction: column;
+            // font-size: 14px;
+
+        }
 
 
         //child-1
@@ -80,6 +88,11 @@
             padding: 20px;
             text-align: left;
             font-size: 14px;
+            order: 1;
+            @media only screen and (max-width: 600px) {
+                font-size: 14px;
+
+            }
 
             .p-step1:first-child {
                 padding-block-end: .8rem;
@@ -170,6 +183,8 @@
 
         h1 {
             font-weight: 500;
+            margin: 10px;
+
         }
 
         // margin: 20px auto;
@@ -179,6 +194,15 @@
             grid-template-columns: repeat(3, minmax(150px, 180px));
             grid-gap: 20px;
             margin: 20px auto;
+            
+            @media only screen and (max-width: 600px) {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(150px, 180px));
+                grid-gap: 15px;
+                margin: 10px;
+                // font-size: 14px;
+
+            }
 
             // background-color: rgb(199, 38, 151);
             // &:checked {

@@ -1,8 +1,39 @@
 .main-container {
 
+
     main {
         min-height: calc(100vh - 1rem);
         // overflow: hidden; // Quick fix for JSONs in <pre>
 
     }
+
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
+    // margin: 10px;
+
+}
+
+
+@media only screen and (max-width: 1200px) {
+    .main-container {
+        // display: none;
+
+        .trip {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+        }
+    }
+
+}
+
+@media only screen and (max-width: 600px) {
+    .main-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
 }

@@ -6,7 +6,7 @@ $font-color: #222;
 $button-bg-color: #fff;
 $button-border-color: #ddd;
 $button-hover-color: #f1f1f1;
-$card-border-radius: 8px;
+$card-border-radius: 1rem;
 $max-width: 1200px;
 
 .today-page {
@@ -19,6 +19,7 @@ $max-width: 1200px;
 
     header {
         width: 100%;
+
         h1 {
             color: $font-color;
             font-size: 2rem;
@@ -30,6 +31,7 @@ $max-width: 1200px;
     .reservations-section {
         margin-bottom: 30px;
         width: 100%;
+
         h2 {
             color: $font-color;
             font-size: 1.5rem;
@@ -37,11 +39,46 @@ $max-width: 1200px;
             text-align: left;
         }
 
+        // .reservation-buttons {
+        //     display: flex;
+        //     flex-direction: row;
+        //     justify-content: flex-start;
+        //     flex-wrap: wrap; /* זה המצב כברירת מחדל, יאפשר כפתורים להסתדר בשורות אם לא נכנסים */
+
+        //     gap: 10px;
+
+        //     button {
+        //         background-color: $button-bg-color;
+        //         border: 1px solid $button-border-color;
+        //         padding: 10px 20px;
+        //         border-radius: $card-border-radius;
+        //         cursor: pointer;
+        //         font-size: 1rem;
+        //         color: $secondary-color;
+
+        //         &:hover {
+        //             background-color: $button-hover-color;
+        //         }
+        //     }
+        // }
+
+
         .reservation-buttons {
             display: flex;
+            flex-direction: row;
             justify-content: flex-start;
-            flex-wrap: wrap;
             gap: 10px;
+            flex-wrap: nowrap;
+            /* מונע שבירת כפתורים לשורה שנייה */
+            overflow-x: auto;
+            /* מאפשר גלילה אופקית */
+            white-space: nowrap;
+            /* מוודא שכפתורים נשארים בשורה אחת */
+
+            &::-webkit-scrollbar {
+                display: none;
+                /* עבור WebKit browsers */
+            }
 
             button {
                 background-color: $button-bg-color;
@@ -51,12 +88,35 @@ $max-width: 1200px;
                 cursor: pointer;
                 font-size: 1rem;
                 color: $secondary-color;
+                white-space: nowrap;
+                /* מונע מהכפתור לשבור שורה */
+                flex: 0 0 auto;
+                /* מבטיח שהכפתור ישמור על גודלו ולא יתכווץ */
+                border-radius: 20px;
 
                 &:hover {
                     background-color: $button-hover-color;
+                    border: 1px solid black;
+                }
+            }
+
+            @media only screen and (max-width: 600px) {
+                /* עבור מסכים קטנים */
+                flex-direction: row;
+                overflow-x: auto;
+                /* גלילה אופקית למקרה שהכפתורים חורגים מגבולות המסך */
+                flex-wrap: nowrap;
+                /* מונע שבירה לשורות נוספות */
+
+                button {
+                    flex: 0 0 auto;
+                    /* שומר שהכפתורים לא יתכווצו */
+                    min-width: 80px;
+                    /* מוודא גודל מינימלי לכפתורים */
                 }
             }
         }
+
 
         .no-reservations {
             padding: 20px;
@@ -74,9 +134,11 @@ $max-width: 1200px;
         .all-reservations {
             margin-top: 20px;
             text-align: left;
+
             a {
                 color: $primary-color;
                 text-decoration: none;
+
                 &:hover {
                     text-decoration: underline;
                 }
@@ -87,6 +149,7 @@ $max-width: 1200px;
     .help-section {
         margin-bottom: 30px;
         width: 100%;
+
         h2 {
             color: $font-color;
             font-size: 1.5rem;
@@ -97,7 +160,9 @@ $max-width: 1200px;
         .help-options {
             display: flex;
             justify-content: flex-start;
+            flex-direction: row;
             gap: 20px;
+            // border-radius: 50px;
 
             .help-card {
                 background-color: $button-bg-color;
@@ -119,6 +184,12 @@ $max-width: 1200px;
                     font-size: 1rem;
                 }
             }
+
+            @media only screen and (max-width: 600px) {
+
+                flex-direction: column;
+
+            }
         }
     }
 
@@ -130,7 +201,7 @@ $max-width: 1200px;
             color: $font-color;
             font-size: 1.5rem;
             margin-bottom: 10px;
-            text-align: left;  // יישור לשמאל
+            text-align: left; // יישור לשמאל
 
         }
 
@@ -185,7 +256,8 @@ $max-width: 1200px;
                     border-radius: $card-border-radius;
                     text-align: left;
                     width: 250px;
-                    height: 350px; /* Adjusted height */
+                    height: 350px;
+                    /* Adjusted height */
                     display: flex;
                     flex-direction: column;
 
@@ -194,8 +266,10 @@ $max-width: 1200px;
                         height: 180px;
                         object-fit: cover;
                         // border-radius: $card-border-radius;
-                        border-top-left-radius: 8px;  /* רדיוס לפינה העליונה השמאלית */
-                        border-top-right-radius: 8px; /* רדיוס לפינה העליונה הימנית */
+                        border-top-left-radius: 8px;
+                        /* רדיוס לפינה העליונה השמאלית */
+                        border-top-right-radius: 8px;
+                        /* רדיוס לפינה העליונה הימנית */
                         // border-bottom-left-radius: 0;  /* אין רדיוס בפינה התחתונה השמאלית */
                         // border-bottom-right-radius: 0; /* אין רדיוס בפינה התחתונה הימנית */
                         margin-bottom: 10px;
@@ -205,7 +279,8 @@ $max-width: 1200px;
                         color: $font-color;
                         font-size: 1rem;
                         padding: 1.7rem;
-                        font-weight: 500; /* עובי של הפונט */
+                        font-weight: 500;
+                        /* עובי של הפונט */
                         // margin-top: auto; /* Push the text to the bottom */
                     }
                 }
@@ -213,3 +288,19 @@ $max-width: 1200px;
         }
     }
 }
+
+
+// @media only screen and (max-width: 600px) {
+//     .reservation-buttons {
+//         display: flex;
+//         flex-direction: row;
+//         flex-wrap: nowrap; /* מבטל שבירת שורות */
+//         overflow-x: auto; /* מאפשר גלילה אופקית במקרה שהכפתורים חורגים מגבולות המסך */
+//         justify-content: space-between; /* מבצע מרווחים שווים בין הכפתורים */
+//     }
+
+//     .reservation-buttons button {
+//         flex: 1 0 auto; /* יבטיח שהכפתורים לא יקטנו מתחת לרוחב המינימלי שלהם */
+//         min-width: 80px; /* הגדרת רוחב מינימלי לכפתורים */
+//     }
+// }

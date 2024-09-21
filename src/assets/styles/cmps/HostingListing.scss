@@ -1,21 +1,58 @@
+.listings-header {
+    display: flex;
+    justify-content: space-between; /* האלמנט הראשון בצד שמאל והשני בצד ימין */
+    align-items: center; /* יישור אנכי של שני האלמנטים למרכז השורה */
+    width: 100%; /* תופס את כל רוחב הקונטיינר */
+    
+    h1 {
+        margin: 0; /* מסיר מרווחים ברירת מחדל */
+    }
+    
+    .add-stay-btn {
+        background-color: #f7f7f7;
+        padding: 10px;
+        border-radius: 24px;
+
+        margin-left: auto; /* דוחף את הכפתור לצד ימין */
+
+        &:hover{
+            transition: 0.3s;
+            background-color: #dddddd;
+            // border-radius: 24px;
+        }
+    }
+}
+
+
 .hosting-listing-grid {
     // display: grid;
     // grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); //mobile - רספונסיבי עם גודל מינימלי
     // gap: $breakpoint-grid_row-gap $breakpoint-grid_column-gap;
     // margin-top: 16px;
     // margin-bottom: 48px;
-    
-    
-    .hosting-listing-stays-grid{
+
+
+    .hosting-listing-stays-grid {
         // grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); //mobile - רספונסיבי עם גודל מינימלי
         // display: flex;
         // width: 100px;
 
     }
 
-    .hosting-listing-stays-card{
+    .hosting-listing-stays-card {
         width: 50%;
 
+    }
+
+    .hosting-card-content {
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .hosting-card-location {
+        font-size: 14px;
+        font-weight: 400;
     }
 
     // // לתצוגות קטנות

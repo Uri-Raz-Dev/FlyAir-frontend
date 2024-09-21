@@ -144,13 +144,14 @@ export function AppHeader({ filterBy, onSetFilter, toggleModal, isFilterOpen, op
 
 						{/* {!user && stays.length > 0 && stays[0].host && <img src={stays[0].host.imgUrl} alt="" />} */}
 						{/* {!user && stays.length > 0 && stays[0].host && <SvgIcon iconName={"userAvatarLogOut"} />} */}
-						{!user && stays.length > 0 && stays[0].host && <img src="https://res.cloudinary.com/dooscjcpt/image/upload/v1726549737/avatars/ejgyfwf6zcxkqk4qaldy.png" alt="" />}
+						{!user && stays.length > 0 && stays[0].host && <img className="user-avatar" src="https://res.cloudinary.com/dooscjcpt/image/upload/v1726549737/avatars/ejgyfwf6zcxkqk4qaldy.png" alt="" />}
 
 						{!user && isNavOpen && <LoginSignup toggleNav={toggleNav} setIsNavOpen={setIsNavOpen} toggleModal={toggleModal} />}
 
 
 						{user && isNavOpen && (<LoggedInUserModal onLogout={onLogout} toggleNav={toggleNav} />)}
-						{user && user.imgUrl && (<Link to={`user/${user._id}`}><img src={user.imgUrl} /></Link>)}
+						{user && user.imgUrl && (<img className="user-avatar" src={user.imgUrl} />)}
+						{/* <Link to={`user/${user._id}`}></Link> */}
 
 					</div>
 

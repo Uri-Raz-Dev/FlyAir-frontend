@@ -4,12 +4,14 @@ import { loadOrders } from '../store/actions/order.actions'
 import { socketService } from '../services/socket.service'
 import { useParams } from 'react-router'
 import { Link } from 'react-router-dom'
+import { SvgIcon } from './Svgicon'
 
 export function HostingReservations() {
     const [reservations, setReservations] = useState([])
     const [selectedTab, setSelectedTab] = useState('All')
     const orders = useSelector(storeState => storeState.orderModule.orders)
     const { stayId } = useParams()
+    console.log('stayId:', stayId)
 
     //    useEffect(() => {
     //     // const fetchedReservations = [
@@ -139,6 +141,15 @@ export function HostingReservations() {
 
     return (
         <div className="reservations-container">
+            <div className='back-btn-container'>
+
+                <Link
+                    to="/hosting"
+                    className={`back-btn`}
+                >
+                    <SvgIcon iconName={"backIcon"} className="icon"></SvgIcon>
+                </Link>
+            </div>
             <h2>Reservations</h2>
             <div className="tabs">
                 <button
@@ -185,27 +196,40 @@ export function HostingReservations() {
                     {filteredReservations.length > 0 ? (
                         filteredReservations.map(reservation => (
                             <tr key={reservation._id}>
+
                                 <td><Link to={`/stay/${reservation.stay._id}`}><img src={reservation.stay.imgurls[0]} alt="stay-img" /></Link></td>
-                                <td>
+                                <td className='status-buttons'>
                                     <button
-                                        className={`status-button ${reservation.status.toLowerCase()}`}
+                                        className={`status-button last ${reservation.status.toLowerCase()}`}
                                         onClick={() => changeStatus(reservation._id, getNextStatus(reservation.status))}
                                     >
                                         {reservation.status}
                                     </button>
                                 </td>
-                                <td>
+                                <td className='buyer-fullname'>
                                     <img src={reservation.buyer.imgUrl} alt="Guest" className="guest-img" />
                                     {reservation.buyer.fullname}
                                 </td>
-                                <td>{reservation.startDate}</td>
-                                <td>{reservation.endDate}</td>
-                                <td>{reservation.stay.name}</td>
-                                <td>{reservation._id}</td>
-                                <td>₪{reservation.totalPrice}</td>
+
+                                <td className='mobail-date'>{reservation.startDate}</td>
+                                <td className='mobail-date'>{reservation.endDate}</td>
+
+
+                                <td className='stay-name'>{reservation.stay.name}</td>
+                                <td className='reservation-id'>{reservation._id}</td>
+                                <td className='reservation-price'>₪{reservation.totalPrice}</td>
                                 <td>
                                     <button className="details-button">Details</button>
                                 </td>
+                                {/* <td>
+                                    <Link
+                                        to="/hosting"
+                                        className={`back-btn`}
+                                    >
+                                        <SvgIcon iconName={"backIcon"} className="icon"></SvgIcon>
+                                    </Link>
+
+                                </td> */}
                             </tr>
                         ))
                     ) : (

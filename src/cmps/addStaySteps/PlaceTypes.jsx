@@ -27,57 +27,7 @@ export function PlaceTypes({ onAddStay, stay, handleChange, selectedType, handle
                 ))}
             </div>
 
-            <div className="add-stay-container">
-                <h1>Add New Stay</h1>
-                {/* <form onSubmit={onAddStay}>
-                    <div>
-                        <label htmlFor="name">Stay Name:</label>
-                        <input
-                            type="text"
-                            id="name"
-                            name="name"
-                            value={stay.name}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                    <div>
-                        <label htmlFor="description">Stay description:</label>
-                        <input
-                            type="text"
-                            id="description"
-                            name="description"
-                            value={stay.description}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                    <div>
-                        <label htmlFor="price">Price per Night:</label>
-                        <input
-                            type="number"
-                            id="price"
-                            name="price"
-                            value={stay.price}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                    <div>
-                        <label htmlFor="type">Type:</label>
-                        <input
-                            type="text"
-                            id="type"
-                            name="type"
-                            value={stay.type}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
 
-                    <button type="submit">Add Stay</button>
-                </form> */}
-            </div>
         </div>
     )
 }

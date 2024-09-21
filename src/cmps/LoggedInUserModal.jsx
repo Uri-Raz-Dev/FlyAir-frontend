@@ -14,16 +14,17 @@ export function LoggedInUserModal({ toggleNav, toggleModal, onLogout }) {
                 <nav className="login-signup-nav" onClick={toggleNav}>
                     <a href="#">Messages</a>
                     <Link to={`trips`}>Trips</Link>
-                    {/* <a href="#">Trips</a> */}
                     <a href="#">Wishlists</a>
+
                     <div className='signup-nav-border'></div>
+
                     <Link to={`hosting/listings`}>Manage listings</Link>
-                    <a href="#">Account</a>
+                    {/* <a href="#">Account</a> */}
+                    <Link to={`user/${user._id}`}>Account</Link>
                     <div className='signup-nav-border'></div>
                     <a href="#">Gift cards</a>
                     <a href="#">Help Center</a>
                     <a onClick={onLogout}>Log out</a>
-                    {/* <button onClick={onLogout}>logout</button> */}
 
                 </nav>
                 <Outlet />
