@@ -209,7 +209,7 @@ export function StayFilter({ filterBy, onSetFilter }) {
     // }
 
     function handleAmountChange(type, operation) {
-       
+
         switch (type) {
             case "adults":
                 setAdultsAmount((prevAmount) =>
@@ -310,9 +310,16 @@ export function StayFilter({ filterBy, onSetFilter }) {
 
     function handleFilter(ev) {
         ev.preventDefault()
+        const filterStays =
+        {
+            region: selectedRegion,
+            startDate: selectedCheckIn,
+            endDate: selectedCheckOut,
+            capacity: selectedCapacity
+        }
 
         setFilterToEdit({ ...filterToEdit, region: selectedRegion, startDate: selectedCheckIn, endDate: selectedCheckOut, capacity: selectedCapacity })
-        onSetFilter(filterToEdit)
+        onSetFilter(filterStays)
 
     }
 
@@ -362,7 +369,7 @@ export function StayFilter({ filterBy, onSetFilter }) {
                     <label>Who</label>
                     <input ref={guestsinputRef}
                         onChange={handleChange}
-                        value={selectedCapacity>0 ? `${selectedCapacity} Guests` : ''}
+                        value={selectedCapacity > 0 ? `${selectedCapacity} Guests` : ''}
                         type="text" placeholder="Add guests" autoComplete="off" name='capacity' />
                 </div>
             </a>
