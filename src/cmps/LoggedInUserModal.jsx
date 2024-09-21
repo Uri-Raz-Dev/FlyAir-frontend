@@ -1,8 +1,12 @@
 import { useEffect, useRef, useState } from "react"
 import { Outlet, NavLink, Link } from 'react-router-dom'
 import { Login } from '../pages/Login.jsx';
+import { useSelector } from "react-redux";
+
 
 export function LoggedInUserModal({ toggleNav, toggleModal, onLogout }) {
+    const loggedInUser = useSelector(storeState => storeState.userModule.user);
+
     const stopPropagation = (e) => {
         e.stopPropagation();
     }
@@ -20,7 +24,7 @@ export function LoggedInUserModal({ toggleNav, toggleModal, onLogout }) {
 
                     <Link to={`hosting/listings`}>Manage listings</Link>
                     {/* <a href="#">Account</a> */}
-                    <Link to={`user/${user._id}`}>Account</Link>
+                    <Link to={`user/${loggedInUser._id}`}>Account</Link>
                     <div className='signup-nav-border'></div>
                     <a href="#">Gift cards</a>
                     <a href="#">Help Center</a>
