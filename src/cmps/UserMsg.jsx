@@ -1,25 +1,25 @@
-import { eventBus, showSuccessMsg } from '../services/event-bus.service'
-import { useState, useEffect, useRef } from 'react'
+import { eventBus } from '../services/event-bus.service'
+import { useEffect, useRef } from 'react'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { socketService, SOCKET_EVENT_REVIEW_ABOUT_YOU } from '../services/socket.service'
 
 export function UserMsg() {
-	const [msg, setMsg] = useState(null)
 	const timeoutIdRef = useRef()
 
 	useEffect(() => {
 		const unsubscribe = eventBus.on('show-msg', (msg) => {
-			setMsg(msg)
+			showToast(msg)
 
 			if (timeoutIdRef.current) {
-				timeoutIdRef.current = null
 				clearTimeout(timeoutIdRef.current)
 			}
-			timeoutIdRef.current = setTimeout(closeMsg, 3000)
+			timeoutIdRef.current = setTimeout(closeToast, 3000)
 		})
 
 		// Listen for the "reservation-approved" event
 		socketService.on('reservation-approved', (data) => {
-			showSuccessMsg(`Your reservation for ${data.stayName} has been approved!`)
+			showToast({ txt: `Your reservation for ${data.stayName} has been approved!`, type: 'success' })
 		})
 
 		return () => {
@@ -28,20 +28,37 @@ export function UserMsg() {
 		}
 	}, [])
 
-	// Function to close the message
-	function closeMsg() {
-		setMsg(null)
+	// Function to show the toast message
+	function showToast(msg) {
+		if (msg.type === 'success') {
+			toast.success(msg.txt, {
+				position: 'top-center',
+				autoClose: 3000,
+				closeButton: true,
+			})
+		} else if (msg.type === 'error') {
+			toast.error(msg.txt, {
+				position: 'top-center',
+				autoClose: 3000,
+				closeButton: true,
+			})
+		} else {
+			toast(msg.txt, {
+				position: 'top-center',
+				autoClose: 3000,
+				closeButton: true,
+			})
+		}
 	}
 
-	// Determine the visibility class for the message
-	function msgClass() {
-		return msg ? 'visible' : ''
+	// Function to close the toast manually
+	function closeToast() {
+		toast.dismiss()
 	}
 
 	return (
-		<section className={`user-msg ${msg?.type} ${msgClass()}`}>
-			<button onClick={closeMsg}>x</button>
-			{msg?.txt}
-		</section>
+		<>
+			<ToastContainer /> {/* This is required to display the toast messages */}
+		</>
 	)
 }

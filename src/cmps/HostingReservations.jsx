@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { loadOrders, updateOrder } from '../store/actions/order.actions'
-import { ORDER_STATUS_UPDATE, socketService } from '../services/socket.service'
+import { ORDER_STATUS_UPDATE, SOCKET_NEW_BOOKING, socketService } from '../services/socket.service'
 import { useParams } from 'react-router'
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
@@ -11,18 +11,18 @@ export function HostingReservations() {
     const [selectedTab, setSelectedTab] = useState('All')
     const orders = useSelector(storeState => storeState.orderModule.orders)
     const { stayId } = useParams()
-
-
     useEffect(() => {
         loadOrders()
         socketService.on(ORDER_STATUS_UPDATE, test)
         socketService.on('reservation-approved', (data) => {
-            showSuccessMsg(`Your reservation for ${data.stayName} has been approved!`);
+            console.log(data)
+
+            showSuccessMsg(`Your reservation  has been approved!`);
         });
+
         return () => {
             socketService.off(ORDER_STATUS_UPDATE, test)
             socketService.off('reservation-approved');
-
         }
     }, [])
 
@@ -37,16 +37,15 @@ export function HostingReservations() {
             loadOrders()
 
             socketService.emit(ORDER_STATUS_UPDATE, { reservationId, newStatus })
-
             if (newStatus === 'Approved') {
-                // Notify the buyer of the reservation approval
+
                 socketService.emit('reservation-approved', {
                     reservationId: updatedReservation._id,
-                    stayName: updatedReservation.stay.name
+                    stay: updatedReservation.stay // Emit the full stay object
                 });
                 showSuccessMsg(`Reservation ${updatedReservation.stay.name} has been approved!`)
             }
-            console.log('Emitting reservation-approved event', updatedReservation.buyer._id)
+            console.log('Reservation status updated:', updatedReservation.stay.name);
             console.log({
                 buyerId: updatedReservation.buyer._id,
                 reservationId: updatedReservation._id,
@@ -58,11 +57,13 @@ export function HostingReservations() {
     }
 
     const filteredReservations = orders.filter(reservation => {
+
         if (selectedTab === 'All') return true
         return reservation.status === selectedTab
     })
+    console.log(filteredReservations);
 
-
+    console.log(orders)
     function test() {
         toast.success('yay', { position: "bottom-center" })
     }
@@ -114,7 +115,7 @@ export function HostingReservations() {
                     {filteredReservations.length > 0 ? (
                         filteredReservations.map(reservation => (
                             <tr key={reservation._id}>
-                                <td><Link to={`/stay/${reservation.stay._id}`}><img src={reservation.stay.imgurls[0]} alt="stay-img" /></Link></td>
+                                <td><Link to={`/stay/${reservation.buyerId}`}><img src={reservation.stay.imgurls[0]} alt="stay-img" /></Link></td>
                                 <td>
                                     <button
                                         className={`status-button ${reservation.status.toLowerCase()}`}

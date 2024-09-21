@@ -12,6 +12,7 @@ export const SOCKET_EVENT_REVIEW_ABOUT_YOU = 'review-about-you'
 export const ORDER_STATUS_UPDATE = 'order-status-update'
 const SOCKET_EMIT_LOGIN = 'set-user-socket'
 const SOCKET_EMIT_LOGOUT = 'unset-user-socket'
+export const SOCKET_NEW_BOOKING = 'new-booking'
 
 
 const baseUrl = (process.env.NODE_ENV === 'production') ? '' : '//localhost:3030'
