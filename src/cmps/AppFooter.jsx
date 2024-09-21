@@ -37,7 +37,7 @@ export function AppFooter() {
 				</div>
 			</div>
 
-			<div className="footer-nav-mobail">
+			{/* <div className="footer-nav-mobail">
 				<Link
 					to="stay"
 					className={`nav-btn stay-btn ${activeTab === "explore" ? "active" : ""}`}
@@ -73,7 +73,7 @@ export function AppFooter() {
 				>
 					<SvgIcon iconName={"profileIconMainAppFooter"} className="icon"></SvgIcon>Profile
 				</Link>
-			</div>
+			</div> */}
 		</footer>
 	);
 }
