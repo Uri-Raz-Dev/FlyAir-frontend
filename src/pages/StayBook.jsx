@@ -8,6 +8,7 @@ import { loadStay } from "../store/actions/stay.actions";
 import { orderService } from "../services/order/order.service";
 import { addOrder } from "../store/actions/order.actions";
 import Swal from 'sweetalert2'
+import { SOCKET_EVENT_REVIEW_ADDED } from "../services/socket.service";
 
 export function StayBook() {
     const { stayId } = useParams()
@@ -102,7 +103,15 @@ export function StayBook() {
                 stayImg: stay.imgurls[0]
             }
             orderService.save(orderToSave)
-            console.log(orderToSave);
+
+            socketService.emit(SOCKET_NEW_ORDER, {
+                hostId: stay.host._id,
+                buyerName: loggedInUser.fullname,
+                stayName: stay.name,
+                totalPrice,
+                startDate,
+                endDate,
+            });
 
         } catch (err) {
             console.error(err.message)
@@ -111,7 +120,8 @@ export function StayBook() {
             Swal.fire({
                 position: "top-end",
                 icon: "success",
-                title: "Your work has been saved",
+                title: "Thank you for buying at FlyAir!",
+                allowEscapeKey: true,
                 showConfirmButton: false,
                 timer: 15000,
                 iconColor: '#ff385c',

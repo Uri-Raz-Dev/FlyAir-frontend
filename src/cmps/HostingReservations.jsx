@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { loadOrders, updateOrder } from '../store/actions/order.actions'
-import { ORDER_STATUS_UPDATE, SOCKET_NEW_BOOKING, socketService } from '../services/socket.service'
+import { ORDER_STATUS_UPDATE, SOCKET_EVENT_REVIEW_ADDED, SOCKET_NEW_BOOKING, SOCKET_NEW_ORDER, socketService } from '../services/socket.service'
 import { useParams } from 'react-router'
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
@@ -14,15 +14,21 @@ export function HostingReservations() {
     useEffect(() => {
         loadOrders()
         socketService.on(ORDER_STATUS_UPDATE, test)
-        socketService.on('reservation-approved', (data) => {
-            console.log(data)
+        socketService.on(SOCKET_EVENT_REVIEW_ADDED, (data) => {
 
-            showSuccessMsg(`Your reservation  has been approved!`);
+
+            showSuccessMsg(`Your reservation  has been approved!`)
+        })
+
+        socketService.on(SOCKET_NEW_ORDER, (order) => {
+            showSuccessMsg(`You have a new reservation from ${order.buyer.fullname} for ${order.stay.name}`);
+            loadOrders()
         });
 
         return () => {
             socketService.off(ORDER_STATUS_UPDATE, test)
-            socketService.off('reservation-approved');
+            socketService.off(SOCKET_EVENT_REVIEW_ADDED)
+            socketService.off(SOCKET_NEW_ORDER)
         }
     }, [])
 

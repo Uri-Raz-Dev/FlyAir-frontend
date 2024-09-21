@@ -13,7 +13,7 @@ export const ORDER_STATUS_UPDATE = 'order-status-update'
 const SOCKET_EMIT_LOGIN = 'set-user-socket'
 const SOCKET_EMIT_LOGOUT = 'unset-user-socket'
 export const SOCKET_NEW_BOOKING = 'new-booking'
-
+export const SOCKET_NEW_ORDER = 'new-order'
 
 const baseUrl = (process.env.NODE_ENV === 'production') ? '' : '//localhost:3030'
 export const socketService = createSocketService()

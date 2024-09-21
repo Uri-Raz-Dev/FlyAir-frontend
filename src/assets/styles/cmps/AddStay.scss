@@ -161,18 +161,17 @@
 
     /* עיצוב עבור STEP 2 */
     .step-2-container {
-        // background-color: green;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        // max-width: 50vw;
+
 
         h1 {
             font-weight: 500;
         }
 
-        // margin: 20px auto;
+
 
         .types-container {
             display: grid;
@@ -180,31 +179,25 @@
             grid-gap: 20px;
             margin: 20px auto;
 
-            // background-color: rgb(199, 38, 151);
-            // &:checked {
-            //     border: 2px solid #1c1b1b;
-            //     background-color: #f9f9f9;
 
-            // }
 
 
             .type-box {
+
+                border: 1px solid #e0e0e0;
+                border-radius: 10px;
 
                 &.selected {
                     border: 2px solid #1c1b1b;
 
                 }
 
-                // display: flex;
-                // justify-content: left;
-                // align-items: left;
+
                 .label-name {
                     font-size: 1rem;
                     font-weight: 550;
                 }
 
-                border: 1px solid #e0e0e0;
-                border-radius: 10px;
 
                 .border-on-click {
                     border: 2px solid #1c1b1b;
@@ -251,16 +244,10 @@
                 border: 2px solid black;
             }
 
-            // &:checked {
-            //     background-color: #f9f9f9;
-            //     border: 2px solid #1c1b1b;
-            // }
+
         }
 
-        /* שמירה על יחס של עד 3 עמודות בשורה */
-        // @media (min-width: 768px) {
-        //     grid-template-columns: repeat(3, 1fr);
-        // }
+
     }
 
 
@@ -415,7 +402,7 @@
         background-color: #fff;
         border-radius: 12px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        
+
         h1 {
             font-size: 28px;
             color: #333;

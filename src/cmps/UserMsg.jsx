@@ -32,21 +32,24 @@ export function UserMsg() {
 	function showToast(msg) {
 		if (msg.type === 'success') {
 			toast.success(msg.txt, {
-				position: 'top-center',
-				autoClose: 3000,
+				position: 'top-right',
+				autoClose: 2000,
 				closeButton: true,
+				closeOnClick: true,
 			})
 		} else if (msg.type === 'error') {
 			toast.error(msg.txt, {
-				position: 'top-center',
-				autoClose: 3000,
+				position: 'top-right',
+				autoClose: 2000,
 				closeButton: true,
+				closeOnClick: true,
 			})
 		} else {
 			toast(msg.txt, {
-				position: 'top-center',
-				autoClose: 3000,
+				position: 'top-right',
+				autoClose: 2000,
 				closeButton: true,
+				closeOnClick: true,
 			})
 		}
 	}
