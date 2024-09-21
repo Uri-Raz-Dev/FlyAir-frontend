@@ -60,21 +60,19 @@ export function StayFilter({ filterBy, onSetFilter }) {
 
 
     function handleChange(ev) {
-        console.log('target', ev.target);
-
-        const type = ev.target.type
-        const field = ev.target.name
-        let value
+        const type = ev.target.type;
+        const field = ev.target.name;
+        let value;
 
         switch (type) {
             case 'text':
             case 'radio':
-                value = field === 'sortDir' ? +ev.target.value : ev.target.value
-                if (!filterToEdit.sortDir) filterToEdit.sortDir = 1
-                break
+                value = field === 'sortDir' ? +ev.target.value : ev.target.value;
+                if (!filterToEdit.sortDir) filterToEdit.sortDir = 1;
+                break;
             case 'number':
-                value = +ev.target.value || ''
-                break
+                value = +ev.target.value || '';
+                break;
         }
         setFilterToEdit({ ...filterToEdit, [field]: value })
         console.log('filterToEdit:', filterToEdit)

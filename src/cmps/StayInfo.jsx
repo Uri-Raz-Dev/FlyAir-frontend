@@ -7,7 +7,6 @@ export function StayInfo({ stay, orderToEdit, setOrderToEdit, onAddOrder, handle
     const { _id, name, summary, type, imgurls, price, capacity, amenities, labels, description, reviews } = stay || {}
     const { city, country, countryCode, address, lat, lag } = stay?.location || {}
     const { fullname, imgUrl } = stay?.host || {}
-
     return (
         <section className='stay-info'>
             <header className="info-header">
@@ -15,8 +14,8 @@ export function StayInfo({ stay, orderToEdit, setOrderToEdit, onAddOrder, handle
                 <ul>
                     <li>{capacity} guests</li>
                     <li><span> · </span>{Math.floor(capacity / 2)} bedroom </li>
-                    <li><span> · </span>{Math.floor(capacity / 2)} bed <span> · </span></li>
-                    <li>{Math.floor(capacity / 2)} bath</li>
+                    <li><span> · </span>{capacity} bed <span> · </span></li>
+                    <li>1 bath</li>
                 </ul>
                 <div className="review-info">
                     <div className="review-rating">
