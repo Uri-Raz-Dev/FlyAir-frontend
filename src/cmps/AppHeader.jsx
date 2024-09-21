@@ -72,7 +72,7 @@ export function AppHeader({ filterBy, onSetFilter, toggleModal, isFilterOpen, op
 		try {
 			await logout()
 			navigate("/")
-			showSuccessMsg(`Bye now`)
+			// showSuccessMsg(`Bye now`)
 		} catch (err) {
 			showErrorMsg("Cannot logout")
 		}

@@ -1,22 +1,28 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router";
 
-export function GuestsModal({ adultsAmount, childrenAmount, infantsAmount, petsAmount, handleAmountChange }) {
+export function GuestsModal({
+    adultsAmount, childrenAmount, infantsAmount, petsAmount,
+    handleAmountChange }) {
     const location = useLocation()
     const isDetails = location.pathname.startsWith(`/stay/6`)
 
     return (
-        <section className={isDetails ? 'add-guests-modal details' : 'add-guests-modal'}>
+        <section className={isDetails ? 'add-guests-modal details' : 'add-guests-modal'} onClick={(ev) => { ev.preventDefault() }}>
             <div>
                 <h2>Adults</h2>
                 <p className='add-guests-modal-p'>Ages 13 or above</p>
             </div>
             <div className='add-guests-modal-btns'>
-                <button className={`add-guest-btn ${adultsAmount === 0 ? 'disabled' : ''}`} onClick={() => { handleAmountChange('adults', 'decrement') }}>
+                <button className={`add-guest-btn ${adultsAmount === 0 ? 'disabled' : ''}`} onClick={(ev) => {
+                    handleAmountChange('adults', 'decrement')
+                }}>
                     <span>-</span>
                 </button>
                 <span className="add-guest-num">{adultsAmount}</span>
-                <button className="add-guest-btn" onClick={() => { handleAmountChange('adults', 'increment') }}>
+                <button className="add-guest-btn" onClick={(ev) => {
+                    handleAmountChange('adults', 'increment')
+                }}>
                     <span>+</span>
                 </button>
             </div>

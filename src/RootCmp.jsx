@@ -33,6 +33,8 @@ import { Today } from './cmps/hosting/Today.jsx'
 import { AddStay } from './cmps/AddStay.jsx'
 import { HostingReservations } from './cmps/HostingReservations.jsx'
 import { TripList } from './cmps/TripList.jsx'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 // import HostingCalendar from './cmps/HostingCalendar.jsx'
 
 
@@ -295,6 +297,7 @@ export function RootCmp() {
                     {isHosting === '' && <AppFooter />}
                 </>
             )}
+            <ToastContainer />
         </div>
     );
 }

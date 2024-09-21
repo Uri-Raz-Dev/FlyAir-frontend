@@ -8,7 +8,7 @@
     // padding-block-start: em(80px);
     z-index: $z-index-high;
 
-    &.hosting{
+    &.hosting {
         display: none;
     }
 
@@ -89,7 +89,7 @@
         display: flex;
         align-items: center;
         justify-self: end;
-        // padding-inline-start: em(140px);
+
     }
 
     .logo {
@@ -193,7 +193,7 @@
         font-size: 14px;
         font-weight: 500px;
         color: black;
-        // font-family: $bnb-font-bold;
+
 
 
         &:hover {
