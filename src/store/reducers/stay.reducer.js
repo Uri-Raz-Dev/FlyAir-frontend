@@ -12,16 +12,13 @@ const initialState = {
     stays: [],
     stayToEdit: getEmptyStay(),
     filterBy: {
-        guests: {
-            adults: 0,
-            children: 0,
-            infants: 0,
-            pets: 0,
-        },
+     
         region: '',
         startDate: '',
         endDate: '',
-        label: '',
+        capacity:0,
+        // capacity:'',
+        // label: '',
     },
 
 }
@@ -56,7 +53,6 @@ export function stayReducer(state = initialState, action) {
             newState = { ...state, stays }
             break
         case SET_FILTER_BY:
-            console.log('filter by in reducer', action.filterBy)
             console.log('filter by in reducer', action.filterBy)
             return {
                 ...state,

@@ -1,7 +1,9 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router";
 
-export function GuestsModal({ adultsAmount, childrenAmount, infantsAmount, petsAmount, handleAmountChange }) {
+export function GuestsModal({ 
+    adultsAmount, childrenAmount, infantsAmount, petsAmount,
+     handleAmountChange }) {
     const location = useLocation()
     const isDetails = location.pathname.startsWith(`/stay/6`)
 
