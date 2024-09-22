@@ -25,6 +25,13 @@
     grid-template-rows: repeat(2, minmax(0, 1fr));
     row-gap: em(6px, 14px);
 
+    :hover {
+      // padding: 8px;
+      cursor: pointer;
+      background-color: #f7f7f7;
+      border-radius: 16px;
+    }
+
     .region-card {
       display: flex;
       flex-direction: column;
@@ -32,10 +39,29 @@
       padding: em(8px, 14px);
       border-radius: (16px, 14px);
       text-align: start;
+      text-decoration: none;
+
+      :hover {
+        text-decoration: none;
+
+      }
 
       .region-img {
         border: solid 1px rgb(221, 221, 221);
         border-radius: 12px;
+        text-decoration: none;
+
+
+
+        >p {
+          text-decoration: none;
+          outline: none;
+
+          :hover {
+            text-decoration: none;
+            outline: none;
+          }
+        }
 
         img {
           height: 100%;
