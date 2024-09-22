@@ -190,6 +190,14 @@ export function RootCmp() {
         setIsHosting(tabName); // עדכון isHosting לפי הטאב שנבחר
     }
 
+    useEffect(() => {
+        if (location.pathname === '/stay/') {
+            setIsFilterOpen(false)
+        } else {
+            setIsFilterOpen(false);
+        }
+    }, [location.pathname])
+
     // useEffect(() => {
     //     function handleScroll() {
     //         scrollY.current = window.scrollY;
