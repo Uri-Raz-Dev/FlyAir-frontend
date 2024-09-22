@@ -13,29 +13,29 @@ export function AppFooter() {
 	};
 
 	return (
-		<footer>
-			<div className={isLocation ? "app-footer details full" : "app-footer full"}>
-				<div className="footer-help">
-					<span>&copy; 2024 FlyAir, Inc.</span>
-					<span>.</span>
-					<Link to="/">Terms</Link>
-					<span>.</span>
-					<Link to="/">Sitemap</Link>
-					<span>.</span>
-					<Link to="/">Privacy</Link>
-					<span>.</span>
-					<Link to="/">Your Privacy Choices</Link>
-				</div>
+		<footer className={isLocation ? "app-footer details full" : "app-footer full"}>
 
-				<div className="footer-support">
-					<Link to="/" className="language-link">
-						<SvgIcon iconName={"language"}></SvgIcon>
-					</Link>
-					<Link to="/">English(US)</Link>
-					<Link to="/">₪ ILS</Link>
-					<Link to="/">Support & resouces</Link>
-				</div>
+			<div className="footer-help">
+				<span>&copy; 2024 FlyAir, Inc.</span>
+				<span>.</span>
+				<Link to="/">Terms</Link>
+				<span>.</span>
+				<Link to="/">Sitemap</Link>
+				<span>.</span>
+				<Link to="/">Privacy</Link>
+				<span>.</span>
+				<Link to="/">Your Privacy Choices</Link>
 			</div>
+
+			<div className="footer-support">
+				<Link to="/" className="language-link">
+					<SvgIcon iconName={"language"}></SvgIcon>
+				</Link>
+				<Link to="/">English(US)</Link>
+				<Link to="/">₪ ILS</Link>
+				<Link to="/">Support & resouces</Link>
+			</div>
+
 
 			{/* <div className="footer-nav-mobail">
 				<Link
