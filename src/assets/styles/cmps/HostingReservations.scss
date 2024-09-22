@@ -5,15 +5,15 @@
     margin: 0 auto;
     padding: 20px;
     margin-block-start: 3rem;
-    
-    .right-arrow-icon{
+
+    .right-arrow-icon {
         color: red;
     }
 
     .back-btn-container {
         margin-block-end: 1rem;
         display: flex;
-        // padding: 5px;
+        padding: 5px;
     }
 
     .back-btn {
@@ -26,14 +26,19 @@
         border: 1px solid transparent;
         width: rem(48px);
         height: rem(48px);
-        padding: 5px;
-        border-radius: 50%;        
+        // padding: 5px;
+        border-radius: 50%;
     }
 
     .back-btn:hover {
         background-color: #f7f7f7;
         width: rem(48px);
-        height: rem(48px);  
+        height: rem(48px);
+    }
+
+    .tr-hosting {
+        position: relative;
+        padding: 1rem;
     }
 
     .status-button {
@@ -42,19 +47,30 @@
         border-radius: 5px;
         // color: white;    
         cursor: pointer;
+        position: absolute;
+        top: 30px;
+        right: 10px;
     }
 
-    .status-button.upcoming {
-        background-color: yellow;
+    .upcoming {
+        // background-color: yellow;
+        // color: black;
+        color: #f05e23;
+    }
+
+    .approved {
+        // background-color: green;
+        color: #008a05;
+    }
+
+    .cancelled {
+        // background-color: red;
+        color: lightcoral;
+    }
+
+    .completed {
+        // background-color: red;
         color: black;
-    }
-
-    .status-button.approved {
-        background-color: green;
-    }
-
-    .status-button.cancelled {
-        background-color: red;
     }
 
     h2 {
@@ -156,7 +172,7 @@
                 text-align: center;
                 // text-overflow: clip;
                 // text-overflow: ellipsis;
-                
+
             }
         }
 
@@ -201,8 +217,9 @@
 
 
 
+
                 .buyer-fullname {
-                    font-size: 16px;
+                    font-size: 18px;
                     font-family: $bnb-font-bold;
 
                     // font-weight: 600;
@@ -212,6 +229,8 @@
 
                 .stay-name {
                     order: 2;
+                    font-size: 15px;
+                    font-weight: 600;
                 }
 
                 .status-buttons {
@@ -225,6 +244,52 @@
 
                 .reservation-price {
                     order: 5;
+                    font-size: 16px;
+                    font-weight: 600;
+                }
+
+                .details-buttons {
+                    display: flex;
+                    order: 6;
+                    margin-block: 10px;
+
+                    button {
+                        background: none;
+                        border: none;
+                        padding: 0;
+                        margin: 0;
+                        font: inherit;
+                        color: inherit;
+                        text-transform: none;
+                        letter-spacing: normal;
+                        appearance: none;
+                        outline: none;
+                        cursor: pointer;
+                    }
+
+                    .details-buttons-btn {
+                        font-size: 14px;
+                        padding: 7px;
+                        border-radius: 24px;
+                        border: 1px solid #6a6a6a;
+                        margin-inline-end: 10px;
+
+                    }
+
+                    .approved-btn {
+                        color: #008a05;
+
+                    }
+
+                    .cancelled-btn {
+                        color: lightcoral;
+
+                    }
+
+                    .completed-btn {
+                        color: black;
+                    }
+
                 }
 
             }

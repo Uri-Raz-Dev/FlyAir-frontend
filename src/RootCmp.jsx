@@ -294,7 +294,6 @@ export function RootCmp() {
                     <main className='empty-div'>
                         <div className='login-container'>{isModalOpen && <Login toggleModal={toggleModal} />}</div>
                         <Routes>
-                            {isShown && console.log('isShown main main main:', isShown)}
                             <Route path="/" element={<Navigate to="/stay" />} />
                             <Route path="/hosting" element={<Navigate to="today" />} />
 

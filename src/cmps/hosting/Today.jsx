@@ -1,8 +1,11 @@
 import React, { useRef } from 'react';
+import { useSelector } from 'react-redux';
 import { Link, Outlet } from 'react-router-dom';
 
 export function Today() {
     const scrollContainerRef = useRef(null);
+    const loggedInUser = useSelector(storeState => storeState.userModule.user);
+    const { _id, fullname } = loggedInUser;
 
     const scrollLeft = () => {
         scrollContainerRef.current.scrollBy({
@@ -21,7 +24,7 @@ export function Today() {
     return (
         <div className="today-page">
             <header>
-                <h1>Welcome back, Omer</h1>
+                <h1>Welcome back, {fullname}</h1>
             </header>
 
             <section className="reservations-section">
@@ -66,19 +69,19 @@ export function Today() {
                     </button>
                     <div className="resources-grid scroll-container" ref={scrollContainerRef}>
                         <div className="resource-card">
-                            <img src="/public/img/hosting-today-tips-1.png" alt="Experience" />
+                            <img src="https://res.cloudinary.com/dooscjcpt/image/upload/v1726979944/avatars/p0hufmcd9qlpmzcah36k.png" alt="Experience" />
                             <h3>We're now accepting Experiences submissions! Learn more</h3>
                         </div>
                         <div className="resource-card">
-                            <img src="/public/img/hosting-today-tips-2.png" alt="Guest reviews" />
+                            <img src="https://res.cloudinary.com/dooscjcpt/image/upload/v1726979943/avatars/jocdnrrai4nq8pkfj0mx.png" alt="Guest reviews" />
                             <h3>Use guest reviews to improve</h3>
                         </div>
                         <div className="resource-card">
-                            <img src="/public/img/hosting-today-tips-3.png" alt="Cleaning tips" />
+                            <img src="https://res.cloudinary.com/dooscjcpt/image/upload/v1726979943/avatars/j14ghzw4phpuw2muxxfi.png" alt="Cleaning tips" />
                             <h3>Clean like a pro with these expert tips</h3>
                         </div>
                         <div className="resource-card">
-                            <img src="/public/img/hosting-today-tips-4.png" alt="Learning" />
+                            <img src="https://res.cloudinary.com/dooscjcpt/image/upload/v1726979943/avatars/jum3rrz19bkjopdaruf0.png" alt="Learning" />
                             <h3>Never stop learning how to improve your business</h3>
                         </div>
                     </div>
