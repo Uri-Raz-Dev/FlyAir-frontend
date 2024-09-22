@@ -41,7 +41,7 @@ export function StayFilter({ filterBy, onSetFilter }) {
     const [isGuestsOpen, setGuestsOpen] = useState(false)
 
 
-
+    const isCheckInDate = useRef(false)
     const filterActive = useRef('')
     const regionActive = useRef(false)
 
@@ -49,7 +49,6 @@ export function StayFilter({ filterBy, onSetFilter }) {
     const checkIninputRef = useRef(null)
     const regioninputRef = useRef(null)
     const guestsinputRef = useRef(null)
-
 
 
     const [filterToEdit, setFilterToEdit] = useState({ ...filterBy })
@@ -159,54 +158,11 @@ export function StayFilter({ filterBy, onSetFilter }) {
         }
         setRegionPickerOpen(false)
         setDatesPickerOpen(true)
+        setCheckInFilter(true)
         handleFocus(checkIninputRef)
     }
 
-    // function handleGuestsTree(adults, children, infants, pets, type, operation) {
-    //     var dec = 1
-    //     if (type === 'adults') {
-    //         if (operation === 'increment') dec = 1
-    //         else dec = -1
 
-    //         setGuestTree({ ...guestsTree, adults: adults + dec, children: children, infants: infants, pets: pets })
-
-
-    //     }
-    //     else if (type === 'children') {
-    //         if (operation === 'increment') dec = 1
-    //         else dec = -1
-    //         setGuestTree({ ...guestsTree, adults: adults, children: children + dec, infants: infants, pets: pets })
-
-
-    //     }
-    //     else if (type === 'infants') {
-    //         if (operation === 'increment') dec = 1
-    //         else dec = -1
-
-    //         setGuestTree({ ...guestsTree, adults: adults, children: children, infants: infants + dec, pets: pets })
-
-
-    //     }
-    //     else if (type === 'pets') {
-    //         if (operation === 'increment') dec = 1
-    //         else dec = -1
-    //         setGuestTree({ ...guestsTree, adults: adults, children: children, infants: infants, pets: pets + dec })
-
-
-    //     }
-
-    //     setFilterToEdit({
-    //         ...filterToEdit,
-    //         guests: {
-    //             ...filterToEdit.guests, // Spread the previous guests object
-    //             adults: guestsTree.adults, // Update values
-    //             children: guestsTree.children,
-    //             infants: guestsTree.infants,
-    //             pets: guestsTree.pets
-    //         }
-    //     })
-
-    // }
 
     function handleAmountChange(type, operation) {
 
@@ -290,21 +246,31 @@ export function StayFilter({ filterBy, onSetFilter }) {
         console.log(`check in date : ${checkIn}`);
 
         setSelectedCheckIn(checkIn)
-        // setFilterToEdit({ ...filterToEdit, startDate: checkIn })
-
+        // if (checkIn) {
+        //     setCheckOutFilter(true)
+        //     handleFocus(checkOutinputRef);
+        // }
 
     }
+
     function handleCheckOut(checkOut) {
         console.log(`check out date : ${checkOut}`);
 
         setSelectedCheckOut(checkOut)
-        // setFilterToEdit({ ...filterToEdit, endDate: checkOut })
     }
 
     function clearDates() {
         setSelectedCheckIn(null)
         setSelectedCheckOut(null)
         setDatesPickerOpen(false)
+    }
+
+    function clearFilter() {
+        // setSelectedRegion('');
+        // setSelectedCheckIn(null); // If you're using a date picker, reset it to null or default value
+        // setSelectedCheckOut(null); // Same for the checkout date
+        // setSelectedCapacity(0); // Reset capacity, assuming it's a number input
+
     }
 
 
@@ -320,6 +286,14 @@ export function StayFilter({ filterBy, onSetFilter }) {
 
         setFilterToEdit({ ...filterToEdit, region: selectedRegion, startDate: selectedCheckIn, endDate: selectedCheckOut, capacity: selectedCapacity })
         onSetFilter(filterStays)
+
+        // setSelectedRegion('');
+        // setSelectedCheckIn(null); // If you're using a date picker, reset it to null or default value
+        // setSelectedCheckOut(null); // Same for the checkout date
+        // setSelectedCapacity(0); // Reset capacity, assuming it's a number input
+
+        // Optionally reset the form if needed
+        // ev.target.reset();
 
     }
 

@@ -9,6 +9,8 @@ import { orderService } from "../services/order/order.service";
 import { addOrder } from "../store/actions/order.actions";
 import Swal from 'sweetalert2'
 import { SOCKET_EVENT_REVIEW_ADDED } from "../services/socket.service";
+import { loadStays, addStay, updateStay, removeStay, addStayMsg, setFilterBy } from '../store/actions/stay.actions'
+
 
 export function StayBook() {
     const { stayId } = useParams()
@@ -30,6 +32,9 @@ export function StayBook() {
     const kids = queryParams.get('kids')
     const infants = queryParams.get('infants')
     const pets = queryParams.get('pets')
+
+    // const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
+
     useEffect(() => {
         if (stayId) {
             loadStay(stayId)
@@ -127,6 +132,15 @@ export function StayBook() {
                 iconColor: '#ff385c',
                 position: 'center'
             })
+            // const queryParamsFilter = new URLSearchParams({
+            //     region:  '',  // Fallback to empty string if not selected
+            //     startDate:  null,
+            //     endDate:  null,
+            //     capacity:  0
+            // }).toString();
+        
+            // setFilterBy({...filterBy,region:'',startDate:null,endDate:null , guests:0})
+            // navigate(`/stay/?${queryParamsFilter}`)
             navigate(`/stay`)
         }
     }
