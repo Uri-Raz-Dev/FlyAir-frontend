@@ -12,17 +12,18 @@
     display: flex;
     justify-content: center;
     gap: 10px;
-}
-
-.date-picker-controls button {
     border: 1px solid #ddd;
     background-color: white;
     padding: 8px 16px;
     border-radius: 20px;
     cursor: pointer;
+
 }
 
-.date-picker-controls button:hover {
+.date-picker-controls button {
+}
+
+.date-picker-controls:hover {
     border-color: #bbb;
 }
 
@@ -32,6 +33,33 @@
     color: white;
 }
 
-.rdrDefinedRangesWrapper {
-    display: none;
+.rdrDay,
+.rdrDayToday,
+.rdrDayWeekend,
+.rdrDayStartOfWeek {
+   background-color: white;
 }
+
+.rdrStartEdge,
+.rdrEndEdge {
+    background-color: rgb(26, 26, 26);
+}
+
+.rdrInRange {
+    background-color: rgba(128, 128, 128, 0.469);
+}
+.rdrStartEdge{
+    
+}
+// .rdrDayNumber{
+// border-radius: 50%;
+
+// }
+// .rdrInRange{
+//     background-color
+
+// }
+// .rdrDefinedRangesWrapper {
+//     display: none;
+// }
+
