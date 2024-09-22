@@ -18,7 +18,7 @@ export function LoginSignup({ toggleNav, toggleModal }) {
             <div className="modal-overlay" onClick={toggleNav}></div>
             <div className="login-signup-btn" onClick={stopPropagation}>
                 <nav className="login-signup-nav" onClick={toggleNav}>
-                    <a onClick={toggleModal}>Log in</a>
+                    <a onClick={toggleModal}>Log in</a>                    
 
                     <NavLink to="signup">Sign up</NavLink>
                     <div className='signup-nav-border' onClick={stopPropagation}></div>

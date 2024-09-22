@@ -190,6 +190,14 @@ export function RootCmp() {
         setIsHosting(tabName); // עדכון isHosting לפי הטאב שנבחר
     }
 
+    useEffect(() => {
+        if (location.pathname === '/stay/') {
+            setIsFilterOpen(false)
+        } else {
+            setIsFilterOpen(false);
+        }
+    }, [location.pathname])
+
     // useEffect(() => {
     //     function handleScroll() {
     //         scrollY.current = window.scrollY;
@@ -286,7 +294,6 @@ export function RootCmp() {
                     <main className='empty-div'>
                         <div className='login-container'>{isModalOpen && <Login toggleModal={toggleModal} />}</div>
                         <Routes>
-                            {isShown && console.log('isShown main main main:', isShown)}
                             <Route path="/" element={<Navigate to="/stay" />} />
                             <Route path="/hosting" element={<Navigate to="today" />} />
 

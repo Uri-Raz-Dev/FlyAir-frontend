@@ -71,7 +71,7 @@ export function AppHeader({ filterBy, onSetFilter, toggleModal, isFilterOpen, op
 	async function onLogout() {
 		try {
 			await logout()
-			navigate("/")
+			navigate("/stay")
 			// showSuccessMsg(`Bye now`)
 		} catch (err) {
 			showErrorMsg("Cannot logout")

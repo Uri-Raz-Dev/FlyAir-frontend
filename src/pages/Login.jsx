@@ -4,9 +4,9 @@ import { userService } from '../services/user'
 import { login, signup } from '../store/actions/user.actions'
 import { Link } from 'react-router-dom'
 
-export function Login({ toggleModal }) {
+export function Login({ toggleModal, isSignup, setIsSignUp }) {
     const [users, setUsers] = useState([])
-    const [isSignup, setIsSignUp] = useState(false)
+    // const [isSignup, setIsSignUp] = useState(false)
     const [credentials, setCredentials] = useState({ username: '', password: '', fullname: '' })
 
     const navigate = useNavigate()
@@ -64,7 +64,7 @@ export function Login({ toggleModal }) {
     //     }
     // }, [])
 
-        // <div div className = "modal-overlay" ></div >
+    // <div div className = "modal-overlay" ></div >
     // className={`modal-overlay ${hiddenRef.current} `}
     return (
         <>
@@ -134,13 +134,13 @@ export function Login({ toggleModal }) {
                         </fieldset>
 
                         <button className='more-login continue-with-google'>
-                            <img src="/public/img/google-icon.png" alt="" />Continue with Google
+                            <img src="https://res.cloudinary.com/dooscjcpt/image/upload/v1726980479/avatars/z7g9jo2h6egxjkvojrcp.png" alt="" />Continue with Google
                         </button>
                         <button className='more-login continue-with-apple'>
-                            <img src="/public/img/apple-icon.png" alt="" />Continue with Apple
+                            <img src="https://res.cloudinary.com/dooscjcpt/image/upload/v1726980569/avatars/npwbpgui3f69zkatgnoe.png" alt="" />Continue with Apple
                         </button>
                         <button className='more-login continue-with-email'>
-                            <img src="/public/img/email.png" alt="" />Continue with email
+                            <img src="https://res.cloudinary.com/dooscjcpt/image/upload/v1726980531/avatars/remnfspfzqezcno8exrx.png" alt="" />Continue with email
                         </button>
 
                         <button className='close-login-singup-modal' onClick={toggleModal}>x</button>

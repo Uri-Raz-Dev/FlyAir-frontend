@@ -6,7 +6,8 @@ import { ReviewList } from "./ReviewList"
 export function StayInfo({ stay, orderToEdit, setOrderToEdit, onAddOrder, handleChange, loggedInUser }) {
     const { _id, name, summary, type, imgurls, price, capacity, amenities, labels, description, reviews } = stay || {}
     const { city, country, countryCode, address, lat, lag } = stay?.location || {}
-    const { fullname, imgUrl } = stay?.host || {}
+    const { fullname, imgurl } = stay?.host || {}
+    console.log('stay:', imgurl)
     return (
         <section className='stay-info'>
             <header className="info-header">
@@ -32,7 +33,7 @@ export function StayInfo({ stay, orderToEdit, setOrderToEdit, onAddOrder, handle
 
             <section className='about-host'>
                 <div className="host-img">
-                    <img src={imgUrl} alt="host img" />
+                    <img src={imgurl} alt="host img" />
                 </div>
                 <div>
                     <span>Hosted by {fullname}</span>

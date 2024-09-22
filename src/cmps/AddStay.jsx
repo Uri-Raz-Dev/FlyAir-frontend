@@ -162,7 +162,7 @@ export function AddStay() {
         <div className='main-container-add-stay'>
             <div className='header-add-stay'>
                 <div className='logo-add-stay'>
-                    <img src="/public/img/airbnb-logo-add-stay-header.png" alt="Airbnb logo" />
+                    <img src="https://res.cloudinary.com/dooscjcpt/image/upload/v1726980896/avatars/fxrqvqny9rggg2eyyt0f.png" alt="Airbnb logo" />
                 </div>
                 <div className='header-add-stay-btn'>
                     <button onClick={() => navigate('/hosting')}>Save & exit</button>

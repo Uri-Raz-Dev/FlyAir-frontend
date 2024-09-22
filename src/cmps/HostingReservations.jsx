@@ -130,7 +130,7 @@ export function HostingReservations() {
                 <tbody>
                     {filteredReservations.length > 0 ? (
                         filteredReservations.map(reservation => (
-                            <tr key={reservation._id}>
+                            <tr key={reservation._id} className='tr-hosting'>
 
                                 <td><Link to={`/stay/${reservation.stay._id}`}><img src={reservation.stay.imgurls[0]} alt="stay-img" /></Link></td>
                                 <td className='status-buttons'>
@@ -143,7 +143,8 @@ export function HostingReservations() {
                                 </td>
                                 <td className='buyer-fullname'>
                                     <img src={reservation.buyer.imgUrl} alt="Guest" className="guest-img" />
-                                    {reservation.buyer.fullname}
+                                    
+                                    <span className={`${reservation.status.toLowerCase()}`}>{reservation.buyer.fullname}</span>
                                 </td>
 
                                 <td className='mobail-date'>{reservation.startDate}</td>
@@ -151,10 +152,54 @@ export function HostingReservations() {
 
 
                                 <td className='stay-name'>{reservation.stay.name}</td>
+                                {/* <td className={`status-button last ${reservation.status.toLowerCase()}`}>{reservation.stay.name}</td> */}
+                                
                                 <td className='reservation-id'>{reservation._id}</td>
                                 <td className='reservation-price'>₪{reservation.totalPrice}</td>
-                                <td>
-                                    <button className="details-button">Details</button>
+
+                                <td className='details-buttons'>
+                                    {/* <button className="details-buttons-approve">Approve</button> */}
+                                    {/* <button className="details-buttons-reject">Reject</button> */}
+                                    {/* <button className="details-button">Details</button> */}
+
+
+                                    <button
+                                        className={`details-buttons-btn approved-btn`}
+                                        onClick={() => changeStatus(reservation._id, 'Approved')}
+                                    >
+                                        Approve
+                                    </button>
+                                    <button
+                                        className={`details-buttons-btn cancelled-btn`}
+                                        onClick={() => changeStatus(reservation._id, 'Cancelled')}
+                                    >
+                                        Reject
+                                    </button>
+                                    <button
+                                        className={`details-buttons-btn completed-btn`}
+                                        onClick={() => changeStatus(reservation._id, 'Completed')}
+                                    >
+                                        Completed
+                                    </button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                 </td>
                                 {/* <td>
                                     <Link

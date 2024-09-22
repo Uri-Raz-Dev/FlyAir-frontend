@@ -1,68 +1,68 @@
-// .app-footer {
-// 	display: flex;
-// 	position: fixed;
-// 	bottom: 0;
-// 	width: 100%;
-// 	align-items: center;
-// 	justify-content: space-between;
-// 	background-color: $white;
-// 	padding-inline: 5em;
-// 	border-top: 0.0625rem $bnb-gray solid;
-// 	line-height: 1.4286rem;
-// 	font-size: 0.875rem;
-// 	z-index: 900; /* כדי לוודא שה-footer הרגיל יישב מתחת ל-footer למובייל */
+.app-footer {
+	display: flex;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	align-items: center;
+	justify-content: space-between;
+	background-color: $white;
+	padding-inline: 5em;
+	border-top: 0.0625rem $bnb-gray solid;
+	line-height: 1.4286rem;
+	font-size: 0.875rem;
+	z-index: 900; /* כדי לוודא שה-footer הרגיל יישב מתחת ל-footer למובייל */
 
-// 	&.details {
-// 		position: relative;
-// 		background-color: #f7f7f7;
-// 	}
+	&.details {
+		position: relative;
+		background-color: #f7f7f7;
+	}
 
-// 	@media only screen and (max-width: 600px) {
-// 		display: none; /* הסתרת footer רגיל במובייל */
-// 	}
-// }
+	@media only screen and (max-width: 600px) {
+		display: none; /* הסתרת footer רגיל במובייל */
+	}
+}
 
-// .footer-nav-mobail {
-// 	display: none;
+.footer-nav-mobail {
+	display: none;
 
-// 	@media only screen and (max-width: 600px) {
-// 		display: flex;
-// 		justify-content: space-between;
-// 		align-items: center;
-// 		padding: 10px;
-// 		position: fixed; /* מבטיח שהוא קבוע בחלק התחתון של המסך */
-// 		bottom: 0; /* ממקם אותו בתחתית */
-// 		left: 0;
-// 		right: 0;
-// 		width: 100%;
-// 		background-color: $white;
-// 		border-top: 1px solid $bnb-gray; /* גבול עליון */
-// 		z-index: 1000; /* מבטיח שהוא מעל כל התוכן */
-// 		box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1); /* מוסיף צל קל */
-// 	}
+	@media only screen and (max-width: 600px) {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 10px;
+		position: fixed; /* מבטיח שהוא קבוע בחלק התחתון של המסך */
+		bottom: 0; /* ממקם אותו בתחתית */
+		left: 0;
+		right: 0;
+		width: 100%;
+		background-color: $white;
+		border-top: 1px solid $bnb-gray; /* גבול עליון */
+		z-index: 1000; /* מבטיח שהוא מעל כל התוכן */
+		box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1); /* מוסיף צל קל */
+	}
 
-// 	.nav-btn {
-// 		display: flex;
-// 		flex-direction: column;
-// 		align-items: center;
-// 		justify-content: center;
-// 		flex: 1; /* גורם לכפתורים לתפוס את השטח בצורה שווה */
-// 		color: #666;
-// 		text-decoration: none;
-// 		font-size: 14px;
+	.nav-btn {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		flex: 1; /* גורם לכפתורים לתפוס את השטח בצורה שווה */
+		color: #666;
+		text-decoration: none;
+		font-size: 14px;
 
-// 		&:hover {
-// 			color: #ff385c;
-// 		}
+		&:hover {
+			color: #ff385c;
+		}
 
-// 		&.active {
-// 			color: #ff385c;
-// 		}
+		&.active {
+			color: #ff385c;
+		}
 
-// 		.icon {
-// 			width: 24px;
-// 			height: 24px;
-// 			margin-bottom: 5px;
-// 		}
-// 	}
-// }
+		.icon {
+			width: 24px;
+			height: 24px;
+			margin-bottom: 5px;
+		}
+	}
+}
