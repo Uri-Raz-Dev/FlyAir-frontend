@@ -16,19 +16,24 @@ export function LoggedInUserModal({ toggleNav, toggleModal, onLogout , user}) {
             <div className="modal-overlay" onClick={toggleNav}></div>
             <div className="login-signup-btn" onClick={stopPropagation}>
                 <nav className="login-signup-nav" onClick={toggleNav}>
-                    <a href="#">Messages</a>
+                    {/* <a href="#">Messages</a> */}
                     <Link to={`trips`}>Trips</Link>
-                    <a href="#">Wishlists</a>
+                    <Link to={`user/${user._id}`}>Account</Link>
+                    {/* <a href="#">Wishlists</a> */}
 
                     <div className='signup-nav-border'></div>
 
+                    <Link to={`hosting/today`}>Today</Link>
+                    <Link to={`hosting/hosting-reservations`}>Reservations</Link>
                     <Link to={`hosting/listings`}>Manage listings</Link>
                     {/* <a href="#">Account</a> */}
-                    <Link to={`user/${user._id}`}>Account</Link>
                     <div className='signup-nav-border'></div>
-                    <a href="#">Gift cards</a>
-                    <a href="#">Help Center</a>
+                    {/* <a href="#">Gift cards</a> */}
+                    {/* <a href="#">Help Center</a> */}
+
                     <a onClick={onLogout}>Log out</a>
+                    {/* <Link to={`stay`}>Log out</Link> */}
+
 
                 </nav>
                 <Outlet />

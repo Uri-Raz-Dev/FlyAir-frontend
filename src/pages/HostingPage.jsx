@@ -33,11 +33,11 @@ export function HostingPage() {
                         <SvgIcon iconName={"todayIcon"} className="icon"></SvgIcon>Today
                     </Link>
                     <Link
-                        to="calendar"
-                        className={`nav-btn home-page-hosting-calendar-btn ${activeTab === "calendar" ? "active" : ""}`}
-                        onClick={() => handleTabClick("calendar")}
+                        to="hosting-reservations"
+                        className={`nav-btn home-page-hosting-calendar-btn ${activeTab === "reservations" ? "active" : ""}`}
+                        onClick={() => handleTabClick("reservations")}
                     >
-                        <SvgIcon iconName={"calendarIcon"} className="icon"></SvgIcon>Calendar
+                        <SvgIcon iconName={"calendarIcon"} className="icon"></SvgIcon>Reservations
                     </Link>
                     <Link
                         to="listings"
@@ -53,13 +53,13 @@ export function HostingPage() {
                     >
                         <SvgIcon iconName={"messagesIcon"} className="icon"></SvgIcon>Messages
                     </Link>
-                    <Link
+                    {/* <Link
                         to="menu"
                         className={`nav-btn home-page-hosting-menu-btn ${activeTab === "menu" ? "active" : ""}`}
                         onClick={() => handleTabClick("menu")}
                     >
                         <SvgIcon iconName={"usermenu"} className="icon"></SvgIcon>Menu
-                    </Link>
+                    </Link> */}
 
                 </div>
 
