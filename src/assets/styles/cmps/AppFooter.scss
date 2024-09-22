@@ -4,13 +4,14 @@
 	bottom: 0;
 	width: 100%;
 	align-items: center;
-	justify-content: space-between;
+
 	background-color: $white;
-	padding-inline: 5em;
+	// padding-inline: 5em;
 	border-top: 0.0625rem $bnb-gray solid;
 	line-height: 1.4286rem;
 	font-size: 0.875rem;
-	z-index: 900; /* כדי לוודא שה-footer הרגיל יישב מתחת ל-footer למובייל */
+	z-index: 900;
+	/* כדי לוודא שה-footer הרגיל יישב מתחת ל-footer למובייל */
 
 	&.details {
 		position: relative;
@@ -18,7 +19,8 @@
 	}
 
 	@media only screen and (max-width: 600px) {
-		display: none; /* הסתרת footer רגיל במובייל */
+		display: none;
+		/* הסתרת footer רגיל במובייל */
 	}
 }
 
@@ -30,15 +32,20 @@
 		justify-content: space-between;
 		align-items: center;
 		padding: 10px;
-		position: fixed; /* מבטיח שהוא קבוע בחלק התחתון של המסך */
-		bottom: 0; /* ממקם אותו בתחתית */
+		position: fixed;
+		/* מבטיח שהוא קבוע בחלק התחתון של המסך */
+		bottom: 0;
+		/* ממקם אותו בתחתית */
 		left: 0;
 		right: 0;
 		width: 100%;
 		background-color: $white;
-		border-top: 1px solid $bnb-gray; /* גבול עליון */
-		z-index: 1000; /* מבטיח שהוא מעל כל התוכן */
-		box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1); /* מוסיף צל קל */
+		border-top: 1px solid $bnb-gray;
+		/* גבול עליון */
+		z-index: 1000;
+		/* מבטיח שהוא מעל כל התוכן */
+		box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+		/* מוסיף צל קל */
 	}
 
 	.nav-btn {
@@ -46,7 +53,8 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		flex: 1; /* גורם לכפתורים לתפוס את השטח בצורה שווה */
+		flex: 1;
+		/* גורם לכפתורים לתפוס את השטח בצורה שווה */
 		color: #666;
 		text-decoration: none;
 		font-size: 14px;
@@ -65,4 +73,18 @@
 			margin-bottom: 5px;
 		}
 	}
+}
+
+.footer-support {
+	display: flex;
+	gap: 6px;
+	align-items: center;
+}
+
+.footer-help {
+	display: flex;
+	align-items: center;
+
+	flex-grow: 0.9;
+	gap: 0;
 }
